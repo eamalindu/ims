@@ -14,9 +14,9 @@ public class ImsApplication {
 	}
 	@RequestMapping(value = "/Dashboard")
 	public ModelAndView imsDashboard(){
-		ModelAndView rmsView = new ModelAndView();
-		rmsView.setViewName("Dashboard.html");
-		return rmsView;
+		ModelAndView imsView = new ModelAndView();
+		imsView.setViewName("Dashboard.html");
+		return imsView;
 	}
 
 }
