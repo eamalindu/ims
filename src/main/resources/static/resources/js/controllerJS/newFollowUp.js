@@ -3,6 +3,7 @@ window.addEventListener('load', () => {
     newFollowUp = {};
 
     //external libraries initialization
+    $(".chosen-inquiry").chosen({width: '100%'});
     $('#inquiryFollowUpTime').daterangepicker({
         "minDate": new Date(),
         "singleDatePicker": true,
