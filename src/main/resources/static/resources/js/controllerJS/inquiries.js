@@ -95,8 +95,8 @@ const rowView = (ob,rowIndex)=>{
 
     //reset followup form
     resetFollowupForm()
-    //close the collapse
-    collapseFollowUpButton.click();
+    // //close the collapse
+    // collapseFollowUpButton.click();
 
     //make all the inputs readonly and remove inline styles
     inputs = document.querySelectorAll('.inquirySheetInputs');
