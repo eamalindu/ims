@@ -8,6 +8,7 @@ public class ImsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ImsApplication.class, args);
+		System.out.println("IMS System is now running!");
 	}
 
 }
