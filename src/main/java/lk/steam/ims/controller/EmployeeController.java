@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/employee")
+@RequestMapping(value = "/Employee")
 public class EmployeeController {
 
     @Autowired

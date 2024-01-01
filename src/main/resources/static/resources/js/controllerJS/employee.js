@@ -60,7 +60,7 @@ window.addEventListener('load',()=>{
 })
 
 const refreshEmployeeTable = ()=>{
-    employees = ajaxGetRequest("/employee/findall");
+    employees = ajaxGetRequest("/Employee/findall");
     displayPropertyListForEmployee = [
         {property:'employeeID',dataType:'text'},
         {property:'fullName',dataType:'text'},
@@ -217,7 +217,7 @@ const newEmployeeSubmit=()=>{
                 //passing the data to backend
                 //if the data is successfully passed to the database it will set the value of the postServerResponse to "OK"
                 let postServerResponse;
-                $.ajax("/employee", {
+                $.ajax("/Employee", {
                     type: "POST",
                     async: false, // set the async option false to wait for the response
                     contentType: "application/json",
@@ -284,7 +284,7 @@ const employeeUpdate = ()=>{
                 if(result){
                     //database ajax code
                     let postServerResponse;
-                    $.ajax("/employee", {
+                    $.ajax("/Employee", {
                         type: "PUT",
                         async: false,
                         contentType: "application/json",
