@@ -27,4 +27,11 @@ public class ImsApplication {
 		return imsAdminView;
 	}
 
+	@RequestMapping(value = "/Inquiries")
+	public ModelAndView imsInquiries(){
+		ModelAndView imsInquiriesView = new ModelAndView();
+		imsInquiriesView.setViewName("inquiries.html");
+		return imsInquiriesView;
+	}
+
 }
