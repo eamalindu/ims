@@ -20,5 +20,11 @@ public class ImsApplication {
 		imsView.setViewName("dashboard.html");
 		return imsView;
 	}
+	@RequestMapping(value = "/Administrations")
+	public ModelAndView imsAdministration(){
+		ModelAndView imsAdminView = new ModelAndView();
+		imsAdminView.setViewName("administrations.html");
+		return imsAdminView;
+	}
 
 }
