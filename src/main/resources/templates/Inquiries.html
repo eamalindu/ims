@@ -234,7 +234,7 @@
                                     <label class="fw-bold required small" for="inquiryFollowUpType">Type</label>
                                 </div>
                                 <div class="input-group">
-                                    <select class="form-select rounded-0 chosen-inquiry" data-placeholder="Please Select a Type " id="inquiryFollowUpType" onchange="selectStaticValueValidator(this,'','newFollowUp','type')" required>
+                                    <select class="form-select rounded-0 chosen-inquiry " data-placeholder="Please Select a Type " id="inquiryFollowUpType" onchange="selectStaticValueValidator(this,'','newFollowUp','type')" required>
                                         <option value=""></option>
                                         <option>Generic Update</option>
                                         <option>Phone Call</option>
@@ -250,7 +250,7 @@
                                 <div class="form-label">
                                     <label class="fw-bold required small" for="inquiryFollowUpContent">Content</label>
                                 </div>
-                                <textarea class="rounded-0 form-control" cols="80" id="inquiryFollowUpContent" onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{3,}$','newFollowUp','content')" required rows="4" style="font-size: 13px"></textarea>
+                                <textarea class="rounded-0 form-control newFollowupInputs" cols="80" id="inquiryFollowUpContent" onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{3,}$','newFollowUp','content')" required rows="4" style="font-size: 13px"></textarea>
                                 <div class="valid-feedback">Value Accepted</div>
                                 <div class="invalid-feedback">Please provide a valid Feedback</div>
                                 <div class="text-muted small"><small>Summary of the Customer Feedback.</small></div>
@@ -290,7 +290,7 @@
                             </div>
                             <div class="mb-2">
                                 <div class="form-label">
-                                    <label class="fw-bold required small" for="inquiryFollowUpTime">Convenient Time To Contact</label>
+                                    <label class="fw-bold required small newFollowupInputs" for="inquiryFollowUpTime">Convenient Time To Contact</label>
                                 </div>
                                 <input
                                         class="form-control rounded-0"
