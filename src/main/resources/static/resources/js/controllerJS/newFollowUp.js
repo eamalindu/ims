@@ -87,9 +87,8 @@ const newFollowUpSubmit = () => {
                     showCustomModal("Follow Up Successfully Added!", "success");
                     resetFollowupForm()
                     //refresh the table
-                    //null the newFollowup Object
-                    newFollowUp = {};
                     offCanvasInquirySheetCloseButton.click();
+
 
                     //refreshing the tables
                     //getting the document name
@@ -159,6 +158,8 @@ const checkFollowupFormErrors = () => {
 }
 
 const resetFollowupForm = ()=>{
+    //null the newFollowup Object
+    newFollowUp = {};
     //reset the form
     frmNewFollowup.reset();
     $("#inquiryFollowUpType_chosen .chosen-single").removeClass('select-validated');
@@ -177,6 +178,5 @@ const resetFollowupForm = ()=>{
         //remove bootstrap validation classes
         input.classList.remove('is-valid');
     });
-    //close the offCanvas
-    offCanvasInquirySheetCloseButton.click();
+
 }
