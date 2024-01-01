@@ -1,7 +1,7 @@
 package lk.steam.ims.controller;
 
-import lk.steam.system.dao.EmployeeDAO;
-import lk.steam.system.entity.Employee;
+import lk.steam.ims.dao.EmployeeDAO;
+import lk.steam.ims.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

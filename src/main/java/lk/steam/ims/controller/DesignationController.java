@@ -1,7 +1,7 @@
 package lk.steam.ims.controller;
 
-import lk.steam.system.dao.DesignationDAO;
-import lk.steam.system.entity.Designation;
+import lk.steam.ims.dao.DesignationDAO;
+import lk.steam.ims.entity.Designation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

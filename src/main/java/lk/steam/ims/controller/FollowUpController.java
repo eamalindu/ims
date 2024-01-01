@@ -1,10 +1,10 @@
 package lk.steam.ims.controller;
 
-import lk.steam.system.dao.FollowUpDAO;
-import lk.steam.system.dao.InquiryDAO;
-import lk.steam.system.entity.FollowUp;
-import lk.steam.system.entity.Inquiry;
-import lk.steam.system.entity.InquiryStatus;
+import lk.steam.ims.dao.FollowUpDAO;
+import lk.steam.ims.dao.InquiryDAO;
+import lk.steam.ims.entity.FollowUp;
+import lk.steam.ims.entity.Inquiry;
+import lk.steam.ims.entity.InquiryStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

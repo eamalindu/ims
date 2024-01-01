@@ -1,6 +1,6 @@
 package lk.steam.ims.dao;
 
-import lk.steam.system.entity.FollowUp;
+import lk.steam.ims.entity.FollowUp;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
