@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <title>Dashboard | STEAM IMS</title>
+    <!-- Favicon Icon -->
+    <link href="/resources/images/favicon.ico" rel="icon" type="image/x-icon">
+    <!-- Bootstrap CSS File-->
+    <link href="/resources/bootstrap-5.2.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Jquery Js File -->
+    <script src="/resources/jquery/jquery.min.js"></script>
+    <!-- Boostrap Js File -->
+    <script src="/resources/bootstrap-5.2.3/js/bootstrap.bundle.js"></script>
+    <!-- Fontawesome Js Plug-in -->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/07941f149f.js"></script>
+    <!-- DateRangePicker Library -->
+    <script src="/resources/daterangepicker/moment.min.js" type="text/javascript"></script>
+    <script src="/resources/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+    <link href="/resources/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css"/>
+    <!-- Chosen Library-->
+    <script src="/resources/chosen-1.8.7/chosen.jquery.min.js" type="text/javascript"></script>
+    <link href="/resources/chosen-1.8.7/chosen.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom CSS File-->
+    <link href="/resources/css/customCRM.css" rel="stylesheet">
+    <style>
+        fieldset, legend {
+            all: revert;
+        }
+
+        fieldset {
+            border-color: #ccc;
+            border-style: solid;
+        }
+    </style>
+</head>
+<body>
+<!-- Nav Bar Start -->
+<nav class="navbar navbar-expand-lg bg-purple p-1">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href="Dashboard"><span class="text-uppercase fw-semibold">Inquiry Management System</span> : : STEAM</a>
+        <button aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-bs-target="#navbarText" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon" style="filter: invert(100%)"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <!-- Navbar left side (Default)-->
+            <ul class="navbar-nav me-auto mb-lg-0">
+            </ul>
+            <!-- Navbar Right side -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link text-white custom-width-max-content"
+                                        href="Inquiries">Inquiries</a></li>
+                <li class="nav-item"><a class="nav-link text-white custom-width-max-content"
+                                        href="Schedules">Schedules</a>
+                </li>
+                <li class="nav-item dropdown-center custom-width-max-content p-0">
+                    <button aria-expanded="false"
+                            class="nav-link btn bg-steam-green text-white dropdown-toggle custom-width-max-content border-0"
+                            data-bs-toggle="dropdown">Reports
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end rounded-0">
+                        <li><a class="dropdown-item" href="Reports-All">All</a></li>
+                        <li><a class="dropdown-item" href="#">Registered</a></li>
+                        <li><a class="dropdown-item" href="#">Dropped</a></li>
+                        <li><a class="dropdown-item" href="#">Not Followed-Up</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link text-white custom-width-max-content" href="Performance.html">Performance</a>
+                </li>
+                <li class="nav-item"><a class="nav-link text-white custom-width-max-content" href="Administrations">Administration</a>
+                </li>
+                <li class="nav-item dropdown-center custom-width-max-content p-0">
+                    <button aria-expanded="false"
+                            class="nav-link btn bg-steam-green text-white dropdown-toggle custom-width-max-content border-0"
+                            data-bs-toggle="dropdown">Profile
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end rounded-0">
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Nav Bar End -->
+
+<!-- Display Current Page /breadcrumbs -->
+<div class="container-fluid bg-custom-white custom-banner">
+    <h5>Dashboard</h5>
+</div>
+
+<div class="container-fluid">
+    <div class="card-footer pt-3 pb-4">
+        <div class="row">
+            <div class="col-lg-3 col-12">
+                <div class="card card-body rounded-0 h-100 pointer text-muted dashboard-widget-yellow"
+                     onclick="showSchedulePool()">
+                    <div class="row h-100">
+                        <div class="col-3 d-flex align-items-center justify-content-center">
+                            <div class="d-flex align-items-center justify-content-center"
+                                 style="border-radius: 50%;height: 60px;width: 60px;background: #fff7e5">
+                                <i aria-hidden="true" class="fa-solid fa-clock"
+                                   style="color:#FDE74C;font-size: 25px"></i>
+                            </div>
+                        </div>
+                        <div class="col-9 d-flex align-items-center justify-content-around">
+                            <span class="text-uppercase">Scheduled Inquiries</span>
+                            <span class="text-dark display-6 fw-bold" id="textScheduledInquiryCount">0</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-12">
+                <div class="card card-body rounded-0 h-100 pointer text-muted dashboard-widget-red"
+                     onclick="showNewPool()">
+                    <div class="row h-100">
+                        <div class="col-3 d-flex align-items-center justify-content-center">
+                            <div class="d-flex align-items-center justify-content-center"
+                                 style="border-radius: 50%;height: 60px;width: 60px;background: #f7dddd">
+                                <i aria-hidden="true" class="fa-solid fa-hourglass-half"
+                                   style="color:#fd4c4c;font-size: 25px"></i>
+                            </div>
+                        </div>
+                        <div class="col-9 d-flex align-items-center justify-content-around">
+                            <span class="lh-1 text-uppercase">Pending Inquiries</span>
+                            <span class="text-dark display-6 lh-1 fw-bold" id="textNewInquiryCount">1</span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-12">
+                <div class="card card-body rounded-0 h-100 text-muted dashboard-widget-green">
+                    <div class="row h-100">
+                        <div class="col-3 d-flex align-items-center justify-content-center">
+                            <div class="d-flex align-items-center justify-content-center"
+                                 style="border-radius: 50%;height: 60px;width: 60px;background: #DDF6F7">
+                                <i aria-hidden="true" class="fa-solid fa-circle-check"
+                                   style="color:#1ec781;font-size: 25px"></i>
+                            </div>
+                        </div>
+                        <div class="col-9 d-flex align-items-center justify-content-around">
+                            <span class="text-uppercase">Registered Inquiries</span>
+                            <span class="text-dark display-6 fw-bold" id="textRegisteredInquiryCount">0</span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-12">
+                <a aria-controls="offcanvasRight" aria-current="page" class="text-decoration-none"
+                   data-bs-target="#offCanvasInquiry" data-bs-toggle="offcanvas">
+                    <div class="card card-body rounded-0 h-100 pointer text-muted dashboard-widget-blue">
+                        <div class="row h-100">
+                            <div class="col-3 d-flex align-items-center justify-content-center">
+                                <div class="d-flex align-items-center justify-content-center"
+                                     style="border-radius: 50%;height: 60px;width: 60px;background: #c1eaff">
+                                    <i aria-hidden="true" class="fa-solid fa-circle-plus"
+                                       style="color:#1e7bc7;font-size: 25px"></i>
+                                </div>
+                            </div>
+                            <div class="col-9 lh-1 d-flex align-items-center justify-content-center">
+                                <div class="lh-1">
+                                    <span class="text-uppercase">Add New Inquiry</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- inquiry pool start -->
+<div class="container-fluid pt-2">
+    <div class="card-group gap-2">
+        <div class="card rounded-0 border-0 border-end d-none" id="SchedulePool">
+            <div class="card-header pb-0 p-2 bg-white border-0">
+                <h5 class="fs-4 fw-bold text-uppercase" style=" font-family: Arial, serif;">Scheduled Follow-Ups<span
+                        class="text-danger float-end small text-capitalize">High Priority</span></h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm small text-center custom-table" id="tblScheduledPool">
+                    <thead class="table-group-divider bg-purple text-white">
+                    <tr>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Course</th>
+                        <th>Source</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                    <tr>
+                        <td>1</td>
+                        <td>Diploma in IT</td>
+                        <td><i class="fa-brands fa-facebook-f"></i></td>
+                        <td>Kasun Malhara</td>
+                        <td class="text-purple fw-bold">Show</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card rounded-0 border-0 d-none" id="newPool">
+            <div class="card-header pb-0 p-2 bg-white border-0">
+                <h5 class="fs-4 fw-bold text-uppercase" style=" font-family: Arial, serif;">Inquiry Pool<span
+                        class="text-success float-end small text-capitalize">Low Priority</span></h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm small text-center custom-table" id="tblInquiryPool">
+                    <thead class="table-group-divider bg-purple text-white">
+                    <tr>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Course</th>
+                        <th>Source</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                    <tr>
+                        <td>40002</td>
+                        <td>Diploma in IT</td>
+                        <td><i class="fa-solid fa-phone"></i></td>
+                        <td>Kasun Malhara</td>
+                        <td>
+                            <button aria-controls="offcanvasRight" class="btn p-0 fw-bold text-purple btn-sm"
+                                    data-bs-target="#offcanvasInquirySheet" data-bs-toggle="offcanvas">Show
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- inquiry pool end -->
+
+<!-- OffCanvas for New Inquiry Start -->
+<div aria-labelledby="offcanvasRightLabel" class="offcanvas offcanvas-end" data-bs-backdrop="static"
+     id="offCanvasInquiry" tabindex="-1">
+    <div class="offcanvas-header bg-light">
+        <div>
+            <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" data-bs-dismiss="offcanvas" id="offCanvasInquiryCloseButton" type="button"><i class="fas fa-times"></i></button>
+            <button class="btn btn-sm bg-secondary text-white rounded-0" type="button" onclick="resetInquiryForm()"><i class="fas fa-refresh"></i></button>
+        </div>
+        <h3 class="float-end"
+            style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">New
+            Inquiry</h3>
+    </div>
+    <div class="offcanvas-body">
+        <div class="card border-0">
+            <div class="card-body border-0">
+                <form id="frmNewInquiry" onsubmit="return false">
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold required small" for="inquirySource">Source</label>
+                        </div>
+                        <div class="input-group">
+                            <select class="form-select rounded-0 chosen-inquiry"
+                                    data-placeholder="Please Select a Source" id="inquirySource"
+                                    onchange="selectDynamicValueValidator(this,'','newInquiry','sourceId')"
+                                    required>
+                                <option value=""></option>
+                                <option value="Cold Calling">Cold Calling</option>
+                                <option value="Facebook">Facebook</option>
+                                <option value="Leaflets">Leaflets</option>
+                                <option value="Letter Campaign">Letter Campaign</option>
+                                <option value="Personal Contact">Personal Contact</option>
+                                <option value="Phone">Phone Call</option>
+                                <option value="Seminar">Seminar</option>
+                                <option value="SMS Campaign">SMS Campaign</option>
+                                <option value="Walk-In">Walk-In</option>
+                                <option value="WhatsApp">WhatsApp</option>
+                            </select>
+                            <div class="valid-feedback">Value Accepted</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-label">
+                            <label class="fw-bold required small" for="inquiryCourse">Course</label>
+                        </div>
+                        <div class="input-group">
+                            <select class="form-select rounded-0 chosen-inquiry"
+                                    data-placeholder="Please Select a Course" id="inquiryCourse"
+                                    onchange="selectDynamicValueValidator(this,'','newInquiry','courseId')"
+                                    required>
+                                <option value=""></option>
+                                <option>Diploma in IT</option>
+                                <option>Diploma in English</option>
+                                <option>Certificate in IT</option>
+                                <option>Certificate in English</option>
+                            </select>
+                            <div class="valid-feedback">Value Accepted</div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label small">
+                            <label class="fw-bold required" for="inquiryFirstName">First Name</label>
+                        </div>
+                        <input class="form-control rounded-0 newInquiryInputs" id="inquiryFirstName"
+                               onkeyup="inputTextValidator(this,'^[A-Z][a-z]{2,19}$','newInquiry','firstName')" required
+                               type="text">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid first name</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label small">
+                            <label class="fw-bold required" for="inquiryLastName">Last Name</label>
+                        </div>
+                        <input class="form-control rounded-0 newInquiryInputs" id="inquiryLastName"
+                               onkeyup="inputTextValidator(this,'^[A-Z][a-z]{2,29}$','newInquiry','lastName')" required
+                               type="text">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid last name</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label small">
+                            <label class="fw-bold required" for="inquiryMobileNumber">Mobile Number</label>
+                        </div>
+                        <input class="form-control rounded-0 newInquiryInputs" id="inquiryMobileNumber"
+                               onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','newInquiry','primaryMobileNumber')"
+                               required type="text">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid mobile number</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label small">
+                            <label class="fw-bold" for="inquiryAdditionalMobileNumber">Additional Mobile Number</label>
+                        </div>
+                        <input class="form-control rounded-0 newInquiryInputs" id="inquiryAdditionalMobileNumber"
+                               onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','newInquiry','secondaryMobileNumber')"
+                               placeholder="Optional" type="text">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid mobile number</div>
+
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label small">
+                            <label class="fw-bold" for="inquiryEmail">Email</label>
+                        </div>
+                        <input class="form-control rounded-0 newInquiryInputs" id="inquiryEmail"
+                               onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','newInquiry','email')"
+                               placeholder="Optional"
+                               type="text">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid email</div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-semibold required small" for="inquiryIdOption">NIC / Postal ID</label>
+                        </div>
+                        <div class="input-group">
+                            <select class="form-select rounded-0 chosen-inquiry-ID" data-placeholder="Please Select"
+                                    id="inquiryIdOption"
+                                    onchange="selectStaticValueValidator(this,'','newInquiry','idType')"
+                                    required>
+                                <option value=""></option>
+                                <option value="NIC">NIC</option>
+                                <option value="POSTAL">Postal</option>
+                            </select>
+                            <input class="form-control rounded-0 newInquiryInputs" id="inquiryID"
+                                   onkeyup="inputTextValidator(this,'^(?:[6-9][0-9]{8}([V]|[X]|[v]|[x]){1})|(?:[19|20][0-9]{10})$','newInquiry','idValue')"
+                                   required>
+                            <div class="valid-feedback w-100 rounded">Value Accepted</div>
+                            <div class="invalid-feedback">Please provide a valid nic/postal</div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold required small" for="inquiryTime">Convenient Time To Contact</label>
+                        </div>
+                        <input class="form-control rounded-0 newInquiryInputs" id="inquiryTime"
+                               onchange="inputDateTimeValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}[ ][0-9]{2}[:][0-9]{2}$','newInquiry','contactTime')"
+                               required>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid contact Time</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-label">
+                            <label class="fw-bold required small" for="inquiryDescription">Description</label>
+                        </div>
+                        <textarea class="rounded-0 form-control newInquiryInputs" cols="80" id="inquiryDescription"
+                                  onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{20,}$','newInquiry','description')"
+                                  required
+                                  rows="4"></textarea>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid description</div>
+                        <div class="text-muted small"><small> a short description which will be useful for the
+                            counsellor who will be handling this inquiry</small></div>
+                    </div>
+                    <div class="mb-2">
+                        <button class="btn bg-purple text-white rounded-0 btn-block w-100" id="inquiryConfirm"
+                                onclick="newInquirySubmit()" type="submit">Confirm
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- OffCanvas for New Inquiry End -->
+
+<!-- OffCanvas for Inquiry Sheet Start -->
+<div aria-labelledby="offcanvasRightLabel" class="offcanvas offcanvas-end w-50" data-bs-backdrop="static"
+     id="offCanvasInquirySheet" tabindex="-1">
+    <div class="offcanvas-header bg-light">
+        <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0"
+                data-bs-dismiss="offcanvas" id="offCanvasInquirySheetCloseButton"
+                type="button"><i class="fas fa-times"></i></button>
+        <div class="container d-flex gap-3" style="width: 65%">
+            <button aria-controls="collapseFollowUp" aria-expanded="false"
+                    class="btn btn-sm bg-purple rounded-0 text-white" data-bs-target="#collapseFollowUp"
+                    data-bs-toggle="collapse"><i
+                    class="fas fa-plus"></i> Follow-Up
+            </button>
+            <div class="dropdown">
+                <button aria-expanded="false" class="btn btn-sm bg-purple rounded-0 text-white dropdown-toggle"
+                        data-bs-toggle="dropdown" type="button">
+                    Mark As
+                </button>
+                <ul class="dropdown-menu rounded-0">
+                    <li><a class="dropdown-item text-success" data-bs-target="#modalRegistered" data-bs-toggle="modal"
+                           onclick="success()"><i class="fa-solid fa-thumbs-up"></i> Registered</a></li>
+                    <li><a class="dropdown-item text-danger mt-2" data-bs-target="#modalDropped" data-bs-toggle="modal"><i
+                            class="fa-solid fa-thumbs-down"></i> Dropped</a></li>
+                </ul>
+            </div>
+            <button class="btn btn-sm bg-info rounded-0 text-white" onclick="inquiryEdit()"><i
+                    class="fa-regular fa-pen-to-square"></i> Edit
+                Info
+            </button>
+            <button class="btn btn-sm bg-warning rounded-0 text-white" id="btnInquirySheetUpdate"
+                    onclick="inquiryUpdate()"><i
+                    class="fa-solid fa-arrows-rotate"></i> Update
+            </button>
+        </div>
+        <h3 class="align-items-center"
+            style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Inquiry
+            Sheet #<span id="inquirySheetId">40002</span></h3>
+    </div>
+    <!-- Collapse for Follow-up Start -->
+    <div class="collapse container mt-2" id="collapseFollowUp">
+        <div class="card rounded-0">
+            <div class="card-header pb-0 bg-purple opacity-75 rounded-0">
+                <h3 class="text-white"
+                    style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Add
+                    Follow Up</h3>
+            </div>
+            <div class="card-body bg-light rounded-0">
+                <form id="frmNewFollowup" onsubmit="return false">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <div class="form-label">
+                                    <label class="fw-bold required small" for="inquiryFollowUpType">Type</label>
+                                </div>
+                                <div class="input-group">
+                                    <select class="form-select rounded-0 chosen-inquiry"
+                                            data-placeholder="Please Select a Type " id="inquiryFollowUpType"
+                                            onchange="selectStaticValueValidator(this,'','newFollowUp','type')"
+                                            required>
+                                        <option value=""></option>
+                                        <option>Generic Update</option>
+                                        <option>Phone Call</option>
+                                        <option>WhatsApp</option>
+                                        <option>Email</option>
+                                        <option>Text</option>
+                                    </select>
+                                    <div class="valid-feedback">Value Accepted</div>
+                                </div>
+                                <div class="text-muted small"><small>How did you follow up the inquiry?</small></div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-label">
+                                    <label class="fw-bold required small" for="inquiryFollowUpContent">Content</label>
+                                </div>
+                                <textarea class="rounded-0 form-control newFollowupInputs" cols="80"
+                                          id="inquiryFollowUpContent" onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{3,}$','newFollowUp','content')"
+                                          required
+                                          rows="4"
+                                          style="font-size: 13px"></textarea>
+                                <div class="valid-feedback">Value Accepted</div>
+                                <div class="invalid-feedback">Please provide a valid Feedback</div>
+                                <div class="text-muted small"><small>Summary of the Customer Feedback.</small></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-2">
+                                <div class="form-label">
+                                    <label class="fw-bold required small">Feeling</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input newFollowupInputs"
+                                           id="inquiryFollowUpFeelingPositive"
+                                           name="inquiryFollowUpFeeling"
+                                           onchange="newFollowUp.feeling=this.value;" type="radio" value="Positive">
+                                    <label class="form-check-label small"
+                                           for="inquiryFollowUpFeelingPositive">Positive</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input newFollowupInputs" id="inquiryFollowUpFeelingNeutral"
+                                           name="inquiryFollowUpFeeling"
+                                           onchange="newFollowUp.feeling=this.value;" type="radio" value="Neutral">
+                                    <label class="form-check-label small"
+                                           for="inquiryFollowUpFeelingNeutral">Neutral</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input newFollowupInputs"
+                                           id="inquiryFollowUpFeelingNegative"
+                                           name="inquiryFollowUpFeeling"
+                                           onchange="newFollowUp.feeling=this.value;" type="radio" value="Negative">
+                                    <label class="form-check-label small"
+                                           for="inquiryFollowUpFeelingNegative">Negative</label>
+                                </div>
+                                <div class="text-muted small"><small>How did you feel regarding converting this lead to
+                                    a successful registration?</small></div>
+                            </div>
+                            <div class="mb-2">
+                                <div class="form-label">
+                                    <label class="fw-bold required small" for="inquiryFollowUpConfirm">Did the customer
+                                        confirmed to register?</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input newFollowupInputs" id="inquiryFollowUpConfirmYes"
+                                           name="inquiryFollowUpConfirm"
+                                           onchange="newFollowUp.confirmed=this.value;" type="radio" value="Yes">
+                                    <label class="form-check-label small" for="inquiryFollowUpConfirmYes">Yes</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input newFollowupInputs" id="inquiryFollowUpConfirmNo"
+                                           name="inquiryFollowUpConfirm"
+                                           onchange="newFollowUp.confirmed=this.value;" type="radio" value="No">
+                                    <label class="form-check-label small" for="inquiryFollowUpConfirmNo">No</label>
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <div class="form-label">
+                                    <label class="fw-bold required small" for="inquiryFollowUpTime">Convenient Time To
+                                        Contact</label>
+                                </div>
+                                <input class="form-control rounded-0 newFollowupInputs" id="inquiryFollowUpTime"
+                                       onchange="inputDateTimeValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}[ ][0-9]{2}[:][0-9]{2}$','newFollowUp','nextFollowup')"
+                                       required
+                                       style="font-size: 13px">
+                                <div class="valid-feedback">Value Accepted</div>
+                                <div class="text-muted small"><small>When do you want to contact this customer
+                                    again?</small></div>
+                            </div>
+                        </div>
+                        <div class="w-100 ">
+                            <button class="btn bg-purple text-white rounded-0 btn-block w-100"
+                                    id="inquiryFollowUpConfirm" onclick="newFollowUpSubmit()" type="submit">Add
+                                Follow-Up
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Collapse for Follow-up End -->
+    <div class="offcanvas-body">
+
+        <table class="table table-bordered table-responsive mb-2">
+            <tbody class="small align-middle">
+            <tr>
+                <td class="fw-bold w-25">Course</td>
+                <td class="w-25">
+                    <select class="form-select rounded-0 small form-select-sm inquirySheetInputs" disabled
+                            id="inquirySheetCourse"
+                            onchange="selectDynamicValueValidator(this,'','editedInquiry','courseId')" required>
+                        <option value=""></option>
+                        <option>Diploma in IT</option>
+                        <option>Diploma in Tamil</option>
+                        <option>Certificate in IT</option>
+                        <option>Certificate in English</option>
+                    </select>
+                    <div class="valid-feedback">Value Accepted</div>
+                </td>
+                <td class="fw-bold w-25">Source</td>
+                <td>
+                    <select class="form-select rounded-0 small form-select-sm inquirySheetInputs" disabled
+                            id="inquirySheetSource"
+                            onchange="selectDynamicValueValidator(this,'','editedInquiry','sourceId')" required>
+                        <option value=""></option>
+                        <option value="Cold Calling">Cold Calling</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Leaflets">Leaflets</option>
+                        <option value="Letter Campaign">Letter Campaign</option>
+                        <option value="Personal Contact">Personal Contact</option>
+                        <option value="Phone">Phone Call</option>
+                        <option value="Seminar">Seminar</option>
+                        <option value="SMS Campaign">SMS Campaign</option>
+                        <option value="Walk-In">Walk-In</option>
+                        <option value="WhatsApp">WhatsApp</option>
+                    </select>
+                    <div class="valid-feedback">Value Accepted</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-25">First Name</td>
+                <td class="w-25">
+                    <input class="small rounded-0 form-control-sm inquirySheetInputs" disabled
+                           id="inquirySheetFirstName" onkeyup="inputTextValidator(this,'^[A-Z][a-z]{2,19}$','editedInquiry','firstName')"
+                           required value="Kasun">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid first name</div>
+                </td>
+                <td class="fw-bold w-25">Last Name</td>
+                <td>
+                    <input class="small rounded-0 form-control-sm inquirySheetInputs" disabled
+                           id="inquirySheetLastName" onkeyup="inputTextValidator(this,'^[A-Z][a-z]{2,29}$','editedInquiry','lastName')"
+                           required value="Malhara">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid last name</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-25">Phone Number</td>
+                <td class="w-25">
+                    <input class="small rounded-0 form-control-sm inquirySheetInputs" disabled
+                           id="inquirySheetPrimaryMobile"
+                           onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','editedInquiry','primaryMobileNumber')" required value="0781011144">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid mobile number</div>
+                </td>
+                <td class="fw-bold w-25">Email</td>
+                <td>
+                    <input class="small rounded-0 form-control-sm inquirySheetInputs" disabled
+                           id="inquirySheetEmail"
+                           onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','editedInquiry','email')" placeholder="Optional" value="eamalindu@gmail.com">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid email</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-25">Optional Number</td>
+                <td class="w-25">
+                    <input class="small rounded-0 form-control-sm inquirySheetInputs" disabled
+                           id="inquirySheetSecondaryMobile"
+                           onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','editedInquiry','secondaryMobileNumber')" placeholder="Optional" value="0781011144">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid mobile number</div>
+                </td>
+                <td class="fw-bold w-25">
+                    <select class="form-select rounded-0 small form-select-sm fw-bold inquirySheetInputs" disabled
+                            id="inquirySheetIdType"
+                            onchange="selectStaticValueValidator(this,'','editedInquiry','idType')" required>
+                        <option value="NIC">NIC</option>
+                        <option value="POSTAL">POSTAL</option>
+                    </select>
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid ID Type</div>
+                </td>
+                <td>
+                    <input class="small rounded-0 form-control-sm inquirySheetInputs" disabled
+                           id="inquirySheetIdValue"
+                           onkeyup="inputTextValidator(this,'^(?:[6-9][0-9]{8}([V]|[X]|[v]|[x]){1})|(?:[19|20][0-9]{10})$','editedInquiry','idValue')" required value="983151108V">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid ID/Postal value</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-25">Convenient Time To Contact</td>
+                <td class="w-25">
+                    <input class="small rounded-0 form-control-sm border-0 inquirySheetInputs"
+                           disabled
+                           id="inquirySheetNextFollowUp"
+                           onkeyup="inputDateTimeValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}[ ][0-9]{2}[:][0-9]{2}$','editedInquiry','contactTime')" required value="2023-10-26 at 00:00">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid contact Time</div>
+                </td>
+                <td class="fw-bold w-25">Description</td>
+                <td>
+                    <textarea class="small rounded-0 form-control-sm inquirySheetInputs" disabled
+                              id="inquirySheetDescription"
+                              onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{20,}$','editedInquiry','description')" required></textarea>
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid description</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- Show Added-by and added time of the inquiry here -->
+        <div class="card rounded-0 mb-2">
+            <div class="card-body rounded-0 pb-0">
+                <p class="small text-muted text-center">This Inquiry was Created by <span class="fw-bold"
+                                                                                          id="inquirySheetAddedBy"></span>
+                    on <span class="fw-bold" id="inquirySheetAddedDate"></span> at
+                    <span class="fw-bold" id="inquirySheetAddedTime"></span>.</p>
+            </div>
+        </div>
+
+        <div class="btn btn-sm bg-purple text-white rounded-0 mb-2">Follow Ups</div>
+        <!-- List out follow-ups From the database-->
+        <div class="card rounded-0 mb-2">
+            <div class="card-body rounded-0">
+                <div class="row">
+                    <br/>
+                    <p class="small card-text text-purple">No Follow-Ups Found!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- OffCanvas for Inquiry Sheet End -->
+
+<!-- Modal for Marked As Registered Start -->
+<div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade " data-bs-backdrop="static"
+     data-bs-keyboard="false" id="modalRegistered" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-0">
+            <div class="modal-header bg-custom-white">
+                <h5 class="modal-title" id="staticBackdropLabel"
+                    style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">
+                    Mark as Registered </h5>
+                <button aria-label="Close" class="btn btn-sm btn-close-red text-white rounded-0" data-bs-dismiss="modal"
+                        type="button"><i aria-hidden="true" class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="return false;">
+                    <p class="text-center fs-5 text-success text-uppercase">Congratulations!</p>
+
+                    <fieldset>
+                        <legend class="fw-bold">Inquiry #40002</legend>
+                        <div class="mb-2">
+                            <div class="form-label">
+                                <label class="fw-semibold required small" for="IdOption">NIC / Postal ID</label>
+                            </div>
+                            <div class="input-group">
+                                <select class="form-select bg-light rounded-0 custom-width-max-content" id="IdOption">
+                                    <option value="1">NIC</option>
+                                    <option value="2">Postal</option>
+                                </select>
+                                <input class="form-control rounded-0" id="ID"
+                                       onkeyup="inputTextValidator(this,'^(?:[6-9][0-9]{8}([V]|[X]|[v]|[x]){1})|(?:[19|20][0-9]{10})$')"
+                                       required="">
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="form-label">
+                                <label class="fw-semibold required small" for="regNumber">Registration Number</label>
+                            </div>
+                            <input class="form-control rounded-0" id="regNumber"
+                                   onkeyup="inputTextValidator(this,'^[0]{3}[0-9]{4}$')" required="" type="text">
+                            <div class="text-muted small"><small>Ex: 00001234</small></div>
+                        </div>
+                    </fieldset>
+                    <div class="mt-3 d-flex justify-content-between">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel</button>
+                        <button class="btn btn-success bg-purple border-0" type="submit">Registered</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal for Marked As Registered End -->
+
+<!-- Modal for Marked As Dropped Start -->
+<div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade " data-bs-backdrop="static"
+     data-bs-keyboard="false" id="modalDropped" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-0">
+            <div class="modal-header bg-custom-white">
+                <h5 class="modal-title" id="staticBackdropLabel2"
+                    style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">
+                    Mark as Dropped </h5>
+                <button aria-label="Close" class="btn btn-sm btn-close-red text-white rounded-0" data-bs-dismiss="modal"
+                        type="button"><i aria-hidden="true" class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <p class="text-center fs-5 text-danger text-uppercase">Better luck next time!</p>
+                    <fieldset>
+                        <legend>Inquiry #40002</legend>
+                        <label class="fw-bold required small" for="reason">Reason</label>
+                        <textarea class="rounded-0 form-control" cols="80" id="reason" required="" rows="4"
+                                  spellcheck="false"></textarea>
+                    </fieldset>
+                    <div class="mt-3 d-flex justify-content-between">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel</button>
+                        <button class="btn btn-success bg-purple border-0" onclick="inquiryDropped()" type="button">
+                            Dropped
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Modal for Marked As Dropped End -->
+
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.12.0/tsparticles.confetti.bundle.min.js"></script>
+<script src="/resources/js/external-validator.js" type="text/javascript"></script>
+<script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>
+<script src="/resources/js/external-table.js" type="text/javascript"></script>
+<script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
+<script src="/resources/js/controllerJS/newInquiry.js" type="text/javascript"></script>
+<script src="/resources/js/controllerJS/newFollowUp.js" type="text/javascript"></script>
+<script src="/resources/js/controllerJS/dashboard.js" type="text/javascript"></script>
+<script>
+    const success = () => {
+        confetti({
+            particleCount: 400,
+            spread: 70,
+            origin: {y: 0.6},
+            zIndex: 1100,
+        });
+    }
+</script>
+</body>
+</html>
