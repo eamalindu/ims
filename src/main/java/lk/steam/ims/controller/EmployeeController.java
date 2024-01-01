@@ -4,6 +4,7 @@ import lk.steam.ims.dao.EmployeeDAO;
 import lk.steam.ims.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,6 +15,12 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeDAO employeeDAO;
+    @GetMapping
+    public ModelAndView employeeUI() {
+        ModelAndView employeeView = new ModelAndView();
+        employeeView.setViewName("employee.html");
+        return employeeView;
+    }
 
     @GetMapping(value = "/findall",produces = "application/json")
     public List<Employee> findAll(){
