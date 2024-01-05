@@ -12,3 +12,11 @@ window.addEventListener('load',()=>{
 
     user = {}
 });
+
+const refreshUserTable = ()=>{
+
+}
+
+const resetEmployeeForm = ()=>{
+
+}
