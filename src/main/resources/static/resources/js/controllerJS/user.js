@@ -11,6 +11,7 @@ window.addEventListener('load',()=>{
     });
 
     user = {}
+    refreshUserTable();
 });
 
 const refreshUserTable = ()=>{
@@ -19,7 +20,7 @@ const refreshUserTable = ()=>{
     displayPropertyListForUser = [
         {property:getEmployeeID,dataType:'function'},
     ];
-    fillDataIntoTable(frmNewUser,users,displayPropertyListForUser,rowView,'offcanvasUserSheet')
+    fillDataIntoTable(tblUser,users,displayPropertyListForUser,rowView,'offcanvasUserSheet')
 }
 
 const getEmployeeID = (ob)=>{
