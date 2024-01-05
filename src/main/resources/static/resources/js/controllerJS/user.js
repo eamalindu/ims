@@ -5,5 +5,10 @@ window.addEventListener('load',()=>{
     $('#userEmployee').chosen({width:'100%'});
     $('#userRole').chosen({width:'100%',placeholder_text_multiple: "Please Select At Least One Role",min_selected_options:1});
 
+    //validation chosen select (for new employee)
+    $("#userEmployee").chosen().change(function () {
+        $("#userEmployee_chosen .chosen-single").addClass('select-validated');
+    });
 
+    user = {}
 });
