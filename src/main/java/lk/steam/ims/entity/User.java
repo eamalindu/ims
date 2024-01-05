@@ -1,6 +1,7 @@
 package lk.steam.ims.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,11 +20,27 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "username",unique = true)
+    @NotNull
     private String username;
+
+    @Column(name = "password")
+    @NotNull
     private String password;
+
+    @Column(name = "email",unique = true)
+    @NotNull
     private String email;
+
+    @Column(name = "addedtime")
+    @NotNull
     private LocalDateTime addedTime;
+
+    @Column(name = "note")
     private String note;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id",referencedColumnName = "id")
     private Employee employeeID;
 
 }
