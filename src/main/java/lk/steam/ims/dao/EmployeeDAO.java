@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface EmployeeDAO extends JpaRepository<Employee,Integer> {
-    @Query(value = "select e from Employee e where e.id not in (select u.employeeID from User u where u.employeeID is not null)")
+    @Query(value = "select * from employee where id not in (select employee_id from user where employee_id is not null)",nativeQuery = true)
     List<Employee> getEmployeesWithoutUserAccount();
 }
