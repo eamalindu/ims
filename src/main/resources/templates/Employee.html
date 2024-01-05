@@ -477,7 +477,7 @@
             </tr>
             <tr>
                 <td class="fw-bold w-25" colspan="">Highest Education Qualification</td>
-                <td class="" colspan="">
+                <td class="" colspan="3">
                     <select class="employeeSheetInputs form-select rounded-0 small form-select-sm" id="employeeSheetHighestEducation" required onchange="selectStaticValueValidator(this,'','editedEmployee','highestEducationalQualification')">
                         <option>Doctorate (PhD)</option>
                         <option>Master's Degree (MA, MSc)</option>
@@ -491,8 +491,10 @@
                     <div class="invalid-feedback">Please provide a valid Qualification</div>
 
                 </td>
+                </tr>
+            <tr>
                 <td class="fw-bold w-25" colspan="">Employee Status</td>
-                <td class="" colspan="">
+                <td class="" colspan="3">
                     <select id="employeeSheetEmployeeStatus" class="employeeSheetInputs form-select rounded-0 small form-select-sm" disabled required onchange="selectDynamicValueValidator(this,'','editedEmployee','employeeStatusID')"></select>
                     <div class="valid-feedback">Value Accepted</div>
                     <div class="invalid-feedback">Please provide a valid Qualification</div>
