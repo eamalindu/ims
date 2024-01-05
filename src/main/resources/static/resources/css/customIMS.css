@@ -133,6 +133,16 @@ input,.form-control {
     top: 7px!important;
 }
 
+.chosen-container-multi .chosen-choices li.search-field input[type=text]{
+    height: 38px!important;
+    font-family: 'Poppins', sans-serif!important;
+}
+.chosen-container-multi .chosen-choices li.search-choice{
+    height: 25px!important;
+    width: 48%;
+    padding: 5px 5px 5px 12px;
+}
+
 /*Custom validator for select*/
 select:invalid {
     height: 0px !important;
