@@ -15,6 +15,8 @@ window.addEventListener('load',()=>{
 
 const refreshUserTable = ()=>{
 
+    users = ajaxGetRequest("/User/findall");
+    displayPropertyListForUser = [];
 }
 
 const resetEmployeeForm = ()=>{
