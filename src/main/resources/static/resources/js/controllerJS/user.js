@@ -16,7 +16,18 @@ window.addEventListener('load',()=>{
 const refreshUserTable = ()=>{
 
     users = ajaxGetRequest("/User/findall");
-    displayPropertyListForUser = [];
+    displayPropertyListForUser = [
+        {property:getEmployeeID,dataType:'function'},
+    ];
+    fillDataIntoTable(frmNewUser,users,displayPropertyListForUser,rowView,'offcanvasUserSheet')
+}
+
+const getEmployeeID = (ob)=>{
+    return ob.employeeID.employeeID;
+}
+
+const rowView = (ob,rowIndex)=>{
+
 }
 
 const resetEmployeeForm = ()=>{
