@@ -10,7 +10,7 @@ window.addEventListener('load',()=>{
         $("#userEmployee_chosen .chosen-single").addClass('select-validated');
     });
 
-    user = {}
+    newUser = {}
     refreshUserTable();
 });
 
@@ -37,5 +37,5 @@ const resetEmployeeForm = ()=>{
 
 const newUserSubmit = ()=>{
 
-    console.log(user);
+    console.log(newUser);
 }
