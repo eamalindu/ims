@@ -174,7 +174,7 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="userEmployee">Employee</label>
                         </div>
-                        <select class="form-select rounded-0" id="userEmployee" required onchange="selectDynamicValueValidator(this,'','user','employeeID')">
+                        <select class="form-select rounded-0" id="userEmployee" required onchange="selectDynamicValueValidator(this,'','newUser','employeeID')">
                             <option>Dynamic Value 1</option>
                             <option>Dynamic Value 2</option>
                             <option>Dynamic Value 3</option>
@@ -187,7 +187,7 @@
                         <div class="form-label">
                             <label class="fw-bold required small" for="userUsername">Username</label>
                         </div>
-                        <input class="form-control rounded-0 newUserInputs" id="userUsername" required onkeyup="inputTextValidator(this,'^[a-z]{8,45}$','user','username')">
+                        <input class="form-control rounded-0 newUserInputs" id="userUsername" required onkeyup="inputTextValidator(this,'^[a-z]{8,45}$','newUser','username')">
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Username</div>
                     </div>
