@@ -34,3 +34,8 @@ const rowView = (ob,rowIndex)=>{
 const resetEmployeeForm = ()=>{
 
 }
+
+const newUserSubmit = ()=>{
+
+    console.log(user);
+}
