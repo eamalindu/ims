@@ -12,6 +12,10 @@ window.addEventListener('load',()=>{
         $("#userEmployee_chosen .chosen-single").addClass('select-validated');
     });
 
+    $("#userRole").chosen().change(function () {
+        $("#userRole_chosen .chosen-choices").addClass('select-validated');
+    });
+
     newUser = {}
     refreshUserTable();
 });
