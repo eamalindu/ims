@@ -14,6 +14,7 @@ window.addEventListener('load',()=>{
 
     $("#userRole").chosen().change(function () {
         $("#userRole_chosen .chosen-choices").addClass('select-validated');
+        $("#userRole_chosen .search-choice").addClass('select-validated');
     });
 
     newUser = {}
