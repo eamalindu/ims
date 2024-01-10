@@ -19,7 +19,7 @@ window.addEventListener('load',()=>{
     });
 
     newUser = {}
-    newUser.roles = [];
+    newUser.roles= [];
     refreshUserTable();
 });
 
