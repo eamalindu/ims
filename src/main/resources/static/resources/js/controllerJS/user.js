@@ -12,6 +12,7 @@ window.addEventListener('load',()=>{
         $("#userEmployee_chosen .chosen-single").addClass('select-validated');
     });
 
+    //validation for multi select chosen
     $("#userRole").chosen().change(function () {
         $("#userRole_chosen .chosen-choices").addClass('select-validated');
         $("#userRole_chosen .search-choice").addClass('select-validated');
