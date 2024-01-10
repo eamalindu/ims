@@ -1,6 +1,8 @@
 window.addEventListener('load',()=>{
     employeesWithoutUserAccounts = ajaxGetRequest("/Employee/GetEmployeesWithoutUserAccount");
     fillSelectOptions(userEmployee, 'Please Select an Employee', employeesWithoutUserAccounts, 'fullName')
+    roles = ajaxGetRequest("/role/findall")
+    fillSelectOptions(userRole, '', roles, 'name')
 
     $('#userEmployee').chosen({width:'100%'});
     $('#userRole').chosen({width:'100%',placeholder_text_multiple: "Please Select At Least One Role",min_selected_options:1});
