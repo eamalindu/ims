@@ -191,6 +191,28 @@ const selectDynamicValueValidator = (elementID,pattern,object,property) => {
     }
 }
 
+const selectDynamicMultiValueValidator = (elementID,pattern,object,property) => {
+    newElementID = document.querySelector(elementID);
+    if(elementID.value !== ''){
+        newElementID.style.border = '1px solid green';
+        newElementID.style.color='green';
+        newElementID.style.background = 'white';
+        newElementID.style.paddingRight = '0';
+        newElementID.classList.add('is-valid');
+        newElementID.classList.remove('is-invalid');
+        window[object][property] = $(elementID).chosen().val();
+    }
+    else{
+        newElementID.style.border = '1px solid red';
+        newElementID.style.color='red';
+        //elementID.style.background = 'rgba(255,0,0,0.2)';
+
+        newElementID.classList.remove('is-valid');
+        newElementID.classList.add('is-invalid');
+        window[object][property] = null;
+    }
+}
+
 const inputRadioValidator = (elementID,pattern,labelOne,labelTwo)=>{
 
     if(elementID.checked){
