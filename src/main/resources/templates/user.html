@@ -195,7 +195,9 @@
                         <div class="form-label">
                             <label class="fw-bold required small" for="userEmail">Email Address</label>
                         </div>
-                        <input class="form-control rounded-0" id="userEmail" required type="email">
+                        <input class="form-control rounded-0 newUserInputs" id="userEmail" required type="email" onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','newUser','email')">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Email</div>
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
