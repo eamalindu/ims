@@ -66,6 +66,9 @@ const getStatus = (ob) => {
 
 const rowView = (ob,rowIndex)=>{
 
+    userSheetEmail.value = ob.email;
+    userSheetEmpNumber.value=ob.employeeID.employeeID;
+    userSheetCallingName.value=ob.employeeID.callingName;
 }
 
 const resetEmployeeForm = ()=>{
