@@ -191,7 +191,7 @@ const selectDynamicValueValidator = (elementID,pattern,object,property) => {
     }
 }
 
-const selectDynamicMultiValueValidator = (elementID) => {
+const selectDynamicMultiValueValidator = (elementID,object,property) => {
     newElementID = document.querySelector(elementID);
     if(elementID.value !== ''){
         newElementID.style.border = '1px solid green';
@@ -201,10 +201,13 @@ const selectDynamicMultiValueValidator = (elementID) => {
         newElementID.classList.add('is-valid');
         newElementID.classList.remove('is-invalid');
         selectedValues = $(elementID).chosen().val();
-        newUser.roles = [];
+        window[object][property] = new Array();
+        console.log(typeof window[object][property])
+        //newUser.roles = [];
         console.log(selectedValues)
         selectedValues.forEach(ob=>{
-         newUser.roles.push(JSON.parse(ob))
+         // newUser.roles.push(JSON.parse(ob))
+            window[object][property].push(JSON.parse(ob))
         })
 
     }
