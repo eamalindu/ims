@@ -94,7 +94,7 @@ const getEmployeeStatus = (ob)=>{
 }
 
 const getUserAccountStatus = (ob)=>{
-    return '<i class="fa fa-xmark-circle text-danger fs-3"></i>';
+    return '<span class="badge rounded-0" style="background: #3FB618">Created</span>';
 }
 
 const rowView=(ob,index) =>{
