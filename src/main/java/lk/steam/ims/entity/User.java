@@ -40,6 +40,10 @@ public class User {
     @Column(name = "note")
     private String note;
 
+    @Column(name = "status")
+    @NotNull
+    private Boolean status;
+
     @ManyToOne
     @JoinColumn(name = "employee_id",referencedColumnName = "id")
     private Employee employeeID;
