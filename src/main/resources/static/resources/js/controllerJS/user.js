@@ -58,9 +58,9 @@ const getRoles = (ob)=>{
 }
 const getStatus = (ob) => {
     if (ob.status === true) {
-        return 'Active';
+        return '<span class="badge rounded-0" style="background: #3FB618">Active</span>';
     } else {
-        return 'In-Active'
+        return '<span class="badge rounded-0" style="background: #FF0039">Not Active</span>'
     }
 }
 
