@@ -204,12 +204,14 @@
                             <label class="fw-bold required small" for="userPassword">Password</label>
                         </div>
                         <input class="form-control rounded-0" id="userPassword" required type="text">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Password</div>
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
                             <label class="fw-bold small required" for="userConfirmPassword">Confirm Password</label>
                         </div>
-                        <input class="form-control rounded-0" id="userConfirmPassword" required type="text" >
+                        <input class="form-control rounded-0" id="userConfirmPassword" onkeyup="checkPassword()" required type="text" >
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
@@ -229,7 +231,7 @@
                             <label class="fw-bold small required" for="userStatus">Status</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input rounded-0" type="checkbox" value="" id="userStatus" onchange="textUserStatus.innerText = 'Active'">
+                            <input class="form-check-input rounded-0" type="checkbox" value="" id="userStatus" onchange="if(this.checked){textUserStatus.innerText = 'Active'}else{textUserStatus.innerText = 'Not Active' }">
                             <label class="form-check-label" for="userStatus">User Account is <span class="fw-bold" id="textUserStatus">Not Active</span></label>
                         </div>
                     </div>
