@@ -203,7 +203,7 @@
                         <div class="form-label">
                             <label class="fw-bold required small" for="userPassword">Password</label>
                         </div>
-                        <input class="form-control rounded-0" id="userPassword" required type="text">
+                        <input class="form-control rounded-0 newUserInputs" id="userPassword" required type="text" onkeyup="inputTextValidator(this,'^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$','newUser','password')">
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Password</div>
                     </div>
@@ -211,7 +211,9 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="userConfirmPassword">Confirm Password</label>
                         </div>
-                        <input class="form-control rounded-0" id="userConfirmPassword" onkeyup="checkPassword()" required type="text" >
+                        <input class="form-control rounded-0 newUserInputs" id="userConfirmPassword" onkeyup="checkPassword()" required type="text" >
+                        <div class="valid-feedback">Passwords Match</div>
+                        <div class="invalid-feedback">Passwords Don't Match</div>
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
