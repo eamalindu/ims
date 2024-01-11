@@ -31,6 +31,8 @@ const refreshUserTable = ()=>{
         {property:getEmployeeCallingName,dataType:'function'},
         {property:'username',dataType:'text'},
         {property:'email',dataType:'text'},
+        {property:getRoles,dataType:'function'},
+        {property:getStatus,dataType:'function'},
     ];
     fillDataIntoTable(tblUser,users,displayPropertyListForUser,rowView,'offcanvasUserSheet')
 }
@@ -41,7 +43,26 @@ const getEmployeeID = (ob)=>{
 const getEmployeeCallingName = (ob)=>{
     return ob.employeeID.callingName;
 }
+const getRoles = (ob)=>{
+    let userRoles ='';
+    ob.roles.forEach((element,index)=>{
+        if(ob.roles.length-1==index) {
+            userRoles = userRoles + element.name;
+        }
+        else{
+            userRoles = userRoles + element.name+", ";
+        }
+    });
 
+    return userRoles;
+}
+const getStatus = (ob) => {
+    if (ob.status === true) {
+        return 'Active';
+    } else {
+        return 'In-Active'
+    }
+}
 
 const rowView = (ob,rowIndex)=>{
 
