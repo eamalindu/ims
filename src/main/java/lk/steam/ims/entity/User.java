@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -42,5 +43,11 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "employee_id",referencedColumnName = "id")
     private Employee employeeID;
+
+    //Mapping Many-to-Many relationship
+    //Using User and Role tables
+    @ManyToMany
+    @JoinTable(name = "user_has_role",joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
 }
