@@ -28,6 +28,9 @@ const refreshUserTable = ()=>{
     users = ajaxGetRequest("/User/findall");
     displayPropertyListForUser = [
         {property:getEmployeeID,dataType:'function'},
+        {property:getEmployeeCallingName,dataType:'function'},
+        {property:'username',dataType:'text'},
+        {property:'email',dataType:'text'},
     ];
     fillDataIntoTable(tblUser,users,displayPropertyListForUser,rowView,'offcanvasUserSheet')
 }
@@ -35,6 +38,10 @@ const refreshUserTable = ()=>{
 const getEmployeeID = (ob)=>{
     return ob.employeeID.employeeID;
 }
+const getEmployeeCallingName = (ob)=>{
+    return ob.employeeID.callingName;
+}
+
 
 const rowView = (ob,rowIndex)=>{
 
@@ -49,3 +56,43 @@ const newUserSubmit = ()=>{
     console.log("new User=>")
     console.log(newUser);
 }
+
+const checkPassword=()=>{
+    password = userPassword.value;
+    confirmPassword= userConfirmPassword.value;
+
+    if(password!=''){
+
+        if(password!=confirmPassword){
+            userConfirmPassword.classList.add('is-invalid')
+            userConfirmPassword.classList.remove('is-valid')
+            userConfirmPassword.style.border = '1px solid red';
+            userConfirmPassword.style.color='red';
+            userConfirmPassword.style.background = 'white';
+            userConfirmPassword.style.paddingRight = '0';
+
+        }
+        else{
+            userPassword.classList.add('is-valid')
+            userConfirmPassword.classList.add('is-valid')
+            userPassword.classList.remove('is-invalid')
+            userConfirmPassword.classList.remove('is-invalid')
+            userPassword.style.border = '1px solid green';
+            userPassword.style.color='green';
+            userPassword.style.background = 'white';
+            userPassword.style.paddingRight = '0';
+
+            userConfirmPassword.style.border = '1px solid green';
+            userConfirmPassword.style.color='green';
+            userConfirmPassword.style.background = 'white';
+            userConfirmPassword.style.paddingRight = '0';
+
+        }
+
+    }
+    else{
+        userPassword.focus()
+        userPassword.classList.add('is-invalid')
+    }
+}
+
