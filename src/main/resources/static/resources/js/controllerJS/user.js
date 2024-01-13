@@ -73,7 +73,8 @@ const rowView = (ob,rowIndex)=>{
     userSheetUsername.value = ob.username;
     //hide the update btn
     btnUserSheetUpdate.style.display = 'none';
-
+    fillMultiSelectOptions(userSheetRole,'',roles,'name',ob.roles)
+    $('#userSheetRole').chosen({width:'100%',placeholder_text_multiple: "Please Select At Least One Role",min_selected_options:1});
 
 }
 
