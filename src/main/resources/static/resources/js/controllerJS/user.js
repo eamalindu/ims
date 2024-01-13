@@ -71,6 +71,9 @@ const rowView = (ob,rowIndex)=>{
     userSheetEmpNumber.value=ob.employeeID.employeeID;
     userSheetCallingName.value=ob.employeeID.callingName;
     userSheetUsername.value = ob.username;
+
+    //hide the update btn
+    btnUserSheetUpdate.style.display = 'none';
 }
 
 const resetEmployeeForm = ()=>{
