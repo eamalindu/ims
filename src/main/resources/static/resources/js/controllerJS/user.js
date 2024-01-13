@@ -6,7 +6,7 @@ window.addEventListener('load',()=>{
 
 
     $('#userEmployee').chosen({width:'100%'});
-    $('#userSheetRoles').chosen({width:'100%',placeholder_text_multiple: "Please Select At Least One Role",min_selected_options:1});
+    $('#userRole').chosen({width:'100%',placeholder_text_multiple: "Please Select At Least One Role",min_selected_options:1});
 
     //validation chosen select (for new employee)
     $("#userEmployee").chosen().change(function () {
@@ -71,9 +71,10 @@ const rowView = (ob,rowIndex)=>{
     userSheetEmpNumber.value=ob.employeeID.employeeID;
     userSheetCallingName.value=ob.employeeID.callingName;
     userSheetUsername.value = ob.username;
-
     //hide the update btn
     btnUserSheetUpdate.style.display = 'none';
+
+
 }
 
 const resetEmployeeForm = ()=>{
