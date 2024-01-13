@@ -71,9 +71,8 @@ const rowView = (ob,rowIndex)=>{
     userSheetEmail.value = ob.email;
     userSheetEmpNumber.value=ob.employeeID.employeeID;
     userSheetCallingName.value=ob.employeeID.callingName;
+    userSheetUsername.value = ob.username
 
-    userRoles = ob.roles;
-    $("#dynamicSelect").val(userRoles).trigger("chosen:updated");
 }
 
 const resetEmployeeForm = ()=>{
