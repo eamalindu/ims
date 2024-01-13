@@ -41,6 +41,34 @@ const fillSelectOptions = (elementID, message, dataList,displayProperty,selected
 //1) url -> java mapping (service url)
 //This function will return the data as an array
 
+const fillMultiSelectOptions=(elementID, message, dataList,displayProperty,selectedValueArray)=>{
+    const selectElement = elementID;
+    selectElement.innerHTML = '';
+    if (message !== '') {
+        const optionDefault = document.createElement('option');
+        optionDefault.innerText = message;
+        optionDefault.value = '';
+        optionDefault.selected = true;
+        optionDefault.disabled = true;
+        selectElement.appendChild(optionDefault);
+    }
+    dataList.forEach(ob => {
+        const option = document.createElement('option');
+        option.innerText = ob[displayProperty];
+        // Converting JavaScript values to JSON strings
+        option.value = JSON.stringify(ob);
+
+        // Check if the current option should be selected
+        if (selectedValueArray.some(sel => sel.id === ob.id)) {
+            option.selected = true;
+        }
+
+        selectElement.appendChild(option);
+    });
+
+    // Trigger the chosen plugin to update the UI
+    $("#myMultiSelect").trigger("chosen:updated");
+}
 //Example -> ajaxGetRequest("/employee/findall")
 const ajaxGetRequest = (url) =>{
 
