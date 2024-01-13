@@ -180,41 +180,41 @@
                             <option>Dynamic Value 3</option>
                             <option>Dynamic Value 4</option>
                         </select>
-                        <div class="Valid-feedback">Value Accepted</div>
-                        <div class="inValid-feedback">Please Provide a Valid Employee</div>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Employee</div>
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
                             <label class="fw-bold required small" for="userUsername">Username</label>
                         </div>
                         <input class="form-control rounded-0 newUserInputs" id="userUsername" required onkeyup="inputTextValidator(this,'^[a-zA-z0-9]{5,45}$','newUser','username')">
-                        <div class="Valid-feedback">Value Accepted</div>
-                        <div class="inValid-feedback">Please Provide a Valid Username</div>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Username</div>
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
                             <label class="fw-bold required small" for="userEmail">Email Address</label>
                         </div>
                         <input class="form-control rounded-0 newUserInputs" id="userEmail" required type="email" onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','newUser','email')">
-                        <div class="Valid-feedback">Value Accepted</div>
-                        <div class="inValid-feedback">Please Provide a Valid Email</div>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Email</div>
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
                             <label class="fw-bold required small" for="userPassword">Password</label>
                         </div>
                         <input class="form-control rounded-0 newUserInputs" id="userPassword" required type="text" onkeyup="inputTextValidator(this,'^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$','newUser','password')">
-                        <div class="Valid-feedback">Value Accepted</div>
-                        <div class="inValid-feedback">Please Provide a Valid Password</div>
-                        <div class="text-muted small"><small>Password Should Contain Uppercase,lowercase and numeric characters</small></div>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Password</div>
+                        <div class="text-muted small"><small>Password must be at least 8 characters long. At least contain one uppercase, numeric and special character </small></div>
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
                             <label class="fw-bold small required" for="userConfirmPassword">Confirm Password</label>
                         </div>
                         <input class="form-control rounded-0 newUserInputs" id="userConfirmPassword" onkeyup="checkPassword()" required type="text" >
-                        <div class="Valid-feedback">Passwords Match</div>
-                        <div class="inValid-feedback">Passwords Don't Match</div>
+                        <div class="valid-feedback">Passwords Match</div>
+                        <div class="invalid-feedback">Passwords Don't Match</div>
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
@@ -226,8 +226,8 @@
                             <option>Dynamic Value 3</option>
                             <option>Dynamic Value 4</option>
                         </select>
-                        <div class="Valid-feedback">Value Accepted</div>
-                        <div class="inValid-feedback">Please Provide a Valid Role</div>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Role</div>
                     </div>
                     <div class="mb-3">
                         <div class="form-label">
@@ -304,7 +304,7 @@
     </div>
 </div>
 <!-- Off canvas for employee details end-->
-<script src="/resources/js/external-Validator.js" type="text/javascript"></script>
+<script src="/resources/js/external-validator.js" type="text/javascript"></script>
 <script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>
 <script src="/resources/js/external-table.js" type="text/javascript"></script>
 <script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
