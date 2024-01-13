@@ -86,6 +86,8 @@ const newUserSubmit = ()=>{
 
     console.log("new User=>")
     console.log(newUser);
+
+    const errors = checkUserFormErrors(newUser);
 }
 
 const checkPassword=()=>{
@@ -125,5 +127,9 @@ const checkPassword=()=>{
         userPassword.focus()
         userPassword.classList.add('is-invalid')
     }
+}
+const checkUserFormErrors = (userObject)=> {
+    let errors = '';
+
 }
 
