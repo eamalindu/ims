@@ -3,10 +3,9 @@ window.addEventListener('load',()=>{
     fillSelectOptions(userEmployee, 'Please Select an Employee', employeesWithoutUserAccounts, 'fullName')
     roles = ajaxGetRequest("/role/findall")
     fillSelectOptions(userRole, '', roles, 'name')
-    fillSelectOptions(userSheetRoles, '', roles, 'name')
+
 
     $('#userEmployee').chosen({width:'100%'});
-    $('#userRole').chosen({width:'100%',placeholder_text_multiple: "Please Select At Least One Role",min_selected_options:1});
     $('#userSheetRoles').chosen({width:'100%',placeholder_text_multiple: "Please Select At Least One Role",min_selected_options:1});
 
     //validation chosen select (for new employee)
@@ -71,8 +70,7 @@ const rowView = (ob,rowIndex)=>{
     userSheetEmail.value = ob.email;
     userSheetEmpNumber.value=ob.employeeID.employeeID;
     userSheetCallingName.value=ob.employeeID.callingName;
-    userSheetUsername.value = ob.username
-
+    userSheetUsername.value = ob.username;
 }
 
 const resetEmployeeForm = ()=>{
