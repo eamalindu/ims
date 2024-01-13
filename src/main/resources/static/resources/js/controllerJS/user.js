@@ -131,5 +131,10 @@ const checkPassword=()=>{
 const checkUserFormErrors = (userObject)=> {
     let errors = '';
 
+    if(userObject.employeeID==null){
+        errors = errors +'Employee is Required<br>';
+    }
+
+    return errors;
 }
 
