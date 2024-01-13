@@ -140,6 +140,15 @@ const checkUserFormErrors = (userObject)=> {
     if(userObject.employeeID==null){
         errors = errors +'Employee is Required<br>';
     }
+    if(userObject.username==null){
+        errors = errors +'Username is Required<br>';
+    }
+    if(userObject.email==null){
+        errors = errors +'Email is Required<br>';
+    }
+    if(userObject.password==null){
+        errors = errors +'Password is Required<br>';
+    }
 
     return errors;
 }
