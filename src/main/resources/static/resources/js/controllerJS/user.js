@@ -88,7 +88,15 @@ const newUserSubmit = ()=>{
     console.log(newUser);
 
     const errors = checkUserFormErrors(newUser);
-    if(errors===''){}
+    if(errors===''){
+        showCustomConfirm("You are about to add a New Employee<br>Are You Sure?", function (result) {
+            if (result) { }
+            else{
+                showCustomModal("Operation Cancelled!", "info");
+            }
+
+        });
+    }
     else{
         //there are errors
         //display them to the user using external-ModalFunction()
