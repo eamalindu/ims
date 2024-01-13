@@ -152,6 +152,9 @@ const checkUserFormErrors = (userObject)=> {
     if(userObject.roles.length===0){
         errors = errors +'Role(s) is Required<br>';
     }
+    if(userObject.status==null){
+        errors = errors +'Status is Required<br>';
+    }
 
     return errors;
 }
