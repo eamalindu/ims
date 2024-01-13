@@ -187,7 +187,7 @@
                         <div class="form-label">
                             <label class="fw-bold required small" for="userUsername">Username</label>
                         </div>
-                        <input class="form-control rounded-0 newUserInputs" id="userUsername" required onkeyup="inputTextValidator(this,'^[a-z]{8,45}$','newUser','username')">
+                        <input class="form-control rounded-0 newUserInputs" id="userUsername" required onkeyup="inputTextValidator(this,'^[a-zA-z0-9]{5,45}$','newUser','username')">
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Username</div>
                     </div>
