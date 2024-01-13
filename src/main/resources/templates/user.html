@@ -234,7 +234,7 @@
                             <label class="fw-bold small required" for="userStatus">Status</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input rounded-0" type="checkbox" value="" id="userStatus" onchange="if(this.checked){textUserStatus.innerText = 'Active'}else{textUserStatus.innerText = 'Not Active' }">
+                            <input class="form-check-input rounded-0" type="checkbox" value="" id="userStatus" onchange="if(this.checked){textUserStatus.innerText = 'Active'; newUser.status =true;}else{textUserStatus.innerText = 'Not Active';newUser.status =false; }">
                             <label class="form-check-label" for="userStatus">User Account is <span class="fw-bold" id="textUserStatus">Not Active</span></label>
                         </div>
                     </div>
