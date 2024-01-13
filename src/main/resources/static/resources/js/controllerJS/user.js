@@ -149,7 +149,7 @@ const checkUserFormErrors = (userObject)=> {
     if(userObject.password==null){
         errors = errors +'Password is Required<br>';
     }
-    if(userObject.roles==null){
+    if(userObject.roles.length===0){
         errors = errors +'Role(s) is Required<br>';
     }
 
