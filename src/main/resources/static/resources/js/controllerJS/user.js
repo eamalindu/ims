@@ -88,6 +88,12 @@ const newUserSubmit = ()=>{
     console.log(newUser);
 
     const errors = checkUserFormErrors(newUser);
+    if(errors===''){}
+    else{
+        //there are errors
+        //display them to the user using external-ModalFunction()
+        showCustomModal(errors, 'warning');
+    }
 }
 
 const checkPassword=()=>{
