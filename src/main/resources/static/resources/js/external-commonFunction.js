@@ -91,6 +91,25 @@ const ajaxGetRequest = (url) =>{
 
 }
 
+const ajaxHttpRequest = (url,method,dataObject)=>{
+    let serviceRequestResponse;
+
+    $.ajax(url, {
+        type: method,
+        async: false,
+        contentType: "application/json",
+        data: JSON.stringify(dataObject),
+        success: function (data) {
+            console.log("success " + data);
+            serviceRequestResponse = data;
+        },
+        error: function (resOb) {
+            console.log("Error " + resOb);
+            serviceRequestResponse = resOb;
+        }
+    });
+    return serviceRequestResponse;
+}
 
 //test code to show all the followups when an inquiry object is given
 //need to implement a backend service (to get followup details when an inquiry is given)
