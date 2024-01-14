@@ -98,6 +98,7 @@ const newUserSubmit = ()=>{
                     //this means data successfully passed to the backend
                     //show an alert to user
                     showCustomModal("User Successfully Added!", "success");
+                    offCanvasUserCloseButton.click();
                     refreshUserTable();
                 }
                 else{
