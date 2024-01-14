@@ -78,7 +78,7 @@ const rowView = (ob,rowIndex)=>{
 
 }
 
-const resetEmployeeForm = ()=>{
+const resetUserForm = ()=>{
 
 }
 
