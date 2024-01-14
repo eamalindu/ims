@@ -90,7 +90,10 @@ const newUserSubmit = ()=>{
     const errors = checkUserFormErrors(newUser,userPassword,userConfirmPassword);
     if(errors===''){
         showCustomConfirm("You are about to add a New User<br>Are You Sure?", function (result) {
-            if (result) { }
+            if (result) {
+
+
+            }
             else{
                 showCustomModal("Operation Cancelled!", "info");
             }
