@@ -164,7 +164,7 @@ const checkUserFormErrors = (userObject,passwordID,confirmPasswordID)=> {
         errors = errors +'Status is Required<br>';
     }
 
-    if(userPassword.value !== userConfirmPassword.value){
+    if(passwordID.value !== confirmPasswordID.value){
         errors =errors +'Passwords Does not Match<br>';
     }
 
