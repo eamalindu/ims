@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -30,7 +31,7 @@ public class UserController {
     @PostMapping
     public String saveNewUser(@RequestBody User user){
         try{
-
+            user.setAddedTime(LocalDateTime.now());
             userDAO.save(user);
             return "OK";
         }
