@@ -87,7 +87,7 @@ const newUserSubmit = ()=>{
     console.log("new User=>")
     console.log(newUser);
 
-    const errors = checkUserFormErrors(newUser);
+    const errors = checkUserFormErrors(newUser,userPassword,userConfirmPassword);
     if(errors===''){
         showCustomConfirm("You are about to add a New User<br>Are You Sure?", function (result) {
             if (result) { }
@@ -142,7 +142,7 @@ const checkPassword=()=>{
         userPassword.classList.add('is-invalid')
     }
 }
-const checkUserFormErrors = (userObject)=> {
+const checkUserFormErrors = (userObject,passwordID,confirmPasswordID)=> {
     let errors = '';
 
     if(userObject.employeeID==null){
@@ -162,6 +162,10 @@ const checkUserFormErrors = (userObject)=> {
     }
     if(userObject.status==null){
         errors = errors +'Status is Required<br>';
+    }
+
+    if(userPassword.value !== userConfirmPassword.value){
+        errors =errors +'Passwords Does not Match<br>';
     }
 
     return errors;
