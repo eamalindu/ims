@@ -100,6 +100,7 @@ const newUserSubmit = ()=>{
                     showCustomModal("User Successfully Added!", "success");
                     offCanvasUserCloseButton.click();
                     refreshUserTable();
+                    resetUserForm();
                 }
                 else{
 
