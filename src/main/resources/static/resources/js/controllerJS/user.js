@@ -91,7 +91,20 @@ const newUserSubmit = ()=>{
     if(errors===''){
         showCustomConfirm("You are about to add a New User<br>Are You Sure?", function (result) {
             if (result) {
-                serviceResponse = ajaxHttpRequest("/user",'POST',user)
+                serviceResponse = ajaxHttpRequest("/User",'POST',user);
+
+                if(serviceResponse==="OK"){
+
+                    //this means data successfully passed to the backend
+                    //show an alert to user
+                    showCustomModal("User Successfully Added!", "success");
+                }
+                else{
+
+                    //this means there was a problem with the query
+                    //shows an error alert to the user
+                    showCustomModal("Operation Failed!" + serviceResponse, "error");
+                }
 
             }
             else{
