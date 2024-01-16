@@ -190,3 +190,6 @@ const checkUserFormErrors = (userObject,passwordID,confirmPasswordID)=> {
     return errors;
 }
 
+const userEdit=()=>{
+
+}
