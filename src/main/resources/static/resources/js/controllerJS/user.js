@@ -193,4 +193,11 @@ const checkUserFormErrors = (userObject,passwordID,confirmPasswordID)=> {
 const userEdit=()=>{
     //display the update button once the edit button is clicked
     btnUserSheetUpdate.style.display = 'block';
+    //remove the attribute readonly to make inputs accept the user input values
+    //give a border color to inputs indicate that the input's values are ready to be edited
+    inputs = document.querySelectorAll('.userSheetInputs');
+    inputs.forEach(function (input) {
+        input.removeAttribute('disabled');
+        input.setAttribute('style', 'border:1px solid #0DCAF0!important;background-color:rgba(13,202,240,0.2);');
+    });
 }
