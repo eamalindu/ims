@@ -196,7 +196,7 @@ select:invalid[multiple] {
 .select-editable{
     /*background: rgba(0,255,0,0.2)!important;*/
     border: 1px solid #0DCAF0!important;
-    color: white!important;
+    color: black!important;
     background: rgba(13,202,240,0.2)!important;
 }
 
