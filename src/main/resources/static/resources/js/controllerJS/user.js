@@ -191,5 +191,6 @@ const checkUserFormErrors = (userObject,passwordID,confirmPasswordID)=> {
 }
 
 const userEdit=()=>{
-
+    //display the update button once the edit button is clicked
+    btnUserSheetUpdate.style.display = 'block';
 }
