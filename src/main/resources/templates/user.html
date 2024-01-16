@@ -285,7 +285,7 @@
             </tr>
             <tr>
                 <td class="fw-bold w-50">Email Address</td>
-                <td><input class="small rounded-0 form-control-sm userSheetInputs w-100" id="userSheetEmail" disabled value="eamalindu@gmail.com"></td>
+                <td><input class="small rounded-0 form-control-sm userSheetInputs w-100" id="userSheetEmail" disabled value="eamalindu@gmail.com" onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','editedUser','email')"></td>
             </tr>
             <tr>
                 <td class="fw-bold w-50" colspan="">Role</td>
