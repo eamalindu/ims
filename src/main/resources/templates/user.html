@@ -294,14 +294,15 @@
             <tr>
                 <td class="fw-bold w-50" colspan="">Role</td>
                 <td class="" colspan="">
-                    <select class="form-select rounded-0 form-control-sm small" id="userSheetRole" required multiple></select>
+                    <select class="form-select rounded-0 form-control-sm small" id="userSheetRole" required multiple onchange="selectDynamicMultiValueValidator('#userSheetRole','editedUser','roles')"></select>
 
                 </td>
             </tr>
             <tr>
                 <td class="fw-bold w-50" colspan="">User Status</td>
                 <td class="" colspan="">
-                    <input class="small rounded-0 form-control-sm w-100 userSheetInputs" disabled value="Active" >
+                    <input class="small form-check-input rounded-0 userSheetInputs" disabled type="checkbox" value="" id="userSheetStatus" onchange="if(this.checked){textUserSheetStatus.innerText = 'Active'; editedUser.status =true;}else{textUserSheetStatus.innerText = 'Not Active';editedUser.status =false; }">
+                    <label class="form-check-label" for="userStatus">User Account is <span class="fw-bold" id="textUserSheetStatus">Not Active</span></label>
                 </td>
 
             </tr>
