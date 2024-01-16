@@ -277,7 +277,7 @@
             </tr>
             <tr>
                 <td class="fw-bold w-50">Username</td>
-                <td class="w-25"><input class="small rounded-0 form-control-sm border-0 userSheetInputs w-100" id="userSheetUsername" disabled value="kasun">
+                <td class="w-25"><input class="small rounded-0 form-control-sm border-0 userSheetInputs w-100" id="userSheetUsername" onkeyup="inputTextValidator(this,'^[a-zA-z0-9]{5,45}$','editedUser','username')" disabled value="kasun">
                 </td>
             </tr>
             <tr>
