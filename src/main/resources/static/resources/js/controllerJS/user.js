@@ -61,7 +61,7 @@ const getStatus = (ob) => {
     if (ob.status === true) {
         return '<span class="badge rounded-0" style="background: #3FB618">Active</span>';
     } else {
-        return '<span class="badge rounded-0" style="background: #FF0039">Not Active</span>'
+        return '<span class="badge rounded-0" style="background: #FF0039">Inactive</span>'
     }
 }
 
