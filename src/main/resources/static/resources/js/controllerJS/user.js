@@ -201,5 +201,7 @@ const userEdit=()=>{
         input.setAttribute('style', 'border:1px solid #0DCAF0!important;background-color:rgba(13,202,240,0.2);');
     });
     $('#userSheetRole').prop('disabled', false).trigger("chosen:updated");
+    $("#userSheetRole_chosen .chosen-choices").addClass('select-editable');
+    $("#userSheetRole_chosen .search-choice").addClass('select-editable');
 
 }
