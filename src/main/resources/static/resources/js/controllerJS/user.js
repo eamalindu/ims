@@ -209,3 +209,8 @@ const userEdit=()=>{
     $("#userSheetRole_chosen .search-choice").addClass('select-editable');
 
 }
+
+const userUpdate=()=>{
+    console.log(oldUser)
+    console.log(editedUser)
+}
