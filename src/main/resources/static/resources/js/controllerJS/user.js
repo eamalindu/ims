@@ -74,7 +74,7 @@ const rowView = (ob,rowIndex)=>{
     //hide the update btn
     btnUserSheetUpdate.style.display = 'none';
     fillMultiSelectOptions(userSheetRole,'',roles,'name',ob.roles)
-    $('#userSheetRole').chosen({width:'100%',placeholder_text_multiple: "Please Select At Least One Role",min_selected_options:1});
+    $('#userSheetRole').chosen({width:'100%',placeholder_text_multiple: "Please Select At Least One Role"});
     $('#userSheetRole').prop('disabled', true).trigger("chosen:updated");
 
     if(ob.status){
@@ -258,7 +258,28 @@ const checkForUserUpdate=()=>{
         }
 
     }
+    if(editedUser.roles.length!==oldUser.roles.length){
+        updates = updates+"User Role is change to "+editedUser.roles;
+    }
+    else{
+        let equalCount = 0;
+        for (i=0;i<editedUser.roles.length;i++) {
 
-    return updates
+            for (j=0;j<oldUser.roles.length;j++){
+                if(editedUser.roles[i].name===oldUser.roles[j].name){
+                    equalCount = equalCount+1;
+                    break;
+                }
+
+            }
+        }
+        if(equalCount!==editedUser.roles.length){
+            updates = updates+"User Role is change to "+editedUser.roles;
+        }
+
+
+    }
+
+    return updates;
 
 }
