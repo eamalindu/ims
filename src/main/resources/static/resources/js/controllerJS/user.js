@@ -67,6 +67,17 @@ const getStatus = (ob) => {
 
 const rowView = (ob,rowIndex)=>{
 
+    //remove the attribute readonly to make inputs accept the user input values
+    //give a border color to inputs indicate that the input's values are ready to be edited
+    inputs = document.querySelectorAll('.userSheetInputs');
+    inputs.forEach(function (input) {
+        input.setAttribute('disabled', 'true');
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
+
     userSheetEmail.value = ob.email;
     userSheetEmpNumber.value=ob.employeeID.employeeID;
     userSheetCallingName.value=ob.employeeID.callingName;
