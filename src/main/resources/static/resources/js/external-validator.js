@@ -205,10 +205,12 @@ const selectDynamicMultiValueValidator = (elementID,object,property) => {
         console.log(typeof window[object][property])
         //newUser.roles = [];
         console.log(selectedValues)
+        if(selectedValues!==null){
         selectedValues.forEach(ob=>{
          // newUser.roles.push(JSON.parse(ob))
             window[object][property].push(JSON.parse(ob))
         })
+        }
 
     }
     else{
