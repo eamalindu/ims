@@ -241,8 +241,12 @@ const userUpdate=()=>{
                 if(result){
                     let serverResponse = ajaxHttpRequest("/User","PUT",editedUser);
                     if(serverResponse === "OK"){
+                        //show user success message
                         showCustomModal("User Updated!",'success')
+                        //refresh table
                         refreshUserTable();
+                        //close the offcanvas
+                        offCanvasUserSheetCloseButton.click();
                     }
                     else{
                         showCustomModal("Update Failed!",'error')
