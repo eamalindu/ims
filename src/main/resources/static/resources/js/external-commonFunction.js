@@ -66,8 +66,6 @@ const fillMultiSelectOptions=(elementID, message, dataList,displayProperty,selec
         selectElement.appendChild(option);
     });
 
-    // Trigger the chosen plugin to update the UI
-    $("#myMultiSelect").trigger("chosen:updated");
 }
 //Example -> ajaxGetRequest("/employee/findall")
 const ajaxGetRequest = (url) =>{
