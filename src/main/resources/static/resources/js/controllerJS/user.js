@@ -259,7 +259,7 @@ const checkForUserUpdate=()=>{
 
     }
     if(editedUser.roles.length!==oldUser.roles.length){
-        updates = updates+"User Role is change to "+editedUser.roles;
+        updates = updates+"User Role was change<br>";
     }
     else{
         let equalCount = 0;
@@ -274,7 +274,7 @@ const checkForUserUpdate=()=>{
             }
         }
         if(equalCount!==editedUser.roles.length){
-            updates = updates+"User Role is change to "+editedUser.roles;
+            updates = updates+"User Role was change<br>";
         }
 
 
