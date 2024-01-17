@@ -77,6 +77,8 @@ const rowView = (ob,rowIndex)=>{
         input.classList.remove('is-valid');
         input.classList.remove('is-invalid');
     });
+    $("#userSheetRole_chosen .chosen-choices").removeClass('select-editable');
+    $("#userSheetRole_chosen .search-choice").removeClass('select-editable');
 
     userSheetEmail.value = ob.email;
     userSheetEmpNumber.value=ob.employeeID.employeeID;
