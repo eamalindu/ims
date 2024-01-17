@@ -213,4 +213,10 @@ const userEdit=()=>{
 const userUpdate=()=>{
     console.log(oldUser)
     console.log(editedUser)
+
+    const errors = checkUserFormErrors(editedUser,'','');
+    if (errors === '') {}
+    else{
+        showCustomModal(errors, 'warning');
+    }
 }
