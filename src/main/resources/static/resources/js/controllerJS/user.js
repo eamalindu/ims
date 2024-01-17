@@ -77,6 +77,15 @@ const rowView = (ob,rowIndex)=>{
     $('#userSheetRole').chosen({width:'100%',placeholder_text_multiple: "Please Select At Least One Role",min_selected_options:1});
     $('#userSheetRole').prop('disabled', true).trigger("chosen:updated");
 
+    if(ob.status){
+        userSheetStatus.checked = true;
+        textUserSheetStatus.innerText = 'Active';
+    }
+    else{
+        userSheetStatus.checked = false;
+        textUserSheetStatus.innerText = 'Not Active';
+    }
+
     //catch old User and new User
     oldUser = JSON.parse(JSON.stringify(ob));
     editedUser = JSON.parse(JSON.stringify(ob));
