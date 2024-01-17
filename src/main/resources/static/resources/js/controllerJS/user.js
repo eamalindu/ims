@@ -240,7 +240,14 @@ const checkForUserUpdate=()=>{
         updates = updates + "Email was changed to <span class='text-purple'>" + editedUser.email + "</span><br>";
     }
     if(editedUser.status!==oldUser.status){
-        updates = updates + "Account Status was changed to <span class='text-purple'>" + editedUser.status + "</span><br>";
+
+        if(editedUser){
+            updates = updates + "Account Status was changed to <span class='text-purple'>" + editedUser.status + "</span><br>";
+        }
+        else{
+            updates = updates + "Account Status was changed to <span class='text-purple'>" + editedUser.status + "</span><br>";
+        }
+
     }
 
     return updates
