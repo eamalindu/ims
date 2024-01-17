@@ -250,7 +250,7 @@ const checkForUserUpdate=()=>{
     }
     if(editedUser.status!==oldUser.status){
 
-        if(editedUser){
+        if(editedUser.status){
             updates = updates + "Account Status was changed to <span class='text-purple'>Active</span><br>";
         }
         else{
