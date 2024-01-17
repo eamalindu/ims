@@ -218,7 +218,13 @@ const userUpdate=()=>{
     if (errors === '') {
         //check for updates
         let updates = checkForUserUpdate();
+        if (updates === '') {
+            showCustomModal("No changes Detected!", "info");
+        } else {
+            showCustomConfirm("You are About to Update this Employee<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?")
 
+
+        }
     }
     else{
         showCustomModal(errors, 'warning');
