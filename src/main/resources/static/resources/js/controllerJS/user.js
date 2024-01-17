@@ -232,6 +232,14 @@ const userUpdate=()=>{
         } else {
             showCustomConfirm("You are About to Update this Employee<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?",function (result){
                 if(result){
+                    let serverResponse = ajaxHttpRequest("/User","PUT",editedUser);
+                    if(serverResponse === "OK"){
+                        showCustomModal("User Updated!",'success')
+                        refreshUserTable();
+                    }
+                    else{
+                        showCustomModal("Update Failed!",'error')
+                    }
 
                 }
                 else{
