@@ -215,8 +215,15 @@ const userUpdate=()=>{
     console.log(editedUser)
 
     const errors = checkUserFormErrors(editedUser,'','');
-    if (errors === '') {}
+    if (errors === '') {
+        //check for updates
+        let updates = checkForUserUpdate();
+    }
     else{
         showCustomModal(errors, 'warning');
     }
+}
+
+const checkForUserUpdate=()=>{
+
 }
