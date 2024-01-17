@@ -218,6 +218,7 @@ const userUpdate=()=>{
     if (errors === '') {
         //check for updates
         let updates = checkForUserUpdate();
+
     }
     else{
         showCustomModal(errors, 'warning');
@@ -225,5 +226,11 @@ const userUpdate=()=>{
 }
 
 const checkForUserUpdate=()=>{
+    let updates = '';
+    if(editedUser.username!==oldUser.username){
+        updates = updates + "Username was changed to <span class='text-purple'>" + editedUser.username + "</span><br>";
+    }
+
+    return updates
 
 }
