@@ -40,4 +40,20 @@ public class UserController {
         }
 
     }
+
+    @PutMapping
+    public String updateUser(@RequestBody User user){
+        User currentUser = userDAO.getReferenceById(user.getId());
+        if(currentUser==null){
+            return "No Such User Account";
+        }
+        try{
+            userDAO.save(user);
+            return "OK";
+        }
+        catch (Exception ex){
+            return "Update Failed "+ex.getMessage();
+        }
+
+    }
 }
