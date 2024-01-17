@@ -217,6 +217,13 @@ const userEdit=()=>{
     $("#userSheetRole_chosen .chosen-choices").addClass('select-editable');
     $("#userSheetRole_chosen .search-choice").addClass('select-editable');
 
+    $("#userSheetRole").chosen().change(function () {
+        $("#userSheetRole_chosen .chosen-choices").removeClass('select-editable');
+        $("#userSheetRole_chosen .search-choice").removeClass('select-editable');
+        $("#userSheetRole_chosen .chosen-choices").addClass('select-validated');
+        $("#userSheetRole_chosen .search-choice").addClass('select-validated');
+    });
+
 }
 
 const userUpdate=()=>{
