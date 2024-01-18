@@ -1,11 +1,10 @@
 window.addEventListener('load',()=>{
+    //refresh the user table
+    refreshUserTable();
+    //reset the user form
+    resetUserForm()
 
-
-
-    $('#userEmployee').chosen({width:'100%'});
-    $('#userRole').chosen({width:'100%',placeholder_text_multiple: "Please Select At Least One Role",min_selected_options:1});
-
-    //validation chosen select (for new employee)
+    //validation chosen select (for new User)
     $("#userEmployee").chosen().change(function () {
         $("#userEmployee_chosen .chosen-single").addClass('select-validated');
     });
@@ -16,13 +15,15 @@ window.addEventListener('load',()=>{
         $("#userRole_chosen .search-choice").addClass('select-validated');
     });
 
-    refreshUserTable();
-    resetUserForm()
 });
 
+//creating a function to refresh the user table when ever needed
 const refreshUserTable = ()=>{
 
+    //getting current users from the databse using ajaxGetRequest function and assign the response to the variable users
     users = ajaxGetRequest("/User/findall");
+
+    //creating a display property list for the users
     displayPropertyListForUser = [
         {property:getEmployeeID,dataType:'function'},
         {property:getEmployeeCallingName,dataType:'function'},
@@ -31,28 +32,40 @@ const refreshUserTable = ()=>{
         {property:getRoles,dataType:'function'},
         {property:getStatus,dataType:'function'},
     ];
+    //calling external common function to fill the data into the table
     fillDataIntoTable(tblUser,users,displayPropertyListForUser,rowView,'offcanvasUserSheet')
 }
 
+//since we cant access the employee ID from the users directly. creating a function to return the employeeID from the user object
 const getEmployeeID = (ob)=>{
     return ob.employeeID.employeeID;
 }
+//since we cant access the employee calling name from the users directly. creating a function to return the calling name from the user object
 const getEmployeeCallingName = (ob)=>{
     return ob.employeeID.callingName;
 }
+//user roles have one or more data inside them, to access every one of the creating a function
 const getRoles = (ob)=>{
+    //creating a variable to set the roles
     let userRoles ='';
+    //using a forEach loop access the elements inside the roles array
     ob.roles.forEach((element,index)=>{
+        //check if roles only have one data
         if(ob.roles.length-1==index) {
             userRoles = userRoles + element.name;
         }
+        //this means there are more than one data
         else{
             userRoles = userRoles + element.name+", ";
         }
     });
 
+    //returning captured roles
     return userRoles;
 }
+
+//since the status data type is in boolean we cant show true or false in the table
+//crated a function to return Active and Inactive based on their value
 const getStatus = (ob) => {
     if (ob.status === true) {
         return '<span class="badge rounded-0" style="background: #3FB618">Active</span>';
@@ -61,10 +74,11 @@ const getStatus = (ob) => {
     }
 }
 
+//created a function to show to details in an offcanvas
 const rowView = (ob,rowIndex)=>{
 
-    //remove the attribute readonly to make inputs accept the user input values
-    //give a border color to inputs indicate that the input's values are ready to be edited
+    //add the attribute disabled to make inputs block the user input values
+    //remove the edited border colors from the inputs
     inputs = document.querySelectorAll('.userSheetInputs');
     inputs.forEach(function (input) {
         input.setAttribute('disabled', 'true');
@@ -73,19 +87,24 @@ const rowView = (ob,rowIndex)=>{
         input.classList.remove('is-valid');
         input.classList.remove('is-invalid');
     });
+
+    //remove the class 'select-editable' from chosen select (multi select in this case)
     $("#userSheetRole_chosen .chosen-choices").removeClass('select-editable');
     $("#userSheetRole_chosen .search-choice").removeClass('select-editable');
 
+    //setting object values in to the inputs
     userSheetEmail.value = ob.email;
     userSheetEmpNumber.value=ob.employeeID.employeeID;
     userSheetCallingName.value=ob.employeeID.callingName;
     userSheetUsername.value = ob.username;
+
     //hide the update btn
     btnUserSheetUpdate.style.display = 'none';
     fillMultiSelectOptions(userSheetRole,'',roles,'name',ob.roles)
     $('#userSheetRole').chosen({width:'100%',placeholder_text_multiple: "Please Select At Least One Role"});
     $('#userSheetRole').prop('disabled', true).trigger("chosen:updated");
 
+    //check the value of the status and set the values accordingly
     if(ob.status){
         userSheetStatus.checked = true;
         textUserSheetStatus.innerText = 'Active';
@@ -100,13 +119,49 @@ const rowView = (ob,rowIndex)=>{
     editedUser = JSON.parse(JSON.stringify(ob));
 }
 
+//creating a function to reset the user form when ever needed
 const resetUserForm = ()=>{
+
+    //remove validation from chosen select
+    $("#userEmployee_chosen .chosen-single").removeClass('select-validated');
+    $("#userRole_chosen .chosen-choices").removeClass('select-validated');
+    $("#userRole_chosen .search-choice").removeClass('select-validated');
+    userEmployee.classList.remove('is-valid');
+    userRole.classList.remove('is-valid');
+
+
+    //set default option chosen
+    setTimeout(function () {
+        $('select').val('').trigger('chosen:updated');
+    }, 0);
+
+    //reset form
+    frmNewUser.reset();
+
+    //remove validation from the inputs all at once
+    inputs = document.querySelectorAll('.newUserInputs');
+    inputs.forEach(function (input) {
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
+
+    //set the text of the label to 'Not Active'
+    textUserStatus.innerText = 'Not Active'
+
+    //dynamic select content handling
     employeesWithoutUserAccounts = ajaxGetRequest("/Employee/GetEmployeesWithoutUserAccount");
     fillSelectOptions(userEmployee, 'Please Select an Employee', employeesWithoutUserAccounts, 'fullName');
     roles = ajaxGetRequest("/role/findall");
     fillSelectOptions(userRole, '', roles, 'name');
 
+    //initialize the 3rd party libraries (chosen)
+    $('#userEmployee').chosen({width:'100%'});
+    $('#userRole').chosen({width:'100%',placeholder_text_multiple: "Please Select At Least One Role",min_selected_options:1});
+    //reset user object
     newUser = {}
+    //reset user roles array
     newUser.roles= [];
 
 }
