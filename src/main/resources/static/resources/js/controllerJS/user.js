@@ -1,8 +1,5 @@
 window.addEventListener('load',()=>{
-    employeesWithoutUserAccounts = ajaxGetRequest("/Employee/GetEmployeesWithoutUserAccount");
-    fillSelectOptions(userEmployee, 'Please Select an Employee', employeesWithoutUserAccounts, 'fullName')
-    roles = ajaxGetRequest("/role/findall")
-    fillSelectOptions(userRole, '', roles, 'name')
+
 
 
     $('#userEmployee').chosen({width:'100%'});
@@ -19,9 +16,8 @@ window.addEventListener('load',()=>{
         $("#userRole_chosen .search-choice").addClass('select-validated');
     });
 
-    newUser = {}
-    newUser.roles= [];
     refreshUserTable();
+    resetUserForm()
 });
 
 const refreshUserTable = ()=>{
@@ -105,6 +101,13 @@ const rowView = (ob,rowIndex)=>{
 }
 
 const resetUserForm = ()=>{
+    employeesWithoutUserAccounts = ajaxGetRequest("/Employee/GetEmployeesWithoutUserAccount");
+    fillSelectOptions(userEmployee, 'Please Select an Employee', employeesWithoutUserAccounts, 'fullName');
+    roles = ajaxGetRequest("/role/findall");
+    fillSelectOptions(userRole, '', roles, 'name');
+
+    newUser = {}
+    newUser.roles= [];
 
 }
 
