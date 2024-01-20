@@ -224,7 +224,7 @@
                             </div>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" id="privilegeInsert" role="switch" style="scale: 1.7;"
-                                       type="checkbox" onchange="if(this.checked){rightInsert.classList.add('bg-success','text-white');leftInsert.classList.remove('bg-success','text-white')}else{rightInsert.classList.remove('bg-success','text-white');leftInsert.classList.add('bg-success','text-white')}">
+                                       type="checkbox" onchange="checkBoxValidator(this,leftInsert,rightInsert)">
                             </div>
                             <div class="text-center">
                                 <div class="d-flex align-items-center justify-content-center mx-auto" id="rightInsert"
@@ -250,7 +250,7 @@
                             </div>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" id="privilegeUpdate" role="switch" style="scale: 1.7;"
-                                       type="checkbox" onchange="if(this.checked){rightUpdate.classList.add('bg-success','text-white');leftUpdate.classList.remove('bg-success','text-white')}else{rightUpdate.classList.remove('bg-success','text-white');leftUpdate.classList.add('bg-success','text-white')}">
+                                       type="checkbox" onchange="checkBoxValidator(this,leftUpdate,rightUpdate)">
                             </div>
                             <div class="text-center">
                                 <div class="d-flex align-items-center justify-content-center mx-auto" id="rightUpdate"
@@ -275,7 +275,7 @@
                             </div>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" id="privilegeDelete" role="switch" style="scale: 1.7;"
-                                       type="checkbox" onchange="if(this.checked){rightDelete.classList.add('bg-success','text-white');leftDelete.classList.remove('bg-success','text-white')}else{rightDelete.classList.remove('bg-success','text-white');leftDelete.classList.add('bg-success','text-white')}">
+                                       type="checkbox" onchange="checkBoxValidator(this,leftDelete,rightDelete)">
                             </div>
                             <div class="text-center">
                                 <div class="d-flex align-items-center justify-content-center mx-auto" id="rightDelete"
