@@ -36,7 +36,12 @@ public class Privilege {
     private Boolean delete;
 
     //foreign keys
+    @ManyToOne
+    @JoinColumn(name = "role_id",referencedColumnName = "id")
     private Role roleID;
+
+    @ManyToOne
+    @JoinColumn(name = "module_id",referencedColumnName = "id")
     private Boolean moduleID;
 
 }
