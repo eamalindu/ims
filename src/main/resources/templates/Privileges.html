@@ -66,3 +66,74 @@
 <div class="container-fluid bg-custom-white custom-banner">
     <h5>Manage Privileges</h5>
 </div>
+
+<div class="container-fluid pt-2">
+    <div class="card rounded-0">
+        <div class="card-body rounded-0">
+            <div class="row align-items-center d-flex justify-content-around">
+                <div class="col-12 col-lg-4 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1">
+                    <!--
+                    <label class="text-uppercase small m-0 p-0 text-muted" for="userSearchID">Search</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-custom-white rounded-0"><i
+                                class="fa-solid fa-magnifying-glass"></i></span>
+                        <input class="form-control rounded-0" id="userSearchID"
+                               placeholder="Employee ID, Mobile Number or NIC">
+                        <div class="d-flex align-items-center justify-content-evenly">
+                            <button class="btn bg-purple rounded-0 text-white" id="" type="submit"><i
+                                    class="fa-solid fa-magnifying-glass small"></i></button>
+                            <button class="btn btn-close-red rounded-0 text-white ms-3" id="btn-reset" type="reset"><i
+                                    class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    </div>
+                    -->
+                </div>
+                <div class="col-12 col-lg-7 p-0 mx-lg-1 mx-sm-0 m-lg-0 mt-1 text-end">
+                    <p class="text-uppercase small m-0 p-0 text-muted">Add a new Privilege</p>
+                    <button aria-controls="staticBackdrop" class="btn pointer bg-purple text-white rounded-0 text-end"
+                            data-bs-target="#offCanvasPrivilege" data-bs-toggle="offcanvas"><i
+                            class="fa-solid fa-plus"></i> Privilege
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-footer pt-4 pb-4">
+            <h4 class="text-center fw-bold"
+                style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Search User Info /
+                <small class="text-muted">No records</small></h4>
+            <table class="custom-table">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Role</th>
+                    <th>Module</th>
+                    <th>Select</th>
+                    <th>Insert</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>1</td>
+                    <td>Admin</td>
+                    <td>User</td>
+                    <td><span class="badge rounded-0" style="background: #FF0039">Not Granted</span></td>
+                    <td><span class="badge rounded-0" style="background: #FF0039">Not Granted</span></td>
+                    <td><span class="badge rounded-0" style="background: #FF0039">Not Granted</span></td>
+                    <td><span class="badge rounded-0" style="background: #3FB618">Granted</span></td>
+                    <td class="fw-bold text-purple">
+                        <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasUserSheet" aria-controls="staticBackdrop">View</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+</div>
