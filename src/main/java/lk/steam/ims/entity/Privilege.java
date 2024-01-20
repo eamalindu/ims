@@ -42,6 +42,6 @@ public class Privilege {
 
     @ManyToOne
     @JoinColumn(name = "module_id",referencedColumnName = "id")
-    private Boolean moduleID;
+    private Module moduleID;
 
 }
