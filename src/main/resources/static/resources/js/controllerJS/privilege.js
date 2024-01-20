@@ -4,6 +4,13 @@ window.addEventListener('load', () => {
     //reset the privilege form
     resetPrivilegeForm()
 
+    //validation chosen select (for new Privilege)
+    $("#privilegeRole").chosen().change(function () {
+        $("#privilegeRole_chosen .chosen-single").addClass('select-validated');
+    });
+    $("#privilegeModule").chosen().change(function () {
+        $("#privilegeModule_chosen .chosen-single").addClass('select-validated');
+    });
 });
 
 const checkBoxValidator = (elementID,leftDivID,rightDivID) => {
