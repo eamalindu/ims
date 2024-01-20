@@ -27,11 +27,21 @@ const refreshPrivilegeTable = ()=>{
 
 }
 
-const  resetPrivilegeForm = ()=>{
+const resetPrivilegeForm = ()=>{
 
     //remove validation from chosen select
     $("#privilegeRole_chosen .chosen-single").removeClass('select-validated');
     $("#privilegeModule_chosen .chosen-single").removeClass('select-validated');
+
+    //newPrivilegeInputs
+
+    //set default option chosen
+    setTimeout(function () {
+        $('select').val('').trigger('chosen:updated');
+    }, 0);
+
+    //reset form
+    frmNewPrivilege.reset();
 
     //initialize the 3rd party libraries (chosen)
     $('#privilegeRole').chosen({width: '100%'});
