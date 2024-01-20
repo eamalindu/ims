@@ -17,7 +17,7 @@ public class PrivilegeController {
     @GetMapping
     public ModelAndView privilegeUI(){
         ModelAndView privilegeView = new ModelAndView();
-        privilegeView.setViewName("Privilege.html");
+        privilegeView.setViewName("privilege.html");
         return  privilegeView;
     }
 
