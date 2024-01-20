@@ -31,7 +31,7 @@ const  resetPrivilegeForm = ()=>{
 
     //remove validation from chosen select
     $("#privilegeRole_chosen .chosen-single").removeClass('select-validated');
-    $("#privilegeModule_chosen .chosen-choices").removeClass('select-validated');
+    $("#privilegeModule_chosen .chosen-single").removeClass('select-validated');
 
     //initialize the 3rd party libraries (chosen)
     $('#privilegeRole').chosen({width: '100%'});
