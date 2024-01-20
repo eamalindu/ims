@@ -1,4 +1,8 @@
 window.addEventListener('load', () => {
+    //refresh the privilege table
+    refreshPrivilegeTable();
+    //reset the privilege form
+    resetPrivilegeForm()
 
     //initialize the 3rd party libraries (chosen)
     $('#privilegeRole').chosen({width: '100%'});
@@ -13,4 +17,12 @@ const checkBoxValidator = (elementID,leftDivID,rightDivID) => {
         rightDivID.classList.remove('bg-success', 'text-white');
         leftDivID.classList.add('bg-success', 'text-white')
     }
+}
+
+const refreshPrivilegeTable = ()=>{
+
+}
+
+const  resetPrivilegeForm = ()=>{
+
 }
