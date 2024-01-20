@@ -43,6 +43,12 @@ const resetPrivilegeForm = ()=>{
     //reset form
     frmNewPrivilege.reset();
 
+    //test code
+    checkBoxValidator(this,leftSelect,rightSelect);
+    checkBoxValidator(this,leftInsert,rightInsert);
+    checkBoxValidator(this,leftUpdate,rightUpdate);
+    checkBoxValidator(this,leftDelete,rightDelete);
+
     //initialize the 3rd party libraries (chosen)
     $('#privilegeRole').chosen({width: '100%'});
     $('#privilegeModule').chosen({width: '100%'});
