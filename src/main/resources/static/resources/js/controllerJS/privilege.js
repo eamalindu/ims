@@ -137,6 +137,8 @@ const resetPrivilegeForm = ()=>{
     //dynamic select content handling
     roles = ajaxGetRequest("/role/findall")
     fillSelectOptions(privilegeRole, 'Please Select a Role', roles, 'name');
+    modules = ajaxGetRequest("/module/findall")
+    fillSelectOptions(privilegeModule, 'Please Select a Module', modules, 'name');
 
     //initialize the 3rd party libraries (chosen)
     $('#privilegeRole').chosen({width: '100%'});
