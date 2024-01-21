@@ -107,6 +107,12 @@ const rowView=(ob,rowIndex)=>{
         input.classList.remove('is-valid');
         input.classList.remove('is-invalid');
     });
+
+    //adding disable attribute from all the checkboxes
+    privilegeSheetSelect.disabled = true;
+    privilegeSheetInsert.disabled = true;
+    privilegeSheetUpdate.disabled = true;
+    privilegeSheetDelete.disabled = true;
     //setting object values in to the inputs
 
     //select the appropriate option as selected
