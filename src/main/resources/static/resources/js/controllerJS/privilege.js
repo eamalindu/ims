@@ -32,7 +32,8 @@ const refreshPrivilegeTable = ()=>{
     displayPropertyListForPrivilege = [
         {property:getRoleName,dataType:'function'},
         {property:getModuleName,dataType:'function'},
-        {property:getSelect,dataType:'function'},]
+        {property:getSelect,dataType:'function'},
+        {property:getInsert,dataType:'function'},]
 
     //calling external common function to fill the data into the table
     fillDataIntoTable(tblPrivilege,privileges,displayPropertyListForPrivilege,rowView,'offCanvasPrivilege')
@@ -56,6 +57,16 @@ const getSelect = (ob) => {
   } else {
         return '<span class="badge rounded-0" style="background: #FF0039">Not Granted</span>';
   }
+}
+
+//since the insert data type is in boolean we cant show true or false in the table
+//crated a function to return Granted and Not Granted based on their value
+const getInsert = (ob) => {
+    if(ob.insert){
+        return '<span class="badge rounded-0" style="background: #3FB618">Granted</span>';
+    } else {
+        return '<span class="badge rounded-0" style="background: #FF0039">Not Granted</span>';
+    }
 }
 
 
