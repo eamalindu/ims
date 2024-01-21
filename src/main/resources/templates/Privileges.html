@@ -299,6 +299,71 @@
 </div>
 <!-- Off canvas for privilege add end-->
 
+<!-- Off canvas for employee details start-->
+<div aria-labelledby="offcanvasRightLabel" class="offcanvas offcanvas-end w-50" data-bs-backdrop="static"
+     id="offcanvasPrivilegeSheet" tabindex="-1">
+    <div class="offcanvas-header bg-light">
+        <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" id="offCanvasUserSheetCloseButton" data-bs-dismiss="offcanvas"
+                type="button"><i class="fas fa-times"></i></button>
+        <div class="container d-flex gap-3 ms-1" style="width: 55%">
+            <button class="btn btn-sm bg-info rounded-0 text-white" onclick="userEdit()"><i class="fa-regular fa-pen-to-square"></i> Edit Info </button>
+            <button class="btn btn-sm bg-warning rounded-0 text-white" id="btnUserSheetUpdate" onclick="userUpdate()"><i class="fa-solid fa-arrows-rotate"></i> Update </button>
+            <button class="btn btn-sm bg-danger rounded-0 text-white"><i class="fa-solid fa-trash-can"></i> Reset Password </button>
+        </div>
+        <h3 class="align-items-center" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">User Details</h3>
+    </div>
+    <div class="offcanvas-body">
+        <img src="" id="imgProfile" class="placeholder-image img-thumbnail rounded-circle mx-auto d-block mb-3" alt="...">
+        <table class="table table-bordered table-responsive ">
+            <tbody class="small align-middle">
+            <tr>
+                <td class="fw-bold w-50">Employee ID</td>
+                <td><input class="small rounded-0 form-control-sm border-0 " id="userSheetEmpNumber" readonly value="EMP001"></td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-50">Employee Full Name</td>
+                <td class="w-100"><input class="small rounded-0 form-control-sm border-0" id="userSheetCallingName" readonly value="Kasun Malhara"></td>
+
+            </tr>
+            <tr>
+                <td class="fw-bold w-50">Username</td>
+                <td class="w-25">
+                    <input class="small rounded-0 form-control-sm userSheetInputs w-100" id="userSheetUsername" onkeyup="inputTextValidator(this,'^[a-zA-z0-9]{5,45}$','editedUser','username')" disabled value="kasun">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Username</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-50">Email Address</td>
+                <td>
+                    <input class="small rounded-0 form-control-sm userSheetInputs w-100" id="userSheetEmail" disabled value="eamalindu@gmail.com" onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','editedUser','email')">
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Username</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-50" colspan="">Role</td>
+                <td class="" colspan="">
+                    <select class="form-select rounded-0 form-control-sm small" id="userSheetRole" required multiple onchange="selectDynamicMultiValueValidator('#userSheetRole','editedUser','roles')"></select>
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Role</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-50" colspan="">User Status</td>
+                <td class="" colspan="">
+                    <input class="small form-check-input rounded-0 userSheetInputs" disabled type="checkbox" value="" id="userSheetStatus" onchange="if(this.checked){textUserSheetStatus.innerText = 'Active'; editedUser.status =true;}else{textUserSheetStatus.innerText = 'Not Active';editedUser.status =false; }">
+                    <label class="form-check-label" for="userStatus">User Account is <span class="fw-bold" id="textUserSheetStatus">Not Active</span></label>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<!-- Off canvas for employee details end-->
+
 <script src="/resources/js/external-validator.js" type="text/javascript"></script>
 <script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>
 <script src="/resources/js/external-table.js" type="text/javascript"></script>

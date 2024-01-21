@@ -38,7 +38,7 @@ const refreshPrivilegeTable = ()=>{
         {property:getDelete,dataType:'function'},]
 
     //calling external common function to fill the data into the table
-    fillDataIntoTable(tblPrivilege,privileges,displayPropertyListForPrivilege,rowView,'offCanvasPrivilege')
+    fillDataIntoTable(tblPrivilege,privileges,displayPropertyListForPrivilege,rowView,'offcanvasPrivilegeSheet')
 
 }
 //since we cant access the Role Name from the privileges directly. creating a function to return the roleID from the privileges object
