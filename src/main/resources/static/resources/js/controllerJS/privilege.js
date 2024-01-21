@@ -108,7 +108,9 @@ const rowView=(ob,rowIndex)=>{
 
     //select the appropriate option as selected
     fillSelectOptions(privilegeSheetRole, 'Please Select a Role', roles, 'name',ob.roleID.name)
+    fillSelectOptions(privilegeSheetModule, 'Please Select a Module', modules, 'name',ob.moduleID.name)
     $('#privilegeSheetRole').chosen({width: '100%'});
+    $('#privilegeSheetModule').chosen({width: '100%'});
 
 }
 //creating a function to reset the privilege form when ever needed
