@@ -195,5 +195,6 @@ const privilegeEdit=()=>{
     privilegeSheetSelect.disabled = false;
     privilegeSheetInsert.disabled = false;
     privilegeSheetUpdate.disabled = false;
+    privilegeSheetDelete.disabled = false;
 
 }
