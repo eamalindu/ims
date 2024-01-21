@@ -25,6 +25,20 @@ const checkBoxValidator = (elementID,leftDivID,rightDivID) => {
 
 const refreshPrivilegeTable = ()=>{
 
+    privileges = ajaxGetRequest("/Privilege/findall");
+    displayPropertyListForPrivilege = [
+        {property:getRoleName,dataType:'function'},
+        {property:getModuleName,dataType:'function'},]
+
+}
+
+const getRoleName=(ob)=>{
+
+    return ob.roleID.name;
+}
+const getModuleName=(ob)=>{
+
+    return ob.moduleID.name;
 }
 
 const resetPrivilegeForm = ()=>{
