@@ -336,6 +336,11 @@ select:invalid[multiple] {
 .form-select:disabled {
     background-color: white;
 }
+.form-check-input:checked {
+    background-color: rebeccapurple;
+    border-color: rebeccapurple;
+}
+
 .valid-feedback{
     width: fit-content;
     padding: 0.25rem 0.5rem;
