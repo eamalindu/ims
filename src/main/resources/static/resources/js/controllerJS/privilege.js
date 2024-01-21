@@ -133,6 +133,17 @@ const rowView=(ob,rowIndex)=>{
         rightSheetInsert.classList.remove('bg-success', 'text-white');
     }
 
+    if(ob.update){
+        privilegeSheetUpdate.checked=true;
+        leftSheetUpdate.classList.remove('bg-success', 'text-white');
+        rightSheetUpdate.classList.add('bg-success', 'text-white');
+    }
+    else{
+        privilegeSheetUpdate.checked=false;
+        leftSheetUpdate.classList.add('bg-success', 'text-white');
+        rightSheetUpdate.classList.remove('bg-success', 'text-white');
+    }
+
 }
 //creating a function to reset the privilege form when ever needed
 const resetPrivilegeForm = ()=>{
