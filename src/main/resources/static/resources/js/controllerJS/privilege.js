@@ -110,6 +110,7 @@ const rowView=(ob,rowIndex)=>{
     fillSelectOptions(privilegeSheetRole, 'Please Select a Role', roles, 'name',ob.roleID.name);
     fillSelectOptions(privilegeSheetModule, 'Please Select a Module', modules, 'name',ob.moduleID.name);
 
+    //setting the values for checkboxes
     if(ob.select){
         privilegeSheetSelect.checked=true;
         leftSheetSelect.classList.remove('bg-success', 'text-white');
@@ -119,6 +120,17 @@ const rowView=(ob,rowIndex)=>{
         privilegeSheetSelect.checked=false;
         leftSheetSelect.classList.add('bg-success', 'text-white');
         rightSheetSelect.classList.remove('bg-success', 'text-white');
+    }
+
+    if(ob.insert){
+        privilegeSheetInsert.checked=true;
+        leftSheetInsert.classList.remove('bg-success', 'text-white');
+        rightSheetInsert.classList.add('bg-success', 'text-white');
+    }
+    else{
+        privilegeSheetInsert.checked=false;
+        leftSheetInsert.classList.add('bg-success', 'text-white');
+        rightSheetInsert.classList.remove('bg-success', 'text-white');
     }
 
 }
@@ -167,5 +179,7 @@ const privilegeEdit=()=>{
         input.removeAttribute('disabled');
         input.setAttribute('style', 'border:1px solid #0DCAF0!important;background-color:rgba(13,202,240,0.2);');
     });
+    privilegeSheetSelect.disabled = false;
+    privilegeSheetInsert.disabled = false;
 
 }

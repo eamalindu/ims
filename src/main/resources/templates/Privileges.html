@@ -356,9 +356,26 @@
             <tr>
                 <td class="fw-bold w-50">Insert Privilege</td>
                 <td class="w-25" colspan="3">
-
-                    <div class="valid-feedback">Value Accepted</div>
-                    <div class="invalid-feedback">Please provide a valid Username</div>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="text-center">
+                            <div class="d-flex align-items-center justify-content-center mx-auto bg-success text-white" id="leftSheetInsert"
+                                 style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
+                                <i class="fa-solid fa-lock"></i>
+                            </div>
+                            <span class="text-muted small">Not Granted</span>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" id="privilegeSheetInsert" role="switch" style="scale: 1.7;"
+                                   type="checkbox" onchange="checkBoxValidator(this,leftSheetInsert,rightSheetInsert)" disabled>
+                        </div>
+                        <div class="text-center">
+                            <div class="d-flex align-items-center justify-content-center mx-auto" id="rightSheetInsert"
+                                 style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
+                                <i class="fa-solid fa-lock-open"></i>
+                            </div>
+                            <span class="text-muted small">Granted</span>
+                        </div>
+                    </div>
                 </td>
             </tr>
 
