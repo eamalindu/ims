@@ -23,6 +23,7 @@ const checkBoxValidator = (elementID,leftDivID,rightDivID) => {
     }
 }
 
+//creating a function to refresh the privilege table when ever needed
 const refreshPrivilegeTable = ()=>{
 
     //getting current privilege from the database using ajaxGetRequest function and assign the response to the variable privileges
@@ -32,6 +33,7 @@ const refreshPrivilegeTable = ()=>{
         {property:getRoleName,dataType:'function'},
         {property:getModuleName,dataType:'function'},]
 
+    //calling external common function to fill the data into the table
     fillDataIntoTable(tblPrivilege,privileges,displayPropertyListForPrivilege,rowView,'offCanvasPrivilege')
 
 }
@@ -45,10 +47,14 @@ const getModuleName=(ob)=>{
 
     return ob.moduleID.name;
 }
+//since the select data type is in boolean we cant show true or false in the table
+//crated a function to return Granted and Not Granted based on their value
+
 //created a function to show to details in an offcanvas
 const rowView=(ob,rowIndex)=>{
 
 }
+//creating a function to reset the privilege form when ever needed
 const resetPrivilegeForm = ()=>{
 
     //remove validation from chosen select
