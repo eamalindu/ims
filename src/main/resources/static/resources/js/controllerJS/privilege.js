@@ -179,7 +179,10 @@ const privilegeEdit=()=>{
         input.removeAttribute('disabled');
         input.setAttribute('style', 'border:1px solid #0DCAF0!important;background-color:rgba(13,202,240,0.2);');
     });
+
+    //removing disable attribute from all the checkboxes
     privilegeSheetSelect.disabled = false;
     privilegeSheetInsert.disabled = false;
+    privilegeSheetUpdate.disabled = false;
 
 }
