@@ -109,8 +109,6 @@ const rowView=(ob,rowIndex)=>{
     //select the appropriate option as selected
     fillSelectOptions(privilegeSheetRole, 'Please Select a Role', roles, 'name',ob.roleID.name)
     fillSelectOptions(privilegeSheetModule, 'Please Select a Module', modules, 'name',ob.moduleID.name)
-    $('#privilegeSheetRole').chosen({width: '100%'});
-    $('#privilegeSheetModule').chosen({width: '100%'});
 
 }
 //creating a function to reset the privilege form when ever needed
@@ -148,4 +146,15 @@ const resetPrivilegeForm = ()=>{
 
     //reset privilege object
     newPrivilege = {}
+}
+
+const privilegeEdit=()=>{
+    //remove the attribute readonly to make inputs accept the user input values
+    //give a border color to inputs indicate that the input's values are ready to be edited
+    inputs = document.querySelectorAll('.privilegeSheetInputs');
+    inputs.forEach(function (input) {
+        input.removeAttribute('disabled');
+        input.setAttribute('style', 'border:1px solid #0DCAF0!important;background-color:rgba(13,202,240,0.2);');
+    });
+
 }
