@@ -309,18 +309,22 @@
             <button class="btn btn-sm bg-info rounded-0 text-white" onclick=""><i class="fa-regular fa-pen-to-square"></i> Edit Info </button>
             <button class="btn btn-sm bg-warning rounded-0 text-white" id="btnPrivilegeSheetUpdate" onclick=""><i class="fa-solid fa-arrows-rotate"></i> Update </button>
         </div>
-        <h3 class="align-items-center" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Privilege Details</h3>
+        <h3 class="align-items-center text-nowrap" style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Privilege Details</h3>
     </div>
     <div class="offcanvas-body">
         <table class="table table-bordered table-responsive ">
             <tbody class="small align-middle">
             <tr>
-                <td class="fw-bold w-25">Role</td>
-                <td class="w-25">
-                    <input class="small rounded-0 form-control-sm border-0 " id="privilegeSheetRole" readonly value="Admin">
+                <td class="fw-bold w-50">Role</td>
+                <td class="w-50">
+                    <select id="privilegeSheetRole" class="privilegeSheetInputs form-select rounded-0 small form-select-sm" disabled required></select>
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Designation</div>
                 </td>
-                <td class="fw-bold w-25">Module</td>
-                <td class="w-25">
+            </tr>
+                <tr>
+                <td class="fw-bold w-50">Module</td>
+                <td class="w-50">
                     <input class="small rounded-0 form-control-sm border-0" id="privilegeSheetModule" readonly value="Employee">
                 </td>
             </tr>
