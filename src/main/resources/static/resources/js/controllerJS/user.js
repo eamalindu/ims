@@ -20,7 +20,7 @@ window.addEventListener('load',()=>{
 //creating a function to refresh the user table when ever needed
 const refreshUserTable = ()=>{
 
-    //getting current users from the databse using ajaxGetRequest function and assign the response to the variable users
+    //getting current users from the database using ajaxGetRequest function and assign the response to the variable users
     users = ajaxGetRequest("/User/findall");
 
     //creating a display property list for the users

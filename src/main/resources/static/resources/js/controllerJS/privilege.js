@@ -25,7 +25,9 @@ const checkBoxValidator = (elementID,leftDivID,rightDivID) => {
 
 const refreshPrivilegeTable = ()=>{
 
+    //getting current privilege from the database using ajaxGetRequest function and assign the response to the variable privileges
     privileges = ajaxGetRequest("/Privilege/findall");
+    //creating a display property list for the privileges
     displayPropertyListForPrivilege = [
         {property:getRoleName,dataType:'function'},
         {property:getModuleName,dataType:'function'},]
