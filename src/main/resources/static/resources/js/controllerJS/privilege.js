@@ -94,6 +94,9 @@ const getDelete = (ob) => {
 //created a function to show to details in an offcanvas
 const rowView=(ob,rowIndex)=>{
 
+    //hide the update button
+    btnPrivilegeSheetUpdate.style.display='none';
+
     //add the attribute disabled to make inputs block the user input values
     //remove the edited border colors from the inputs
     inputs = document.querySelectorAll('.privilegeSheetInputs');
@@ -194,6 +197,9 @@ const resetPrivilegeForm = ()=>{
 }
 
 const privilegeEdit=()=>{
+    //display the update button once the edit button is clicked
+    btnPrivilegeSheetUpdate.style.display = 'block';
+
     //remove the attribute readonly to make inputs accept the user input values
     //give a border color to inputs indicate that the input's values are ready to be edited
     inputs = document.querySelectorAll('.privilegeSheetInputs');
