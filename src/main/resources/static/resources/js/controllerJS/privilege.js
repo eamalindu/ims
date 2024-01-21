@@ -107,8 +107,19 @@ const rowView=(ob,rowIndex)=>{
     //setting object values in to the inputs
 
     //select the appropriate option as selected
-    fillSelectOptions(privilegeSheetRole, 'Please Select a Role', roles, 'name',ob.roleID.name)
-    fillSelectOptions(privilegeSheetModule, 'Please Select a Module', modules, 'name',ob.moduleID.name)
+    fillSelectOptions(privilegeSheetRole, 'Please Select a Role', roles, 'name',ob.roleID.name);
+    fillSelectOptions(privilegeSheetModule, 'Please Select a Module', modules, 'name',ob.moduleID.name);
+
+    if(ob.select){
+        privilegeSheetSelect.checked=true;
+        leftSheetSelect.classList.remove('bg-success', 'text-white');
+        rightSheetSelect.classList.add('bg-success', 'text-white');
+    }
+    else{
+        privilegeSheetSelect.checked=false;
+        leftSheetSelect.classList.add('bg-success', 'text-white');
+        rightSheetSelect.classList.remove('bg-success', 'text-white');
+    }
 
 }
 //creating a function to reset the privilege form when ever needed
