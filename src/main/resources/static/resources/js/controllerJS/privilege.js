@@ -144,6 +144,17 @@ const rowView=(ob,rowIndex)=>{
         rightSheetUpdate.classList.remove('bg-success', 'text-white');
     }
 
+    if(ob.delete){
+        privilegeSheetDelete.checked=true;
+        leftSheetDelete.classList.remove('bg-success', 'text-white');
+        rightSheetDelete.classList.add('bg-success', 'text-white');
+    }
+    else{
+        privilegeSheetDelete.checked=false;
+        leftSheetDelete.classList.add('bg-success', 'text-white');
+        rightSheetDelete.classList.remove('bg-success', 'text-white');
+    }
+
 }
 //creating a function to reset the privilege form when ever needed
 const resetPrivilegeForm = ()=>{
