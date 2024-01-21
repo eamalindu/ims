@@ -317,7 +317,7 @@ select:invalid[multiple] {
 
 
 /*inquirySheetInputs class*/
-.inquirySheetInputs,.employeeSheetInputs,.userSheetInputs{
+.inquirySheetInputs,.employeeSheetInputs,.userSheetInputs,.privilegeSheetInputs{
     border:1px solid transparent;
     background: white;
     color: black;
