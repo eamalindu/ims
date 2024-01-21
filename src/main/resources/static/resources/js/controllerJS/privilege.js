@@ -94,6 +94,22 @@ const getDelete = (ob) => {
 //created a function to show to details in an offcanvas
 const rowView=(ob,rowIndex)=>{
 
+    //add the attribute disabled to make inputs block the user input values
+    //remove the edited border colors from the inputs
+    inputs = document.querySelectorAll('.privilegeSheetInputs');
+    inputs.forEach(function (input) {
+        input.setAttribute('disabled', 'true');
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
+    //setting object values in to the inputs
+
+    //select the appropriate option as selected
+    fillSelectOptions(privilegeSheetRole, 'Please Select a Role', roles, 'name',ob.roleID.name)
+    $('#privilegeSheetRole').chosen({width: '100%'});
+
 }
 //creating a function to reset the privilege form when ever needed
 const resetPrivilegeForm = ()=>{
@@ -117,6 +133,10 @@ const resetPrivilegeForm = ()=>{
     checkBoxValidator(this,leftInsert,rightInsert);
     checkBoxValidator(this,leftUpdate,rightUpdate);
     checkBoxValidator(this,leftDelete,rightDelete);
+
+    //dynamic select content handling
+    roles = ajaxGetRequest("/role/findall")
+    fillSelectOptions(privilegeRole, 'Please Select a Role', roles, 'name');
 
     //initialize the 3rd party libraries (chosen)
     $('#privilegeRole').chosen({width: '100%'});
