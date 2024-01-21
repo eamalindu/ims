@@ -30,17 +30,23 @@ const refreshPrivilegeTable = ()=>{
         {property:getRoleName,dataType:'function'},
         {property:getModuleName,dataType:'function'},]
 
-}
+    fillDataIntoTable(tblPrivilege,privileges,displayPropertyListForPrivilege,rowView,'offCanvasPrivilege')
 
+}
+//since we cant access the Role Name from the privileges directly. creating a function to return the roleID from the privileges object
 const getRoleName=(ob)=>{
 
     return ob.roleID.name;
 }
+//since we cant access the module Name from the privileges directly. creating a function to return the moduleID from the privileges object
 const getModuleName=(ob)=>{
 
     return ob.moduleID.name;
 }
+//created a function to show to details in an offcanvas
+const rowView=(ob,rowIndex)=>{
 
+}
 const resetPrivilegeForm = ()=>{
 
     //remove validation from chosen select
