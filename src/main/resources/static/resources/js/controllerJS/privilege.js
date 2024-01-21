@@ -31,7 +31,8 @@ const refreshPrivilegeTable = ()=>{
     //creating a display property list for the privileges
     displayPropertyListForPrivilege = [
         {property:getRoleName,dataType:'function'},
-        {property:getModuleName,dataType:'function'},]
+        {property:getModuleName,dataType:'function'},
+        {property:getSelect,dataType:'function'},]
 
     //calling external common function to fill the data into the table
     fillDataIntoTable(tblPrivilege,privileges,displayPropertyListForPrivilege,rowView,'offCanvasPrivilege')
@@ -49,6 +50,14 @@ const getModuleName=(ob)=>{
 }
 //since the select data type is in boolean we cant show true or false in the table
 //crated a function to return Granted and Not Granted based on their value
+const getSelect = (ob) => {
+  if(ob.select){
+      return '<span class="badge rounded-0" style="background: #3FB618">Granted</span>';
+  } else {
+        return '<span class="badge rounded-0" style="background: #FF0039">Not Granted</span>';
+  }
+}
+
 
 //created a function to show to details in an offcanvas
 const rowView=(ob,rowIndex)=>{
