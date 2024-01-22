@@ -157,6 +157,7 @@ const rowView = (ob,rowIndex)=>{
 
     //get all the followups for the particular inquiry
     followups = ajaxGetRequest("/followup/getById/"+ob.inquiryId.id);
+    showFollowupCard(followups,followupsList);
 
 }
 const inquiryEdit = () => {
