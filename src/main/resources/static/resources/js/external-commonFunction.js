@@ -112,17 +112,38 @@ const ajaxHttpRequest = (url,method,dataObject)=>{
 //test code to show all the followups when an inquiry object is given
 //need to implement a backend service (to get followup details when an inquiry is given)
 //need to ask
-const showFollowupCard =()=>{
-    // Create the main div with the card class and rounded-0 and mb-2 classes
-    const cardDiv = document.createElement('div');
-    cardDiv.className = 'card rounded-0 mb-2';
+const showFollowupCard =(cardData,container)=>{
 
-    // Create the card body div with rounded-0 class
-    const cardBodyDiv = document.createElement('div');
-    cardBodyDiv.className = 'card-body rounded-0';
+    //remove any static codes/divs
+    container.innerHTML='';
 
-    // Create the row div
-    const rowDiv = document.createElement('div');
-    rowDiv.className = 'row';
+    // Iterate over the cardData array using forEach
+    cardData.forEach(data => {
+        const [addedDate, addedTime] = data.followUpTime.split("T");
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'card rounded-0 mb-2';
 
+        cardDiv.innerHTML = `
+        <div class="card-body rounded-0">
+            <div class="row">
+                <div class="col-auto text-purple small">
+                    <i class="fa-solid fa-calendar-day" aria-hidden="true"></i>
+                    ${addedDate}
+                </div>
+                <div class="col-auto text-purple small">
+                    <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                    ${addedTime}
+                </div>
+                <div class="col-auto text-purple small">
+                    <i class="fa-solid fa-user" aria-hidden="true"></i>
+                    ${data.addedBy}
+                </div>
+                <br>
+                <p class="small card-text">${data.content}</p>
+            </div>
+        </div>
+    `;
+        // Append the card to the container
+        container.appendChild(cardDiv);
+    });
 }
