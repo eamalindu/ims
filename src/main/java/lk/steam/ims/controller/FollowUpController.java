@@ -31,6 +31,11 @@ public class FollowUpController {
         return followUpDAO.latestFollowupForEachInquiry();
     }
 
+    @GetMapping(value = "/getById/{id}", produces = "application/json")
+    public List<FollowUp> getAllFollowUpsByInquiryId(@PathVariable("id") Integer inquiryID ){
+        return followUpDAO.getAllFollowUpsByInquiryId(inquiryID);
+    }
+
     @PostMapping
     public String saveNewFollowup(@RequestBody FollowUp followUp) {
 
