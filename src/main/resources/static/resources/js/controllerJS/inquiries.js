@@ -155,6 +155,9 @@ const rowView = (ob,rowIndex)=>{
 
     currentInquiry = ob.inquiryId;
 
+    //get all the followups for the particular inquiry
+    followups = ajaxGetRequest("/followup/getById/"+ob.inquiryId.id);
+
 }
 const inquiryEdit = () => {
     //remove the attribute readonly to make inputs accept the user input values
