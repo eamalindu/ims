@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class LoginController {
 
-    @GetMapping(value = "/loginfrom")
+    @GetMapping(value = "/login")
     public ModelAndView loginUI(){
         ModelAndView loginView = new ModelAndView();
         loginView.setViewName("login.html");
