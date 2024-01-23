@@ -317,7 +317,7 @@
             <tr>
                 <td class="fw-bold w-50">Role</td>
                 <td class="w-50">
-                    <select id="privilegeSheetRole" class="privilegeSheetInputs form-select rounded-0 small form-select-sm" disabled required onchange="selectDynamicValueValidator(this,'','newPrivilege','roleID')"></select>
+                    <select id="privilegeSheetRole" class="privilegeSheetInputs form-select rounded-0 small form-select-sm" disabled required onchange="selectDynamicValueValidator(this,'','editedPrivilege','roleID')"></select>
                     <div class="valid-feedback">Value Accepted</div>
                     <div class="invalid-feedback">Please provide a valid Role</div>
                 </td>
@@ -325,7 +325,9 @@
                 <tr>
                 <td class="fw-bold w-50">Module</td>
                 <td class="w-50">
-                    <select id="privilegeSheetModule" class="privilegeSheetInputs form-select rounded-0 small form-select-sm" disabled required></select>
+                    <select id="privilegeSheetModule" class="privilegeSheetInputs form-select rounded-0 small form-select-sm" disabled required onchange="selectDynamicValueValidator(this,'','editedPrivilege','moduleID')"></select>
+                    <div class="valid-feedback">Value Accepted</div>
+                    <div class="invalid-feedback">Please provide a valid Module</div>
                 </td>
             </tr>
             <tr>
