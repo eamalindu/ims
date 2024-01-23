@@ -223,3 +223,7 @@ const privilegeEdit=()=>{
     privilegeSheetDelete.disabled = false;
 
 }
+
+const newPrivilegeSubmit = ()=>{
+    console.log(newPrivilege);
+}
