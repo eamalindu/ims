@@ -317,9 +317,9 @@
             <tr>
                 <td class="fw-bold w-50">Role</td>
                 <td class="w-50">
-                    <select id="privilegeSheetRole" class="privilegeSheetInputs form-select rounded-0 small form-select-sm" disabled required></select>
+                    <select id="privilegeSheetRole" class="privilegeSheetInputs form-select rounded-0 small form-select-sm" disabled required onchange="selectDynamicValueValidator(this,'','newPrivilege','roleID')"></select>
                     <div class="valid-feedback">Value Accepted</div>
-                    <div class="invalid-feedback">Please provide a valid Designation</div>
+                    <div class="invalid-feedback">Please provide a valid Role</div>
                 </td>
             </tr>
                 <tr>
