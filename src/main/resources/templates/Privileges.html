@@ -176,13 +176,15 @@
                         <div class="form-label">
                             <label class="fw-bold small required" for="privilegeModule">Module</label>
                         </div>
-                        <select class="form-select rounded-0" id="privilegeModule" data-placeholder="Please Select a Module" required>
+                        <select class="form-select rounded-0" id="privilegeModule" data-placeholder="Please Select a Module" required onchange="selectDynamicValueValidator(this,'','newPrivilege','moduleID')">
                             <option></option>
                             <option>Dynamic Value 1</option>
                             <option>Dynamic Value 2</option>
                             <option>Dynamic Value 3</option>
                             <option>Dynamic Value 4</option>
                         </select>
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Module</div>
                     </div>
 
 
