@@ -57,7 +57,7 @@ const getModuleName=(ob)=>{
 //since the select data type is in boolean we cant show true or false in the table
 //crated a function to return Granted and Not Granted based on their value
 const getSelect = (ob) => {
-  if(ob.select){
+  if(ob.selectPrivilege){
       return '<span class="badge rounded-0" style="background: #3FB618">Granted</span>';
   } else {
         return '<span class="badge rounded-0" style="background: #FF0039">Not Granted</span>';
@@ -67,7 +67,7 @@ const getSelect = (ob) => {
 //since the insert data type is in boolean we cant show true or false in the table
 //crated a function to return Granted and Not Granted based on their value
 const getInsert = (ob) => {
-    if(ob.insert){
+    if(ob.insertPrivilege){
         return '<span class="badge rounded-0" style="background: #3FB618">Granted</span>';
     } else {
         return '<span class="badge rounded-0" style="background: #FF0039">Not Granted</span>';
@@ -77,7 +77,7 @@ const getInsert = (ob) => {
 //since the update data type is in boolean we cant show true or false in the table
 //crated a function to return Granted and Not Granted based on their value
 const getUpdate = (ob) => {
-    if(ob.update){
+    if(ob.updatePrivilege){
         return '<span class="badge rounded-0" style="background: #3FB618">Granted</span>';
     } else {
         return '<span class="badge rounded-0" style="background: #FF0039">Not Granted</span>';
@@ -87,7 +87,7 @@ const getUpdate = (ob) => {
 //since the delete data type is in boolean we cant show true or false in the table
 //crated a function to return Granted and Not Granted based on their value
 const getDelete = (ob) => {
-    if(ob.delete){
+    if(ob.deletePrivilege){
         return '<span class="badge rounded-0" style="background: #3FB618">Granted</span>';
     } else {
         return '<span class="badge rounded-0" style="background: #FF0039">Not Granted</span>';
