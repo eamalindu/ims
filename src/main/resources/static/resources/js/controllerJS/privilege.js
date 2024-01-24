@@ -235,6 +235,23 @@ const newPrivilegeSubmit = ()=>{
             if(result){
                 serviceResponse = ajaxHttpRequest("/Privilege",'POST',newPrivilege);
 
+                if(serviceResponse==="OK"){
+                    //this means data successfully passed to the backend
+                    //show an alert to user
+                    showCustomModal("Privilege Successfully Added!", "success");
+                    //close the offCanvas sheet
+                    offCanvasPrivilegeCloseButton.click();
+                    //refresh table and reset form
+                    refreshPrivilegeTable();
+                    resetPrivilegeForm();
+                }
+                else{
+
+                    //this means there was a problem with the query
+                    //shows an error alert to the user
+                    showCustomModal("Operation Failed!" + serviceResponse, "error");
+                }
+
             }
             else{
                 showCustomModal("Operation Cancelled!", "info");
