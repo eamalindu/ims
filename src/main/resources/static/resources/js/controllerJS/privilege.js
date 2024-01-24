@@ -216,7 +216,7 @@ const resetPrivilegeForm = ()=> {
     $('#privilegeModule').chosen({width: '100%'});
 }
 
-
+//creating a function to edit the privilege form when ever needed
 const privilegeEdit=()=>{
     //display the update button once the edit button is clicked
     btnPrivilegeSheetUpdate.style.display = 'block';
