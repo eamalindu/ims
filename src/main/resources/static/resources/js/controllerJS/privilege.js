@@ -178,6 +178,10 @@ const rowView=(ob,rowIndex)=>{
         rightSheetDelete.classList.remove('bg-success', 'text-white');
     }
 
+    //catch old privilege and new privilege
+    oldPrivilege = JSON.parse(JSON.stringify(ob));
+    editedPrivilege = JSON.parse(JSON.stringify(ob));
+
 }
 //creating a function to reset the privilege form when ever needed
 const resetPrivilegeForm = ()=> {
