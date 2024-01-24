@@ -233,6 +233,7 @@ const newPrivilegeSubmit = ()=>{
         showCustomConfirm("You are about to add a New Privilege<br>Are You Sure?", function (result) {
 
             if(result){
+                serviceResponse = ajaxHttpRequest("/Privilege",'POST',newPrivilege);
 
             }
             else{
