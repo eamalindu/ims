@@ -280,6 +280,9 @@ const newPrivilegeSubmit = ()=>{
     }
 }
 
+//creating a reusable function to check all the required inputs are filled by checking bound values
+//need to pass the object as a parameter
+//this function will return if there are any unfilled inputs
 const checkPrivilegeFormErrors = (privilegeObject)=>{
     let errors = '';
 
