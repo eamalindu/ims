@@ -228,6 +228,15 @@ const newPrivilegeSubmit = ()=>{
     console.log(newPrivilege);
 
     const errors = checkPrivilegeFormErrors();
+
+    if(errors===''){
+
+    }
+    else{
+        //there are errors
+        //display them to the user using external-ModalFunction()
+        showCustomModal(errors, 'warning');
+    }
 }
 
 const checkPrivilegeFormErrors = (privilegeObject)=>{
