@@ -226,4 +226,12 @@ const privilegeEdit=()=>{
 
 const newPrivilegeSubmit = ()=>{
     console.log(newPrivilege);
+
+    const errors = checkPrivilegeFormErrors();
+}
+
+const checkPrivilegeFormErrors = (privilegeObject)=>{
+    let errors = '';
+
+    return errors;
 }
