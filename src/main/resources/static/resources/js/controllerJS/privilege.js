@@ -13,15 +13,16 @@ window.addEventListener('load', () => {
     });
 });
 
-const checkBoxValidator = (elementID,leftDivID,rightDivID,object,property) => {
+const checkBoxValidator = (elementID,leftDivID,rightDivID,object,property,trueValue,falseValue) => {
     if (elementID.checked) {
         rightDivID.classList.add('bg-success', 'text-white');
         leftDivID.classList.remove('bg-success', 'text-white');
-        window[object][property]=true;
+        window[object][property]=trueValue;
     } else {
+        window[object][property]=falseValue;
         rightDivID.classList.remove('bg-success', 'text-white');
         leftDivID.classList.add('bg-success', 'text-white');
-        window[object][property]=false;
+
     }
 }
 
@@ -168,15 +169,16 @@ const rowView=(ob,rowIndex)=>{
 
 }
 //creating a function to reset the privilege form when ever needed
-const resetPrivilegeForm = ()=>{
+const resetPrivilegeForm = ()=> {
+
+    //reset privilege object
+    newPrivilege = {}
 
     //remove validation from chosen select
     $("#privilegeRole_chosen .chosen-single").removeClass('select-validated');
     $("#privilegeModule_chosen .chosen-single").removeClass('select-validated');
     privilegeRole.classList.remove('is-valid');
     privilegeModule.classList.remove('is-valid');
-
-    //newPrivilegeInputs
 
     //set default option chosen
     setTimeout(function () {
@@ -186,11 +188,11 @@ const resetPrivilegeForm = ()=>{
     //reset form
     frmNewPrivilege.reset();
 
-    //test code
-    checkBoxValidator(this,leftSelect,rightSelect);
-    checkBoxValidator(this,leftInsert,rightInsert);
-    checkBoxValidator(this,leftUpdate,rightUpdate);
-    checkBoxValidator(this,leftDelete,rightDelete);
+    //setting default values and selected div
+    checkBoxValidator(this, leftSelect, rightSelect, 'newPrivilege', 'select', true, false);
+    checkBoxValidator(this, leftInsert, rightInsert, 'newPrivilege', 'insert', true, false);
+    checkBoxValidator(this, leftUpdate, rightUpdate, 'newPrivilege', 'update', true, false);
+    checkBoxValidator(this, leftDelete, rightDelete, 'newPrivilege', 'delete', true, false);
 
     //dynamic select content handling
     roles = ajaxGetRequest("/role/findall")
@@ -201,10 +203,8 @@ const resetPrivilegeForm = ()=>{
     //initialize the 3rd party libraries (chosen)
     $('#privilegeRole').chosen({width: '100%'});
     $('#privilegeModule').chosen({width: '100%'});
-
-    //reset privilege object
-    newPrivilege = {}
 }
+
 
 const privilegeEdit=()=>{
     //display the update button once the edit button is clicked
