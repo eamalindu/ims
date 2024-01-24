@@ -230,6 +230,15 @@ const newPrivilegeSubmit = ()=>{
     const errors = checkPrivilegeFormErrors(newPrivilege);
 
     if(errors===''){
+        showCustomConfirm("You are about to add a New Privilege<br>Are You Sure?", function (result) {
+
+            if(result){
+
+            }
+            else{
+                showCustomModal("Operation Cancelled!", "info");
+            }
+        });
 
     }
     else{
