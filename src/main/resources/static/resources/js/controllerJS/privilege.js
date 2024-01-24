@@ -227,7 +227,7 @@ const privilegeEdit=()=>{
 const newPrivilegeSubmit = ()=>{
     console.log(newPrivilege);
 
-    const errors = checkPrivilegeFormErrors();
+    const errors = checkPrivilegeFormErrors(newPrivilege);
 
     if(errors===''){
 
