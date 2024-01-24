@@ -233,5 +233,9 @@ const newPrivilegeSubmit = ()=>{
 const checkPrivilegeFormErrors = (privilegeObject)=>{
     let errors = '';
 
+    if(privilegeObject.roleID==null){
+        errors = errors +'Role is Required<br>';
+    }
+
     return errors;
 }
