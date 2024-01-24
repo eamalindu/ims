@@ -244,7 +244,11 @@ const newPrivilegeSubmit = ()=>{
     //calling the checkPrivilegeFormErrors function and catching the return value to errors variable
     const errors = checkPrivilegeFormErrors(newPrivilege);
 
+    //check the errors variable is null
+    //if it's null that means all the required inputs are filled
     if(errors===''){
+
+        //get a user confirmation using external customConfirm js
         showCustomConfirm("You are about to add a New Privilege<br>Are You Sure?", function (result) {
 
             if(result){
