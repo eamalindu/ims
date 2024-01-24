@@ -245,6 +245,9 @@ const checkPrivilegeFormErrors = (privilegeObject)=>{
     if(privilegeObject.roleID==null){
         errors = errors +'Role is Required<br>';
     }
+    if(privilegeObject.moduleID==null){
+        errors = errors +'Module is Required<br>';
+    }
 
     return errors;
 }
