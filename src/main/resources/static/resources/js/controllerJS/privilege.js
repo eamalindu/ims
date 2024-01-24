@@ -134,7 +134,7 @@ const rowView=(ob,rowIndex)=>{
     fillSelectOptions(privilegeSheetModule, 'Please Select a Module', modules, 'name',ob.moduleID.name);
 
     //setting the values for checkboxes
-    if(ob.select){
+    if(ob.selectPrivilege){
         privilegeSheetSelect.checked=true;
         leftSheetSelect.classList.remove('bg-success', 'text-white');
         rightSheetSelect.classList.add('bg-success', 'text-white');
@@ -145,7 +145,7 @@ const rowView=(ob,rowIndex)=>{
         rightSheetSelect.classList.remove('bg-success', 'text-white');
     }
 
-    if(ob.insert){
+    if(ob.insertPrivilege){
         privilegeSheetInsert.checked=true;
         leftSheetInsert.classList.remove('bg-success', 'text-white');
         rightSheetInsert.classList.add('bg-success', 'text-white');
@@ -156,7 +156,7 @@ const rowView=(ob,rowIndex)=>{
         rightSheetInsert.classList.remove('bg-success', 'text-white');
     }
 
-    if(ob.update){
+    if(ob.updatePrivilege){
         privilegeSheetUpdate.checked=true;
         leftSheetUpdate.classList.remove('bg-success', 'text-white');
         rightSheetUpdate.classList.add('bg-success', 'text-white');
@@ -167,7 +167,7 @@ const rowView=(ob,rowIndex)=>{
         rightSheetUpdate.classList.remove('bg-success', 'text-white');
     }
 
-    if(ob.delete){
+    if(ob.deletePrivilege){
         privilegeSheetDelete.checked=true;
         leftSheetDelete.classList.remove('bg-success', 'text-white');
         rightSheetDelete.classList.add('bg-success', 'text-white');
