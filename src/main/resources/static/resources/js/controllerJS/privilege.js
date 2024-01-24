@@ -253,7 +253,7 @@ const newPrivilegeSubmit = ()=>{
 
             if(result){
                 //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
-                //
+                //catch the return value from the backend and save it in the serviceResponse variable
                 serviceResponse = ajaxHttpRequest("/Privilege",'POST',newPrivilege);
 
                 if(serviceResponse==="OK"){
