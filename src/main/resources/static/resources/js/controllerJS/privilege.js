@@ -13,13 +13,15 @@ window.addEventListener('load', () => {
     });
 });
 
-const checkBoxValidator = (elementID,leftDivID,rightDivID) => {
+const checkBoxValidator = (elementID,leftDivID,rightDivID,object,property) => {
     if (elementID.checked) {
         rightDivID.classList.add('bg-success', 'text-white');
-        leftDivID.classList.remove('bg-success', 'text-white')
+        leftDivID.classList.remove('bg-success', 'text-white');
+        window[object][property]=true;
     } else {
         rightDivID.classList.remove('bg-success', 'text-white');
-        leftDivID.classList.add('bg-success', 'text-white')
+        leftDivID.classList.add('bg-success', 'text-white');
+        window[object][property]=false;
     }
 }
 
