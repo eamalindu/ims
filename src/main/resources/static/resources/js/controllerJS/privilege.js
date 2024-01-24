@@ -241,6 +241,7 @@ const privilegeEdit=()=>{
 const newPrivilegeSubmit = ()=>{
     console.log(newPrivilege);
 
+    //calling the function and catching the return value to errors variable
     const errors = checkPrivilegeFormErrors(newPrivilege);
 
     if(errors===''){
