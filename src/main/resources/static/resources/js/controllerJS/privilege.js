@@ -251,6 +251,7 @@ const newPrivilegeSubmit = ()=>{
         //get a user confirmation using external customConfirm js
         showCustomConfirm("You are about to add a New Privilege<br>Are You Sure?", function (result) {
 
+            //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
             if(result){
                 serviceResponse = ajaxHttpRequest("/Privilege",'POST',newPrivilege);
 
