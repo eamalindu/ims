@@ -237,6 +237,7 @@ const privilegeEdit=()=>{
 
 }
 
+//creating a function to submit the privilege form when ever needed
 const newPrivilegeSubmit = ()=>{
     console.log(newPrivilege);
 
