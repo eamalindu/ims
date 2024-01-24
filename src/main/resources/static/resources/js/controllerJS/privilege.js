@@ -275,6 +275,8 @@ const newPrivilegeSubmit = ()=>{
                 }
 
             }
+                //will execute this block if the user confirmation is "no"
+                //show user an alert
             else{
                 showCustomModal("Operation Cancelled!", "info");
             }
