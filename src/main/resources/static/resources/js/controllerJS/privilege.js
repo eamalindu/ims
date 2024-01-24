@@ -312,5 +312,5 @@ const checkPrivilegeFormErrors = (privilegeObject)=>{
 
 
 const privilegeUpdate = ()=>{
-
+    console.log(editedPrivilege)
 }
