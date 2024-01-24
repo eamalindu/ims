@@ -19,21 +19,21 @@ public class Privilege {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "select")
+    @Column(name = "selectprivilege")
     @NotNull
-    private Boolean select;
+    private Boolean selectPrivilege;
 
-    @Column(name = "insert")
+    @Column(name = "insertprivilege")
     @NotNull
-    private Boolean insert;
+    private Boolean insertPrivilege;
 
-    @Column(name = "update")
+    @Column(name = "updateprivilege")
     @NotNull
-    private Boolean update;
+    private Boolean updatePrivilege;
 
-    @Column(name = "delete")
+    @Column(name = "deleteprivilege")
     @NotNull
-    private Boolean delete;
+    private Boolean deletePrivilege;
 
     //foreign keys
     @ManyToOne
