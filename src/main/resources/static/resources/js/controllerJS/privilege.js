@@ -189,10 +189,10 @@ const resetPrivilegeForm = ()=> {
     frmNewPrivilege.reset();
 
     //setting default values and selected div
-    checkBoxValidator(this, leftSelect, rightSelect, 'newPrivilege', 'select', true, false);
-    checkBoxValidator(this, leftInsert, rightInsert, 'newPrivilege', 'insert', true, false);
-    checkBoxValidator(this, leftUpdate, rightUpdate, 'newPrivilege', 'update', true, false);
-    checkBoxValidator(this, leftDelete, rightDelete, 'newPrivilege', 'delete', true, false);
+    checkBoxValidator(this, leftSelect, rightSelect, 'newPrivilege', 'selectPrivilege', true, false);
+    checkBoxValidator(this, leftInsert, rightInsert, 'newPrivilege', 'insertPrivilege', true, false);
+    checkBoxValidator(this, leftUpdate, rightUpdate, 'newPrivilege', 'updatePrivilege', true, false);
+    checkBoxValidator(this, leftDelete, rightDelete, 'newPrivilege', 'deletePrivilege', true, false);
 
     //dynamic select content handling
     roles = ajaxGetRequest("/role/findall")
