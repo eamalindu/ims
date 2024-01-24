@@ -309,3 +309,8 @@ const checkPrivilegeFormErrors = (privilegeObject)=>{
 
     return errors;
 }
+
+
+const privilegeUpdate = ()=>{
+
+}
