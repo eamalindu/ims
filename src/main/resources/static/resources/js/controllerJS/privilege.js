@@ -13,7 +13,7 @@ window.addEventListener('load', () => {
     });
 });
 
-//creating a function for validate and binding values to the object
+//creating a function for checkbox validate and binding values to the object
 //This function have seven arguments
 // 1) elementID -> use 'this' or the html id of the checkbox
 // 2) leftDivID -> left DIV html id
