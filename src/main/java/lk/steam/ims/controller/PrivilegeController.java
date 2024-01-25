@@ -41,6 +41,12 @@ public class PrivilegeController {
     @PutMapping
     public String updatePrivilege(@RequestBody Privilege privilege){
 
+        //check existing
+        Privilege existPrivilege =  privilegeDAO.getReferenceById(privilege.getId());
+
+        if (existPrivilege == null) {
+            return "record not found";
+        }
         try{
             privilegeDAO.save(privilege);
             return "OK";
