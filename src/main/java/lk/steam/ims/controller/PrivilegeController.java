@@ -45,7 +45,7 @@ public class PrivilegeController {
         Privilege existPrivilege =  privilegeDAO.getReferenceById(privilege.getId());
 
         if (existPrivilege == null) {
-            return "record not found";
+            return "No Such Privilege Record";
         }
         try{
             privilegeDAO.save(privilege);
