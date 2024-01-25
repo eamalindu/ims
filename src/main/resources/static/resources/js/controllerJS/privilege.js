@@ -333,7 +333,25 @@ const privilegeUpdate = ()=>{
                 //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
                 //catch the return value from the backend and save it in the serviceResponse variable
                 if(result){
+                    //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
+                    //catch the return value from the backend and save it in the serviceResponse variable
                     let serverResponse = ajaxHttpRequest("/Privilege","PUT",editedPrivilege);
+
+                    //check the serviceResponse value is "OK"
+                    if(serverResponse==="OK"){
+                        //this means data successfully passed to the backend
+                        //show an alert to user
+                        showCustomModal("Privilege Successfully Updated!", "success");
+                        //close the offCanvas sheet
+                        offCanvasPrivilegeCloseButton.click();
+                        //refresh table and reset form
+                        refreshPrivilegeTable();
+                        resetPrivilegeForm();
+
+                    }
+                    else{
+                        showCustomModal("Operation Failed!" + serviceResponse, "error")
+                    }
 
                 }
                 else{
