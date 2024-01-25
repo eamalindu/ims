@@ -171,7 +171,7 @@ const newUserSubmit = ()=>{
     console.log("new User=>")
     console.log(newUser);
 
-    const errors = checkUserFormErrors(newUser,userPassword,userConfirmPassword);
+    let errors = checkUserFormErrors(newUser,userPassword,userConfirmPassword);
     if(errors===''){
         showCustomConfirm("You are about to add a New User<br>Are You Sure?", function (result) {
             if (result) {
@@ -301,7 +301,7 @@ const userUpdate=()=>{
     console.log(oldUser)
     console.log(editedUser)
 
-    const errors = checkUserFormErrors(editedUser,'','');
+    let errors = checkUserFormErrors(editedUser,'','');
     if (errors === '') {
         //check for updates
         let updates = checkForUserUpdate();

@@ -246,7 +246,7 @@ const newPrivilegeSubmit = ()=>{
     console.log(newPrivilege);
 
     //calling the checkPrivilegeFormErrors function and catching the return value to errors variable
-    const errors = checkPrivilegeFormErrors(newPrivilege);
+    let errors = checkPrivilegeFormErrors(newPrivilege);
 
     //check the errors variable is null
     //if it's null that means all the required inputs are filled
@@ -315,11 +315,13 @@ const privilegeUpdate = ()=>{
     console.log(editedPrivilege);
 
     //calling the checkPrivilegeFormErrors function and catching the return value to errors variable
-    const errors = checkPrivilegeFormErrors(editedPrivilege);
+    let errors = checkPrivilegeFormErrors(editedPrivilege);
 
     //check the errors variable is null
     //if it's null that means all the required inputs are filled
     if(errors===''){
+        //check for updates
+
 
     }
     else{
