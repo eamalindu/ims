@@ -328,6 +328,7 @@ const privilegeUpdate = ()=>{
         else{
             showCustomConfirm("You are About to Update this Privilege<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?",function (result){
                 if(result){
+                    let serverResponse = ajaxHttpRequest("/Privilege","PUT",editedPrivilege);
 
                 }
                 else{
@@ -346,7 +347,8 @@ const privilegeUpdate = ()=>{
 
 }
 
-
+//this function will check for any updates by comparing old and edited privilege object
+//this function will return if there are any updates
 const checkForPrivilegeUpdate=()=>{
 
     let updates = '';
