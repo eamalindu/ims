@@ -38,4 +38,16 @@ public class PrivilegeController {
         }
     }
 
+    @PutMapping
+    public String updatePrivilege(@RequestBody Privilege privilege){
+
+        try{
+            privilegeDAO.save(privilege);
+            return "OK";
+        }
+        catch (Exception ex){
+            return "Update Failed "+ex.getMessage();
+        }
+    }
+
 }
