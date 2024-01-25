@@ -310,7 +310,7 @@ const checkPrivilegeFormErrors = (privilegeObject)=>{
     return errors;
 }
 
-
+//creating a function to update the privilege when ever needed
 const privilegeUpdate = ()=>{
     console.log(editedPrivilege)
 }
