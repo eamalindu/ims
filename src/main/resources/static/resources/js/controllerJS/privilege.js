@@ -343,7 +343,7 @@ const privilegeUpdate = ()=>{
                         //show an alert to user
                         showCustomModal("Privilege Successfully Updated!", "success");
                         //close the offCanvas sheet
-                        offCanvasPrivilegeCloseButton.click();
+                        offCanvasPrivilegeSheetCloseButton.click();
                         //refresh table and reset form
                         refreshPrivilegeTable();
                         resetPrivilegeForm();
