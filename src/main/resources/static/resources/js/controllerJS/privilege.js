@@ -321,6 +321,7 @@ const privilegeUpdate = ()=>{
     //if it's null that means all the required inputs are filled
     if(errors===''){
         //check for updates
+        let updates = checkForPrivilegeUpdate();
 
 
     }
@@ -329,5 +330,22 @@ const privilegeUpdate = ()=>{
         //display them to the user using external-ModalFunction()
         showCustomModal(errors, 'warning');
     }
+
+}
+
+
+const checkForPrivilegeUpdate=()=>{
+
+    let updates = '';
+    if(editedPrivilege.roleID.name!==oldPrivilege.roleID.name){
+        updates = updates + "Role was changed to <span class='text-purple'>" + editedPrivilege.roleID.name + "</span><br>";
+    }
+    if(editedPrivilege.moduleID.name!==oldPrivilege.moduleID.name){
+        updates = updates + "Module was changed to <span class='text-purple'>" + editedPrivilege.moduleID.name + "</span><br>";
+
+    }
+
+
+    return updates;
 
 }
