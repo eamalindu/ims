@@ -350,6 +350,14 @@ const checkForPrivilegeUpdate=()=>{
         updates = updates + "Module was changed to <span class='text-purple'>" + editedPrivilege.moduleID.name + "</span><br>";
 
     }
+    if(editedPrivilege.selectPrivilege!==oldPrivilege.selectPrivilege){
+        if(editedPrivilege.selectPrivilege){
+            updates = updates + "Select Privilege was changed to <span class='text-purple'>Granted</span><br>";
+        }
+        else{
+            updates = updates + "Select Privilege was changed to <span class='text-purple'>Not Granted</span><br>";
+        }
+    }
 
 
     return updates;
