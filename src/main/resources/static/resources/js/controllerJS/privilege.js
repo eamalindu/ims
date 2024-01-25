@@ -312,5 +312,20 @@ const checkPrivilegeFormErrors = (privilegeObject)=>{
 
 //creating a function to update the privilege when ever needed
 const privilegeUpdate = ()=>{
-    console.log(editedPrivilege)
+    console.log(editedPrivilege);
+
+    //calling the checkPrivilegeFormErrors function and catching the return value to errors variable
+    const errors = checkPrivilegeFormErrors(editedPrivilege);
+
+    //check the errors variable is null
+    //if it's null that means all the required inputs are filled
+    if(errors===''){
+
+    }
+    else{
+        //there are errors
+        //display them to the user using external-ModalFunction()
+        showCustomModal(errors, 'warning');
+    }
+
 }
