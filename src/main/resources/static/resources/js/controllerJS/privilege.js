@@ -366,6 +366,14 @@ const checkForPrivilegeUpdate=()=>{
             updates = updates + "Insert Privilege was changed to <span class='text-purple'>Not Granted</span><br>";
         }
     }
+    if(editedPrivilege.updatePrivilege!==oldPrivilege.updatePrivilege){
+        if(editedPrivilege.updatePrivilege){
+            updates = updates + "Update Privilege was changed to <span class='text-purple'>Granted</span><br>";
+        }
+        else{
+            updates = updates + "Update Privilege was changed to <span class='text-purple'>Not Granted</span><br>";
+        }
+    }
 
 
     return updates;
