@@ -322,6 +322,12 @@ const privilegeUpdate = ()=>{
     if(errors===''){
         //check for updates
         let updates = checkForPrivilegeUpdate();
+        if (updates === '') {
+            showCustomModal("No changes Detected!", "info");
+        }
+        else{
+            showCustomConfirm("You are About to Update this Privilege<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?",function (result){});
+        }
 
 
     }
