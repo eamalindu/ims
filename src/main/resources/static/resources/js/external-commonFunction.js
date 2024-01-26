@@ -69,7 +69,7 @@ const fillMultiSelectOptions=(elementID, message, dataList,displayProperty,selec
 }
 //Example -> ajaxGetRequest("/employee/findall")
 const ajaxGetRequest = (url) =>{
-    $('#loading').show();
+    $('.loading-overlay').show();
     let Response;
     $.ajax(url, {
         async: false,
@@ -85,7 +85,7 @@ const ajaxGetRequest = (url) =>{
         },
         complete: function () {
             // Hide loading animation
-            $('#loading').hide();
+            $('.loading-overlay').hide();
         }
 
     });
