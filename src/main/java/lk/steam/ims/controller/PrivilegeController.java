@@ -56,4 +56,17 @@ public class PrivilegeController {
         }
     }
 
+    @DeleteMapping
+    public String deletePrivilege(@RequestBody Privilege privilege){
+        try {
+
+            privilegeDAO.delete(privilege);
+            return "OK";
+        }
+        catch (Exception ex){
+            return "Update Failed "+ex.getMessage();
+        }
+
+    }
+
 }
