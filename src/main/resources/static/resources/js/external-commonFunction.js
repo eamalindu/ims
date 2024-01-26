@@ -69,7 +69,7 @@ const fillMultiSelectOptions=(elementID, message, dataList,displayProperty,selec
 }
 //Example -> ajaxGetRequest("/employee/findall")
 const ajaxGetRequest = (url) =>{
-
+    $('#loading').show();
     let Response;
     $.ajax(url, {
         async: false,
@@ -82,6 +82,10 @@ const ajaxGetRequest = (url) =>{
         error: function (resOb) {
             alert("error" + resOb);
             Response = [];
+        },
+        complete: function () {
+            // Hide loading animation
+            $('#loading').hide();
         }
 
     });
