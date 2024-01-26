@@ -73,7 +73,7 @@ const refreshEmployeeTable = ()=>{
     ];
 
     fillDataIntoTable(tblEmployee,employees,displayPropertyListForEmployee,rowView,'offCanvasEmployeeSheet')
-
+    $('#tblEmployee').DataTable();
 }
 
 const getDesignationName = (ob)=>{
