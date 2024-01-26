@@ -430,7 +430,10 @@ const privilegeDelete = ()=>{
             if(serviceResponse==="OK"){
                 //show user the response
                 showCustomModal("Privilege Successfully Deleted!", "success");
-                //refresh the table
+                //close the offCanvas sheet
+                offCanvasPrivilegeSheetCloseButton.click();
+                //refresh table
+                refreshPrivilegeTable();
             }
             else{
                 showCustomModal("Operation Failed!" + serviceResponse, "error");
