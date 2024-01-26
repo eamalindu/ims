@@ -104,6 +104,7 @@
             <h4 class="text-center fw-bold"
                 style="font-family: Arial,serif;text-transform: uppercase;font-size: medium">Search User Info /
                 <small class="text-muted">No records</small></h4>
+
             <table class="custom-table" id="tblPrivilege">
                 <thead>
                 <tr>
@@ -118,22 +119,13 @@
                 </tr>
                 </thead>
                 <tbody>
-
-                <tr>
-                    <td>1</td>
-                    <td>Admin</td>
-                    <td>User</td>
-                    <td><span class="badge rounded-0" style="background: #FF0039">Not Granted</span></td>
-                    <td><span class="badge rounded-0" style="background: #FF0039">Not Granted</span></td>
-                    <td><span class="badge rounded-0" style="background: #FF0039">Not Granted</span></td>
-                    <td><span class="badge rounded-0" style="background: #3FB618">Granted</span></td>
-                    <td class="fw-bold text-purple">
-                        <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasUserSheet" aria-controls="staticBackdrop">View</button>
-                    </td>
-                </tr>
                 </tbody>
             </table>
-
+            <!-- Ajax loader start-->
+            <div class="loading-overlay mt-2">
+                <img src="/resources/images/loader.svg" width="60px" alt="loading animation">
+            </div>
+            <!-- Ajax loader end-->
         </div>
 
 
