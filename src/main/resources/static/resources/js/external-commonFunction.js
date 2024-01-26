@@ -81,7 +81,7 @@ const ajaxGetRequest = (url) =>{
         },
         error: function (resOb) {
             alert("error" + resOb);
-            Response = [];
+            Response = resOb;
         },
         complete: function () {
             // Hide loading animation
