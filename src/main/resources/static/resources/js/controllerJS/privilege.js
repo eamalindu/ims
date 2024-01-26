@@ -422,8 +422,26 @@ const checkForPrivilegeUpdate=()=>{
 //creating a function to update a privilege when ever needed
 const privilegeDelete = ()=>{
     //get user confirmation
-    //pass the record to backend
-    //receive the server response
-    //show user the response
-    //refresh the table
+    showCustomConfirm("You are About to Delete this Privilege<br><br>Role Name: <span class='text-purple'>"+oldPrivilege.roleID.name+"</span><br>Module Name: <span class='text-purple'>"+oldPrivilege.moduleID.name+"</span><br><br>Are You Sure?",function (result) {
+        if(result){
+            //pass the record to backend
+            //receive the server response
+            let serviceResponse = ajaxHttpRequest("/Privilege","DELETE",oldPrivilege);
+            if(serviceResponse==="OK"){
+                //show user the response
+                showCustomModal("Privilege Successfully Deleted!", "success");
+                //refresh the table
+            }
+            else{
+                showCustomModal("Operation Failed!" + serviceResponse, "error");
+            }
+
+
+        }
+        else{
+            showCustomModal("Operation Cancelled!", "info");
+        }
+
+    });
+
 }
