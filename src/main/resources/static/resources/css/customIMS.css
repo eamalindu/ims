@@ -364,6 +364,11 @@ select:invalid[multiple] {
     border-color: rebeccapurple;
 }
 
+/*Overriding datatable css*/
+.dataTables_filter input, select{
+    border-radius: 0!important;
+}
+
 .loading-overlay{
     width: 100%;
     min-height: 100%;
