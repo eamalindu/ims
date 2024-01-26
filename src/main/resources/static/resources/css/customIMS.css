@@ -359,6 +359,11 @@ select:invalid[multiple] {
     background-color: var(--bs-danger);
     border-radius: var(--bs-border-radius);
 }
+.active>.page-link{
+    background-color: rebeccapurple;
+    border-color: rebeccapurple;
+}
+
 .loading-overlay{
     width: 100%;
     min-height: 100%;
