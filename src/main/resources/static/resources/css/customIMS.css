@@ -359,6 +359,16 @@ select:invalid[multiple] {
     background-color: var(--bs-danger);
     border-radius: var(--bs-border-radius);
 }
+.loading-overlay{
+    width: 100%;
+    min-height: 100%;
+    background: #f3f3f3;
+    color: black;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+}
 
 /*Medium devices responsive*/
 @media (max-width: 870px) {
