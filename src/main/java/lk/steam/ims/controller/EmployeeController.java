@@ -1,7 +1,9 @@
 package lk.steam.ims.controller;
 
 import lk.steam.ims.dao.EmployeeDAO;
+import lk.steam.ims.dao.EmployeeStatusDAO;
 import lk.steam.ims.entity.Employee;
+import lk.steam.ims.entity.EmployeeStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +17,9 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeDAO employeeDAO;
+    @Autowired
+    private EmployeeStatusDAO employeeStatusDAO;
+
     @GetMapping
     public ModelAndView employeeUI() {
         ModelAndView employeeView = new ModelAndView();
@@ -61,6 +66,22 @@ public class EmployeeController {
             return "Save Failed "+ex.getMessage();
         }
 
+    }
+    @DeleteMapping
+    public String deleteEmployee(@RequestBody Employee employee) {
+
+        try {
+            //soft delete
+            //change employee Status to delete
+            EmployeeStatus deleteStatus = employeeStatusDAO.getReferenceById(3);
+            employee.setEmployeeStatusID(deleteStatus);
+            //update the employee record
+            employeeDAO.save(employee);
+
+            return "OK";
+        } catch (Exception ex) {
+            return "Delete Failed " + ex.getMessage();
+        }
     }
 
 }
