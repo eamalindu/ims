@@ -460,3 +460,30 @@ const resetEmployeeForm = ()=>{
     designations = ajaxGetRequest("/designation/findall")
     fillSelectOptions(employeeDesignation, 'Please Select a Designation', designations, 'designation')
 }
+
+//creating a function to delete an employee when ever needed
+const employeeDelete = ()=>{
+    //get user confirmation
+    showCustomConfirm("You are About to Delete this Employee<br><br>Employee Name: <span class='text-purple'>"+oldEmployee.callingName+"</span><br><br>Are You Sure?",function (result) {
+        if(result){
+            //pass the record to backend
+            //receive the server response
+            let serviceResponse = ajaxHttpRequest("/Employee","DELETE",oldEmployee);
+            if(serviceResponse==="OK"){
+                //show user the response
+                showCustomModal("Employee Successfully Deleted!", "success");
+                //close the offCanvas sheet
+                offCanvasEmployeeSheetCloseButton.click();
+                //refresh table
+                refreshEmployeeTable();
+            }
+            else{
+                showCustomModal("Operation Failed!" + serviceResponse, "error");
+            }
+        }
+        else{
+
+        }
+    });
+
+}
