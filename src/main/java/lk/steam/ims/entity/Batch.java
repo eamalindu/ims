@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -23,7 +24,7 @@ public class Batch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "batchcode",unique = true)
+    @Column(name = "batchcode")
     @NotNull
     private String batchCode;
 
@@ -39,39 +40,39 @@ public class Batch {
     @NotNull
     private Integer seatCount;
 
-    @Column(name = "starttime")
-    @NotNull
-    private LocalTime startTime;
-
-    @Column(name = "endtime")
-    @NotNull
-    private LocalTime endTime;
-
     @Column(name = "createdby")
     @NotNull
     private String createdBy;
-
-    @Column(name = "lecturer")
-    @NotNull
-    private String lecturer;
-
-    @Column(name = "status")
-    @NotNull
-    private Integer status;
 
     @Column(name = "timestamp")
     @NotNull
     private LocalDateTime timestamp;
 
-    @Column(name = "location")
+    @Column(name = "isweekday")
     @NotNull
-    private String location;
+    private Boolean isWeekday;
 
     @Column(name = "description")
     @NotNull
     private String description;
 
+    @Column(name = "totalfee")
+    @NotNull
+    private BigDecimal totalFee;
+
+    @Column(name = "registrationfee")
+    @NotNull
+    private BigDecimal registrationFee;
+
+    @Column(name = "remainingfee")
+    @NotNull
+    private BigDecimal remainingFee;
+
+    @Column(name = "numberofinstallments")
+    @NotNull
+    private Integer numberOfInstallments;
+
     @ManyToOne
     @JoinColumn(name = "course_id",referencedColumnName = "id")
-    private Course course_id;
+    private Course courseID;
 }
