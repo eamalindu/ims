@@ -419,7 +419,7 @@ const checkForPrivilegeUpdate=()=>{
 
 }
 
-//creating a function to update a privilege when ever needed
+//creating a function to delete a privilege when ever needed
 const privilegeDelete = ()=>{
     //get user confirmation
     showCustomConfirm("You are About to Delete this Privilege<br><br>Role Name: <span class='text-purple'>"+oldPrivilege.roleID.name+"</span><br>Module Name: <span class='text-purple'>"+oldPrivilege.moduleID.name+"</span><br><br>Are You Sure?",function (result) {
