@@ -482,7 +482,7 @@ const employeeDelete = ()=>{
             }
         }
         else{
-
+            showCustomModal("Operation Cancelled!", "info");
         }
     });
 
