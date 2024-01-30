@@ -165,7 +165,7 @@ const resetUserForm = ()=>{
     newUser.roles= [];
 
 }
-
+//creating a function to submit the privilege form when ever needed
 const newUserSubmit = ()=>{
 
     console.log("new User=>")
@@ -206,7 +206,7 @@ const newUserSubmit = ()=>{
         showCustomModal(errors, 'warning');
     }
 }
-
+//creating a function to compare password
 const checkPassword=()=>{
     password = userPassword.value;
     confirmPassword= userConfirmPassword.value;
@@ -245,6 +245,9 @@ const checkPassword=()=>{
         userPassword.classList.add('is-invalid')
     }
 }
+//creating a reusable function to check all the required inputs are filled by checking bound values
+//need to pass the object as a parameter
+//this function will return if there are any unfilled inputs
 const checkUserFormErrors = (userObject,passwordID,confirmPasswordID)=> {
     let errors = '';
 
@@ -273,7 +276,7 @@ const checkUserFormErrors = (userObject,passwordID,confirmPasswordID)=> {
 
     return errors;
 }
-
+//creating a function to edit the User form when ever needed
 const userEdit=()=>{
     //display the update button once the edit button is clicked
     btnUserSheetUpdate.style.display = 'block';
@@ -296,7 +299,7 @@ const userEdit=()=>{
     });
 
 }
-
+//creating a function to update the User when ever needed
 const userUpdate=()=>{
     console.log(oldUser)
     console.log(editedUser)
@@ -338,6 +341,8 @@ const userUpdate=()=>{
     }
 }
 
+//this function will check for any updates by comparing old and edited User object
+//this function will return if there are any updates
 const checkForUserUpdate=()=>{
     let updates = '';
     if(editedUser.username!==oldUser.username){
