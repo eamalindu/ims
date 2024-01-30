@@ -386,3 +386,32 @@ const checkForUserUpdate=()=>{
     return updates;
 
 }
+//creating a function to delete a user when ever needed
+const userDelete = ()=>{
+
+    //get user confirmation
+    showCustomConfirm("You are About to Delete this User<br><br>Username: <span class='text-purple'>"+oldUser.username+"</span><br><br>Are You Sure?",function (result) {
+        if(result){
+            //pass the record to backend
+            //receive the server response
+            let serviceResponse = ajaxHttpRequest("/User","DELETE",oldUser);
+            if(serviceResponse==="OK"){
+                //show user the response
+                showCustomModal("User Successfully Deleted!", "success");
+                //close the offCanvas sheet
+                offCanvasUserSheetCloseButton.click();
+                //refresh table
+                refreshUserTable();
+            }
+            else{
+                showCustomModal("Operation Failed!" + serviceResponse, "error");
+            }
+
+
+        }
+        else{
+            showCustomModal("Operation Cancelled!", "info");
+        }
+
+    });
+}
