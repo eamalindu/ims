@@ -20,6 +20,7 @@ public class WebConfig {
         httpSecurity.authorizeHttpRequests(auth -> {
             auth
                     .requestMatchers("/login").permitAll()
+                    .requestMatchers("/CreateAdmin").permitAll()
                     .requestMatchers("/Employee/**").hasAnyRole("Admin","Manager")
                     .requestMatchers("/User/**").hasAnyRole("Admin","Manager")
                     .requestMatchers("/error").permitAll()
