@@ -34,7 +34,7 @@ public class WebConfig {
                             .loginPage("/login")
                             .defaultSuccessUrl("/Dashboard",true)
                             .failureUrl("/login?error=failed")
-                            .usernameParameter("email")
+                            .usernameParameter("username")
                             .passwordParameter("password");
 
                 })
