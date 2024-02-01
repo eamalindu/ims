@@ -60,7 +60,7 @@ public class WebConfig {
     }
 
     @Bean
-    private BCryptPasswordEncoder bCryptPasswordEncoderMethod(){
+    public BCryptPasswordEncoder bCryptPasswordEncoderMethod(){
         bCryptPasswordEncoder = new BCryptPasswordEncoder();
         return bCryptPasswordEncoder;
     }
