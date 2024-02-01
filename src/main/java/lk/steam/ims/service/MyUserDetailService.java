@@ -1,5 +1,6 @@
 package lk.steam.ims.service;
 
+import jakarta.transaction.Transactional;
 import lk.steam.ims.dao.UserDAO;
 import lk.steam.ims.entity.Role;
 import lk.steam.ims.entity.User;
@@ -12,7 +13,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class MyUserDetailService implements UserDetailsService {
@@ -21,17 +24,25 @@ public class MyUserDetailService implements UserDetailsService {
     private UserDAO userDAO;
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println(username);
 
         User extUser = userDAO.getUserByUsername(username);
 
-        ArrayList<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+        System.out.println(extUser.getUsername());
+
+        Set<GrantedAuthority> userRoles = new HashSet<GrantedAuthority>();
 
         for(Role role : extUser.getRoles()){
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
+            userRoles.add(new SimpleGrantedAuthority(role.getName()));
         }
 
-        UserDetails userDetails = new org.springframework.security.core.userdetails.User(extUser.getUsername(),extUser.getPassword(),extUser.getStatus(),false,false,false, grantedAuthorities);
+        ArrayList<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>(userRoles);
+
+
+
+        UserDetails userDetails = new org.springframework.security.core.userdetails.User(extUser.getUsername(),extUser.getPassword(),extUser.getStatus(),true,true,true, grantedAuthorities);
 
         return userDetails;
     }

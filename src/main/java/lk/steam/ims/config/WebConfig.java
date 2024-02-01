@@ -21,11 +21,11 @@ public class WebConfig {
             auth
                     .requestMatchers("/login").permitAll()
                     .requestMatchers("/CreateAdmin").permitAll()
-                    .requestMatchers("/Employee/**").hasAnyRole("Admin","Manager")
-                    .requestMatchers("/User/**").hasAnyRole("Admin","Manager")
+                    .requestMatchers("/Employee/**").hasAnyAuthority("Admin","Manager")
+                    .requestMatchers("/User/**").hasAnyAuthority("Admin","Manager")
                     .requestMatchers("/error").permitAll()
                     .requestMatchers("/resources/**").permitAll()
-                    .requestMatchers("/Dashboard").hasAnyRole("Admin","Manager","Counsellor")
+                    .requestMatchers("/Dashboard").hasAnyAuthority("Admin","Manager","Counsellor")
                     .anyRequest().authenticated();
 
         })
