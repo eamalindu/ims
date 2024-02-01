@@ -30,6 +30,11 @@ public class MyUserDetailService implements UserDetailsService {
 
         User extUser = userDAO.getUserByUsername(username);
 
+        // Check if user exists
+        if (extUser == null) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }
+
         System.out.println(extUser.getUsername());
 
         Set<GrantedAuthority> userRoles = new HashSet<GrantedAuthority>();
