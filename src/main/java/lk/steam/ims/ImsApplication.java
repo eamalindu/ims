@@ -14,12 +14,7 @@ public class ImsApplication {
 		SpringApplication.run(ImsApplication.class, args);
 		System.out.println("IMS System is now running!");
 	}
-	@RequestMapping(value = "/Dashboard")
-	public ModelAndView imsDashboard(){
-		ModelAndView imsView = new ModelAndView();
-		imsView.setViewName("dashboard.html");
-		return imsView;
-	}
+
 	@RequestMapping(value = "/Administrations")
 	public ModelAndView imsAdministration(){
 		ModelAndView imsAdminView = new ModelAndView();
