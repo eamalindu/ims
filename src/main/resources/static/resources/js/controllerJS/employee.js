@@ -433,7 +433,10 @@ const resetEmployeeForm = ()=>{
 
     //set default option chosen
     setTimeout(function () {
-        $('select').val('').trigger('chosen:updated');
+        $('#employeeCivilStatus').val('').trigger('chosen:updated');
+        $('#employeeDesignation').val('').trigger('chosen:updated');
+        $('#employeeStatus').val('').trigger('chosen:updated');
+        $('#employeeHighestEducation').val('').trigger('chosen:updated');
     }, 0);
 
     //remove value
