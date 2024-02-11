@@ -23,6 +23,7 @@ public class WebConfig {
                     .requestMatchers("/CreateAdmin").permitAll()
                     .requestMatchers("/Employee/**").hasAnyAuthority("Admin","Manager")
                     .requestMatchers("/User/**").hasAnyAuthority("Admin","Manager")
+                    .requestMatchers("/Administrations/**").hasAnyAuthority("Admin","Manager")
                     .requestMatchers("/error").permitAll()
                     .requestMatchers("/resources/**").permitAll()
                     .requestMatchers("/Dashboard").hasAnyAuthority("Admin","Manager","Counsellor")
