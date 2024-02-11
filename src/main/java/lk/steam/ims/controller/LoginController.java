@@ -27,9 +27,11 @@ public class LoginController {
     @GetMapping(value = "/Dashboard")
     public ModelAndView imsDashboard(){
 
+        //
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView imsView = new ModelAndView();
         imsView.setViewName("dashboard.html");
+        //
         imsView.addObject("username",auth.getName());
         return imsView;
     }
