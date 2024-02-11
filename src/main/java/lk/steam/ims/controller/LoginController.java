@@ -1,5 +1,7 @@
 package lk.steam.ims.controller;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,9 +26,11 @@ public class LoginController {
 
     @GetMapping(value = "/Dashboard")
     public ModelAndView imsDashboard(){
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView imsView = new ModelAndView();
         imsView.setViewName("dashboard.html");
-        imsView.addObject("username","Kamal");
+        imsView.addObject("username",auth.getName());
         return imsView;
     }
 }
