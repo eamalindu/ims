@@ -54,6 +54,7 @@ public class ImsApplication {
 		ModelAndView imsInquiriesView = new ModelAndView();
 		imsInquiriesView.addObject("username",auth.getName());
 		imsInquiriesView.setViewName("inquiries.html");
+		imsInquiriesView.addObject("title","Inquiries | STEAM IMS");
 		return imsInquiriesView;
 	}
 
