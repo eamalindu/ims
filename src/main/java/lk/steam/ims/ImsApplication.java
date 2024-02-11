@@ -43,8 +43,12 @@ public class ImsApplication {
 
 	@RequestMapping(value = "/Administrations")
 	public ModelAndView imsAdministration(){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		ModelAndView imsAdminView = new ModelAndView();
+		imsAdminView.addObject("username",auth.getName());
+		imsAdminView.addObject("title","Administrations | STEAM IMS");
 		imsAdminView.setViewName("administrations.html");
+
 		return imsAdminView;
 	}
 
