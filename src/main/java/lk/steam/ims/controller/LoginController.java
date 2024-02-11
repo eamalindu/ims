@@ -26,6 +26,7 @@ public class LoginController {
     public ModelAndView imsDashboard(){
         ModelAndView imsView = new ModelAndView();
         imsView.setViewName("dashboard.html");
+        imsView.addObject("username","Kamal");
         return imsView;
     }
 }
