@@ -19,6 +19,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #f3f3f3;
+    z-index: 2000;
 }
 .custom-login-form-container {
     width: 30%;
