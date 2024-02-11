@@ -363,7 +363,7 @@ const refreshDashboardWidgets=()=>{
 }
 
 const logout = ()=>{
-    showCustomConfirm("You are About to Logout from the System<br><br> are you sure?",function (result){
+    showCustomConfirm("<strong class='text-lowercase'>"+btnProfileName.innerText+"</strong><br/>You are About to Logout from the System<br><br> are you sure?",function (result){
 
         if(result){
             window.location.assign("/logout");
