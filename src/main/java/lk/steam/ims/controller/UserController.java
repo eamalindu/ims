@@ -3,6 +3,7 @@ package lk.steam.ims.controller;
 import lk.steam.ims.dao.UserDAO;
 import lk.steam.ims.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,6 +16,9 @@ public class UserController {
 
     @Autowired
     private UserDAO userDAO;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping
     public ModelAndView userUI(){
@@ -32,6 +36,7 @@ public class UserController {
     public String saveNewUser(@RequestBody User user){
         try{
             user.setAddedTime(LocalDateTime.now());
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             userDAO.save(user);
             return "OK";
         }
