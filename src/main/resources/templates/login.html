@@ -8,6 +8,10 @@
     <link href="/resources/images/icon-sq.png" rel="icon" type="image/png" />
     <!-- Bootstrap CSS File-->
     <link href="/resources/bootstrap-5.2.3/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Jquery Js File -->
+    <script src="/resources/jquery/jquery.min.js"></script>
+    <!-- Boostrap Js File -->
+    <script src="/resources/bootstrap-5.2.3/js/bootstrap.bundle.js"></script>
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/07941f149f.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
@@ -89,7 +93,15 @@
         </div>
 
     </div>
+<script>
+    window.addEventListener("load",()=>{
+        const currentURL = window.location.href;
 
+        if(currentURL.includes("?error=failed")){
+           showCustomModal("These credentials do not match our records","error");
+        }
+    })
+</script>
 <script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
 </body>
 </html>
