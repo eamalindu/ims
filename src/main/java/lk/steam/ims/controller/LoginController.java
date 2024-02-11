@@ -34,6 +34,7 @@ public class LoginController {
         //
         imsView.addObject("username",auth.getName());
         imsView.addObject("title","Dashboard | STEAM IMS");
+        imsView.addObject("activeNavItem","dashboard");
         return imsView;
     }
 }

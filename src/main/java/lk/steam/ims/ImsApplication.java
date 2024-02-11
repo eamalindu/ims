@@ -48,6 +48,7 @@ public class ImsApplication {
 		imsAdminView.addObject("username",auth.getName());
 		imsAdminView.addObject("title","Administrations | STEAM IMS");
 		imsAdminView.setViewName("administrations.html");
+		imsAdminView.addObject("activeNavItem","administrations");
 
 		return imsAdminView;
 	}
@@ -59,6 +60,7 @@ public class ImsApplication {
 		imsInquiriesView.addObject("username",auth.getName());
 		imsInquiriesView.setViewName("inquiries.html");
 		imsInquiriesView.addObject("title","Inquiries | STEAM IMS");
+		imsInquiriesView.addObject("activeNavItem","inquiries");
 		return imsInquiriesView;
 	}
 
