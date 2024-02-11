@@ -33,13 +33,25 @@
                 <li class="nav-item"><a th:attr="class=${activeNavItem=='administrations' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="Administrations">Administration</a>
                 </li>
                 <li class="nav-item dropdown-center custom-width-max-content p-0">
-                    <button aria-expanded="false" id="btnProfileName"
-                            class="nav-link btn bg-steam-green text-white dropdown-toggle custom-width-max-content border-0"
-                            data-bs-toggle="dropdown" th:text="${username}">Profile
+                    <button aria-expanded="false"
+                            class="nav-link btn bg-steam-green text-white dropdown-toggle custom-width-max-content border-0 text-capitalize"
+                            data-bs-toggle="dropdown" id="btnProfileName" th:text="${username}">Profile
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end rounded-0">
-                        <li><a class="dropdown-item" onclick="logout()">Logout</a></li>
-                        <li><a class="dropdown-item">Employee Name</a></li>
+                    <ul class="dropdown-menu dropdown-menu-end rounded-0 mb-0 pb-0">
+
+                        <div class="dropdown-item p-0">
+                            <div class="card w-100 p-0 m-0 border-0">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between gap-4">
+                                        <img class="" src="https://emc.sgp1.digitaloceanspaces.com/uploads/hris/employees/photos/1556/1556.jpeg" width="50px">
+                                        <span class="text-muted small text-small"><small>Student Counsellor</small></span>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-custom-white border-0 text-center mb-0 show" style="background: #f3f3f3">
+                                    <button class="btn rounded-0 btn-sm bg-transparent w-100" onclick="logout()">Logout</button>
+                                </div>
+                            </div>
+                        </div>
                     </ul>
 
                 </li>
