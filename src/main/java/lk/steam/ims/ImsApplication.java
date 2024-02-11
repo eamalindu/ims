@@ -8,6 +8,8 @@ import lk.steam.ims.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,7 +50,9 @@ public class ImsApplication {
 
 	@RequestMapping(value = "/Inquiries")
 	public ModelAndView imsInquiries(){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		ModelAndView imsInquiriesView = new ModelAndView();
+		imsInquiriesView.addObject("username",auth.getName());
 		imsInquiriesView.setViewName("inquiries.html");
 		return imsInquiriesView;
 	}
