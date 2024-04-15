@@ -19,10 +19,15 @@ import java.time.LocalTime;
 @AllArgsConstructor
 public class Batch {
 
+
     @Id
     @Column(name = "id",unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "batchnumber")
+    @NotNull
+    private Integer batchNumber;
 
     @Column(name = "batchcode")
     @NotNull
@@ -31,6 +36,10 @@ public class Batch {
     @Column(name = "commencedate")
     @NotNull
     private LocalDate commenceDate;
+
+    @Column(name = "lastregdate")
+    @NotNull
+    private LocalDate lastRegDate;
 
     @Column(name = "enddate")
     @NotNull
@@ -56,23 +65,15 @@ public class Batch {
     @NotNull
     private String description;
 
-    @Column(name = "totalfee")
-    @NotNull
-    private BigDecimal totalFee;
-
-    @Column(name = "registrationfee")
-    @NotNull
-    private BigDecimal registrationFee;
-
-    @Column(name = "remainingfee")
-    @NotNull
-    private BigDecimal remainingFee;
-
-    @Column(name = "numberofinstallments")
-    @NotNull
-    private Integer numberOfInstallments;
-
     @ManyToOne
     @JoinColumn(name = "course_id",referencedColumnName = "id")
     private Course courseID;
+
+    @ManyToOne
+    @JoinColumn(name = "batchstatus_id",referencedColumnName = "id")
+    private BatchStatus batchStatusID;
+
+    @ManyToOne
+    @JoinColumn(name = "paymentplan_id",referencedColumnName = "id")
+    private PaymentPlan paymentPlanID;
 }
