@@ -26,7 +26,7 @@ public class WebConfig {
                     .requestMatchers("/Administrations/**").hasAnyAuthority("Admin","Manager")
                     .requestMatchers("/error").permitAll()
                     .requestMatchers("/resources/**").permitAll()
-                    .requestMatchers("/Schedules/**").permitAll()
+                    .requestMatchers("/Schedules/**").hasAnyAuthority("Admin","Manager","Counsellor")
                     .requestMatchers("/Dashboard").hasAnyAuthority("Admin","Manager","Counsellor")
                     .anyRequest().authenticated();
 
