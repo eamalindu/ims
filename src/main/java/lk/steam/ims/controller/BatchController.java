@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/batch")
+@RequestMapping(value = "/Schedules")
 public class BatchController {
 
     @Autowired
@@ -20,4 +20,6 @@ public class BatchController {
     public List<Batch> findAll(){
         return batchDAO.findAll();
     }
+
+
 }
