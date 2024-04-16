@@ -35,4 +35,9 @@ public class BatchController {
         scheduleView.addObject("activeNavItem","schedules");
         return scheduleView;
     }
+
+    @GetMapping(value = "/activeBatches",produces = "application/json")
+    public List<Batch> activeBathes(){
+        return batchDAO.getActiveBatches();
+    }
 }
