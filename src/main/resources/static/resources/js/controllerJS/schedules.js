@@ -58,6 +58,13 @@ const logout = ()=>{
     });
 }
 
+const scheduleSearch = ()=>{
+    const searchInput = JSON.parse(schedulesCourse.value);
+    const courseID = searchInput.id;
+    console.log(courseID)
+
+}
+
 const scheduleSearchReset = ()=>{
     refreshSchedulesTable();
 }
