@@ -177,7 +177,7 @@ select:invalid[multiple] {
     padding: 5px;
     color: white;
     border: 1px solid white;
-    text-align: center;
+    text-align: center!important;
     font-family: Arial, serif !important;
     text-transform: uppercase;
     font-size: medium;
