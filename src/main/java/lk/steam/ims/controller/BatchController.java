@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,4 +41,10 @@ public class BatchController {
     public List<Batch> activeBathes(){
         return batchDAO.getActiveBatches();
     }
+
+    @GetMapping(value = "/activeBatches/{courseId}",produces = "application/json")
+    public List<Batch> activeBathesFromCourseId(@PathVariable Integer courseId){
+        return batchDAO.getActiveBatchesFromCourseID(courseId);
+    }
 }
+
