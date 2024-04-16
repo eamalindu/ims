@@ -4,24 +4,7 @@ window.addEventListener("load",()=>{
     fillSelectOptions(schedulesCourse,' ',courses,'name');
     $("#schedulesCourse").chosen({width: '25%'});
 
-    //get all the active batches (batches that can be used to register student) from the database
-    const activeBatches = ajaxGetRequest("/Schedules/activeBatches")
-
-    displayPropertyListForBatches = [
-        {property: getCourseCode, dataType: 'function'},
-        {property: 'batchCode', dataType: 'text'},
-        {property: 'description', dataType: 'text'},
-        {property: 'commenceDate', dataType: 'text'},
-        {property: 'endDate', dataType: 'text'},
-        {property: getWeekDay, dataType: 'function'},
-        {property: 'seatCount', dataType: 'text'},
-        {property: 'seatCount', dataType: 'text'},
-        {property: 'seatCount', dataType: 'text'},
-    ];
-
-    fillDataIntoTableWithOutAction(tblBatches, activeBatches, displayPropertyListForBatches);
-
-    $('#tblBatches').DataTable();
+    refreshSchedulesTable();
 
 });
 //since we cant access the Course Name from the batches directly. creating a function to return the Course Name from the batches object
@@ -41,7 +24,24 @@ const getWeekDay = (ob) => {
 }
 
 const refreshSchedulesTable=()=>{
+    //get all the active batches (batches that can be used to register student) from the database
+    const activeBatches = ajaxGetRequest("/Schedules/activeBatches")
 
+    displayPropertyListForBatches = [
+        {property: getCourseCode, dataType: 'function'},
+        {property: 'batchCode', dataType: 'text'},
+        {property: 'description', dataType: 'text'},
+        {property: 'commenceDate', dataType: 'text'},
+        {property: 'endDate', dataType: 'text'},
+        {property: getWeekDay, dataType: 'function'},
+        {property: 'seatCount', dataType: 'text'},
+        {property: 'seatCount', dataType: 'text'},
+        {property: 'seatCount', dataType: 'text'},
+    ];
+
+    fillDataIntoTableWithOutAction(tblBatches, activeBatches, displayPropertyListForBatches);
+
+    $('#tblBatches').DataTable();
 }
 
 
