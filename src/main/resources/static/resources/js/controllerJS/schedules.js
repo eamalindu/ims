@@ -62,9 +62,19 @@ const scheduleSearch = ()=>{
     const searchInput = JSON.parse(schedulesCourse.value);
     const courseID = searchInput.id;
     console.log(courseID)
+    if(courseID!=null) {
+        const results = ajaxGetRequest("/Schedules/activeBatches/" + courseID);
+        fillDataIntoTableWithOutAction(tblBatches, results, displayPropertyListForBatches);
+        $('#tblBatches').DataTable();
+    }
+
 
 }
 
 const scheduleSearchReset = ()=>{
+    //set default option chosen
+    setTimeout(function () {
+        $('#schedulesCourse').val('').trigger('chosen:updated');
+    }, 0);
     refreshSchedulesTable();
 }
