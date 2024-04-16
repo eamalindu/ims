@@ -125,3 +125,8 @@ const fillDataIntoTable = (tabledID, dataList, displayPropertyList,viewFunction,
 
     });
 }
+
+
+const fillDataIntoTableWithOutAction = (tabledID, dataList, displayPropertyList)=>{
+
+}
