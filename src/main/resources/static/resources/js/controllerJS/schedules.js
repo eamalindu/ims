@@ -40,6 +40,10 @@ const getWeekDay = (ob) => {
 
 }
 
+const refreshSchedulesTable=()=>{
+
+}
+
 
 const logout = ()=>{
     showCustomConfirm("<strong class='text-lowercase'>"+btnProfileName.innerText+"</strong><br/>You are About to Logout from the System<br><br> are you sure?",function (result){
