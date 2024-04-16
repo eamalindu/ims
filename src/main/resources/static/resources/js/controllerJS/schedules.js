@@ -58,6 +58,6 @@ const logout = ()=>{
     });
 }
 
-const resetSearch = ()=>{
+const scheduleSearchReset = ()=>{
     refreshSchedulesTable();
 }
