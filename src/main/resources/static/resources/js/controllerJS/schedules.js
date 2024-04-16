@@ -57,3 +57,7 @@ const logout = ()=>{
 
     });
 }
+
+const resetSearch = ()=>{
+    refreshSchedulesTable();
+}
