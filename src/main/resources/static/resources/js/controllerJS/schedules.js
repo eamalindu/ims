@@ -5,7 +5,7 @@ window.addEventListener("load",()=>{
     $("#schedulesCourse").chosen({width: '25%'});
 
     //get all the active batches (batches that can be used to register student) from the database
-    const activeBatches = ajaxGetRequest("/Schedules/")
+    const activeBatches = ajaxGetRequest("/Schedules/activeBatches")
 
 });
 
