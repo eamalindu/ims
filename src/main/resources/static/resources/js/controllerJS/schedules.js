@@ -7,11 +7,17 @@ window.addEventListener("load",()=>{
     //get all the active batches (batches that can be used to register student) from the database
     const activeBatches = ajaxGetRequest("/Schedules/activeBatches")
 
-    displayPropertyListForBatches = [{property: getCourseName, dataType: 'function'}, {
-        property: 'batchCode', dataType: 'text'
-    }, {property: 'commenceDate', dataType: 'text'}, {property: 'endDate', dataType: 'text'}, {
-        property: getWeekDay, dataType: 'function'
-    }, {property: 'seatCount', dataType: 'text'}, {property: 'description', dataType: 'text'},];
+    displayPropertyListForBatches = [
+        {property: getCourseCode, dataType: 'function'},
+        {property: 'batchCode', dataType: 'text'},
+        {property: 'description', dataType: 'text'},
+        {property: 'commenceDate', dataType: 'text'},
+        {property: 'endDate', dataType: 'text'},
+        {property: getWeekDay, dataType: 'function'},
+        {property: 'seatCount', dataType: 'text'},
+        {property: 'seatCount', dataType: 'text'},
+        {property: 'seatCount', dataType: 'text'},
+    ];
 
     fillDataIntoTableWithOutAction(tblBatches, activeBatches, displayPropertyListForBatches);
 
@@ -19,8 +25,8 @@ window.addEventListener("load",()=>{
 
 });
 //since we cant access the Course Name from the batches directly. creating a function to return the Course Name from the batches object
-const getCourseName = (ob) => {
-    return ob.courseID.name;
+const getCourseCode = (ob) => {
+    return ob.courseID.code;
 }
 
 //since the isWeekday data type is in boolean we cant show true or false in the table
