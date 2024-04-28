@@ -49,6 +49,10 @@ public class Batch {
     @NotNull
     private Integer seatCount;
 
+    @Column(name = "availableseatcount")
+    @NotNull
+    private Integer seatCountAvailable;
+
     @Column(name = "createdby")
     @NotNull
     private String createdBy;
