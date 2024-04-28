@@ -36,7 +36,7 @@ const refreshSchedulesTable=()=>{
         {property: getWeekDay, dataType: 'function'},
         {property: 'seatCount', dataType: 'text'},
         {property: 'seatCount', dataType: 'text'},
-        {property: 'seatCount', dataType: 'text'},
+        {property: 'seatCountAvailable', dataType: 'text'},
     ];
 
     fillDataIntoTableWithOutAction(tblBatches, activeBatches, displayPropertyListForBatches);
