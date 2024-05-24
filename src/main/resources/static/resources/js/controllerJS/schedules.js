@@ -41,7 +41,11 @@ const refreshSchedulesTable=()=>{
 
     fillDataIntoTableWithOutAction(tblBatches, activeBatches, displayPropertyListForBatches);
 
-    $('#tblBatches').DataTable();
+    if(activeBatches.length>0){
+        $('#tblBatches').DataTable();
+    }
+
+
 }
 
 
