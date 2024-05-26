@@ -23,6 +23,10 @@ const getWeekDay = (ob) => {
 
 }
 
+const getSchedule = (ob)=>{
+
+}
+
 const refreshSchedulesTable=()=>{
     //get all the active batches (batches that can be used to register student) from the database
     const activeBatches = ajaxGetRequest("/Schedules/activeBatches")
@@ -34,7 +38,7 @@ const refreshSchedulesTable=()=>{
         {property: 'commenceDate', dataType: 'text'},
         {property: 'endDate', dataType: 'text'},
         {property: getWeekDay, dataType: 'function'},
-        {property: 'seatCount', dataType: 'text'},
+        {property: getSchedule, dataType: 'text'},
         {property: 'seatCount', dataType: 'text'},
         {property: 'seatCountAvailable', dataType: 'text'},
     ];
