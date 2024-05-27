@@ -31,6 +31,11 @@ public interface InquiryDAO extends JpaRepository<Inquiry,Integer> {
     @Query(value = "SELECT * FROM inquiry WHERE inquiry.inquirystatus_id =1;",nativeQuery = true)
     List<Inquiry> findNewInquiry();
 
+    //display all the New Inquiries
+    //This data will be shown in crm-> Dashboard-> inquiry pool
+    @Query(value = "SELECT * FROM inquiry WHERE inquiry.inquirystatus_id =2;",nativeQuery = true)
+    List<Inquiry> findProcessingInquiry();
+
     //Display all the inquiries with the latest follow-up information
     //This data will be shown in crm-> Inquiries
     @Query(value="SELECT DISTINCT i.id, i.source_id, i.course_id, i.firstname, i.lastname, i.primarymobilenumber, i.secondarymobilenumber, i.email, i.idtype, i.idvalue, i.contacttime, i.description,i.addedby,i.timestamp, i.inquirystatus_id, f.type, f.feeling, f.confirmed, f.content, f.nextfollowup AS followuptime FROM inquiry i LEFT JOIN followup f ON i.id = f.inquiry_id\n" +
