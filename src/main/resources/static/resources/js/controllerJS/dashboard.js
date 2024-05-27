@@ -23,7 +23,8 @@ const refreshInquiryPoolTable = () => {
 
     //get data from the database with ajax
     newInquiries = ajaxGetRequest("/Inquiry/newInquiry");
-    displayPropertyListForInquiryPool = [{property: 'inquiryNumber', dataType: 'text'}, {
+    displayPropertyListForInquiryPool = [
+        {property: 'inquiryNumber', dataType: 'text'}, {
         property: getCourse, dataType: 'function'
     }, {property: getSource, dataType: 'function'}, {property: getFullName, dataType: 'function'}];
 
@@ -33,9 +34,9 @@ const refreshInquiryPoolTable = () => {
 
     scheduledInquiries = ajaxGetRequest("/Inquiry/test2")
 
-    displayPropertyListForScheduledPool = [{property: 'inquiry_id', dataType: 'text'}, {
-        property: 'course_id', dataType: 'text'
-    }, {property: 'source_id', dataType: 'text'}, {property: 'firstname', dataType: 'text'},];
+    displayPropertyListForScheduledPool = [{property: 'inquiryNumber', dataType: 'text'}, {
+        property: getCourse, dataType: 'function'
+    }, {property: getSource, dataType: 'function'}, {property: getFullName, dataType: 'function'}];
     fillDataIntoTable(tblScheduledPool, scheduledInquiries, displayPropertyListForScheduledPool, rowView,'offCanvasInquirySheet');
 
 //testing code end
