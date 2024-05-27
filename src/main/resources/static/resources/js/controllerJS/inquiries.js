@@ -39,7 +39,7 @@ window.addEventListener('load', () => {
 const refreshInquiriesTable = () => {
 
     //get data with ajax and database
-    inquiriesWithFollowUps = ajaxGetRequest("/Inquiry/processingInquiry");
+    inquiriesWithFollowUps = ajaxGetRequest("/Inquiry/findall");
 
     displayPropertyList = [
         {property: getInquiryId,dataType: 'function'},
