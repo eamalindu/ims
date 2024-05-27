@@ -44,6 +44,7 @@ public interface InquiryDAO extends JpaRepository<Inquiry,Integer> {
 
     //Display all the inquires with max follow-up data
     //This data will be shown in crm-> Dashboard-> schedule pool
+    //this should be edited logic is not correct
     @Query(value = "SELECT i.* FROM steam.inquiry i JOIN ( SELECT * FROM steam.followup WHERE DATE(nextfollowup) = CURDATE() ORDER BY id DESC LIMIT 1) AS followup ON i.id = followup.inquiry_id;",nativeQuery = true)
     List<Inquiry> test2();
 
