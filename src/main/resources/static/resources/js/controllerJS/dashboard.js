@@ -22,7 +22,7 @@ window.addEventListener('load', () => {
 const refreshInquiryPoolTable = () => {
 
     //get data from the database with ajax
-    newInquiries = ajaxGetRequest("/inquiry/newInquiry");
+    newInquiries = ajaxGetRequest("/Inquiry/newInquiry");
     displayPropertyListForInquiryPool = [{property: 'inquiryNumber', dataType: 'text'}, {
         property: getCourse, dataType: 'function'
     }, {property: getSource, dataType: 'function'}, {property: getFullName, dataType: 'function'}];
@@ -31,7 +31,7 @@ const refreshInquiryPoolTable = () => {
 
     //testing code start
 
-    scheduledInquiries = ajaxGetRequest("/inquiry/test2")
+    scheduledInquiries = ajaxGetRequest("/Inquiry/test2")
 
     displayPropertyListForScheduledPool = [{property: 'inquiry_id', dataType: 'text'}, {
         property: 'course_id', dataType: 'text'
@@ -225,7 +225,7 @@ const inquiryUpdate = () => {
 
                 if(result){
                     let postServerResponse;
-                    $.ajax("/inquiry", {
+                    $.ajax("/Inquiry", {
                         type: "PUT",
                         async: false,
                         contentType: "application/json",
@@ -358,7 +358,7 @@ const showNewPool=()=>{
 
 const refreshDashboardWidgets=()=>{
     //getting new inquiry count
-    newInquiryCount = ajaxGetRequest("/inquiry/newinquirycount")
+    newInquiryCount = ajaxGetRequest("/Inquiry/newinquirycount")
     textNewInquiryCount.innerText = newInquiryCount;
 }
 

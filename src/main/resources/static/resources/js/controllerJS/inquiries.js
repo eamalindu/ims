@@ -201,7 +201,7 @@ const inquiryUpdate = () => {
 
                 if(result){
                     let postServerResponse;
-                    $.ajax("/inquiry", {
+                    $.ajax("/Inquiry", {
                         type: "PUT",
                         async: false,
                         contentType: "application/json",

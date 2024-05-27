@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/inquiry")
+@RequestMapping(value = "/Inquiry")
 public class InquiryController {
 
     @Autowired
@@ -45,6 +45,11 @@ public class InquiryController {
     @GetMapping(value = "/newInquiry",produces = "application/json")
     public List<Inquiry> findNewInquiry(){
         return inquiryDAO.findNewInquiry();
+    }
+
+    @GetMapping(value = "/processingInquiry",produces = "application/json")
+    public List<Inquiry> findProcessingInquiry(){
+        return inquiryDAO.findProcessingInquiry();
     }
 
 

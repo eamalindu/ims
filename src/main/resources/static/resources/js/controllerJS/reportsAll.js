@@ -99,7 +99,7 @@ window.addEventListener('load',()=>{
 
 const refreshReportAllTable = () =>{
 
-    allInquiries = ajaxGetRequest("/inquiry/findall");
+    allInquiries = ajaxGetRequest("/Inquiry/findall");
 
     displayPropertyListForReoprtAll = [
         {property: 'inquiryNumber',dataType:'text'},
