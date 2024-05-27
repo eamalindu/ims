@@ -71,7 +71,6 @@ const getCourse = (ob) =>{
 const getInquiryStatus =(ob) => {
 
     if (ob.inquiryStatusId.name === "New Inquiry") {
-
         return '<span class="badge rounded-0" style="background: #1eadea">New Inquiry</span>';
     } else if (ob.inquiryStatusId.name === "Processing") {
         return '<span class="badge rounded-0" style="background: #ea8a1e">Processing</span>';
