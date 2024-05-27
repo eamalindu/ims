@@ -59,7 +59,7 @@ public class InquiryController {
     }
 
     @GetMapping(value = "/test2",produces = "application/json")
-    public List<Map<String,Object>> test2(){
+    public List<Inquiry> test2(){
         return inquiryDAO.test2();
     }
 
