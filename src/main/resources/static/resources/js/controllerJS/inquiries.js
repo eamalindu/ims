@@ -45,8 +45,9 @@ const refreshInquiriesTable = () => {
         {property: getInquiryId,dataType: 'function'},
         {property: getSource,dataType: 'function'},
         {property: getCourse,dataType: 'function'},
-        {property: getFirstName,dataType: 'function'},
-        {property: getMobileNumber,dataType: 'function'},
+        {property: 'firstName',dataType: 'text'},
+        {property: 'primaryMobileNumber',dataType: 'text'},
+        {property: 'addedBy',dataType: 'text'},
         {property: getInquiryStatus,dataType: 'function'}
 
     ];
@@ -65,14 +66,6 @@ const getSource = (ob) => {
 
 const getCourse = (ob) =>{
     return ob.courseId.code;
-}
-
-const getFirstName = (ob) =>{
-    return ob.firstName;
-}
-
-const getMobileNumber = (ob) =>{
-    return ob.primaryMobileNumber;
 }
 
 const getInquiryStatus =(ob) =>{
