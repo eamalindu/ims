@@ -68,13 +68,24 @@ const getCourse = (ob) =>{
     return ob.courseId.code;
 }
 
-const getInquiryStatus =(ob) =>{
+const getInquiryStatus =(ob) => {
 
-    return ob.inquiryStatusId.name;
+    if (ob.inquiryStatusId.name === "New Inquiry") {
+
+        return '<span class="badge rounded-0" style="background: #1eadea">New Inquiry</span>';
+    } else if (ob.inquiryStatusId.name === "Processing") {
+        return '<span class="badge rounded-0" style="background: #ea8a1e">Processing</span>';
+    } else if (ob.inquiryStatusId.name === "Registered") {
+        return '<span class="badge rounded-0" style="background: #3FB618">Registered</span>';
+    } else {
+        return '<span class="badge rounded-0" style="background: #000">Dropped</span>';
+    }
+
+
 }
 
 
-const rowView = (ob,rowIndex)=>{
+const rowView = (ob, rowIndex) => {
 
     //hide the update button
     btnInquirySheetUpdate.style.display = 'none';
