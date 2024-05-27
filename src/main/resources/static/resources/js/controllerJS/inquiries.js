@@ -103,6 +103,8 @@ const rowView = (ob,rowIndex)=>{
     fillSelectOptions(inquirySheetSource,'Please Select a Source',sources,'name',ob.sourceId.name);
     fillSelectOptions(inquirySheetCourse,'Please Select a Course',courses,'name',ob.courseId.name);
 
+
+    inquirySheetIdType.value = ob.idType;
     inquirySheetFirstName.value = ob.firstName;
     inquirySheetLastName.value = ob.lastName;
     inquirySheetPrimaryMobile.value = ob.primaryMobileNumber;
