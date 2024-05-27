@@ -121,13 +121,14 @@ const showFollowupCard =(cardData,container)=>{
     //remove any static codes/divs
     container.innerHTML='';
 
-    // Iterate over the cardData array using forEach
-    cardData.forEach(data => {
-        const [addedDate, addedTime] = data.followUpTime.split("T");
-        const cardDiv = document.createElement('div');
-        cardDiv.className = 'card rounded-0 mb-2';
+    if(cardData.length>0) {
+        // Iterate over the cardData array using forEach
+        cardData.forEach(data => {
+            const [addedDate, addedTime] = data.followUpTime.split("T");
+            const cardDiv = document.createElement('div');
+            cardDiv.className = 'card rounded-0 mb-2';
 
-        cardDiv.innerHTML = `
+            cardDiv.innerHTML = `
         <div class="card-body rounded-0">
             <div class="row">
                 <div class="col-auto text-purple small">
@@ -147,7 +148,19 @@ const showFollowupCard =(cardData,container)=>{
             </div>
         </div>
     `;
-        // Append the card to the container
-        container.appendChild(cardDiv);
-    });
+            // Append the card to the container
+            container.appendChild(cardDiv);
+        });
+    }
+    else {
+
+        container.innerHTML = `<div class="card rounded-0 mb-2">
+            <div class="card-body rounded-0">
+                <div class="row">
+                    <br>
+                    <p class="small card-text text-purple">No Follow-Ups Found!</p>
+                </div>
+            </div>
+        </div>`
+    }
 }
