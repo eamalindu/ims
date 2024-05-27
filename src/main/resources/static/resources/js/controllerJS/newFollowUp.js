@@ -167,7 +167,7 @@ const resetFollowupForm = ()=>{
 
     //set default option chosen
     setTimeout(function () {
-        $('select').val('').trigger('chosen:updated');
+        $('#inquiryFollowUpType').val('').trigger('chosen:updated');
     }, 0);
     //remove validations
     //reset all the inputs validation using their common class name (newFollowupInputs)
