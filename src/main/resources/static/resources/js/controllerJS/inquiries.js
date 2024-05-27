@@ -98,6 +98,8 @@ const rowView = (ob,rowIndex)=>{
     //document.querySelector('#inquirySheetCourse').value = ob.inquiryId.courseId.code;
     //document.querySelector('#inquirySheetSource').value = ob.inquiryId.sourceId.name;
 
+    const courses = ajaxGetRequest("/course/findall");
+    const sources = ajaxGetRequest("/source/findall");
     fillSelectOptions(inquirySheetSource,'Please Select a Source',sources,'name',ob.sourceId.name);
     fillSelectOptions(inquirySheetCourse,'Please Select a Course',courses,'name',ob.courseId.name);
 
