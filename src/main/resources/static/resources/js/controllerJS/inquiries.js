@@ -98,18 +98,18 @@ const rowView = (ob,rowIndex)=>{
     //document.querySelector('#inquirySheetCourse').value = ob.inquiryId.courseId.code;
     //document.querySelector('#inquirySheetSource').value = ob.inquiryId.sourceId.name;
 
-    fillSelectOptions(inquirySheetSource,'Please Select a Source',sources,'name',ob.inquiryId.sourceId.name);
-    fillSelectOptions(inquirySheetCourse,'Please Select a Course',courses,'name',ob.inquiryId.courseId.name);
+    fillSelectOptions(inquirySheetSource,'Please Select a Source',sources,'name',ob.sourceId.name);
+    fillSelectOptions(inquirySheetCourse,'Please Select a Course',courses,'name',ob.courseId.name);
 
-    inquirySheetFirstName.value = ob.inquiryId.firstName;
-    inquirySheetLastName.value = ob.inquiryId.lastName;
-    inquirySheetPrimaryMobile.value = ob.inquiryId.primaryMobileNumber;
+    inquirySheetFirstName.value = ob.firstName;
+    inquirySheetLastName.value = ob.lastName;
+    inquirySheetPrimaryMobile.value = ob.primaryMobileNumber;
 
     //email is an optional value therefore it might contain null as the value
     //instead of displaying nothing, we can use if condition to set a value
 
-    if(ob.inquiryId.email!==null){
-        inquirySheetEmail.value = ob.inquiryId.email;
+    if(ob.email!==null){
+        inquirySheetEmail.value = ob.email;
         inquirySheetEmail.classList.remove('text-muted');
 
     }
@@ -119,8 +119,8 @@ const rowView = (ob,rowIndex)=>{
         inquirySheetEmail.classList.add('text-muted');
     }
 
-    if(ob.inquiryId.secondaryMobileNumber !== null){
-        inquirySheetSecondaryMobile.value =ob.inquiryId.secondaryMobileNumber ;
+    if(ob.secondaryMobileNumber !== null){
+        inquirySheetSecondaryMobile.value =ob.secondaryMobileNumber ;
         inquirySheetSecondaryMobile.classList.remove('text-muted');
 
     }else{
@@ -128,21 +128,21 @@ const rowView = (ob,rowIndex)=>{
         inquirySheetSecondaryMobile.classList.add('text-muted');
     }
 
-    inquirySheetIdValue.value = ob.inquiryId.idValue;
+    inquirySheetIdValue.value = ob.idValue;
 
     //showing date and time with iSO Standarad
-    inquirySheetNextFollowUp.value = (ob.inquiryId.contactTime).replace('T', ' ');
-    inquirySheetDescription.value = ob.inquiryId.description;
+    inquirySheetNextFollowUp.value = (ob.contactTime).replace('T', ' ');
+    inquirySheetDescription.value = ob.description;
 
-    const [addedDate, addedTime] = ob.inquiryId.timeStamp.split("T");
+    const [addedDate, addedTime] = ob.timeStamp.split("T");
     inquirySheetAddedDate.innerText = addedDate;
     inquirySheetAddedTime.innerText = addedTime;
-    inquirySheetAddedBy.innerText = ob.inquiryId.addedBy;
+    inquirySheetAddedBy.innerText = ob.addedBy;
 
-    currentInquiry = ob.inquiryId;
+    currentInquiry = ob;
 
     //get all the followups for the particular inquiry
-    followups = ajaxGetRequest("/followup/getById/"+ob.inquiryId.id);
+    followups = ajaxGetRequest("/followup/getById/"+ob.id);
     showFollowupCard(followups,followupsList);
 
 }
