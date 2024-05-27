@@ -39,7 +39,7 @@ window.addEventListener('load', () => {
 const refreshInquiriesTable = () => {
 
     //get data with ajax and database
-    inquiriesWithFollowUps = ajaxGetRequest("/followup/latestFollowup");
+    inquiriesWithFollowUps = ajaxGetRequest("/Inquiry/processingInquiry");
 
     displayPropertyList = [
         {property: getInquiryId,dataType: 'function'},
@@ -47,10 +47,6 @@ const refreshInquiriesTable = () => {
         {property: getCourse,dataType: 'function'},
         {property: getFirstName,dataType: 'function'},
         {property: getMobileNumber,dataType: 'function'},
-        {property: 'feeling',dataType: 'text'},
-        {property: 'confirmed',dataType: 'text'},
-        {property: 'addedBy',dataType: 'text'},
-        {property: getNextFollowup,dataType: 'function'},
         {property: getInquiryStatus,dataType: 'function'}
 
     ];
@@ -60,33 +56,30 @@ const refreshInquiriesTable = () => {
 }
 
 const getInquiryId = (ob) =>{
-    return ob.inquiryId.inquiryNumber;
+    return ob.inquiryNumber;
 
 }
 const getSource = (ob) => {
-    return ob.inquiryId.sourceId.name;
+    return ob.sourceId.name;
 };
 
 const getCourse = (ob) =>{
-    return ob.inquiryId.courseId.code;
+    return ob.courseId.code;
 }
 
 const getFirstName = (ob) =>{
-    return ob.inquiryId.firstName;
+    return ob.firstName;
 }
 
 const getMobileNumber = (ob) =>{
-    return ob.inquiryId.primaryMobileNumber;
+    return ob.primaryMobileNumber;
 }
 
 const getInquiryStatus =(ob) =>{
 
-    return ob.inquiryId.inquiryStatusId.name;
+    return ob.inquiryStatusId.name;
 }
 
-const getNextFollowup = (ob)=>{
-    return ob.nextFollowup.replace('T', ' ');
-}
 
 const rowView = (ob,rowIndex)=>{
 
