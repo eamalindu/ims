@@ -57,7 +57,7 @@ public class EmployeeController {
         try{
             //set auto generated values
             employee.setAdded_timestamp(LocalDateTime.now());
-            employee.setEmployeeID("EMP005");
+            employee.setEmployeeID("EMP006");
 
             employeeDAO.save(employee);
             return "OK";
