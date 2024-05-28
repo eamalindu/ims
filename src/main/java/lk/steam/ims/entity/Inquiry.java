@@ -71,7 +71,7 @@ public class Inquiry {
     private Integer latestFollowUpID;
 
     @Column(name = "nextfollowupdatetime")
-    private String nextFollowUpDateTime;
+    private LocalDateTime nextFollowUpDateTime;
 
     @Column(name = "registrationid")
     private Integer registrationID;
