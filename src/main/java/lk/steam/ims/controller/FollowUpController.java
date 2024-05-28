@@ -77,11 +77,19 @@ public class FollowUpController {
                 //This means the current inquiry is a processing inquiry
                 //followups can be added
 
+                //get inquiry from the followUp object
+                Inquiry currentInquiry = inquiryDAO.getReferenceById(followUp.getInquiryId().getId());
                 //set auto generated values
                 followUp.setFollowUpTime(LocalDateTime.now());
                 followUp.setAddedBy("User1");
 
-                followUpDAO.save(followUp);
+                FollowUp currentFollowup = followUpDAO.save(followUp);
+
+                currentInquiry.setLatestFollowUpID(currentFollowup.getId());
+                currentInquiry.setNextFollowUpDateTime(currentFollowup.getFollowUpTime());
+
+                //save inquiry
+                inquiryDAO.save(currentInquiry);
 
                 return "OK";
 
