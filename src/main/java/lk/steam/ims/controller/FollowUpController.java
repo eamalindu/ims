@@ -58,7 +58,7 @@ public class FollowUpController {
                 FollowUp currentFollowup = followUpDAO.save(followUp);
 
                 currentInquiry.setLatestFollowUpID(currentFollowup.getId());
-                currentInquiry.setNextFollowUpDateTime(currentFollowup.getFollowUpTime());
+                currentInquiry.setNextFollowUpDateTime(currentFollowup.getNextFollowup());
 
                 //save inquiry
                 inquiryDAO.save(currentInquiry);
@@ -86,7 +86,7 @@ public class FollowUpController {
                 FollowUp currentFollowup = followUpDAO.save(followUp);
 
                 currentInquiry.setLatestFollowUpID(currentFollowup.getId());
-                currentInquiry.setNextFollowUpDateTime(currentFollowup.getFollowUpTime());
+                currentInquiry.setNextFollowUpDateTime(currentFollowup.getNextFollowup());
 
                 //save inquiry
                 inquiryDAO.save(currentInquiry);
