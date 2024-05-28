@@ -32,7 +32,7 @@ const refreshInquiryPoolTable = () => {
 
     //testing code start
 
-    scheduledInquiries = ajaxGetRequest("/Inquiry/test2")
+    scheduledInquiries = ajaxGetRequest("/Inquiry/getInquiriesWithFollowUpsToday")
 
     displayPropertyListForScheduledPool = [{property: 'inquiryNumber', dataType: 'text'}, {
         property: getCourse, dataType: 'function'
