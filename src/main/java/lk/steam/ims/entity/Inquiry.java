@@ -70,6 +70,9 @@ public class Inquiry {
     @Column(name = "latestfollowupid")
     private Integer latestFollowUpID;
 
+    @Column(name = "nextfollowupdatetime")
+    private String nextFollowUpDateTime;
+
     @Column(name = "registrationid")
     private Integer registrationID;
 
