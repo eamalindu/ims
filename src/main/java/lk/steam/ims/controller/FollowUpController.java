@@ -49,8 +49,7 @@ public class FollowUpController {
                 Inquiry currentInquiry = inquiryDAO.getReferenceById(followUp.getInquiryId().getId());
                 //change inquiry status to 2
                 currentInquiry.setInquiryStatusId(new InquiryStatus(2, "Processing"));
-                //save inquiry
-                inquiryDAO.save(currentInquiry);
+
 
                 //set auto generated values
                 followUp.setFollowUpTime(LocalDateTime.now());
@@ -61,6 +60,8 @@ public class FollowUpController {
                 currentInquiry.setLatestFollowUpID(currentFollowup.getId());
                 currentInquiry.setNextFollowUpDateTime(currentFollowup.getFollowUpTime());
 
+                //save inquiry
+                inquiryDAO.save(currentInquiry);
                 return "OK";
 
             } else if (followUp.getInquiryId().getInquiryStatusId().getId() == 3) {
