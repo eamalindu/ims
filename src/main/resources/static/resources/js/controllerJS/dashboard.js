@@ -361,6 +361,8 @@ const refreshDashboardWidgets=()=>{
     //getting new inquiry count
     newInquiryCount = ajaxGetRequest("/Inquiry/newinquirycount")
     textNewInquiryCount.innerText = newInquiryCount;
+    textScheduledInquiryCount.innerText = scheduledInquiries.length;
+
 }
 
 const logout = ()=>{
