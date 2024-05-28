@@ -56,7 +56,10 @@ public class FollowUpController {
                 followUp.setFollowUpTime(LocalDateTime.now());
                 followUp.setAddedBy("User1");
                 //save followup
-                followUpDAO.save(followUp);
+                FollowUp currentFollowup = followUpDAO.save(followUp);
+
+                currentInquiry.setLatestFollowUpID(currentFollowup.getId());
+                currentInquiry.setNextFollowUpDateTime(currentFollowup.getFollowUpTime());
 
                 return "OK";
 
