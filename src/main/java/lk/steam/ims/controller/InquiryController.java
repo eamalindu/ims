@@ -58,9 +58,9 @@ public class InquiryController {
         return inquiryDAO.test();
     }
 
-    @GetMapping(value = "/test2",produces = "application/json")
-    public List<Inquiry> test2(){
-        return inquiryDAO.test2();
+    @GetMapping(value = "/getInquiriesWithFollowUpsToday",produces = "application/json")
+    public List<Inquiry> getInquiriesWithFollowUpsToday(){
+        return inquiryDAO.getInquiriesWithFollowUpsToday();
     }
 
     @GetMapping(value = "/newinquirycount",produces = "application/json")
