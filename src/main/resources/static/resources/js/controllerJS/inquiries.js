@@ -70,6 +70,8 @@ const refreshInquiriesTable = () => {
 
     fillDataIntoTable(tblInquiry,inquiriesWithFollowUps,displayPropertyList,rowView,'offCanvasInquirySheet');
 
+    $('#tblInquiry').dataTable();
+
 }
 
 const getInquiryId = (ob) =>{
