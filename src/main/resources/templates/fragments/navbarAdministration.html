@@ -13,12 +13,12 @@
             </ul>
             <!-- Navbar Right side -->
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link text-white custom-width-max-content" href="">Sources</a></li>
-                <li class="nav-item"><a class="nav-link text-white custom-width-max-content" href="">Commission</a></li>
-                <li class="nav-item"><a class="nav-link text-white custom-width-max-content custom-active" href="Employee">Employees</a>
+                <li class="nav-item"><a th:attr="class=${activeNavItem=='source' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="">Sources</a></li>
+                <li class="nav-item"><a th:attr="class=${activeNavItem=='commission' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="">Commission</a></li>
+                <li class="nav-item"><a th:attr="class=${activeNavItem=='employee' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="Employee">Employees</a>
                 </li>
-                <li class="nav-item"><a class="nav-link text-white custom-width-max-content " href="User">Users</a></li>
-                <li class="nav-item"><a class="nav-link text-white custom-width-max-content" href="Privilege">Privileges</a></li>
+                <li class="nav-item"><a th:attr="class=${activeNavItem=='user' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="User">Users</a></li>
+                <li class="nav-item"><a th:attr="class=${activeNavItem=='privilege' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="Privilege">Privileges</a></li>
                 <li class="nav-item dropdown-center custom-width-max-content p-0">
                     <button aria-expanded="false" id="btnProfileName"
                             class="nav-link btn bg-steam-green text-capitalize text-white dropdown-toggle custom-width-max-content border-0"
