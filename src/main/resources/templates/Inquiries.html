@@ -90,7 +90,7 @@
                 Drop Inquiry
             </button>
         </div>
-        <h3 class="align-items-center" style="text-transform: uppercase; font-size: medium; font-weight: bold; font-family: Arial, serif;">Inquiry Sheet</h3>
+        <h3 class="align-items-center mt-2" style="text-transform: uppercase; font-size: medium; font-weight: bold; font-family: Arial, serif;">Inquiry Sheet</h3>
     </div>
     <!-- Collapse for Follow-up Start -->
     <div class="collapse container mt-2" id="collapseFollowUp">
@@ -186,6 +186,10 @@
     </div>
     <!-- Collapse for Follow-up End -->
     <div class="offcanvas-body">
+        <div class="text-center w-75 mx-auto mt-2">
+            <span class="align-items-center display-3" id="batchSheetCode" style="text-transform: uppercase;font-weight: bold;font-family: Arial, serif;">2024-DiT-1</span>
+            <p class="text-muted lh-sm small">This Inquiry was Created by <span class="fw-bold" id="inquirySheetAddedBy"></span> on <span class="fw-bold" id="inquirySheetAddedDate"></span> at <span class="fw-bold" id="inquirySheetAddedTime"></span></p>
+        </div>
         <table class="table table-bordered table-responsive mb-2">
             <tbody class="small align-middle">
             <tr>
@@ -279,14 +283,6 @@
             </tr>
             </tbody>
         </table>
-        <!-- Show Added-by and added time of the inquiry here -->
-        <div class="card rounded-0 mb-2">
-            <div class="card-body rounded-0 pb-0">
-                <p class="small text-muted text-center">
-                    This Inquiry was Created by <span class="fw-bold" id="inquirySheetAddedBy"></span> on <span class="fw-bold" id="inquirySheetAddedDate"></span> at <span class="fw-bold" id="inquirySheetAddedTime"></span>.
-                </p>
-            </div>
-        </div>
 
         <div class="btn btn-sm bg-purple text-white rounded-0 mb-2">Follow Ups</div>
         <!-- List out follow-ups From the database-->
