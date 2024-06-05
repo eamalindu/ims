@@ -95,6 +95,7 @@ const rowView = (ob, rowIndex) => {
     //show follow and drop button
     collapseFollowUpButton.classList.remove('d-none');
     btnInquirySheetDelete.classList.remove('d-none');
+    btnInquirySheetEdit.classList.remove('d-none');
 
 
     //set inquirySheetCode
@@ -119,6 +120,13 @@ const rowView = (ob, rowIndex) => {
         inquirySheetCode.classList.remove('text-warning');
         inquirySheetCode.classList.remove('text-sucess');
         inquirySheetCode.classList.remove('text-info');
+
+    //hide the update button
+        btnInquirySheetUpdate.style.display = 'none';
+        //show follow and drop button
+        collapseFollowUpButton.classList.add('d-none');
+        btnInquirySheetDelete.classList.add('d-none');
+        btnInquirySheetEdit.classList.add('d-none');
     }
     else if (ob.inquiryStatusId.name === "Completed"){
         inquirySheetCode.classList.add('text-info');
@@ -126,6 +134,14 @@ const rowView = (ob, rowIndex) => {
         inquirySheetCode.classList.remove('text-warning');
         inquirySheetCode.classList.remove('text-purple');
         inquirySheetCode.classList.remove('text-sucess');
+
+        //hide the update button
+        btnInquirySheetUpdate.style.display = 'none';
+        //show follow and drop button
+        collapseFollowUpButton.classList.add('d-none');
+        btnInquirySheetDelete.classList.add('d-none');
+        btnInquirySheetEdit.classList.add('d-none');
+
 
     }
     else {
