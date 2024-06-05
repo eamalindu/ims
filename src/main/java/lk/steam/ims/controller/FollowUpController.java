@@ -67,13 +67,19 @@ public class FollowUpController {
             } else if (followUp.getInquiryId().getInquiryStatusId().getId() == 3) {
                 //This means the current inquiry is a registered inquiry
                 //no followups cannot be added
-                return "<br>This Inquiry is Already Registered! <br><br><small class='text-muted'>Followups cannot be added to <b>Registered</b> Inquiries<small>";
+                return "<br>This Inquiry is Already Registered! <br><br><small class='text-muted'>Followups cannot be added to <span class='text-purple'>Registered</span> Inquiries<small>";
 
             } else if (followUp.getInquiryId().getInquiryStatusId().getId() == 4) {
                 //This means the current inquiry is a dropped inquiry
                 //no followups cannot be added
-                return "<br>This Inquiry is Dropped! <br><br><small class='text-muted'>Followups cannot be added to <b>Dropped</b> Inquiries<small>";
-            } else {
+                return "<br>This Inquiry is Dropped! <br><br><small class='text-muted'>Followups cannot be added to <span class='text-purple'>Dropped</span> Inquiries<small>";
+            } else if (followUp.getInquiryId().getInquiryStatusId().getId() == 5) {
+                //This means the current inquiry is a dropped inquiry
+                //no followups cannot be added
+                return "<br>This Inquiry is Completed! <br><br><small class='text-muted'>Followups cannot be added to <span class='text-purple'>Completed</span> Inquiries<small>";
+            }
+
+            else {
                 //This means the current inquiry is a processing inquiry
                 //followups can be added
 
