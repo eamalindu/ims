@@ -97,6 +97,44 @@ const rowView = (ob, rowIndex) => {
     btnInquirySheetDelete.classList.remove('d-none');
 
 
+    //set inquirySheetCode
+    inquirySheetCode.innerText = ob.inquiryNumber;
+    if (ob.inquiryStatusId.name === "New Inquiry") {
+        inquirySheetCode.classList.add('text-success');
+
+        inquirySheetCode.classList.remove('text-warning');
+        inquirySheetCode.classList.remove('text-purple');
+        inquirySheetCode.classList.remove('text-info');
+
+    } else if (ob.inquiryStatusId.name === "Processing") {
+        inquirySheetCode.classList.add('text-warning');
+
+        inquirySheetCode.classList.remove('text-sucess');
+        inquirySheetCode.classList.remove('text-purple');
+        inquirySheetCode.classList.remove('text-info');
+
+    } else if (ob.inquiryStatusId.name === "Registered") {
+        inquirySheetCode.classList.add('text-purple');
+
+        inquirySheetCode.classList.remove('text-warning');
+        inquirySheetCode.classList.remove('text-sucess');
+        inquirySheetCode.classList.remove('text-info');
+    }
+    else if (ob.inquiryStatusId.name === "Completed"){
+        inquirySheetCode.classList.add('text-info');
+
+        inquirySheetCode.classList.remove('text-warning');
+        inquirySheetCode.classList.remove('text-purple');
+        inquirySheetCode.classList.remove('text-sucess');
+
+    }
+    else {
+        inquirySheetCode.classList.remove('text-warning');
+        inquirySheetCode.classList.remove('text-sucess');
+        inquirySheetCode.classList.remove('text-purple');
+        inquirySheetCode.classList.remove('text-info');
+    }
+
     //reset followup form
     resetFollowupForm()
     // //close the collapse
