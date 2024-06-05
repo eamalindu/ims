@@ -36,6 +36,16 @@ window.addEventListener('load', () => {
         }, 0);
     });
 
+    $("#inquirySearchSource").chosen().change(function () {
+        $("#inquirySearchSource_chosen .chosen-single").addClass('bg-light');
+    });
+    $("#inquirySearchCourse").chosen().change(function () {
+        $("#inquirySearchCourse_chosen .chosen-single").addClass('bg-light');
+    });
+    $("#inquirySearchCounsellor").chosen().change(function () {
+        $("#inquirySearchCounsellor_chosen .chosen-single").addClass('bg-light');
+    });
+
 });
 
 
