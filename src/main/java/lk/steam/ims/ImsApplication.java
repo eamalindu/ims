@@ -49,6 +49,10 @@ public class ImsApplication {
 		imsAdminView.addObject("title","Administrations | STEAM IMS");
 		imsAdminView.setViewName("administrations.html");
 		imsAdminView.addObject("activeNavItem","administrations");
+		String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+		String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+		imsAdminView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+		imsAdminView.addObject("loggedInDesignationName",loggedInDesignationName);
 
 		return imsAdminView;
 	}
