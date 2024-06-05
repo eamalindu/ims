@@ -750,15 +750,6 @@
 <script src="/resources/js/controllerJS/newInquiry.js" type="text/javascript"></script>
 <script src="/resources/js/controllerJS/newFollowUp.js" type="text/javascript"></script>
 <script src="/resources/js/controllerJS/dashboard.js" type="text/javascript"></script>
-<script>
-    const success = () => {
-        confetti({
-            particleCount: 400,
-            spread: 70,
-            origin: {y: 0.6},
-            zIndex: 1100,
-        });
-    }
-</script>
+<script th:replace="~{ fragments/logout :: logoutScript}"></script>
 </body>
 </html>
