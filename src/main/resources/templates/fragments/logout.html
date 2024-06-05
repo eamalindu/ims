@@ -1,1 +1,14 @@
-initial
+<script th:fragment="logoutScript">
+    const logout = ()=>{
+        showCustomConfirm("<span class='text-capitalize text-purple'>"+btnProfileName.innerText+"</span>, You are About to <br>Logout from the System<br><br> are you sure?",function (result){
+
+            if(result){
+                window.location.assign("/logout");
+            }
+            else{
+
+            }
+
+        });
+    }
+</script>
