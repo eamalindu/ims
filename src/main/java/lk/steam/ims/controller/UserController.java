@@ -3,6 +3,8 @@ package lk.steam.ims.controller;
 import lk.steam.ims.dao.UserDAO;
 import lk.steam.ims.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,8 +24,17 @@ public class UserController {
 
     @GetMapping
     public ModelAndView userUI(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView userView = new ModelAndView();
         userView.setViewName("user.html");
+
+        userView.addObject("username",auth.getName());
+        userView.addObject("title","Manage Users | STEAM IMS");
+        userView.addObject("activeNavItem","user");
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        userView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        userView.addObject("loggedInDesignationName",loggedInDesignationName);
         return  userView;
     }
 
