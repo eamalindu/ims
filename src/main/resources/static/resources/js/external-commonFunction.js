@@ -41,7 +41,7 @@ const fillSelectOptions = (elementID, message, dataList, displayProperty, select
 //1) url -> java mapping (service url)
 //This function will return the data as an array
 
-const fillMultiSelectOptions=(elementID, message, dataList,displayProperty,selectedValueArray)=>{
+const fillMultiSelectOptions = (elementID, message, dataList, displayProperty, selectedValueArray) => {
     const selectElement = elementID;
     selectElement.innerHTML = '';
     if (message !== '') {
@@ -68,22 +68,17 @@ const fillMultiSelectOptions=(elementID, message, dataList,displayProperty,selec
 
 }
 //Example -> ajaxGetRequest("/employee/findall")
-const ajaxGetRequest = (url) =>{
+const ajaxGetRequest = (url) => {
     $('.loading-overlay').show();
     let Response;
     $.ajax(url, {
-        async: false,
-        type: "Get",
-        contentType: "json",
-        success: function (data) {
+        async: false, type: "Get", contentType: "json", success: function (data) {
             console.log(data);
             Response = data;
-        },
-        error: function (resOb) {
+        }, error: function (resOb) {
             alert("error" + resOb);
             Response = resOb;
-        },
-        complete: function () {
+        }, complete: function () {
             // Hide loading animation
             $('.loading-overlay').hide();
         }
@@ -93,7 +88,7 @@ const ajaxGetRequest = (url) =>{
 
 }
 
-const ajaxHttpRequest = (url,method,dataObject)=>{
+const ajaxHttpRequest = (url, method, dataObject) => {
     let serviceRequestResponse;
 
     $.ajax(url, {
@@ -116,12 +111,12 @@ const ajaxHttpRequest = (url,method,dataObject)=>{
 //test code to show all the followups when an inquiry object is given
 //need to implement a backend service (to get followup details when an inquiry is given)
 //need to ask
-const showFollowupCard =(cardData,container)=>{
+const showFollowupCard = (cardData, container) => {
 
     //remove any static codes/divs
-    container.innerHTML='';
+    container.innerHTML = '';
 
-    if(cardData.length>0) {
+    if (cardData.length > 0) {
         // Iterate over the cardData array using forEach
         cardData.forEach(data => {
             const [addedDate, addedTime] = data.followUpTime.split("T");
@@ -143,16 +138,26 @@ const showFollowupCard =(cardData,container)=>{
                     <i class="fa-solid fa-user" aria-hidden="true"></i>
                     ${data.addedBy}
                 </div>
-                <br>
-                <p class="small card-text">${data.content}</p>
+                
             </div>
+            <div class="row mt-2">
+            <div class="col-8">
+                    <p class="small  card-text mb-0"><span class="fw-bold">FeedBack</span> <br> ${data.content}</p>
+            </div>
+             <div class="col-2 text-center border border-start border-bottom-0 border-end-0 border-top-0">
+                 <p class="small card-text mb-0"><span class="fw-bold">Confirmed</span>  ${data.confirmed}</p>
+             </div>
+             <div class="col-2 text-center border border-start border-bottom-0 border-end-0 border-top-0">
+                  <p class="small card-text mb-0"><span class="fw-bold">Feeling</span>  ${data.feeling}</p>
+             </div>
+                
+             </div>
         </div>
     `;
             // Append the card to the container
             container.appendChild(cardDiv);
         });
-    }
-    else {
+    } else {
 
         container.innerHTML = `<div class="card rounded-0 mb-2">
             <div class="card-body rounded-0">
