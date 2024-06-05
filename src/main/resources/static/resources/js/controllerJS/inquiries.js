@@ -31,6 +31,9 @@ window.addEventListener('load', () => {
 
     //reset chosen select using jquery
     $('#btn-reset').on('click', function () {
+        $("#inquirySearchSource_chosen .chosen-single").removeClass('bg-light');
+        $("#inquirySearchCourse_chosen .chosen-single").removeClass('bg-light');
+        $("#inquirySearchCounsellor_chosen .chosen-single").removeClass('bg-light');
         setTimeout(function () {
             $('.chosen-inquiry-search').val('').trigger('chosen:updated');
         }, 0);
