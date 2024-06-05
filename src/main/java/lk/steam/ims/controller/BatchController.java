@@ -1,6 +1,7 @@
 package lk.steam.ims.controller;
 
 import lk.steam.ims.dao.BatchDAO;
+import lk.steam.ims.dao.UserDAO;
 import lk.steam.ims.entity.Batch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -19,6 +20,8 @@ public class BatchController {
 
     @Autowired
     private BatchDAO batchDAO;
+    @Autowired
+    private UserDAO userDAO;
 
     @GetMapping(value = "/findall",produces = "application/json")
     public List<Batch> findAll(){
@@ -34,6 +37,10 @@ public class BatchController {
         scheduleView.addObject("username",auth.getName());
         scheduleView.addObject("title","Schedules | STEAM IMS");
         scheduleView.addObject("activeNavItem","schedules");
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        scheduleView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        scheduleView.addObject("loggedInDesignationName",loggedInDesignationName);
         return scheduleView;
     }
 
