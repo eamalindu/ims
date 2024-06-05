@@ -107,7 +107,7 @@ const rowView = (ob, rowIndex) => {
 
     });
 
-    inquirySheetId.innerText = getInquiryId(ob);
+    //inquirySheetId.innerText = getInquiryId(ob);
 
     //document.querySelector('#inquirySheetCourse').value = ob.inquiryId.courseId.code;
     //document.querySelector('#inquirySheetSource').value = ob.inquiryId.sourceId.name;
