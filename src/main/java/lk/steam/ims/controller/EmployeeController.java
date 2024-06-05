@@ -39,6 +39,11 @@ public class EmployeeController {
         return employeeDAO.getEmployeesWithoutUserAccount();
     }
 
+    @GetMapping(value = "/getActiveCounsellors",produces = "application/json")
+    public List<Employee> getActiveCounsellors(){
+        return employeeDAO.getActiveCounsellors();
+    }
+
     @PutMapping
     public String updateEmployee(@RequestBody Employee employee){
         try {
