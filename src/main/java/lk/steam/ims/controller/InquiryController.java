@@ -1,6 +1,7 @@
 package lk.steam.ims.controller;
 
 import lk.steam.ims.dao.InquiryDAO;
+import lk.steam.ims.dao.InquiryStatusDAO;
 import lk.steam.ims.entity.Inquiry;
 import lk.steam.ims.entity.InquiryStatus;
 import lk.steam.ims.entity.Privilege;
@@ -21,6 +22,8 @@ public class InquiryController {
     private InquiryDAO inquiryDAO;
     @Autowired
     private PrivilegeController privilegeController;
+    @Autowired
+    private InquiryStatusDAO inquiryStatusDAO;
 
     //data returnType => 'produces ="application/JSON"'
     //it can be either JSON,Text and XML
@@ -91,7 +94,7 @@ public class InquiryController {
             inquiry.setTimeStamp(LocalDateTime.now());
 
             //set inquiryStatus as 1 (New Inquiry)
-            inquiry.setInquiryStatusId(new InquiryStatus(1,"New Inquiry"));
+            inquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(1));
 
             //set InquiryNumber
             String inqNextNumber = inquiryDAO.getNextInquiryNumber();
