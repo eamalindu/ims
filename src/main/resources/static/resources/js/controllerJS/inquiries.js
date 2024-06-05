@@ -96,10 +96,12 @@ const rowView = (ob, rowIndex) => {
     collapseFollowUpButton.classList.remove('d-none');
     btnInquirySheetDelete.classList.remove('d-none');
     btnInquirySheetEdit.classList.remove('d-none');
-
+    extraInformationForInquiry.classList.add('d-none')
 
     //set inquirySheetCode
     inquirySheetCode.innerText = ob.inquiryNumber;
+    currentStatus.innerText = ob.inquiryStatusId.name;
+
     if (ob.inquiryStatusId.name === "New Inquiry") {
         inquirySheetCode.classList.add('text-success');
 
@@ -127,6 +129,8 @@ const rowView = (ob, rowIndex) => {
         collapseFollowUpButton.classList.add('d-none');
         btnInquirySheetDelete.classList.add('d-none');
         btnInquirySheetEdit.classList.add('d-none');
+
+        extraInformationForInquiry.classList.remove('d-none')
     }
     else if (ob.inquiryStatusId.name === "Completed"){
         inquirySheetCode.classList.add('text-info');
@@ -141,6 +145,8 @@ const rowView = (ob, rowIndex) => {
         collapseFollowUpButton.classList.add('d-none');
         btnInquirySheetDelete.classList.add('d-none');
         btnInquirySheetEdit.classList.add('d-none');
+
+        extraInformationForInquiry.classList.remove('d-none')
 
 
     }
