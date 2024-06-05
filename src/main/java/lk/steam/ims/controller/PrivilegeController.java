@@ -1,6 +1,7 @@
 package lk.steam.ims.controller;
 
 import lk.steam.ims.dao.PrivilegeDAO;
+import lk.steam.ims.dao.UserDAO;
 import lk.steam.ims.entity.Privilege;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,6 +17,8 @@ public class PrivilegeController {
 
     @Autowired
     private PrivilegeDAO privilegeDAO;
+    @Autowired
+    private UserDAO userDAO;
 
     @GetMapping(value = "/byModule/{moduleName}")
     public Privilege getPrivilegeByModule(@PathVariable String moduleName) {
@@ -48,8 +51,18 @@ public class PrivilegeController {
 
     @GetMapping
     public ModelAndView privilegeUI() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         ModelAndView privilegeView = new ModelAndView();
         privilegeView.setViewName("privileges.html");
+
+        privilegeView.addObject("username",auth.getName());
+        privilegeView.addObject("title","Manage Privileges | STEAM IMS");
+        privilegeView.addObject("activeNavItem","privilege");
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        privilegeView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        privilegeView.addObject("loggedInDesignationName",loggedInDesignationName);
         return privilegeView;
     }
 
