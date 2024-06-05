@@ -13,6 +13,9 @@ window.addEventListener('load', () => {
     sources = ajaxGetRequest("/source/findall")
     fillSelectOptions(inquirySearchSource,' ',sources,'name')
 
+    counsellors = ajaxGetRequest("/Employee/getActiveCounsellors")
+    fillSelectOptions(inquirySearchCounsellor,' ',counsellors,'fullName')
+
     //need to add counsellors also (db not implemented yet)
     //dynamic select end
 
@@ -27,9 +30,9 @@ window.addEventListener('load', () => {
     });
 
     //reset chosen select using jquery
-    $('button[type=reset]').on('click', function () {
+    $('#btn-reset').on('click', function () {
         setTimeout(function () {
-            $('select').trigger('chosen:updated');
+            $('.chosen-inquiry-search').val('').trigger('chosen:updated');
         }, 0);
     });
 
