@@ -21,7 +21,7 @@ public class WebConfig {
             auth
                     .requestMatchers("/login").permitAll()
                     .requestMatchers("/CreateAdmin").permitAll()
-                    .requestMatchers("/Employee/**").hasAnyAuthority("Admin","Manager")
+                    .requestMatchers("/Employee").hasAnyAuthority("Admin","Manager")
                     .requestMatchers("/User/**").hasAnyAuthority("Admin","Manager")
                     .requestMatchers("/Administrations/**").hasAnyAuthority("Admin","Manager")
                     .requestMatchers("/error").permitAll()
