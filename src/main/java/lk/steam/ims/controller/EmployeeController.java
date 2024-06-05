@@ -33,8 +33,8 @@ public class EmployeeController {
         employeeView.setViewName("employee.html");
 
         employeeView.addObject("username",auth.getName());
-        employeeView.addObject("title","Schedules | STEAM IMS");
-        employeeView.addObject("activeNavItem","schedules");
+        employeeView.addObject("title","Manage Employees | STEAM IMS");
+        employeeView.addObject("activeNavItem","employee");
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
         employeeView.addObject("loggedInEmployeeName",loggedInEmployeeName);
