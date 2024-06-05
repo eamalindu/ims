@@ -2,9 +2,12 @@ package lk.steam.ims.controller;
 
 import lk.steam.ims.dao.EmployeeDAO;
 import lk.steam.ims.dao.EmployeeStatusDAO;
+import lk.steam.ims.dao.UserDAO;
 import lk.steam.ims.entity.Employee;
 import lk.steam.ims.entity.EmployeeStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,11 +22,23 @@ public class EmployeeController {
     private EmployeeDAO employeeDAO;
     @Autowired
     private EmployeeStatusDAO employeeStatusDAO;
+    @Autowired
+    private UserDAO userDAO;
 
     @GetMapping
     public ModelAndView employeeUI() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         ModelAndView employeeView = new ModelAndView();
         employeeView.setViewName("employee.html");
+
+        employeeView.addObject("username",auth.getName());
+        employeeView.addObject("title","Schedules | STEAM IMS");
+        employeeView.addObject("activeNavItem","schedules");
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        employeeView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        employeeView.addObject("loggedInDesignationName",loggedInDesignationName);
         return employeeView;
     }
 
