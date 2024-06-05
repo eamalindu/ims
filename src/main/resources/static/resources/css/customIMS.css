@@ -348,6 +348,9 @@ select:invalid[multiple] {
 .newUserInputs{
     font-size: 13px;
 }
+.newFollowupInputs{
+    font-size: 13px;
+}
 /*overriding default*/
 .form-select:disabled {
     background-color: white;
