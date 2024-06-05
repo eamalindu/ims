@@ -2,10 +2,14 @@ package lk.steam.ims.controller;
 
 import lk.steam.ims.dao.FollowUpDAO;
 import lk.steam.ims.dao.InquiryDAO;
+import lk.steam.ims.dao.InquiryStatusDAO;
 import lk.steam.ims.entity.FollowUp;
 import lk.steam.ims.entity.Inquiry;
 import lk.steam.ims.entity.InquiryStatus;
+import lk.steam.ims.entity.Privilege;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -19,6 +23,10 @@ public class FollowUpController {
 
     @Autowired
     private InquiryDAO inquiryDAO;
+    @Autowired
+    private PrivilegeController privilegeController;
+    @Autowired
+    private InquiryStatusDAO inquiryStatusDAO;
 
 
     @GetMapping(value = "/findall", produces = "application/json")
@@ -39,6 +47,13 @@ public class FollowUpController {
     @PostMapping
     public String saveNewFollowup(@RequestBody FollowUp followUp) {
 
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"FOLLOWUP");
+
+        if(!loggedUserPrivilege.getInsertPrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
+
         try {
 
             if (followUp.getInquiryId().getInquiryStatusId().getId()==1) {
@@ -48,12 +63,12 @@ public class FollowUpController {
                 //get inquiry from the followUp object
                 Inquiry currentInquiry = inquiryDAO.getReferenceById(followUp.getInquiryId().getId());
                 //change inquiry status to 2
-                currentInquiry.setInquiryStatusId(new InquiryStatus(2, "Processing"));
+                currentInquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(2));
 
 
                 //set auto generated values
                 followUp.setFollowUpTime(LocalDateTime.now());
-                followUp.setAddedBy("User1");
+                followUp.setAddedBy(auth.getName());
                 //save followup
                 FollowUp currentFollowup = followUpDAO.save(followUp);
 
@@ -87,7 +102,7 @@ public class FollowUpController {
                 Inquiry currentInquiry = inquiryDAO.getReferenceById(followUp.getInquiryId().getId());
                 //set auto generated values
                 followUp.setFollowUpTime(LocalDateTime.now());
-                followUp.setAddedBy("User1");
+                followUp.setAddedBy(auth.getName());
 
                 FollowUp currentFollowup = followUpDAO.save(followUp);
 
