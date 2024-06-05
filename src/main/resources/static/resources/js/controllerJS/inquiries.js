@@ -71,14 +71,14 @@ const getCourse = (ob) =>{
 const getInquiryStatus =(ob) => {
 
     if (ob.inquiryStatusId.name === "New Inquiry") {
-        return '<span class="badge rounded-0" style="background: #1eadea">New Inquiry</span>';
+        return '<span class="badge rounded-0" style="background: #3FB618">New Inquiry</span>';
     } else if (ob.inquiryStatusId.name === "Processing") {
         return '<span class="badge rounded-0" style="background: #ea8a1e">Processing</span>';
     } else if (ob.inquiryStatusId.name === "Registered") {
-        return '<span class="badge rounded-0" style="background: #d6d21d">Registered</span>';
+        return '<span class="badge rounded-0" style="background: #a81dd6">Registered</span>';
     }
     else if (ob.inquiryStatusId.name === "Completed"){
-        return '<span class="badge rounded-0" style="background: #3FB618">Completed</span>';
+        return '<span class="badge rounded-0" style="background: #1eadea">Completed</span>';
     }
     else {
         return '<span class="badge rounded-0" style="background: #000">Dropped</span>';
