@@ -75,7 +75,7 @@ const getInquiryStatus =(ob) => {
     } else if (ob.inquiryStatusId.name === "Processing") {
         return '<span class="badge rounded-0" style="background: #ea8a1e">Processing</span>';
     } else if (ob.inquiryStatusId.name === "Registered") {
-        return '<span class="badge rounded-0" style="background: #71b858">Registered</span>';
+        return '<span class="badge rounded-0" style="background: #d6d21d">Registered</span>';
     }
     else if (ob.inquiryStatusId.name === "Completed"){
         return '<span class="badge rounded-0" style="background: #3FB618">Completed</span>';
