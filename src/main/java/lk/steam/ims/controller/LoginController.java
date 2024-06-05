@@ -1,5 +1,7 @@
 package lk.steam.ims.controller;
 
+import lk.steam.ims.dao.UserDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class LoginController {
+
+    @Autowired
+    private UserDAO userDAO;
+
+    public LoginController(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
     @GetMapping(value = "/login")
     public ModelAndView loginUI(){
@@ -35,6 +44,10 @@ public class LoginController {
         imsView.addObject("username",auth.getName());
         imsView.addObject("title","Dashboard | STEAM IMS");
         imsView.addObject("activeNavItem","dashboard");
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        imsView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        imsView.addObject("loggedInDesignationName",loggedInDesignationName);
         return imsView;
     }
 }
