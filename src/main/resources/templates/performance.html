@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="~{fragments/head :: headFragment}"></head>
+
 <body>
+<!--Loader-->
+<div th:replace="~{fragments/loader :: loader}"></div>
+<!-- Nav Bar Start -->
+<nav th:replace="~{ fragments/navbar :: navbarFragment}"></nav>
+<!-- Nav Bar End -->
+
+<!-- Display Current Page /breadcrumbs Start -->
+<div class="container-fluid bg-custom-white custom-banner">
+    <h5>Your Performance</h5>
+</div>
+<!-- Display Current Page /breadcrumbs End -->
 
 </body>
 </html>
