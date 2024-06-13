@@ -22,7 +22,7 @@ const exportToExcel = (jsonData, fileName, columns) => {
     var ws = XLSX.utils.json_to_sheet(filteredData);
     var wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Sheet 1");
-    XLSX.writeFile(wb, "Inquiries from"+fileName + ".xlsx");
+    XLSX.writeFile(wb, fileName + ".xlsx");
 }
 
 //untested
@@ -59,4 +59,23 @@ const exportToCSV = (jsonData, fileName, columns) => {
     link.href = URL.createObjectURL(blob);
     link.download = "Inquiries from" + fileName + ".csv";
     link.click();
+};
+
+const exportTableToExcel = (tableId, fileName) => {
+    // Select the HTML table element by ID
+    const table = document.getElementById(tableId);
+    if (!table) {
+        console.error(`Table with ID '${tableId}' not found.`);
+        return;
+    }
+
+    // Convert the HTML table to a worksheet
+    const ws = XLSX.utils.table_to_sheet(table);
+
+    // Create a new workbook and append the worksheet
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet 1");
+
+    // Save the workbook as an XLSX file
+    XLSX.writeFile(wb, `${fileName}.xlsx`);
 };
