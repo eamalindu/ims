@@ -62,5 +62,7 @@ public interface InquiryDAO extends JpaRepository<Inquiry,Integer> {
     @Query(value = "SELECT count(*) FROM inquiry where date(contacttime) <= current_date() and inquirystatus_id =1;",nativeQuery = true)
     String getNewInquiryCount();
 
+    @Query(value = "select * from inquiry where date(timestamp)>=?1 and date(timestamp)<=?2 and inquirystatus_id=?3 and addedby=?4;",nativeQuery = true)
+    List<Inquiry> getInquiryByDateRangeAndStatus(String startDate, String endDate, Integer status, String addedBy);
 }
 
