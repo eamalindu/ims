@@ -37,7 +37,7 @@ public class PerformanceController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView imsPerformanceView = new ModelAndView();
         imsPerformanceView.addObject("username",auth.getName());
-        imsPerformanceView.addObject("title","Performance | STEAM IMS");
+        imsPerformanceView.addObject("title","Counsellors' Performance | STEAM IMS");
         imsPerformanceView.setViewName("performanceAll.html");
         imsPerformanceView.addObject("activeNavItem","performanceAll");
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
