@@ -1,6 +1,6 @@
 package lk.steam.ims.dao;
 
-import lk.steam.rms.entity.Student;
+import lk.steam.ims.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

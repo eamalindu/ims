@@ -1,6 +1,6 @@
 package lk.steam.ims.dao;
 
-import lk.steam.rms.entity.CommissionRate;
+import lk.steam.ims.entity.CommissionRate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
