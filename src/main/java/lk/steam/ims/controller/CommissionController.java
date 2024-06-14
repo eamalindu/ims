@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/Commission")
 public class CommissionController {
@@ -18,6 +20,11 @@ public class CommissionController {
     @GetMapping("/getCommissionByRegistrationID/{registrationID}")
     public Commission getCommissionByRegistrationID(@PathVariable Integer registrationID) {
         return commissionDAO.getCommissionByRegistrationID(registrationID);
+    }
+
+    @GetMapping("/getCommissionByDateRangeAndPaidTo/{startDate}/{endDate}/{paidTo}")
+    public List<Commission> getCommissionByDateRangeAndPaidTo(@PathVariable String startDate, @PathVariable String endDate, @PathVariable String paidTo) {
+        return commissionDAO.getCommissionByDateRangeAndPaidTo(startDate, endDate, paidTo);
     }
 
 }
