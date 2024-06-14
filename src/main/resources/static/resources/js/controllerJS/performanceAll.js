@@ -36,8 +36,4 @@ const generateAdminChart = (startDate,endDate)=>{
     const inquiryStatus = ajaxGetRequest("/InquiryStatus/findall");
     let inquiryStatusNames = [];
     let inquiryCount = [];
-    inquiryStatus.forEach(inquiry => {
-        inquiryStatusNames.push(inquiry.name);
-        inquiryCount.push(ajaxGetRequest("/Inquiry/getInquiryByDateRangeAndStatus/"+startDate+"/"+endDate+"/"+inquiry.name).length);
-    })
 }
