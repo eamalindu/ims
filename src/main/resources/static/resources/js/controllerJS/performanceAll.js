@@ -36,17 +36,7 @@ const generateAdminChart = (startDate, endDate) => {
     const inquiryStatus = ajaxGetRequest("/InquiryStatus/findall");
     let inquiryStatusNames = [];
     let chartData = [];
-    const purpleShades = ['#800080', // Purple
-        '#8A2BE2', // BlueViolet
-        '#9400D3', // DarkViolet
-        '#9932CC', // DarkOrchid
-        '#BA55D3', // MediumOrchid
-        '#DA70D6', // Orchid
-        '#D8BFD8', // Thistle
-        '#DDA0DD', // Plum
-        '#EE82EE', // Violet
-        '#FF00FF', // Fuchsia
-    ];
+    const purpleShades = ['#9932CC', '#BA55D3', '#800080', '#8A2BE2', '#9400D3','#DA70D6', '#D8BFD8', '#DDA0DD', '#EE82EE', '#FF00FF',];
 
     counsellors.forEach((counsellor, index) => {
         inquiryCount = [];
