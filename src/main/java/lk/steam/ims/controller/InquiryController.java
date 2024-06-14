@@ -69,6 +69,13 @@ public class InquiryController {
         return inquiryDAO.getInquiryByDateRangeAndStatus(start,end,status,auth.getName());
     }
 
+    @GetMapping(value = "/getInquiryByDateRangeAndStatusAndAddedBy/{startDate}/{endDate}/{status}/{addedBy}",produces = "application/json")
+    public List<Inquiry> getInquiryByDateRangeAndStatusAndAddedBy(@PathVariable String startDate, @PathVariable String endDate, @PathVariable String status,@PathVariable String addedBy){
+        LocalDate  start = LocalDate.parse(startDate);
+        LocalDate end = LocalDate.parse(endDate);
+        return inquiryDAO.getInquiryByDateRangeAndStatus(start,end,status,addedBy);
+    }
+
     @GetMapping(value = "/test",produces = "application/json")
     public List<Map<String,Object>> test(){
         return inquiryDAO.test();
