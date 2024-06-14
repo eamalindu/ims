@@ -16,29 +16,6 @@ public class StudentController {
     @Autowired
     private StudentDAO studentDAO;
 
-    @PostMapping
-    public String saveNewStudent(@RequestBody Student student){
-
-        Student existStudent = studentDAO.getStudentsByIdValue(student.getIdValue());
-        if(existStudent!=null){
-            return "Duplicate NIC Value <br>Student Record Already Exists";
-        }
-
-        String nextStudentNumber = studentDAO.getNextStudentNumber();
-        if(nextStudentNumber==null){
-            nextStudentNumber = "ST-0001";
-        }
-        student.setStudentNumber(nextStudentNumber);
-        student.setTimeStamp(LocalDateTime.now());
-        try {
-            studentDAO.save(student);
-            return "OK";
-        }
-        catch (Exception ex){
-            return "Update Failed " + ex.getMessage();
-        }
-
-    }
 
     @GetMapping(value = "/findall", produces = "application/json")
     public List<Student> findAll() {
@@ -53,13 +30,6 @@ public class StudentController {
     @GetMapping(value = "getStudentsByNicOrStudentNumberOrMobileNumber/{value}",produces = "application/json")
     public Student getStudentsByNicOrStudentNumberOrMobileNumber(@PathVariable String value) {
         return studentDAO.getStudentsByNicOrStudentNumberOrMobileNumber(value);
-    }
-
-    @GetMapping(value = "/edit")
-    public ModelAndView studentEdit() {
-        ModelAndView studentEditView = new ModelAndView();
-        studentEditView.setViewName("studentedit.html");
-        return studentEditView;
     }
 
 }
