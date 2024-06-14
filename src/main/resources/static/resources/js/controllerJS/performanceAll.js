@@ -1,4 +1,7 @@
 window.addEventListener('load',()=>{
+    const startDate = moment().startOf('month').format('YYYY-MM-DD');
+    const endDate = moment().endOf('month').format('YYYY-MM-DD');
+    generateAdminChart(startDate,endDate);
     resetAdminSearchBar();
 
 })
@@ -26,4 +29,8 @@ const resetAdminSearchBar = ()=>{
     }, cb);
 
     cb(start, end);
+}
+
+const generateAdminChart = (startDate,endDate)=>{
+    const counsellors = ajaxGetRequest("/Inquiry/getCounsellors/"+startDate+"/"+endDate)
 }
