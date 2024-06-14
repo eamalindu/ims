@@ -35,5 +35,4 @@ const generateAdminChart = (startDate,endDate)=>{
     const counsellors = ajaxGetRequest("/Inquiry/getCounsellors/"+startDate+"/"+endDate);
     const inquiryStatus = ajaxGetRequest("/InquiryStatus/findall");
     let inquiryStatusNames = [];
-    let inquiryCount = [];
 }
