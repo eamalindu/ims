@@ -23,6 +23,6 @@ const generatePerformanceChart = (startDate,endDate)=>{
     console.log(inquiryStatusNames);
     console.log(inquiryCount);
 
-    generateChart(chartPerformance,'',inquiryStatusNames,'Inquiry Count',[{name:'',data:inquiryCount,color:'#007bff'}]);
+    generateChart(chartPerformance,'',inquiryStatusNames,'Inquiry Count',[{name:'',data:inquiryCount,color:'#553772'}]);
 
 }
