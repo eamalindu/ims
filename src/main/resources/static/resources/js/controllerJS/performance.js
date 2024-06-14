@@ -52,10 +52,10 @@ const resetSearchBar = ()=>{
     var end = moment().endOf('month').format('YYYY-MM-DD');
 
     function cb(start, end) {
-        $('#registrationSearchDateRange span').html(start.format('YYYY-MMMM-DD') + ' - ' + end.format('YYYY-MMMM-DD'));
+        $('#performanceSearchDateRange span').html(start.format('YYYY-MMMM-DD') + ' - ' + end.format('YYYY-MMMM-DD'));
     }
 
-    $('#registrationSearchDateRange').daterangepicker({
+    $('#performanceSearchDateRange').daterangepicker({
         startDate: start, endDate: end, locale: {
             "format": "YYYY-MM-DD",
         }, ranges: {
@@ -70,4 +70,9 @@ const resetSearchBar = ()=>{
     }, cb);
 
     cb(start, end);
+}
+
+const getPerformance = ()=>{
+
+
 }
