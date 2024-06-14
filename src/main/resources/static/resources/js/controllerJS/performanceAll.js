@@ -35,7 +35,7 @@ const generateAdminChart = (startDate, endDate) => {
     const counsellors = ajaxGetRequest("/Inquiry/getCounsellors/" + startDate + "/" + endDate);
     const inquiryStatus = ajaxGetRequest("/InquiryStatus/findall");
     let inquiryStatusNames = [];
-    testData = [];
+    let chartData = [];
     const purpleShades = ['#800080', // Purple
         '#8A2BE2', // BlueViolet
         '#9400D3', // DarkViolet
@@ -58,7 +58,7 @@ const generateAdminChart = (startDate, endDate) => {
         // Get color from the array, cycling through the array if there are more counselors than colors
         let color = purpleShades[index % purpleShades.length];
 
-        testData.push({name: counsellor, data: inquiryCount, color: color});
+        chartData.push({name: counsellor, data: inquiryCount, color: color});
     });
-    generateChart(chartPerformance, '', inquiryStatusNames, 'Inquiries', testData);
+    generateChart(chartPerformance, '', inquiryStatusNames, 'Inquiries', chartData);
 }
