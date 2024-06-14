@@ -60,6 +60,11 @@ public class InquiryController {
         return inquiryDAO.findProcessingInquiry();
     }
 
+    @GetMapping(value = "/getInquiryByDateRangeAndStatus/{startDate}/{endDate}/{status}",produces = "application/json")
+    public List<Inquiry> getInquiryByDateRangeAndStatus(@PathVariable String startDate, @PathVariable String endDate, @PathVariable Integer status){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return inquiryDAO.getInquiryByDateRangeAndStatus(startDate,endDate,status,auth.getName());
+    }
 
     @GetMapping(value = "/test",produces = "application/json")
     public List<Map<String,Object>> test(){
