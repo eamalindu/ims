@@ -48,8 +48,8 @@ const generatePerformanceChart = (startDate,endDate)=>{
 }
 
 const resetSearchBar = ()=>{
-    var start = moment();
-    var end = moment();
+    var start = moment().startOf('month').format('YYYY-MM-DD');
+    var end = moment().endOf('month').format('YYYY-MM-DD');
 
     function cb(start, end) {
         $('#registrationSearchDateRange span').html(start.format('YYYY-MMMM-DD') + ' - ' + end.format('YYYY-MMMM-DD'));
