@@ -1,12 +1,12 @@
-window.addEventListener('load',()=>{
+window.addEventListener('load', () => {
     const startDate = moment().startOf('month').format('YYYY-MM-DD');
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
-    generateAdminChart(startDate,endDate);
+    generateAdminChart(startDate, endDate);
     resetAdminSearchBar();
 
 })
 
-const resetAdminSearchBar = ()=>{
+const resetAdminSearchBar = () => {
     var start = moment().startOf('month');
     var end = moment().endOf('month');
 
@@ -31,13 +31,12 @@ const resetAdminSearchBar = ()=>{
     cb(start, end);
 }
 
-const generateAdminChart = (startDate,endDate)=>{
-    const counsellors = ajaxGetRequest("/Inquiry/getCounsellors/"+startDate+"/"+endDate);
+const generateAdminChart = (startDate, endDate) => {
+    const counsellors = ajaxGetRequest("/Inquiry/getCounsellors/" + startDate + "/" + endDate);
     const inquiryStatus = ajaxGetRequest("/InquiryStatus/findall");
     let inquiryStatusNames = [];
-    testData =[];
-    const purpleShades = [
-        '#800080', // Purple
+    testData = [];
+    const purpleShades = ['#800080', // Purple
         '#8A2BE2', // BlueViolet
         '#9400D3', // DarkViolet
         '#9932CC', // DarkOrchid
@@ -59,7 +58,7 @@ const generateAdminChart = (startDate,endDate)=>{
         // Get color from the array, cycling through the array if there are more counselors than colors
         let color = purpleShades[index % purpleShades.length];
 
-        testData.push({ name: counsellor, data: inquiryCount, color: color });
+        testData.push({name: counsellor, data: inquiryCount, color: color});
     });
-    generateChart(chartPerformance,'',inquiryStatusNames,'Inquiries',testData);
+    generateChart(chartPerformance, '', inquiryStatusNames, 'Inquiries', testData);
 }
