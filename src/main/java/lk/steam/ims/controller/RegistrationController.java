@@ -59,11 +59,6 @@ public class RegistrationController {
         return registrationDAO.getRegistrationsByRegistrationNumber(registrationNumber);
     }
 
-    @GetMapping(value = "getRegistrationHaveClassToday/{registrationNumber}", produces = "application/json")
-    public Registrations getRegistrationHaveClassToday(@PathVariable String registrationNumber) {
-        return registrationDAO.getRegistrationHaveClassToday(registrationNumber);
-    }
-
     @GetMapping(value = "getMonthlyRegistrationByCourseID/{courseID}", produces = "application/json")
     public List<Registrations> getMonthlyRegistrationByCourseID(@PathVariable Integer courseID) {
         return registrationDAO.getMonthlyRegistrationByCourseID(courseID);
