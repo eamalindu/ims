@@ -31,6 +31,8 @@ public class WebConfig {
                     .requestMatchers("/Inquiry/**").hasAnyAuthority("Admin","Manager","Counsellor")
                     .requestMatchers("/Dashboard").hasAnyAuthority("Admin","Manager","Counsellor")
                     .requestMatchers("/Commission/**").hasAnyAuthority("Admin","Manager","Counsellor")
+                    .requestMatchers("/Performance").hasAnyAuthority("Admin","Manager","Counsellor")
+                    .requestMatchers("/Performance/All").hasAnyAuthority("Admin","Manager")
                     .anyRequest().authenticated();
 
         })
