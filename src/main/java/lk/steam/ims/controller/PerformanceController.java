@@ -31,4 +31,20 @@ public class PerformanceController {
 
         return imsPerformanceView;
     }
+
+    @GetMapping(value = "/All")
+    public ModelAndView performanceAllUI(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        ModelAndView imsPerformanceView = new ModelAndView();
+        imsPerformanceView.addObject("username",auth.getName());
+        imsPerformanceView.addObject("title","Performance | STEAM IMS");
+        imsPerformanceView.setViewName("performanceAll.html");
+        imsPerformanceView.addObject("activeNavItem","performance");
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        imsPerformanceView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        imsPerformanceView.addObject("loggedInDesignationName",loggedInDesignationName);
+
+        return imsPerformanceView;
+    }
 }
