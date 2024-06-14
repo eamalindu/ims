@@ -39,7 +39,7 @@ public class PerformanceController {
         imsPerformanceView.addObject("username",auth.getName());
         imsPerformanceView.addObject("title","Performance | STEAM IMS");
         imsPerformanceView.setViewName("performanceAll.html");
-        imsPerformanceView.addObject("activeNavItem","performance");
+        imsPerformanceView.addObject("activeNavItem","performanceAll");
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
         imsPerformanceView.addObject("loggedInEmployeeName",loggedInEmployeeName);
