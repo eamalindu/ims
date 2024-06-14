@@ -84,6 +84,11 @@ public class InquiryController {
         return inquiryDAO.getNewInquiryCount();
     }
 
+    @GetMapping(value = "/getCounsellors/{startDate}/{endDate}",produces = "application/json")
+    public List<String> getCounsellorsByDates(@PathVariable String startDate,@PathVariable String endDate){
+        return inquiryDAO.getCounsellorsByDates(startDate,endDate);
+    }
+
     @PostMapping
     public String saveNewInquiry(@RequestBody Inquiry inquiry){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
