@@ -25,7 +25,7 @@ const generatePerformanceChart = (startDate,endDate)=>{
 
     generateChart(chartPerformance,'',inquiryStatusNames,'Count',[{name:'Inquiry Count',data:inquiryCount,color:'#553772'}]);
 
-    counsellorName.innerText = '';
+    counsellorName.innerText = loggedInEmpName.innerText;
 
     newInquiryCount.innerText = inquiryCount[0]
     processingCount.innerText = inquiryCount[1]
