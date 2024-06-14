@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -62,7 +63,7 @@ public interface InquiryDAO extends JpaRepository<Inquiry,Integer> {
     @Query(value = "SELECT count(*) FROM inquiry where date(contacttime) <= current_date() and inquirystatus_id =1;",nativeQuery = true)
     String getNewInquiryCount();
 
-    @Query(value = "select * from inquiry where date(timestamp)>=?1 and date(timestamp)<=?2 and inquirystatus_id=?3 and addedby=?4;",nativeQuery = true)
-    List<Inquiry> getInquiryByDateRangeAndStatus(String startDate, String endDate, Integer status, String addedBy);
+    @Query(value = "select i from Inquiry i where date(i.timeStamp)>=?1 and date(i.timeStamp)<=?2 and i.inquiryStatusId.name=?3 and i.addedBy=?4")
+    List<Inquiry> getInquiryByDateRangeAndStatus(LocalDate startDate, LocalDate endDate, String status, String addedBy);
 }
 

@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -61,9 +62,11 @@ public class InquiryController {
     }
 
     @GetMapping(value = "/getInquiryByDateRangeAndStatus/{startDate}/{endDate}/{status}",produces = "application/json")
-    public List<Inquiry> getInquiryByDateRangeAndStatus(@PathVariable String startDate, @PathVariable String endDate, @PathVariable Integer status){
+    public List<Inquiry> getInquiryByDateRangeAndStatus(@PathVariable String startDate, @PathVariable String endDate, @PathVariable String status){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        return inquiryDAO.getInquiryByDateRangeAndStatus(startDate,endDate,status,auth.getName());
+        LocalDate  start = LocalDate.parse(startDate);
+        LocalDate end = LocalDate.parse(endDate);
+        return inquiryDAO.getInquiryByDateRangeAndStatus(start,end,status,auth.getName());
     }
 
     @GetMapping(value = "/test",produces = "application/json")
