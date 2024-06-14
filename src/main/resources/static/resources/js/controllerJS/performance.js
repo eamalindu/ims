@@ -81,5 +81,5 @@ const getPerformance = ()=>{
 
     const [startDate,endDate] = performanceSearchDateRange.value.split(' - ');
     generatePerformanceChart(startDate,endDate);
-    generateCommission();
+    generateCommission(startDate,endDate);
 }
