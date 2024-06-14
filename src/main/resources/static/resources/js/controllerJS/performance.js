@@ -25,4 +25,18 @@ const generatePerformanceChart = (startDate,endDate)=>{
 
     generateChart(chartPerformance,'',inquiryStatusNames,'Count',[{name:'Inquiry Count',data:inquiryCount,color:'#553772'}]);
 
+    processingCount.innerText = inquiryCount[1];
+    completedCount.innerText = inquiryCount[4];
+    droppedCount.innerText = inquiryCount[3];
+
+    //calculating total count of inquiries
+    let totalInquiryCount = 0;
+    inquiryCount.forEach(count => {
+        totalInquiryCount += count;
+    });
+    totalCount.innerText = totalInquiryCount;
+
+
+
+
 }
