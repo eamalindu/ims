@@ -47,7 +47,13 @@ const generatePerformanceChart = (startDate,endDate)=>{
     totalCount.innerText = totalInquiryCount;
 
     //calculate conversion rate
-    conversionRate.innerText = ((inquiryCount[4]/totalInquiryCount)*100).toFixed(2)+'%';
+    if(totalInquiryCount>0){
+        conversionRate.innerText = ((inquiryCount[4]/totalInquiryCount)*100).toFixed(2)+'%';
+    }
+    else{
+        conversionRate.innerText = '0%';
+    }
+
 
 
 }
