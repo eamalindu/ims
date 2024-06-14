@@ -1,8 +1,8 @@
 package lk.steam.ims.controller;
 
 import jakarta.transaction.Transactional;
-import lk.steam.rms.dao.*;
-import lk.steam.rms.entity.*;
+import lk.steam.ims.dao.*;
+import lk.steam.ims.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
@@ -38,101 +38,6 @@ public class RegistrationController {
     @Autowired
     private PrivilegeController privilegeController;
 
-    @GetMapping()
-    public ModelAndView registrationUI() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(auth);
-        ModelAndView registrationView = new ModelAndView();
-        registrationView.setViewName("registrations.html");
-        registrationView.addObject("username", auth.getName());
-        registrationView.addObject("title", "Manage Registrations | STEAM RMS");
-        registrationView.addObject("activeNavItem","registrations");
-        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
-        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
-        registrationView.addObject("loggedInEmployeeName",loggedInEmployeeName);
-        registrationView.addObject("loggedInDesignationName",loggedInDesignationName);
-        return registrationView;
-    }
-
-    @PostMapping
-    @Transactional
-    public String saveNewRegistration(@RequestBody Registrations registrations) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"REGISTRATION");
-
-        if(!loggedUserPrivilege.getInsertPrivilege()){
-            return "<br>User does not have sufficient privilege.";
-        }
-
-        Registrations existRegistration = registrationDAO.getRegistrationsByBatchIDAndStudentID(registrations.getBatchID().getId(), registrations.getStudentID().getId());
-
-        if (existRegistration != null) {
-            return "This student is already registered to <br>Batch <span class='text-steam-green'>" + existRegistration.getBatchID().getBatchCode() + "</span><small> [Reg Number : <span class='text-steam-green'>" + existRegistration.getRegistrationNumber() + "</span>]</small>";
-        }
-
-        try {
-
-            //set registration number
-            String regNextNumber = registrationDAO.getNextRegistrationNumber();
-            if (regNextNumber == null || regNextNumber.length() == 0 || regNextNumber.isEmpty()) {
-                registrations.setRegistrationNumber("00001");
-            } else {
-                registrations.setRegistrationNumber(regNextNumber);
-            }
-
-            registrations.setTimestamp(LocalDateTime.now());
-            registrations.setAddedBy(auth.getName());
-            registrations.setCommissionPaidTo(auth.getName());
-
-            //check the discountRate and discountAmount is null or not
-            if (registrations.getDiscountRate() == null) {
-                registrations.setDiscountRate(BigDecimal.valueOf(0));
-            }
-            if (registrations.getDiscountAmount() == null) {
-                registrations.setDiscountAmount(BigDecimal.valueOf(0));
-            }
-
-
-            //Student sample = studentDAO.getReferenceById(1);
-            RegistrationStatus sampleStatus = registrationStatusDAO.getReferenceById(4);
-            //registrations.setStudentID(sample);
-            registrations.setRegistrationStatusID(sampleStatus);
-
-            //store the current student nic
-            String currentIdValue = registrations.getStudentID().getIdValue();
-
-            //check this student exsist
-            Student exsistStudent = studentDAO.getStudentsByIdValue(currentIdValue);
-
-            if (exsistStudent == null) {
-                return "No Such Student Record";
-            } else {
-
-                registrations.setStudentID(exsistStudent);
-
-            }
-            Registrations completedRegistration = registrationDAO.save(registrations);
-
-            //check an inquiry is available for the current registration
-            Inquiry currentInquiry = inquiryDAO.getActiveInquiryByIDAndCourseId(registrations.getStudentID().getIdValue(), registrations.getCourseID().getId());
-            if (currentInquiry != null) {
-                registrations.setInquiryID(currentInquiry.getId());
-                currentInquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(3));
-                currentInquiry.setRegistrationID(completedRegistration.getId());
-                completedRegistration.setCommissionPaidTo(currentInquiry.getAddedBy());
-                inquiryDAO.save(currentInquiry);
-            }
-
-            registrationDAO.save(completedRegistration);
-
-            System.out.println(completedRegistration.getId());
-            return "OK";
-
-        } catch (Exception ex) {
-            return "Save Failed " + ex.getMessage();
-        }
-
-    }
 
     @GetMapping(value = "/findall", produces = "application/json")
     public List<Registrations> findAll() {
@@ -186,31 +91,5 @@ public class RegistrationController {
         return registrationDAO.getRegistrationCountByCounsellorsByMonth(startDate,endDate,counsellor);
     }
 
-    @PutMapping
-    public String updateRegistration(@RequestBody Registrations registration) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"REGISTRATION");
-
-        if(!loggedUserPrivilege.getUpdatePrivilege()){
-            return "<br>User does not have sufficient privilege.";
-        }
-
-        //check if the registration exist or not
-        Registrations existReg = registrationDAO.getReferenceById(registration.getId());
-
-        if (existReg == null) {
-            return "No Such Registration Record";
-        }
-        try {
-            if (registration.getTempRegistrationStatus() != null) {
-                registration.setOldRegistrationStatus(registration.getRegistrationStatusID().getId());
-                registration.setRegistrationStatusID(registrationStatusDAO.getReferenceById(6));
-            }
-            registrationDAO.save(registration);
-            return "OK";
-        } catch (Exception ex) {
-            return "Update Failed " + ex.getMessage();
-        }
-    }
 }
 

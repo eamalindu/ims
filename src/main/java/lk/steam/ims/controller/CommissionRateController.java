@@ -1,7 +1,7 @@
 package lk.steam.ims.controller;
 
-import lk.steam.rms.dao.CommissionRateDAO;
-import lk.steam.rms.entity.CommissionRate;
+import lk.steam.ims.dao.CommissionRateDAO;
+import lk.steam.ims.entity.CommissionRate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

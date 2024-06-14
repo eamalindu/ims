@@ -1,7 +1,7 @@
 package lk.steam.ims.controller;
 
-import lk.steam.rms.dao.RegistrationStatusDAO;
-import lk.steam.rms.entity.RegistrationStatus;
+import lk.steam.ims.dao.RegistrationStatusDAO;
+import lk.steam.ims.entity.RegistrationStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

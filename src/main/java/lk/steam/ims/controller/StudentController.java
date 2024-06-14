@@ -1,7 +1,7 @@
 package lk.steam.ims.controller;
 
-import lk.steam.rms.dao.StudentDAO;
-import lk.steam.rms.entity.Student;
+import lk.steam.ims.dao.StudentDAO;
+import lk.steam.ims.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
