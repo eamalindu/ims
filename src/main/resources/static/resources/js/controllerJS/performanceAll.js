@@ -35,4 +35,31 @@ const generateAdminChart = (startDate,endDate)=>{
     const counsellors = ajaxGetRequest("/Inquiry/getCounsellors/"+startDate+"/"+endDate);
     const inquiryStatus = ajaxGetRequest("/InquiryStatus/findall");
     let inquiryStatusNames = [];
+    testData =[];
+    const purpleShades = [
+        '#800080', // Purple
+        '#8A2BE2', // BlueViolet
+        '#9400D3', // DarkViolet
+        '#9932CC', // DarkOrchid
+        '#BA55D3', // MediumOrchid
+        '#DA70D6', // Orchid
+        '#D8BFD8', // Thistle
+        '#DDA0DD', // Plum
+        '#EE82EE', // Violet
+        '#FF00FF', // Fuchsia
+    ];
+
+    counsellors.forEach((counsellor, index) => {
+        inquiryCount = [];
+        inquiryStatus.forEach(inquiry => {
+            inquiryStatusNames.push(inquiry.name);
+            inquiryCount.push(ajaxGetRequest("/Inquiry/getInquiryByDateRangeAndStatusAndAddedBy/" + startDate + "/" + endDate + "/" + inquiry.name + "/" + counsellor).length);
+        })
+
+        // Get color from the array, cycling through the array if there are more counselors than colors
+        let color = purpleShades[index % purpleShades.length];
+
+        testData.push({ name: counsellor, data: inquiryCount, color: color });
+    });
+    generateChart(chartPerformance,'',inquiryStatusNames,'Inquiries',testData);
 }
