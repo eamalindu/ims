@@ -25,9 +25,13 @@ const generatePerformanceChart = (startDate,endDate)=>{
 
     generateChart(chartPerformance,'',inquiryStatusNames,'Count',[{name:'Inquiry Count',data:inquiryCount,color:'#553772'}]);
 
-    processingCount.innerText = inquiryCount[1];
-    completedCount.innerText = inquiryCount[4];
-    droppedCount.innerText = inquiryCount[3];
+    counsellorName.innerText = '';
+
+    newInquiryCount.innerText = inquiryCount[0]
+    processingCount.innerText = inquiryCount[1]
+    registeredCount.innerText = inquiryCount[2]
+    droppedCount.innerText = inquiryCount[3]
+    completedCount.innerText = inquiryCount[4]
 
     //calculating total count of inquiries
     let totalInquiryCount = 0;
@@ -35,6 +39,9 @@ const generatePerformanceChart = (startDate,endDate)=>{
         totalInquiryCount += count;
     });
     totalCount.innerText = totalInquiryCount;
+
+    //calculate conversion rate
+    conversionRate.innerText = ((inquiryCount[4]/totalInquiryCount)*100).toFixed(2)+'%';
 
 
 
