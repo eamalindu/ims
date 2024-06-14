@@ -74,5 +74,7 @@ const resetSearchBar = ()=>{
 
 const getPerformance = ()=>{
 
-
+    const [startDate,endDate] = performanceSearchDateRange.value.split(' - ');
+    console.log(startDate)
+    console.log(endDate)
 }
