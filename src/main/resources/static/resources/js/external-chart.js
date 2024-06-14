@@ -24,7 +24,7 @@ const generateChart=(elementID,title,categories,yAxis,series)=>{
         },
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:rebeccapurple;padding:0">'+yAxis+': </td>' +
+            pointFormat: '<tr><td style="color:rebeccapurple;padding:0">{point.series.name}: </td>' +
                 '<td style="padding:0"><b>&nbsp;{point.y}</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
