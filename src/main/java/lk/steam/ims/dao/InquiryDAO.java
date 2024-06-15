@@ -68,5 +68,8 @@ public interface InquiryDAO extends JpaRepository<Inquiry,Integer> {
 
     @Query(value = "select distinct addedby from inquiry where date(timestamp)>=?1 and date(timestamp)<=?2",nativeQuery = true)
     List<String> getCounsellorsByDates(String startDate, String endDate);
+
+    @Query(value = "Select * from inquiry where date(timestamp)>=?1 and date(timestamp)<=?2 and course_id=?3",nativeQuery = true)
+    List<Inquiry> getInquiriesByDateRangeAndCourse(String startDate, String endDate, Integer courseId);
 }
 

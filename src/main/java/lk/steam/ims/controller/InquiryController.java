@@ -96,6 +96,11 @@ public class InquiryController {
         return inquiryDAO.getCounsellorsByDates(startDate,endDate);
     }
 
+    @GetMapping(value = "/getInquiriesByDateRangeAndCourse/{startDate}/{endDate}/{courseId}",produces = "application/json")
+    public List<Inquiry> getInquiriesByDateRangeAndCourse(@PathVariable String startDate,@PathVariable String endDate,@PathVariable Integer courseId){
+        return inquiryDAO.getInquiriesByDateRangeAndCourse(startDate,endDate,courseId);
+    }
+
     @PostMapping
     public String saveNewInquiry(@RequestBody Inquiry inquiry){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
