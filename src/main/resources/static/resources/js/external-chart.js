@@ -54,7 +54,7 @@ const generateMonochromePieChart = (elementID, title,axisName, series) => {
         tooltip: {
             headerFormat: '<span style="font-size:10px">'+axisName+'</span><table>',
             pointFormat: '<tr><td style="color:rebeccapurple;padding:0">{point.name}: </td>' +
-                '<td style="padding:0">&nbsp;{point.y}</td></tr>',
+                '<td style="padding:0"><b>&nbsp;{point.y}</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
