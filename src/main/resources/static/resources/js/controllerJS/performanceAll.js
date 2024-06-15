@@ -138,7 +138,7 @@ const generateTopSourcesChart = (startDate,endDate)=>{
         { name: 'Resource 5', y: 75 }
     ];
 
-    generateMonochromePieChart(chartSources, '', charData);
+    generateMonochromePieChart(chartSources, '','Inquiry Count', charData);
 
 
 }
