@@ -3,6 +3,7 @@ window.addEventListener('load', () => {
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
     generateAdminChart(startDate, endDate);
     generateTopCoursesChart(startDate,endDate);
+    test();
     resetAdminSearchBar();
     performanceTitle.innerHTML ='The following charts are based on Inquiry data collected from '+startDate+' to '+endDate;
 
@@ -117,6 +118,22 @@ const generateTopCoursesChart = (startDate,endDate)=>{
         inquiryCount.push(ajaxGetRequest("/Inquiry/getInquiriesByDateRangeAndCourse/"+startDate+"/"+endDate+"/"+course.id).length)
     })
 
-    generateChart(chartCourses,'',courseNames,'Inquiries', [{name: 'Inquiry Count',data: inquiryCount,color: '#19AADE'}])
+    generateChart(chartCourses,'',courseNames,'Inquiries', [{name: 'Inquiry Count',data: inquiryCount,color: '#1De4bd'}])
+
+}
+
+const test = ()=>{
+    const elementID = 'chartSources';
+    const title = 'Distribution of resources';
+    const series = [
+        { name: 'Resource 1', y: 100 },
+        { name: 'Resource 2', y: 150 },
+        { name: 'Resource 3', y: 200 },
+        { name: 'Resource 4', y: 50 },
+        { name: 'Resource 5', y: 75 }
+    ];
+
+    generateMonochromePieChart(elementID, title, series);
+
 
 }

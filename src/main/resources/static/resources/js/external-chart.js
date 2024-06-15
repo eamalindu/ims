@@ -42,8 +42,7 @@ const generateChart=(elementID,title,categories,yAxis,series)=>{
 
 }
 
-const generatePieChart = (elementID, title, series) => {
-
+const generateMonochromePieChart = (elementID, title, series) => {
     Highcharts.chart(elementID, {
         chart: {
             type: 'pie',
@@ -55,7 +54,7 @@ const generatePieChart = (elementID, title, series) => {
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr><td style="color:rebeccapurple;padding:0">{point.name}: </td>' +
-                '<td style="padding:0"><b>&nbsp;{point.percentage:.1f}%</b></td></tr>',
+                '<td style="padding:0"><b>&nbsp;{point.y}</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -66,15 +65,25 @@ const generatePieChart = (elementID, title, series) => {
                 cursor: 'pointer',
                 dataLabels: {
                     enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    format: '<b>{point.name}</b>: {point.y}',
                     connectorColor: 'silver'
-                }
+                },
+                colors: (function () {
+                    var colors = [],
+                        base = Highcharts.getOptions().colors[0],
+                        i;
+
+                    for (i = 0; i < 10; i += 1) {
+                        colors.push(Highcharts.color(base).brighten((i - 3) / 7).get());
+                    }
+                    return colors;
+                }())
             }
         },
         series: [{
-            name: 'Share',
+            name: 'Values',
             data: series
         }]
     });
-
 }
+
