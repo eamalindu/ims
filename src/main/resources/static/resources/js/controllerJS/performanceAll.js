@@ -37,7 +37,7 @@ const generateAdminChart = (startDate, endDate) => {
     const inquiryStatus = ajaxGetRequest("/InquiryStatus/findall");
     let inquiryStatusNames = [];
     let chartData = [];
-    const purpleShades = ['#9932CC', '#BA55D3', '#800080', '#8A2BE2', '#9400D3','#DA70D6', '#D8BFD8', '#DDA0DD', '#EE82EE', '#FF00FF',];
+    const purpleShades = ['#7d3ac1', '#af4bce', '#db4cb2', '#eb548c', '#ea7369','#f0a58f', '#fceae6', '#DDA0DD', '#EE82EE', '#FF00FF',];
 
     counsellors.forEach((counsellor, index) => {
         inquiryCount = [];
@@ -116,6 +116,6 @@ const generateTopCoursesChart = (startDate,endDate)=>{
         inquiryCount.push(ajaxGetRequest("/Inquiry/getInquiriesByDateRangeAndCourse/"+startDate+"/"+endDate+"/"+course.id).length)
     })
 
-    generateChart(chartCourses,'',courseNames,'Inquiries', [{name: 'Inquiry Count',data: inquiryCount,color: '#4ad6e1'}])
+    generateChart(chartCourses,'',courseNames,'Inquiries', [{name: 'Inquiry Count',data: inquiryCount,color: '#19AADE'}])
 
 }
