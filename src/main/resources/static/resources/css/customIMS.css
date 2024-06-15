@@ -207,6 +207,10 @@ select:invalid[multiple] {
     color: white;
 }
 
+/*Custom css for highchart JS*/
+g text {
+    font-weight:normal!important;
+}
 
 /*Validated chosen select*/
 .select-validated{
