@@ -109,10 +109,13 @@ const generateAdminChart = (startDate, endDate) => {
 const generateTopCoursesChart = (startDate,endDate)=>{
     const courses = ajaxGetRequest("/course/findall");
     let courseNames = [];
+    let inquiryCount = [];
 
     courses.forEach(course=>{
         courseNames.push(course.code)
+        inquiryCount.push(ajaxGetRequest("/Inquiry/getInquiriesByDateRangeAndCourse/"+startDate+"/"+endDate+"/"+course.id).length)
     })
-    console.log(courseNames);
+
+    generateChart(chartCourses,'',courseNames,'Inquiries', [{name: 'Inquiry Count',data: inquiryCount,color: '#4ad6e1'}])
 
 }
