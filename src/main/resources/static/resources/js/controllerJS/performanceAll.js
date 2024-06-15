@@ -4,6 +4,7 @@ window.addEventListener('load', () => {
     generateAdminChart(startDate, endDate);
     generateTopCoursesChart(startDate,endDate);
     resetAdminSearchBar();
+    performanceTitle.innerHTML ='The following charts are based on Inquiry data collected from '+startDate+' to '+endDate;
 
 })
 
