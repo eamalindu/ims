@@ -142,3 +142,11 @@ const generateTopSourcesChart = (startDate,endDate)=>{
 
 
 }
+
+const getAdminPerformance = ()=>{
+    const [startDate,endDate] = performanceSearchDateRange.value.split(' - ');
+    generateAdminChart(startDate, endDate);
+    generateTopCoursesChart(startDate,endDate);
+    generateTopSourcesChart(startDate,endDate);
+    performanceTitle.innerHTML ='The following charts are based on Inquiry data collected from '+startDate+' to '+endDate;
+}
