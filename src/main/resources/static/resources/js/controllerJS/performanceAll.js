@@ -144,7 +144,7 @@ const generateTopSourcesChart = (startDate,endDate)=>{
 }
 
 const getAdminPerformance = ()=>{
-    const [startDate,endDate] = performanceSearchDateRange.value.split(' - ');
+    const [startDate,endDate] = performanceAdminSearchDateRange.value.split(' - ');
     generateAdminChart(startDate, endDate);
     generateTopCoursesChart(startDate,endDate);
     generateTopSourcesChart(startDate,endDate);
