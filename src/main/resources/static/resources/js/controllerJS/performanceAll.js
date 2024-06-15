@@ -2,6 +2,7 @@ window.addEventListener('load', () => {
     const startDate = moment().startOf('month').format('YYYY-MM-DD');
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
     generateAdminChart(startDate, endDate);
+    generateTopCoursesChart(startDate,endDate);
     resetAdminSearchBar();
 
 })
@@ -105,6 +106,13 @@ const generateAdminChart = (startDate, endDate) => {
     })
 }
 
-const generateTopCoursesChart = ()=>{
+const generateTopCoursesChart = (startDate,endDate)=>{
+    const courses = ajaxGetRequest("/course/findall");
+    let courseNames = [];
+
+    courses.forEach(course=>{
+        courseNames.push(course.code)
+    })
+    console.log(courseNames);
 
 }
