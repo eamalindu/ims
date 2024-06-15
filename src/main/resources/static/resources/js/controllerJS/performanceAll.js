@@ -123,6 +123,13 @@ const generateTopCoursesChart = (startDate,endDate)=>{
 }
 
 const generateTopSourcesChart = (startDate,endDate)=>{
+    const sources = ajaxGetRequest("/source/findall")
+    let charData = [];
+
+    sources.forEach(source=>{
+        charData.push({name:source.name,y:ajaxGetRequest("/Inquiry/getInquiriesByDateRangeAndSource/"+startDate+"/"+endDate+"/"+source.id).length})
+    })
+
     const series = [
         { name: 'Resource 1', y: 100 },
         { name: 'Resource 2', y: 150 },
@@ -131,7 +138,7 @@ const generateTopSourcesChart = (startDate,endDate)=>{
         { name: 'Resource 5', y: 75 }
     ];
 
-    generateMonochromePieChart(chartSources, title, series);
+    generateMonochromePieChart(chartSources, '', charData);
 
 
 }
