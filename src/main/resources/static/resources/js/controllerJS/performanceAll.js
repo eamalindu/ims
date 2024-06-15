@@ -104,3 +104,7 @@ const generateAdminChart = (startDate, endDate) => {
         tbody.appendChild(tr);
     })
 }
+
+const generateTopCoursesChart = ()=>{
+
+}
