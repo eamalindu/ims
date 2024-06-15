@@ -3,7 +3,7 @@ window.addEventListener('load', () => {
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
     generateAdminChart(startDate, endDate);
     generateTopCoursesChart(startDate,endDate);
-    test();
+    generateTopSourcesChart(startDate,endDate);
     resetAdminSearchBar();
     performanceTitle.innerHTML ='The following charts are based on Inquiry data collected from '+startDate+' to '+endDate;
 
@@ -122,9 +122,7 @@ const generateTopCoursesChart = (startDate,endDate)=>{
 
 }
 
-const test = ()=>{
-    const elementID = 'chartSources';
-    const title = 'Distribution of resources';
+const generateTopSourcesChart = (startDate,endDate)=>{
     const series = [
         { name: 'Resource 1', y: 100 },
         { name: 'Resource 2', y: 150 },
@@ -133,7 +131,7 @@ const test = ()=>{
         { name: 'Resource 5', y: 75 }
     ];
 
-    generateMonochromePieChart(elementID, title, series);
+    generateMonochromePieChart(chartSources, title, series);
 
 
 }
