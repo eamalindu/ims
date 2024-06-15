@@ -41,3 +41,40 @@ const generateChart=(elementID,title,categories,yAxis,series)=>{
     });
 
 }
+
+const generatePieChart = (elementID, title, series) => {
+
+    Highcharts.chart(elementID, {
+        chart: {
+            type: 'pie',
+            backgroundColor: '#ffffff'
+        },
+        title: {
+            text: title
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:rebeccapurple;padding:0">{point.name}: </td>' +
+                '<td style="padding:0"><b>&nbsp;{point.percentage:.1f}%</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    connectorColor: 'silver'
+                }
+            }
+        },
+        series: [{
+            name: 'Share',
+            data: series
+        }]
+    });
+
+}
