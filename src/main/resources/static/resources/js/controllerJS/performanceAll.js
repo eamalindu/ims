@@ -127,7 +127,7 @@ const generateTopCoursesChart = (startDate,endDate)=>{
         inquiryCount.push(ajaxGetRequest("/Inquiry/getInquiriesByDateRangeAndCourse/"+startDate+"/"+endDate+"/"+course.id).length)
     })
 
-    generateChart(chartCourses,'',courseNames,'Inquiries', [{name: 'Inquiry Count',data: inquiryCount,color: '#1De4bd'}])
+    generateChart(chartCourses,'',courseNames,'Inquiries', [{name: 'Inquiry Count',data: inquiryCount,color: '#eb548c'}])
 
 }
 
