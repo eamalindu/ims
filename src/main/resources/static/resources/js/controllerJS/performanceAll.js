@@ -58,54 +58,63 @@ const generateAdminChart = (startDate, endDate) => {
     // refill the table data
     const tbody = tblPerformance.children[1];
     tbody.innerHTML = '';
-    chartData.forEach(item=>{
-        const tr = document.createElement('tr');
-        const tdName = document.createElement('td');
-        const tdRate = document.createElement('td');
-        const tdTotal = document.createElement('td');
-        const tdNewInquiry = document.createElement('td');
-        const tdProcessing = document.createElement('td');
-        const tdRegistered = document.createElement('td');
-        const tdDropped = document.createElement('td');
-        const tdCompleted = document.createElement('td');
+    if(chartData.length!==0) {
+        chartData.forEach(item => {
+            const tr = document.createElement('tr');
+            const tdName = document.createElement('td');
+            const tdRate = document.createElement('td');
+            const tdTotal = document.createElement('td');
+            const tdNewInquiry = document.createElement('td');
+            const tdProcessing = document.createElement('td');
+            const tdRegistered = document.createElement('td');
+            const tdDropped = document.createElement('td');
+            const tdCompleted = document.createElement('td');
 
-        //setting data for TDs
-        tdName.innerText = item.name;
+            //setting data for TDs
+            tdName.innerText = item.name;
 
-        let totalInquiryCount = 0;
-        item.data.forEach(count => {
-            totalInquiryCount += count;
-        });
+            let totalInquiryCount = 0;
+            item.data.forEach(count => {
+                totalInquiryCount += count;
+            });
 
-        //calculate conversion rate
-        if(totalInquiryCount>0){
-            tdRate.innerText = ((item.data[4]/totalInquiryCount)*100).toFixed(2)+'%';
-        }
-        else{
-            tdRate.innerText = '0%';
-        }
+            //calculate conversion rate
+            if (totalInquiryCount > 0) {
+                tdRate.innerText = ((item.data[4] / totalInquiryCount) * 100).toFixed(2) + '%';
+            } else {
+                tdRate.innerText = '0%';
+            }
 
-        tdTotal.innerText = totalInquiryCount;
-        tdNewInquiry.innerText = item.data[0]
-        tdProcessing.innerText = item.data[1]
-        tdRegistered.innerText = item.data[2]
-        tdDropped.innerText = item.data[3]
-        tdCompleted.innerText = item.data[4]
+            tdTotal.innerText = totalInquiryCount;
+            tdNewInquiry.innerText = item.data[0]
+            tdProcessing.innerText = item.data[1]
+            tdRegistered.innerText = item.data[2]
+            tdDropped.innerText = item.data[3]
+            tdCompleted.innerText = item.data[4]
 
-        //append data
-        tr.appendChild(tdName);
-        tr.appendChild(tdRate);
-        tr.appendChild(tdTotal);
-        tr.appendChild(tdNewInquiry);
-        tr.appendChild(tdProcessing);
-        tr.appendChild(tdRegistered);
-        tr.appendChild(tdDropped);
-        tr.appendChild(tdCompleted);
+            //append data
+            tr.appendChild(tdName);
+            tr.appendChild(tdRate);
+            tr.appendChild(tdTotal);
+            tr.appendChild(tdNewInquiry);
+            tr.appendChild(tdProcessing);
+            tr.appendChild(tdRegistered);
+            tr.appendChild(tdDropped);
+            tr.appendChild(tdCompleted);
 
 
-        //append the tr to tbody
-        tbody.appendChild(tr);
-    })
+            //append the tr to tbody
+            tbody.appendChild(tr);
+        })
+    }
+    else{
+        const tableTR = document.createElement('tr');
+        const  tableTD = document.createElement('td');
+        tableTD.colSpan = 8;
+        tableTD.innerText = 'No Records Found!';
+        tableTR.appendChild(tableTD)
+        tbody.appendChild(tableTR);
+    }
 }
 
 const generateTopCoursesChart = (startDate,endDate)=>{
