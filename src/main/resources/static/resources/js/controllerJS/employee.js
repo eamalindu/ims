@@ -6,17 +6,6 @@ window.addEventListener('load',()=>{
     //hide the update btn
     btnEmployeeSheetUpdate.style.display = 'none';
 
-    //initializing 3rd party libraries
-    $('#employeeDOB').daterangepicker({
-        "drops": "up",
-        "singleDatePicker": true,
-        "showDropdowns": true,
-        "autoUpdateInput": false,
-        maxDate: new Date(),
-        locale: {
-            format: 'YYYY-MM-DD'
-        }
-    });
     $('#employeeSheetDOB').daterangepicker({
         "maxDate": new Date(),
         "singleDatePicker": true,
@@ -31,10 +20,6 @@ window.addEventListener('load',()=>{
         }
     });
 
-    $('#employeeDesignation').chosen({width: '100%'});
-    $('#employeeCivilStatus').chosen({width: '100%'});
-    $('#employeeHighestEducation').chosen({width:'100%'});
-
     //bind data to the student object, once the "apply" button on studentDOB input is clicked
     $('#employeeDOB').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD'));
@@ -42,8 +27,6 @@ window.addEventListener('load',()=>{
         inputTextValidator(this, '^(19[89][0-9]|20[0-9]{2})[-][0-9]{2}[-][0-9]{2}$', 'newEmployee', 'dob');
 
     });
-
-
     //when apply is clicked data will validate and bind to the editedInquiry object
     $('#employeeSheetDOB').on('apply.daterangepicker',function (){
         inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','editedEmployee','dob')
@@ -454,6 +437,23 @@ const resetEmployeeForm = ()=>{
     //dynamic select for sources
     designations = ajaxGetRequest("/designation/findall")
     fillSelectOptions(employeeDesignation, ' ', designations, 'designation')
+
+    $('#employeeDesignation').chosen({width: '100%'});
+    $('#employeeCivilStatus').chosen({width: '100%'});
+    $('#employeeHighestEducation').chosen({width:'100%'});
+    $('#employeeCallingName').chosen({width:'100%'});
+
+    //initializing 3rd party libraries
+    $('#employeeDOB').daterangepicker({
+        "drops": "up",
+        "singleDatePicker": true,
+        "showDropdowns": true,
+        "autoUpdateInput": false,
+        maxDate: new Date(),
+        locale: {
+            format: 'YYYY-MM-DD'
+        }
+    });
 }
 
 //creating a function to delete an employee when ever needed
@@ -481,4 +481,18 @@ const employeeDelete = ()=>{
         }
     });
 
+}
+
+
+const generateCallingName = ()=>{
+    const fullName=employeeFullName.value
+    const nameParts = fullName.split(" ");
+    nameParts.forEach(namePart=>{
+        const option = document.createElement('option');
+        option.innerText = namePart;
+        option.value= namePart;
+        employeeCallingName.appendChild(option);
+    })
+    $('#employeeCallingName').val('').trigger('chosen:updated');
+    console.log(nameParts)
 }
