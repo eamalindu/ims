@@ -136,6 +136,7 @@ const rowView=(ob,index) =>{
 
     employeeSheetCivilStatus.value = ob.civilStatus;
 
+    const Status = ajaxGetRequest("/employeestatus/findall")
     //select the appropriate option as selected
     fillSelectOptions(employeeSheetDesignation, 'Please Select a Designation', designations, 'designation',ob.designationID.designation)
     fillSelectOptions(employeeSheetEmployeeStatus, 'Please Select a Status', Status, 'status',ob.employeeStatusID.status)
