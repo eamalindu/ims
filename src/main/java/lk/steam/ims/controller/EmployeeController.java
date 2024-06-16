@@ -8,6 +8,7 @@ import lk.steam.ims.entity.Employee;
 import lk.steam.ims.entity.EmployeeStatus;
 import lk.steam.ims.entity.Role;
 import lk.steam.ims.entity.User;
+import lk.steam.ims.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,6 +35,8 @@ public class EmployeeController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private RoleDAO roleDAO;
+    @Autowired
+    private MailService mailService;
 
     @GetMapping
     public ModelAndView employeeUI() {
@@ -126,6 +129,7 @@ public class EmployeeController {
                 user.setRoles(userRoles);
                 userDAO.save(user);
                 //send email
+                mailService.sendWelcomeUserMail(savedEmployee.getEmail(),savedEmployee.getEmployeeID(),savedEmployee.getFullName());
             }
 
             return "OK";

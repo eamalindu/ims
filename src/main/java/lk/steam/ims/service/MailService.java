@@ -105,7 +105,7 @@ public class MailService {
     }
 
     @Async
-    public void welcomeUserMail(String mail,String username,String employeeName) throws MessagingException{
+    public void sendWelcomeUserMail(String mail,String username,String employeeName) throws MessagingException{
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message,true,"UTF-8");
 
