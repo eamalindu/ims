@@ -2,17 +2,23 @@ package lk.steam.ims.controller;
 
 import lk.steam.ims.dao.EmployeeDAO;
 import lk.steam.ims.dao.EmployeeStatusDAO;
+import lk.steam.ims.dao.RoleDAO;
 import lk.steam.ims.dao.UserDAO;
 import lk.steam.ims.entity.Employee;
 import lk.steam.ims.entity.EmployeeStatus;
+import lk.steam.ims.entity.Role;
+import lk.steam.ims.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/Employee")
@@ -24,6 +30,10 @@ public class EmployeeController {
     private EmployeeStatusDAO employeeStatusDAO;
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private RoleDAO roleDAO;
 
     @GetMapping
     public ModelAndView employeeUI() {
@@ -98,6 +108,25 @@ public class EmployeeController {
             employee.setEmployeeID(employeeDAO.getNextEmployeeID());
             employee.setEmployeeStatusID(employeeStatusDAO.getReferenceById(1));
             Employee savedEmployee =  employeeDAO.save(employee);
+
+            //check the selected Designation need a user account or not
+            if(savedEmployee.getDesignationID().getUserAccountNeeded()){
+                User user = new User();
+                user.setEmployeeID(savedEmployee);
+                user.setEmail(savedEmployee.getEmail());
+                user.setUsername(savedEmployee.getEmployeeID());
+                user.setStatus(true);
+                user.setAddedTime(LocalDateTime.now());
+                user.setNote("Auto Generated User Account");
+                user.setPassword(bCryptPasswordEncoder.encode(savedEmployee.getNic()));
+
+                Set<Role> userRoles = new HashSet<>();
+                Role roles = roleDAO.getRoleByName(savedEmployee.getDesignationID().getDesignation());
+                userRoles.add(roles);
+                user.setRoles(userRoles);
+                userDAO.save(user);
+                //send email
+            }
 
             return "OK";
         }

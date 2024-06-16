@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface RoleDAO extends JpaRepository<Role,Integer> {
 
-    @Query("SELECT r from Role r where r.designation=?1")
+    @Query("SELECT r from Role r where r.name=?1")
     Role getRoleByName(String designation);
 }
