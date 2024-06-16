@@ -98,6 +98,7 @@ public class EmployeeController {
             employee.setEmployeeID(employeeDAO.getNextEmployeeID());
             employee.setEmployeeStatusID(employeeStatusDAO.getReferenceById(1));
             Employee savedEmployee =  employeeDAO.save(employee);
+
             return "OK";
         }
         catch (Exception ex){
