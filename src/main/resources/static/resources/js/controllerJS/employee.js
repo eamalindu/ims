@@ -33,6 +33,9 @@ window.addEventListener('load',()=>{
     });
 
     //validation chosen select (for new employee)
+    $("#employeeCallingName").chosen().change(function () {
+        $("#employeeCallingName_chosen .chosen-single").addClass('select-validated');
+    });
     $("#employeeCivilStatus").chosen().change(function () {
         $("#employeeCivilStatus_chosen .chosen-single").addClass('select-validated');
     });
@@ -407,14 +410,17 @@ const resetEmployeeForm = ()=>{
     $("#employeeCivilStatus_chosen .chosen-single").removeClass('select-validated');
     $("#employeeDesignation_chosen .chosen-single").removeClass('select-validated');
     $("#employeeHighestEducation_chosen .chosen-single").removeClass('select-validated');
+    $("#employeeCallingName_chosen .chosen-single").removeClass('select-validated');
     employeeCivilStatus.classList.remove('is-valid');
     employeeDesignation.classList.remove('is-valid');
     employeeHighestEducation.classList.remove('is-valid');
+    employeeCallingName.classList.remove('is-valid');
 
     //set default option chosen
     setTimeout(function () {
         $('#employeeCivilStatus').val('').trigger('chosen:updated');
         $('#employeeDesignation').val('').trigger('chosen:updated');
+        $('#employeeCallingName').val('').trigger('chosen:updated');
         $('#employeeHighestEducation').val('').trigger('chosen:updated');
     }, 0);
 
@@ -487,6 +493,7 @@ const employeeDelete = ()=>{
 const generateCallingName = ()=>{
     const fullName=employeeFullName.value
     const nameParts = fullName.split(" ");
+    employeeCallingName.innerHTML = '';
     nameParts.forEach(namePart=>{
         const option = document.createElement('option');
         option.innerText = namePart;
