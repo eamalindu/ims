@@ -75,7 +75,20 @@ public class EmployeeController {
     @PostMapping
     public String saveNewEmployee(@RequestBody Employee employee){
         try{
-            //set auto generated values
+            //check unique values exist or not
+            Employee existingEmployeeEmail = employeeDAO.getEmployeeByEmail(employee.getEmail());
+            if(existingEmployeeEmail!=null) {
+                return "<br>This Email Already Exists";
+            }
+            Employee existingEmployeeNIC = employeeDAO.getEmployeeByNIC(employee.getNic());
+            if(existingEmployeeNIC!=null) {
+                return "<br>This NIC Already Exists";
+            }
+            Employee existingEmployeeMobileNumber = employeeDAO.getEmployeeByMobileNumber(employee.getMobileNumber());
+            if(existingEmployeeMobileNumber!=null) {
+                return "<br>This Mobile Number Already Exists";
+            }
+
             employee.setAdded_timestamp(LocalDateTime.now());
             employee.setEmployeeID("EMP006");
 
