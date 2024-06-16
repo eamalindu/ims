@@ -36,7 +36,6 @@ window.addEventListener('load',()=>{
 
     $('#employeeDesignation').chosen({width: '100%'});
     $('#employeeCivilStatus').chosen({width: '100%'});
-    $('#employeeStatus').chosen({width: '100%'});
     $('#employeeHighestEducation').chosen({width:'100%'});
 
     //when apply is clicked data will validate and bind to the editedInquiry object
@@ -50,9 +49,6 @@ window.addEventListener('load',()=>{
     });
     $("#employeeDesignation").chosen().change(function () {
         $("#employeeDesignation_chosen .chosen-single").addClass('select-validated');
-    });
-    $("#employeeStatus").chosen().change(function () {
-        $("#employeeStatus_chosen .chosen-single").addClass('select-validated');
     });
     $("#employeeHighestEducation").chosen().change(function () {
         $("#employeeHighestEducation_chosen .chosen-single").addClass('select-validated');
@@ -356,9 +352,6 @@ const checkEmployeeFormErrors = (employeeObject)=>{
     if(employeeObject.designationID==null){
         errors = errors +'Designation is Required<br>';
     }
-    if(employeeObject.employeeStatusID==null){
-        errors = errors +'Employee Status is Required<br>';
-    }
     if(employeeObject.gender==null){
         errors = errors +'Gender is Required<br>';
     }
@@ -424,18 +417,15 @@ const resetEmployeeForm = ()=>{
 
     $("#employeeCivilStatus_chosen .chosen-single").removeClass('select-validated');
     $("#employeeDesignation_chosen .chosen-single").removeClass('select-validated');
-    $("#employeeStatus_chosen .chosen-single").removeClass('select-validated');
     $("#employeeHighestEducation_chosen .chosen-single").removeClass('select-validated');
     employeeCivilStatus.classList.remove('is-valid');
     employeeDesignation.classList.remove('is-valid');
-    employeeStatus.classList.remove('is-valid');
     employeeHighestEducation.classList.remove('is-valid');
 
     //set default option chosen
     setTimeout(function () {
         $('#employeeCivilStatus').val('').trigger('chosen:updated');
         $('#employeeDesignation').val('').trigger('chosen:updated');
-        $('#employeeStatus').val('').trigger('chosen:updated');
         $('#employeeHighestEducation').val('').trigger('chosen:updated');
     }, 0);
 
@@ -454,10 +444,6 @@ const resetEmployeeForm = ()=>{
     });
     //new employee object
     newEmployee = {};
-
-    //dynamic select for courses
-    Status = ajaxGetRequest("/employeestatus/findall");
-    fillSelectOptions(employeeStatus, 'Please Select a Status', Status, 'status')
 
     //dynamic select for sources
     designations = ajaxGetRequest("/designation/findall")
