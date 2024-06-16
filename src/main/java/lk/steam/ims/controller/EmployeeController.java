@@ -97,7 +97,7 @@ public class EmployeeController {
             employee.setAdded_timestamp(LocalDateTime.now());
             employee.setEmployeeID(employeeDAO.getNextEmployeeID());
             employee.setEmployeeStatusID(employeeStatusDAO.getReferenceById(1));
-            employeeDAO.save(employee);
+            Employee savedEmployee =  employeeDAO.save(employee);
             return "OK";
         }
         catch (Exception ex){
