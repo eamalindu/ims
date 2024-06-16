@@ -12,4 +12,13 @@ public interface EmployeeDAO extends JpaRepository<Employee,Integer> {
 
     @Query(value = "SELECT e from Employee e where e.designationID.id=2")
     List<Employee> getActiveCounsellors();
+
+    @Query(value = "SELECT e from Employee e where e.nic=?1")
+    Employee getEmployeeByNIC(String nic);
+
+    @Query(value = "SELECT e from Employee e where e.email=?1")
+    Employee getEmployeeByEmail(String email);
+
+    @Query(value = "select e from Employee e where e.mobileNumber=?1")
+    Employee getEmployeeByMobileNumber(String mobileNumber);
 }
