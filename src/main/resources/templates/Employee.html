@@ -135,7 +135,7 @@
                         <div class="form-label">
                             <label class="fw-bold required small" for="employeeDOB">Date of birth</label>
                         </div>
-                        <input class="form-control rounded-0 newEmployeeInputs" id="employeeDOB" required type="text" onchange="inputTextValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}$','newEmployee','dob')">
+                        <input class="form-control rounded-0 newEmployeeInputs" id="employeeDOB" required type="text" onkeydown="return false;">
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid Date of Birth</div>
                     </div>
