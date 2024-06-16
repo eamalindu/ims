@@ -12,22 +12,43 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 
+//Make the java class into a spring service class
 @Service
+//Enable the async annotation
+//This will allow the methods in this class to run asynchronously(Separate thread)
 @EnableAsync
+//create a class called MailService
 public class MailService {
+    //Using autowired to inject dependencies
     @Autowired
+    //Create a JavaMailSender object named javaMailSender
+    //using private access modifier to encapsulation
     private JavaMailSender javaMailSender;
 
+    //Using @Value to get the value of the spring.mail.username
     @Value("${spring.mail.username}")
+    //Create a string variable named username and assign the value of spring.mail.username
     private String username;
 
+    //using @Async to run the method asynchronously
     @Async
+    //Create a method called sendMail with two parameters
+    //1) mail -> String type variable to store the email address
+    //2) mailStructure -> MailStructure type object to store the mail structure
     public void sendMail(String mail, MailStructure mailStructure) {
+        //Create a SimpleMailMessage object named message
+        //SimpleMailMessage is a simple class for representing an email message
+        //only support plain text messages
         SimpleMailMessage message = new SimpleMailMessage();
+        //set the 'from' address of the email to the username
         message.setFrom(username);
+        //set the 'subject' of the email to the subject of the mailStructure
         message.setSubject(mailStructure.getSubject());
+        //set the 'text/body' of the email to the message of the mailStructure
         message.setText(mailStructure.getMessage());
+        //set the 'to' address of the email to the mail
         message.setTo(mail);
+        //send the email using the javaMailSender object send method
         javaMailSender.send(message);
     }
 
