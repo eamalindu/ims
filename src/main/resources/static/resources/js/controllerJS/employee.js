@@ -440,6 +440,8 @@ const resetEmployeeForm = ()=>{
     //new employee object
     newEmployee = {};
 
+    checkBoxValidator(this, leftMale, rightFemale, 'newEmployee', 'gender', 'Female', 'Male');
+
     //dynamic select for sources
     designations = ajaxGetRequest("/designation/findall")
     fillSelectOptions(employeeDesignation, ' ', designations, 'designation')
