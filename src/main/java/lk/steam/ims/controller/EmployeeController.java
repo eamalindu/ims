@@ -90,7 +90,7 @@ public class EmployeeController {
             if(existingEmployeeMobileNumber!=null) {
                 errors+= "<br>This Mobile Number Already Exists";
             }
-            if(errors!=""){
+            if(!errors.isEmpty()){
                 return errors;
             }
 
