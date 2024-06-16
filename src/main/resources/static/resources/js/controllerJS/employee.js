@@ -447,7 +447,7 @@ const resetEmployeeForm = ()=>{
 
     //dynamic select for sources
     designations = ajaxGetRequest("/designation/findall")
-    fillSelectOptions(employeeDesignation, 'Please Select a Designation', designations, 'designation')
+    fillSelectOptions(employeeDesignation, ' ', designations, 'designation')
 }
 
 //creating a function to delete an employee when ever needed
