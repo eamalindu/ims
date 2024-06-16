@@ -141,18 +141,24 @@
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
-                            <label class="fw-bold required small">Gender</label>
+                            <label class="fw-bold small required" for="employeeGender">Gender</label>
                         </div>
-
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input newEmployeeInputs" id="employeeGenderMale" name="employeeGender" type="radio"
-                                   value="Male" onchange="newEmployee.gender=this.value">
-                            <label class="form-check-label" for="employeeGenderMale"  style="font-size: 13px">Male</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input newEmployeeInputs" id="employeeGenderFemale" name="employeeGender" type="radio"
-                                   value="Female" onchange="newEmployee.gender=this.value">
-                            <label class="form-check-label" for="employeeGenderFemale" style="font-size: 13px">Female</label>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="text-center">
+                                <div class="d-flex align-items-center justify-content-center mx-auto bg-success text-white" id="leftMale" style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
+                                    <i class="fa-solid fa-mars"></i>
+                                </div>
+                                <span class="text-muted small">Male</span>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" id="employeeGender" onchange="checkBoxValidator(this, leftMale, rightFemale, 'newEmployee', 'gender', 'Female', 'Male');" role="switch" style="scale: 1.7;" type="checkbox">
+                            </div>
+                            <div class="text-center">
+                                <div class="d-flex align-items-center justify-content-center mx-auto" id="rightFemale" style="border-radius: 50%;height: 40px;width: 40px;background:#ddd">
+                                    <i class="fa-solid fa-venus"></i>
+                                </div>
+                                <span class="text-muted small">Female</span>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-2">
@@ -230,19 +236,6 @@
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid designation</div>
                     </div>
-                    <div class="mb-2">
-                        <div class="form-label">
-                            <label class="fw-bold small required" for="employeeStatus">Employee Status</label>
-                        </div>
-                        <select class="form-select rounded-0" id="employeeStatus" required onchange="selectDynamicValueValidator(this,'','newEmployee','employeeStatusID')">
-                            <option>Dynamic Value 1</option>
-                            <option>Dynamic Value 2</option>
-                            <option>Dynamic Value 3</option>
-                            <option>Dynamic Value 4</option>
-                        </select>
-                        <div class="valid-feedback">Value Accepted</div>
-                        <div class="invalid-feedback">Please provide a valid employee status</div>
-                    </div>
                     <div class="mb-3">
                         <div class="form-label">
                             <label class="fw-bold small" for="employeeNote">Note</label>
@@ -317,11 +310,11 @@
                 <td class="w-25">
                     <div class="form-check form-check-inline">
                         <input class="form-check-input employeeSheetInputs" name="employeeGender" id="employeeSheetGenderMale" type="radio" value="Male"  disabled >
-                        <label class="form-check-label opacity-100" for="employeeGenderMale">Male</label>
+                        <label class="form-check-label opacity-100" for="employeeSheetGenderMale">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input employeeSheetInputs"  name="employeeGender" id="employeeSheetGenderFemale" type="radio" value="Female" checked disabled>
-                        <label class="form-check-label opacity-100" for="employeeGenderFemale">Female</label>
+                        <label class="form-check-label opacity-100" for="employeeSheetGenderFemale">Female</label>
                     </div>
                 </td>
                 <td class="fw-bold w-25">Email Address</td>
