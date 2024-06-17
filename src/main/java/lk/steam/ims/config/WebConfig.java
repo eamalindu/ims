@@ -7,11 +7,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+//Using @Configuration annotation to make the java class into a spring configuration class
 @Configuration
+//Using @EnableWebSecurity annotation to enable the spring web security
 @EnableWebSecurity
+//Create a class named WebConfig
 public class WebConfig {
 
-    //password encrypt instance
+   //Create an object of the BCryptPasswordEncoder class named bCryptPasswordEncoder
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Bean
