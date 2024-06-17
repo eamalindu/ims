@@ -33,7 +33,7 @@ public class MailService {
     //using @Async to run the method asynchronously
     @Async
     //Create a method called sendMail with two parameters to send tan simple text email
-    //1) mail -> String type variable to store the email address
+    //1) mail -> String type parameter to store the email address
     //2) mailStructure -> MailStructure type object to store the mail structure
     public void sendMail(String mail, MailStructure mailStructure) {
         //Create a SimpleMailMessage object named message
@@ -55,8 +55,8 @@ public class MailService {
     //using @Async to run the method asynchronously
     @Async
     //Create a method called sendOTPMail with two parameters to send the OTP mail for password reset
-    //1) mail -> String type variable to store the email address
-    //2) otp -> String type variable to store the OTP
+    //1) mail -> String type parameter to store the email address
+    //2) otp -> String type parameter to store the OTP
     //Using MessagingException to handle the exceptions
     public void sendOTPMail(String mail, String otp) throws MessagingException {
         //Create a MimeMessage object named message
@@ -86,8 +86,8 @@ public class MailService {
     //using @Async to run the method asynchronously
     @Async
     //Create a method called passwordUpdateMail with two parameters to send the password update mail after a successful password reset
-    //1) mail -> String type variable to store the email address
-    //2) date -> String type variable to store the date
+    //1) mail -> String type parameter to store the email address
+    //2) date -> String type parameter to store the date
     //Using MessagingException to handle the exceptions
     public void passwordUpdateMail(String mail, String date) throws MessagingException {
 
@@ -118,9 +118,9 @@ public class MailService {
     //using @Async to run the method asynchronously
     @Async
     //Create a method called sendWelcomeUserMail with three parameters to send the welcome email after a successful user account creation
-    //1) mail -> String type variable to store the email address
-    //2) username -> String type variable to store the username of the user account
-    //3) employeeName -> String type variable to store the employee name
+    //1) mail -> String type parameter to store the email address
+    //2) username -> String type parameter to store the username of the user account
+    //3) employeeName -> String type parameter to store the employee name
     //Using MessagingException to handle the exceptions
     public void sendWelcomeUserMail(String mail, String username, String employeeName) throws MessagingException {
         //Create a MimeMessage object named message
