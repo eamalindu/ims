@@ -112,6 +112,8 @@ const rowView=(ob,index) =>{
     employeeSheetNIC.value =ob.nic;
     employeeSheetDOB.value =ob.dob;
 
+    employeeSheetImage.src = 'data:image/png;base64,'+ob.photoPath;
+
     //setting gender
     if(ob.gender=="Male"){
         employeeSheetGenderMale.checked = true;
