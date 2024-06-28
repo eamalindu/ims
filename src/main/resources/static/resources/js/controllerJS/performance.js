@@ -29,7 +29,18 @@ const generatePerformanceChart = (startDate,endDate)=>{
     console.log(inquiryStatusNames);
     console.log(inquiryCount);
 
-    generateChart(chartPerformance,'',inquiryStatusNames,'Inquiries',[{name:loggedInEmpName.innerText,data:inquiryCount,color:'#553772'}]);
+    generateChart(chartPerformance,'',inquiryStatusNames,'Inquiries',[{name:loggedInEmpName.innerText,data:inquiryCount,color: {
+            linearGradient: {
+                x1: 0,
+                x2: 0,
+                y1: 0,
+                y2: 1
+            },
+            stops: [
+                [0, '#f1c9ec'],
+                [1, '#ab84cb']
+            ]
+        }}]);
 
     counsellorName.innerText = loggedInEmpName.innerText;
 
