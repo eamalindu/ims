@@ -53,7 +53,6 @@ const refreshEmployeeTable = ()=>{
         {property:'employeeID',dataType:'text'},
         {property:'fullName',dataType:'text'},
         {property:'nic',dataType:'text'},
-        {property:'email',dataType:'text'},
         {property:'mobileNumber',dataType:'text'},
         {property:getDesignationName,dataType:'function'},
         {property:getEmployeeStatus,dataType:'function'},
