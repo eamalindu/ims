@@ -129,6 +129,9 @@ const checkFormErrors = () => {
     }
     if (newInquiry.firstName == null) {
         errors = errors + 'First Name is Required<br>';
+        //testing code add this all to required feilds
+        inquiryFirstName.style.borderColor = 'red';
+        inquiryFirstName.classList.add('is-invalid');
     }
     if (newInquiry.lastName == null) {
         errors = errors + 'Last Name is Required<br>';
