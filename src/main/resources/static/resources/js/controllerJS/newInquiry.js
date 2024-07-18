@@ -172,10 +172,15 @@ const resetInquiryForm = () => {
     $("#inquirySource_chosen .chosen-single").removeClass('select-validated');
     $("#inquiryCourse_chosen .chosen-single").removeClass('select-validated');
     $("#inquiryIdOption_chosen .chosen-single").removeClass('select-validated');
+    $("#inquirySource_chosen .chosen-single").removeClass('select-invalidated');
+    $("#inquiryCourse_chosen .chosen-single").removeClass('select-invalidated');
+    $("#inquiryIdOption_chosen .chosen-single").removeClass('select-invalidated');
     inquirySource.classList.remove('is-valid');
     inquiryCourse.classList.remove('is-valid');
     inquiryIdOption.classList.remove('is-valid');
-
+    inquirySource.classList.remove('is-invalid');
+    inquiryCourse.classList.remove('is-invalid');
+    inquiryIdOption.classList.remove('is-invalid');
 
 
     //set default option chosen
