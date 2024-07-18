@@ -308,7 +308,7 @@ const inquiryUpdate = () => {
                         showCustomModal("Inquiry Successfully Updated!","success")
                         //close the offCanvas and refresh the table
                         offCanvasInquirySheetCloseButton.click();
-                        refreshTable();
+                        refreshInquiriesTable();
 
                     }
 
@@ -409,4 +409,30 @@ const checkInquiryUpdateErrors = () => {
     }
 
     return errors;
+}
+
+const inquiryDelete = ()=>{
+//get user confirmation
+    showCustomConfirm("You are About to <b>Delete</b> this Inquiry<br><br>Inquiry Code: <span class='text-purple'>" + oldInquiry.inquiryNumber + "</span><br><br>Are You Sure?", function (result) {
+        if (result) {
+            //pass the record to backend
+            //receive the server response
+            let serviceResponse = ajaxHttpRequest("/Inquiry", "DELETE", oldInquiry);
+            if (serviceResponse === "OK") {
+                //show user the response
+                showCustomModal("Inquiry Successfully Deleted!", "success");
+                //close the offCanvas sheet
+                offCanvasInquirySheetCloseButton.click();
+                //refresh table
+                refreshInquiriesTable();
+            } else {
+                showCustomModal("Operation Failed!" + serviceResponse, "error");
+            }
+
+
+        } else {
+            showCustomModal("Operation Cancelled!", "info");
+        }
+
+    });
 }

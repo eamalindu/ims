@@ -165,5 +165,25 @@ public class InquiryController {
         }
 
     }
+    @DeleteMapping
+    public String deleteInquiry(@RequestBody Inquiry inquiry){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"INQUIRY");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
+        try {
+            //no need to check anything, because there are no any unique values
+            inquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(4));
+            inquiryDAO.save(inquiry);
+            return "OK";
+
+        }
+        catch (Exception ex){
+            return "Update Failed "+ex.getMessage();
+        }
+
+    }
 
 }
