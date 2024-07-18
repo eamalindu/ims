@@ -123,9 +123,13 @@ const checkFormErrors = () => {
 
     if (newInquiry.sourceId == null) {
         errors = errors + 'Source is Required<br>';
+        $("#inquirySource_chosen .chosen-single").addClass('select-invalidated');
+        inquirySource.classList.add('is-invalid');
     }
     if (newInquiry.courseId == null) {
         errors = errors + 'Course is Required<br>';
+        $("#inquiryCourse_chosen .chosen-single").addClass('select-invalidated');
+        inquiryCourse.classList.add('is-invalid');
     }
     if (newInquiry.firstName == null) {
         errors = errors + 'First Name is Required<br>';
