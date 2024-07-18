@@ -252,7 +252,7 @@ const rowView = (ob, rowIndex) => {
     console.log("old inquiry 👇")
     console.log(oldInquiry)
     console.log("edited inquiry 👇")
-    console.log(editedInquiry)
+    console.log(editedInquiry)  
 
 }
 const inquiryEdit = () => {
