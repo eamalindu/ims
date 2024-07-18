@@ -146,6 +146,8 @@ const checkFormErrors = () => {
     }
     if (newInquiry.idType == null) {
         errors = errors + 'ID Type is Required<br>';
+        $("#inquiryIdOption_chosen .chosen-single").addClass('select-invalidated');
+        inquiryIdOptio.classList.add('is-invalid');
 
     }
     if (newInquiry.idValue == null) {
