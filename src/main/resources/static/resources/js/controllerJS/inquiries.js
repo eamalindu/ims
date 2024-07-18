@@ -245,6 +245,15 @@ const rowView = (ob, rowIndex) => {
     followups = ajaxGetRequest("/followup/getById/"+ob.id);
     showFollowupCard(followups,followupsList);
 
+    //catch old inquiry and new inquiry
+    oldInquiry = JSON.parse(JSON.stringify(currentInquiry));
+    editedInquiry = JSON.parse(JSON.stringify(currentInquiry));
+
+    console.log("old inquiry 👇")
+    console.log(oldInquiry)
+    console.log("edited inquiry 👇")
+    console.log(editedInquiry)
+
 }
 const inquiryEdit = () => {
     //remove the attribute readonly to make inputs accept the user input values
@@ -262,14 +271,7 @@ const inquiryEdit = () => {
     //display the update button once the edit button is clicked
     btnInquirySheetUpdate.style.display = 'block';
 
-    //catch old inquiry and new inquiry
-    oldInquiry = JSON.parse(JSON.stringify(currentInquiry));
-    editedInquiry = JSON.parse(JSON.stringify(currentInquiry));
 
-    console.log("old inquiry 👇")
-    console.log(oldInquiry)
-    console.log("edited inquiry 👇")
-    console.log(editedInquiry)
 
 }
 const inquiryUpdate = () => {
