@@ -110,6 +110,8 @@ const rowView = (ob, rowIndex) => {
 
     //hide the update button
     btnInquirySheetUpdate.style.display = 'none';
+
+    $('#collapseFollowUp').collapse('hide');
     //show follow and drop button
     collapseFollowUpButton.classList.remove('d-none');
     btnInquirySheetDelete.classList.remove('d-none');
