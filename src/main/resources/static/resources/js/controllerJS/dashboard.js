@@ -180,6 +180,16 @@ const rowView = (ob, Index) => {
 //refresh inquiryPool table end
 
 const inquiryEdit = () => {
+    //getting the toast from its ID
+    var myToastEl = document.getElementById('myToast');
+    var myToast = new bootstrap.Toast(myToastEl);
+    //Displaying toast
+    myToast.show();
+    //hide the toast after 5s
+    setTimeout(function () {
+        myToast.hide();
+    }, 5000);
+
     //remove the attribute readonly to make inputs accept the user input values
     //give a border color to inputs indicate that the input's values are ready to be edited
     inputs = document.querySelectorAll('.inquirySheetInputs');
