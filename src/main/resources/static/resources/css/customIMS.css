@@ -397,6 +397,7 @@ g text {
 .active>.page-link{
     background-color: rebeccapurple;
     border-color: rebeccapurple;
+    color: white!important;
 }
 
 /*Overriding datatable css*/
@@ -417,9 +418,7 @@ g text {
 .page-link{
     color: rebeccapurple!important;
 }
-.active{
-    color:white!important;
-}
+
 
 /*Medium devices responsive*/
 @media (max-width: 870px) {
