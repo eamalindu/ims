@@ -122,6 +122,10 @@ public class InquiryController {
         }
 
         //check unique properties (They cant be already exist on the table)
+        Inquiry existInquiry = inquiryDAO.getInquiryByCourseAndNiC(inquiry.getCourseId().getId(),inquiry.getIdValue());
+        if(existInquiry!=null){
+            return "<br>Inquiry already exist";
+        }
         //no unique properties in this table
         try {
 
