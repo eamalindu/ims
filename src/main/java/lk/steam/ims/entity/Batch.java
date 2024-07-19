@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Table(name = "batch")
@@ -80,4 +81,7 @@ public class Batch {
     @ManyToOne
     @JoinColumn(name = "paymentplan_id",referencedColumnName = "id")
     private PaymentPlan paymentPlanID;
+
+    @OneToMany(mappedBy = "batchID",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<BatchHasDay> batchHasDayList;
 }

@@ -28,6 +28,10 @@ const getPayment = (ob)=>{
     return "Rs. "+ob.paymentPlanID.totalFee.toLocaleString('en-US', {minimumFractionDigits: 2}, {maximumFractionDigits: 2});
 }
 
+const getSchedule = (ob)=>{
+
+}
+
 const refreshSchedulesTable=()=>{
     //get all the active batches (batches that can be used to register student) from the database
     const activeBatches = ajaxGetRequest("/Schedules/activeBatches")
@@ -40,7 +44,7 @@ const refreshSchedulesTable=()=>{
         {property: 'lastRegDate', dataType: 'text'},
         {property: getWeekDay, dataType: 'function'},
         {property: getPayment, dataType: 'function'},
-        {property: 'seatCount', dataType: 'text'},
+        {property: getSchedule, dataType: 'function'},
         {property: 'seatCountAvailable', dataType: 'text'},
     ];
 
