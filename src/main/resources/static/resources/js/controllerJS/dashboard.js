@@ -446,5 +446,12 @@ const searchTable = (elementID,tableID,noResultDivID)=> {
             }
         }
     }
-    document.getElementById(noResultDivID).className = noResult ? "" : "d-none";
+    const divID = document.getElementById(noResultDivID);
+    if(noResult){
+
+        divID.classList.remove('d-none');
+    }
+    else{
+        divID.classList.add('d-none');
+    }
 }
