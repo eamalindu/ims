@@ -139,26 +139,36 @@ const checkFormErrors = () => {
     }
     if (newInquiry.lastName == null) {
         errors = errors + 'Last Name is Required<br>';
+        inquiryLastName.style.borderColor = 'red';
+        inquiryLastName.classList.add('is-invalid');
     }
     if (newInquiry.primaryMobileNumber == null) {
         errors = errors + 'Mobile Number is Required<br>';
+        inquiryMobileNumber.style.borderColor = 'red';
+        inquiryMobileNumber.classList.add('is-invalid');
 
     }
     if (newInquiry.idType == null) {
         errors = errors + 'ID Type is Required<br>';
         $("#inquiryIdOption_chosen .chosen-single").addClass('select-invalidated');
-        inquiryIdOptio.classList.add('is-invalid');
+        inquiryIdOption.classList.add('is-invalid');
 
     }
     if (newInquiry.idValue == null) {
         errors = errors + 'ID Value is Required<br>';
-
+        inquiryID.style.borderColor = 'red';
+        inquiryID.classList.add('is-invalid');
     }
     if (newInquiry.contactTime == null) {
         errors = errors + 'Contact Time is Required<br>';
+        inquiryTime.style.borderColor = 'red';
+        inquiryTime.classList.add('is-invalid');
+
     }
     if (newInquiry.description == null) {
         errors = errors + 'Description is Required<br>';
+        inquiryDescription.style.borderColor = 'red';
+        inquiryDescription.classList.add('is-invalid');
     }
 
     return errors;
