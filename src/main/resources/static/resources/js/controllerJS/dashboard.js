@@ -30,12 +30,6 @@ const refreshInquiryPoolTable = () => {
 
     fillDataIntoTable(tblInquiryPool, newInquiries, displayPropertyListForInquiryPool, rowView,'offCanvasInquirySheet');
 
-    //initiate dataTable only if inquires are available
-    if(newInquiries.length>0){
-        $('#tblInquiryPool').dataTable({
-            "info": false
-        });
-    }
 
     //testing code start
 
@@ -46,12 +40,6 @@ const refreshInquiryPoolTable = () => {
     }, {property: getSource, dataType: 'function'}, {property: getFullName, dataType: 'function'}];
     fillDataIntoTable(tblScheduledPool, scheduledInquiries, displayPropertyListForScheduledPool, rowView,'offCanvasInquirySheet');
 
-    //initiate dataTable only if inquires are available
-    if(scheduledInquiries.length>0){
-        $('#tblScheduledPool').dataTable({
-            "info": false
-        });
-    }
 
 //testing code end
 
