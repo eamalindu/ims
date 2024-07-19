@@ -70,7 +70,9 @@ const refreshInquiriesTable = () => {
 
     fillDataIntoTable(tblInquiry,inquiriesWithFollowUps,displayPropertyList,rowView,'offCanvasInquirySheet');
 
-    $('#tblInquiry').dataTable();
+    if(inquiriesWithFollowUps.length!==0) {
+        $('#tblInquiry').dataTable();
+    }
 
 }
 
