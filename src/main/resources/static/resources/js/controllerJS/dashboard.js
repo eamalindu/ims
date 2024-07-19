@@ -119,6 +119,17 @@ const rowView = (ob, Index) => {
 
     inquirySheetCode.innerText = ob.inquiryNumber;
 
+    if (ob.inquiryStatusId.name === "New Inquiry") {
+        inquirySheetCode.classList.add('text-success');
+        inquirySheetCode.classList.remove('text-warning');
+
+
+    } else {
+        inquirySheetCode.classList.add('text-warning');
+        inquirySheetCode.classList.remove('text-sucess');
+
+    }
+
     inquirySheetFirstName.value = ob.firstName;
     inquirySheetLastName.value = ob.lastName;
     inquirySheetPrimaryMobile.value = ob.primaryMobileNumber;
