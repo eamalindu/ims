@@ -23,8 +23,9 @@ const getWeekDay = (ob) => {
 
 }
 
-const getSchedule = (ob)=>{
+const getPayment = (ob)=>{
 
+    return "Rs. "+ob.paymentPlanID.totalFee.toLocaleString('en-US', {minimumFractionDigits: 2}, {maximumFractionDigits: 2});
 }
 
 const refreshSchedulesTable=()=>{
@@ -36,9 +37,9 @@ const refreshSchedulesTable=()=>{
         {property: 'batchCode', dataType: 'text'},
         {property: 'description', dataType: 'text'},
         {property: 'commenceDate', dataType: 'text'},
-        {property: 'endDate', dataType: 'text'},
+        {property: 'lastRegDate', dataType: 'text'},
         {property: getWeekDay, dataType: 'function'},
-        {property: getSchedule, dataType: 'text'},
+        {property: getPayment, dataType: 'function'},
         {property: 'seatCount', dataType: 'text'},
         {property: 'seatCountAvailable', dataType: 'text'},
     ];
@@ -52,19 +53,6 @@ const refreshSchedulesTable=()=>{
 
 }
 
-
-const logout = ()=>{
-    showCustomConfirm("<strong class='text-lowercase'>"+btnProfileName.innerText+"</strong><br/>You are About to Logout from the System<br><br> are you sure?",function (result){
-
-        if(result){
-            window.location.assign("/logout");
-        }
-        else{
-
-        }
-
-    });
-}
 
 const scheduleSearch = ()=>{
     const searchInput = JSON.parse(schedulesCourse.value);
