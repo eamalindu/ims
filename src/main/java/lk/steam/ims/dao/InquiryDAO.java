@@ -60,7 +60,7 @@ public interface InquiryDAO extends JpaRepository<Inquiry,Integer> {
 
     //get count of the new inquiry
     //this data will be used in dashboard IMS
-    @Query(value = "SELECT count(*) FROM inquiry where date(contacttime) <= current_date() and inquirystatus_id =1;",nativeQuery = true)
+    @Query(value = "SELECT count(*) FROM inquiry where inquirystatus_id =1;",nativeQuery = true)
     String getNewInquiryCount();
 
     @Query(value = "select i from Inquiry i where date(i.timeStamp)>=?1 and date(i.timeStamp)<=?2 and i.inquiryStatusId.name=?3 and i.addedBy=?4")
