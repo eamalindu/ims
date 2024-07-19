@@ -87,6 +87,7 @@ const newFollowUpSubmit = () => {
                     showCustomModal("Follow Up Successfully Added!", "success");
                     resetFollowupForm()
                     //refresh the table
+                    $('#collapseFollowUp').collapse('hide');
                     offCanvasInquirySheetCloseButton.click();
 
 
