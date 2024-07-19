@@ -359,36 +359,15 @@
         <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0"
                 data-bs-dismiss="offcanvas" id="offCanvasInquirySheetCloseButton"
                 type="button"><i class="fas fa-times"></i></button>
-        <div class="container d-flex gap-3" style="width: 65%">
-            <button aria-controls="collapseFollowUp" aria-expanded="false"
-                    class="btn btn-sm bg-purple rounded-0 text-white" data-bs-target="#collapseFollowUp"
-                    data-bs-toggle="collapse"><i
-                    class="fas fa-plus"></i> Follow-Up
-            </button>
-            <div class="dropdown">
-                <button aria-expanded="false" class="btn btn-sm bg-purple rounded-0 text-white dropdown-toggle"
-                        data-bs-toggle="dropdown" type="button">
-                    Mark As
-                </button>
-                <ul class="dropdown-menu rounded-0">
-                    <li><a class="dropdown-item text-success" data-bs-target="#modalRegistered" data-bs-toggle="modal"
-                           onclick="success()"><i class="fa-solid fa-thumbs-up"></i> Registered</a></li>
-                    <li><a class="dropdown-item text-danger mt-2" data-bs-target="#modalDropped" data-bs-toggle="modal"><i
-                            class="fa-solid fa-thumbs-down"></i> Dropped</a></li>
-                </ul>
-            </div>
-            <button class="btn btn-sm bg-info rounded-0 text-white" onclick="inquiryEdit()"><i
-                    class="fa-regular fa-pen-to-square"></i> Edit
-                Info
-            </button>
-            <button class="btn btn-sm bg-warning rounded-0 text-white" id="btnInquirySheetUpdate"
-                    onclick="inquiryUpdate()"><i
-                    class="fa-solid fa-arrows-rotate"></i> Update
+        <div class="container d-flex gap-3 ms-1" style="width: 65%;">
+            <button aria-controls="collapseFollowUp" aria-expanded="false" class="btn btn-sm bg-purple rounded-0 text-white" data-bs-target="#collapseFollowUp" id="collapseFollowUpButton" data-bs-toggle="collapse"><i class="fas fa-plus"></i> Follow-Up</button>
+            <button class="btn btn-sm bg-info rounded-0 text-white" id="btnInquirySheetEdit" onclick="inquiryEdit()"><i class="fa-regular fa-pen-to-square"></i> Edit Info</button>
+            <button class="btn btn-sm bg-warning rounded-0 text-white" id="btnInquirySheetUpdate" onclick="inquiryUpdate()"><i class="fa-solid fa-arrows-rotate"></i> Update</button>
+            <button class="btn btn-sm bg-danger rounded-0 text-white" id="btnInquirySheetDelete" onclick="inquiryDelete()" style="display: block;"><i class="fa-solid fa-trash"></i>
+                Drop Inquiry
             </button>
         </div>
-        <h3 class="align-items-center mt-2"
-            style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Inquiry
-            Sheet #<span id="inquirySheetId">40002</span></h3>
+        <h3 class="align-items-center mt-2" style="text-transform: uppercase; font-size: medium; font-weight: bold; font-family: Arial, serif;">Inquiry Sheet</h3>
     </div>
     <!-- Collapse for Follow-up Start -->
     <div class="collapse container mt-2" id="collapseFollowUp">
@@ -512,7 +491,10 @@
     </div>
     <!-- Collapse for Follow-up End -->
     <div class="offcanvas-body">
-
+        <div class="text-center w-75 mx-auto mt-2">
+            <span class="align-items-center display-3" id="inquirySheetCode" style="text-transform: uppercase;font-weight: bold;font-family: Arial, serif;">2024-DiT-1</span>
+            <p class="text-muted lh-sm small">This Inquiry was Created by <span class="fw-bold" id="inquirySheetAddedBy"></span> on <span class="fw-bold" id="inquirySheetAddedDate"></span> at <span class="fw-bold" id="inquirySheetAddedTime"></span></p>
+        </div>
         <table class="table table-bordered table-responsive mb-2">
             <tbody class="small align-middle">
             <tr>
@@ -624,7 +606,7 @@
                 </td>
                 <td class="fw-bold w-25">Description</td>
                 <td>
-                    <textarea class="small rounded-0 form-control-sm inquirySheetInputs" disabled
+                    <textarea class="small w-100 rounded-0 form-control-sm inquirySheetInputs" disabled
                               id="inquirySheetDescription"
                               onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{20,}$','editedInquiry','description')" required></textarea>
                     <div class="valid-feedback">Value Accepted</div>
@@ -633,15 +615,7 @@
             </tr>
             </tbody>
         </table>
-        <!-- Show Added-by and added time of the inquiry here -->
-        <div class="card rounded-0 mb-2">
-            <div class="card-body rounded-0 pb-0">
-                <p class="small text-muted text-center">This Inquiry was Created by <span class="fw-bold"
-                                                                                          id="inquirySheetAddedBy"></span>
-                    on <span class="fw-bold" id="inquirySheetAddedDate"></span> at
-                    <span class="fw-bold" id="inquirySheetAddedTime"></span>.</p>
-            </div>
-        </div>
+
 
         <div class="btn btn-sm bg-purple text-white rounded-0 mb-2">Follow Ups</div>
         <!-- List out follow-ups From the database-->
