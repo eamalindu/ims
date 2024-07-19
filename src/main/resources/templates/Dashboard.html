@@ -124,8 +124,8 @@
                         class="text-danger float-end small text-capitalize">High Priority</span></h5>
             </div>
             <div class="card-body pt-0">
-                <input class="form-control form-control-sm w-25 small rounded-0 mb-2 float-end" placeholder="Search" type="search"/>
-                <table class="table table-sm small text-center custom-table" id="tblScheduledPool">
+                <input class="form-control form-control-sm w-25 small rounded-0 mb-2 float-end" placeholder="Search" type="text" onkeyup="searchTable(this,'tblScheduledPool')"/>
+                <table class="table table-sm small text-center custom-table mb-0" id="tblScheduledPool">
                     <thead class="table-group-divider bg-purple text-white">
                     <tr>
                         <th>#</th>
@@ -146,6 +146,7 @@
                     </tr>
                     </tbody>
                 </table>
+                <div id="noResult" class="d-none small">No result found!</div>
             </div>
         </div>
         <div class="card rounded-0 border-0" id="newPool">
@@ -154,7 +155,7 @@
                         class="text-success float-end small text-capitalize">Low Priority</span></h5>
             </div>
             <div class="card-body pt-0">
-                <input class="form-control form-control-sm w-25 small rounded-0 mb-2 float-end" placeholder="Search" type="search" onkeyup="searchTable(this,'tblInquiryPool')"/>
+                <input class="form-control form-control-sm w-25 small rounded-0 mb-2 float-end" placeholder="Search" type="text" onkeyup="searchTable(this,'tblInquiryPool')"/>
                 <table class="table table-sm small text-center custom-table" id="tblInquiryPool">
                     <thead class="table-group-divider bg-purple text-white">
                     <tr>

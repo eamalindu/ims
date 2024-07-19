@@ -410,10 +410,10 @@ const refreshDashboardWidgets=()=>{
 
 
 // Anonymous function declaration for searchTable function
-const searchTable = (elementID,tableID)=> {
+const searchTable = (elementID,tableID,noResultDivID)=> {
     // Variables for input, filter, table, rows, cells, and search value
     var input, filter, table, tr, td, i, txtValue;
-
+    var noResult = true;
     // Get the input element and its value for filtering
     input = elementID;
     filter = input.value.toUpperCase();
@@ -440,9 +440,11 @@ const searchTable = (elementID,tableID)=> {
                 // If the filter value is found in the cell content, display the row
                 if (txtValue.indexOf(filter) > -1) {
                     tr[i].style.display = "";
+                    noResult = false;
                     break; // Break the inner loop since row is already displayed
                 }
             }
         }
     }
+    document.getElementById(noResultDivID).className = noResult ? "" : "d-none";
 }
