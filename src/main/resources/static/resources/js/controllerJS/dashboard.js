@@ -362,5 +362,9 @@ const refreshDashboardWidgets=()=>{
     newInquiryCount = ajaxGetRequest("/Inquiry/newinquirycount")
     textNewInquiryCount.innerText = newInquiryCount;
     textScheduledInquiryCount.innerText = scheduledInquiries.length;
+    //getting registered inquiries this month for the logged user
+    registeredInquiries = ajaxGetRequest("/Inquiry/registeredInquiriesThisMonth")
+    textRegisteredInquiryCount.innerText = registeredInquiries.length;
+
 
 }
