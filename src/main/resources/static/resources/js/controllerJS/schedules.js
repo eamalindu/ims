@@ -30,6 +30,11 @@ const getPayment = (ob)=>{
 
 const getSchedule = (ob)=>{
 
+    schduleString = '';
+    ob.batchHasDayList.forEach((schedule)=>{
+        schduleString += schedule.dayID.name + " [" + schedule.startTime.slice(0, -3) + " - " + schedule.endTime.slice(0, -3) + "]<br>";
+    });
+    return schduleString;
 }
 
 const refreshSchedulesTable=()=>{
