@@ -170,8 +170,10 @@ const rowView = (ob, Index) => {
     //set id type
     inquirySheetIdType.value = ob.idType;
 
-    //set the current object to be edited
     currentInquiry = ob;
+    //get all the followups for the particular inquiry
+    followups = ajaxGetRequest("/followup/getById/"+ob.id);
+    showFollowupCard(followups,followupsList);
 
 
 }
