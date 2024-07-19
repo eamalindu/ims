@@ -442,3 +442,7 @@ const inquiryDelete = ()=>{
 
     });
 }
+
+const searchInquiry  = ()=>{
+
+}

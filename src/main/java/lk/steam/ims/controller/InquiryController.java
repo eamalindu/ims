@@ -111,7 +111,7 @@ public class InquiryController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return inquiryDAO.getRegisteredInquiriesThisMonth(startDate,endDate,auth.getName());
     }
-
+    
     @PostMapping
     public String saveNewInquiry(@RequestBody Inquiry inquiry){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
