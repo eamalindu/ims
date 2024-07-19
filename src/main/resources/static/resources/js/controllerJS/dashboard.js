@@ -32,7 +32,9 @@ const refreshInquiryPoolTable = () => {
 
     //initiate dataTable only if inquires are available
     if(newInquiries.length>0){
-        $('#tblInquiryPool').dataTable();
+        $('#tblInquiryPool').dataTable({
+            "info": false
+        });
     }
 
     //testing code start
@@ -46,7 +48,9 @@ const refreshInquiryPoolTable = () => {
 
     //initiate dataTable only if inquires are available
     if(scheduledInquiries.length>0){
-        $('#tblScheduledPool').dataTable();
+        $('#tblScheduledPool').dataTable({
+            "info": false
+        });
     }
 
 //testing code end
