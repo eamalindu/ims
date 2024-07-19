@@ -30,7 +30,6 @@ const refreshInquiryPoolTable = () => {
 
     fillDataIntoTable(tblInquiryPool, newInquiries, displayPropertyListForInquiryPool, rowView,'offCanvasInquirySheet');
 
-
     //testing code start
 
     scheduledInquiries = ajaxGetRequest("/Inquiry/getInquiriesWithFollowUpsToday")
