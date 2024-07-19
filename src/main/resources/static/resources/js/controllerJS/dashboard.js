@@ -407,3 +407,42 @@ const refreshDashboardWidgets=()=>{
 
 
 }
+
+
+// Anonymous function declaration for searchTable function
+const searchTable = (elementID,tableID)=> {
+    // Variables for input, filter, table, rows, cells, and search value
+    var input, filter, table, tr, td, i, txtValue;
+
+    // Get the input element and its value for filtering
+    input = elementID;
+    filter = input.value.toUpperCase();
+
+    // Get the table element and all rows inside it
+    table = document.getElementById(tableID);
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, starting from index 1 (skipping header row)
+    for (i = 1; i < tr.length; i++) {
+        // Hide the row by default
+        tr[i].style.display = "none";
+
+        // Get all cells in the current row
+        td = tr[i].getElementsByTagName("td");
+
+        // Loop through all cells in the current row
+        for (var j = 0; j < td.length; j++) {
+            // Check if the current cell contains the filter value
+            if (td[j]) {
+                // Convert cell content to uppercase for case-insensitive comparison
+                txtValue = td[j].innerHTML.toUpperCase();
+
+                // If the filter value is found in the cell content, display the row
+                if (txtValue.indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    break; // Break the inner loop since row is already displayed
+                }
+            }
+        }
+    }
+}
