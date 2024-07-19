@@ -146,7 +146,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <div id="noResultSchedule" class="d-none text-center small">No result found!</div>
+                <div id="noResultSchedule" class="d-none py-1 text-center small border border-top-0">No result found!</div>
             </div>
         </div>
         <div class="card rounded-0 border-0" id="newPool">
@@ -155,7 +155,7 @@
                         class="text-success float-end small text-capitalize">Low Priority</span></h5>
             </div>
             <div class="card-body pt-0">
-                <input class="form-control form-control-sm w-25 small rounded-0 mb-2 float-end" placeholder="Search" type="text" onkeyup="searchTable(this,'tblInquiryPool')"/>
+                <input class="form-control form-control-sm w-25 small rounded-0 mb-2 float-end" placeholder="Search" type="text" onkeyup="searchTable(this,'tblInquiryPool','noResultNew')"/>
                 <table class="table table-sm small text-center custom-table" id="tblInquiryPool">
                     <thead class="table-group-divider bg-purple text-white">
                     <tr>
@@ -181,6 +181,8 @@
                     </tr>
                     </tbody>
                 </table>
+                <div id="noResultNew" class="d-none py-1 text-center small border border-top-0">No result found!</div>
+
             </div>
         </div>
     </div>
