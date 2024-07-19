@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Base64;
+
 @RestController
 public class LoginController {
 
@@ -36,18 +38,21 @@ public class LoginController {
     @GetMapping(value = "/Dashboard")
     public ModelAndView imsDashboard(){
 
-        //
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView imsView = new ModelAndView();
         imsView.setViewName("dashboard.html");
-        //
         imsView.addObject("username",auth.getName());
         imsView.addObject("title","Dashboard | STEAM IMS");
         imsView.addObject("activeNavItem","dashboard");
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+        String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+        String imageSrc = "data:image/png;base64," + base64Image;
         imsView.addObject("loggedInEmployeeName",loggedInEmployeeName);
         imsView.addObject("loggedInDesignationName",loggedInDesignationName);
+        imsView.addObject("loggedInImage",imageSrc);
         return imsView;
     }
 }
