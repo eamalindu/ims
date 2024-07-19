@@ -147,6 +147,7 @@ const rowView = (ob, rowIndex) => {
 
     //hide the update button
         btnInquirySheetUpdate.style.display = 'none';
+        btnInquirySheetDelete.style.display = 'none';
         //show follow and drop button
         collapseFollowUpButton.classList.add('d-none');
         btnInquirySheetDelete.classList.add('d-none');
@@ -173,6 +174,9 @@ const rowView = (ob, rowIndex) => {
 
     }
     else {
+        collapseFollowUpButton.classList.add('d-none');
+        btnInquirySheetDelete.classList.add('d-none');
+        btnInquirySheetEdit.classList.add('d-none');
         inquirySheetCode.classList.remove('text-warning');
         inquirySheetCode.classList.remove('text-sucess');
         inquirySheetCode.classList.remove('text-purple');
