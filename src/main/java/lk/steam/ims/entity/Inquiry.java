@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Inquiry {
 
+    //primary key mapping
     @Id
     @Column(name = "id",unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -78,6 +79,8 @@ public class Inquiry {
 
     @Column(name = "registereddatetime")
     private LocalDateTime registrationDateTime;
+
+    //foreign keys mapping
     @ManyToOne
     @JoinColumn(name = "source_id",referencedColumnName = "id")
     private Source sourceId;
