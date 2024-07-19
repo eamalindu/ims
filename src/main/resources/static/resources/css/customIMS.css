@@ -414,6 +414,12 @@ g text {
     justify-content: center;
 
 }
+.page-link{
+    color: rebeccapurple!important;
+}
+.active{
+    color:white!important;
+}
 
 /*Medium devices responsive*/
 @media (max-width: 870px) {
