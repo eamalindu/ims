@@ -195,7 +195,10 @@ const resetInquiryForm = () => {
 
     //set default option chosen
     setTimeout(function () {
-        $('select').val('').trigger('chosen:updated');
+        $('#inquirySource').val('').trigger('chosen:updated');
+        $('#inquiryCourse').val('').trigger('chosen:updated');
+        $('#inquiryIdOption').val('').trigger('chosen:updated');
+
     }, 0);
 
     //reset form values
