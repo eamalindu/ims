@@ -231,19 +231,31 @@ const inquiryEdit = () => {
     console.log(newInquiry)
 
 }
-const inquiryDropped = () => {
+const inquiryDelete = () => {
 
-    inquiryToBeDropped = currentInquiry;
-    console.log(inquiryToBeDropped);
+    //get user confirmation
+    showCustomConfirm("You are About to <b>Delete</b> this Inquiry<br><br>Inquiry Code: <span class='text-purple'>" + oldInquiry.inquiryNumber + "</span><br><br>Are You Sure?", function (result) {
+        if (result) {
+            //pass the record to backend
+            //receive the server response
+            let serviceResponse = ajaxHttpRequest("/Inquiry", "DELETE", oldInquiry);
+            if (serviceResponse === "OK") {
+                //show user the response
+                showCustomModal("Inquiry Successfully Deleted!", "success");
+                //close the offCanvas sheet
+                offCanvasInquirySheetCloseButton.click();
+                //refresh table
+                refreshInquiryPoolTable();
+                refreshDashboardWidgets();
+            } else {
+                showCustomModal("Operation Failed!" + serviceResponse, "error");
+            }
 
-    showCustomConfirm('Are You Sure?<br><small>You are about to drop the inquiry <strong>#' + inquiryToBeDropped.inquiryNumber + '</strong></small>',function (result){
 
-        if(result){
-            //database query
+        } else {
+            showCustomModal("Operation Cancelled!", "info");
         }
-        else{
-            //close the modal for dropped
-        }
+
     });
 
 }
