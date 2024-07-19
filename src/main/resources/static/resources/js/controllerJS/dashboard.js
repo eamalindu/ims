@@ -358,12 +358,15 @@ const showNewPool=()=>{
 }
 
 const refreshDashboardWidgets=()=>{
+    //get start date and end date of the current month using moment js
+    const startDate = moment().startOf('month').format('YYYY-MM-DD');
+    const endDate = moment().endOf('month').format('YYYY-MM-DD');
     //getting new inquiry count
     newInquiryCount = ajaxGetRequest("/Inquiry/newinquirycount")
     textNewInquiryCount.innerText = newInquiryCount;
     textScheduledInquiryCount.innerText = scheduledInquiries.length;
     //getting registered inquiries this month for the logged user
-    registeredInquiries = ajaxGetRequest("/Inquiry/registeredInquiriesThisMonth")
+    registeredInquiries = ajaxGetRequest("/Inquiry/registeredInquiriesThisMonth/"+startDate+"/"+endDate);
     textRegisteredInquiryCount.innerText = registeredInquiries.length;
 
 

@@ -76,6 +76,8 @@ public class Inquiry {
     @Column(name = "registrationid")
     private Integer registrationID;
 
+    @Column(name = "registereddatetime")
+    private LocalDateTime registrationDateTime;
     @ManyToOne
     @JoinColumn(name = "source_id",referencedColumnName = "id")
     private Source sourceId;
