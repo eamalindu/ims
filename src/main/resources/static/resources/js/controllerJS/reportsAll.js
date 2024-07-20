@@ -71,3 +71,11 @@ const getReport = ()=>{
     const [startDate,endDate] = performanceSearchDateRange.value.split(' - ');
     refreshReportAllTable(startDate,endDate);
 }
+
+const exportData = ()=>{
+    showCustomConfirm('You are about to export <span class="text-steam-green">All Inquires</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
+        if(result){
+
+        }
+    });
+}
