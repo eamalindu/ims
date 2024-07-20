@@ -22,9 +22,9 @@ public class ReportController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView reportsAllView = new ModelAndView();
         reportsAllView.addObject("username",auth.getName());
-        reportsAllView.addObject("title","Counsellors' Performance | STEAM IMS");
+        reportsAllView.addObject("title","Reports All | STEAM IMS");
         reportsAllView.setViewName("Reports-All.html");
-        reportsAllView.addObject("activeNavItem","performanceAll");
+        reportsAllView.addObject("activeNavItem","reports");
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
         byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
