@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
+import java.util.Base64;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -51,8 +52,12 @@ public class ImsApplication {
 		imsAdminView.addObject("activeNavItem","administrations");
 		String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
 		String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+		byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+		String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+		String imageSrc = "data:image/png;base64," + base64Image;
 		imsAdminView.addObject("loggedInEmployeeName",loggedInEmployeeName);
 		imsAdminView.addObject("loggedInDesignationName",loggedInDesignationName);
+		imsAdminView.addObject("loggedInImage",imageSrc);
 
 		return imsAdminView;
 	}
@@ -67,8 +72,12 @@ public class ImsApplication {
 		imsInquiriesView.addObject("activeNavItem","inquiries");
 		String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
 		String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+		byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+		String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+		String imageSrc = "data:image/png;base64," + base64Image;
 		imsInquiriesView.addObject("loggedInEmployeeName",loggedInEmployeeName);
 		imsInquiriesView.addObject("loggedInDesignationName",loggedInDesignationName);
+		imsInquiriesView.addObject("loggedInImage",imageSrc);
 		return imsInquiriesView;
 	}
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Base64;
 import java.util.List;
 
 @RestController
@@ -41,6 +42,12 @@ public class BatchController {
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
         scheduleView.addObject("loggedInEmployeeName",loggedInEmployeeName);
         scheduleView.addObject("loggedInDesignationName",loggedInDesignationName);
+        byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+        String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+        String imageSrc = "data:image/png;base64," + base64Image;
+        scheduleView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        scheduleView.addObject("loggedInDesignationName",loggedInDesignationName);
+        scheduleView.addObject("loggedInImage",imageSrc);
         return scheduleView;
     }
 
