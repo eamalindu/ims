@@ -8,7 +8,7 @@ window.addEventListener('load',()=> {
 
 const refreshReportAllTable = (startDate,endDate) =>{
 
-    allInquiries = ajaxGetRequest("/Inquiry/findall");
+    allInquiries = ajaxGetRequest("/Inquiry/getAllInquiriesByDateRange/"+startDate+"/"+endDate);
 
     displayPropertyListForReoprtAll = [
         {property: 'inquiryNumber',dataType:'text'},
@@ -69,5 +69,5 @@ const resetReportSearchBar = ()=>{
 
 const getReport = ()=>{
     const [startDate,endDate] = performanceSearchDateRange.value.split(' - ');
-
+    refreshReportAllTable(startDate,endDate);
 }
