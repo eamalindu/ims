@@ -25,6 +25,7 @@ public class ReportController {
         reportsAllView.addObject("title","Reports All | STEAM IMS");
         reportsAllView.setViewName("Reports-All.html");
         reportsAllView.addObject("activeNavItem","reports");
+        reportsAllView.addObject("activeReport","all");
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
         byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
