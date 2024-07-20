@@ -83,5 +83,8 @@ public interface InquiryDAO extends JpaRepository<Inquiry,Integer> {
 
     @Query("SELECT i from Inquiry i where i.courseId.id=?1 and i.idValue=?2 and (i.inquiryStatusId.id=1 or i.inquiryStatusId.id=2 or i.inquiryStatusId.id=3 or i.inquiryStatusId.id=5)")
     Inquiry getInquiryByCourseAndNiC(Integer courseID,String nic);
+
+    @Query(value = "Select * from inquiry where date(timestamp)>=?1 and date(timestamp)<=?2",nativeQuery = true)
+    List<Inquiry> getAllInquiriesByDateRange(String startDate, String endDate);
 }
 

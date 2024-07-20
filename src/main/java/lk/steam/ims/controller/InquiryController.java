@@ -117,6 +117,11 @@ public class InquiryController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return inquiryDAO.getRegisteredInquiriesThisMonth(startDate,endDate,auth.getName());
     }
+
+    @GetMapping(value = "/getAllInquiriesByDateRange/{startDate}/{endDate}",produces = "application/json")
+    public List<Inquiry> getAllInquiriesByDateRange(@PathVariable String startDate,@PathVariable String endDate){
+        return inquiryDAO.getAllInquiriesByDateRange(startDate,endDate);
+    }
     
     @PostMapping
     public String saveNewInquiry(@RequestBody Inquiry inquiry){
