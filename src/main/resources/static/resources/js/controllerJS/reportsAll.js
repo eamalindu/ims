@@ -5,7 +5,7 @@ window.addEventListener('load',()=> {
 
 });
 
-const refreshReportAllTable = () =>{
+const refreshReportAllTable = (startDate,endDate) =>{
 
     allInquiries = ajaxGetRequest("/Inquiry/findall");
 
@@ -41,10 +41,6 @@ const getInquiryStatus = (ob)=>{
     return ob.inquiryStatusId.name;
 }
 
-const rowView = (ob)=>{
-
-}
-
 const resetReportSearchBar = ()=>{
     var start = moment().startOf('month');
     var end = moment().endOf('month');
@@ -68,4 +64,9 @@ const resetReportSearchBar = ()=>{
     }, cb);
 
     cb(start, end);
+}
+
+const getReport = ()=>{
+    const [startDate,endDate] = performanceSearchDateRange.value.split(' - ');
+
 }
