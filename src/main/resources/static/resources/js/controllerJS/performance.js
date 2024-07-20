@@ -2,6 +2,7 @@ window.addEventListener('load',()=>{
     const startDate = moment().startOf('month').format('YYYY-MM-DD');
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
     generatePerformanceChart(startDate,endDate);
+    generateTopCourseChart(startDate,endDate);
     generateCommission(startDate,endDate);
     resetSearchBar();
 
@@ -69,6 +70,19 @@ const generatePerformanceChart = (startDate,endDate)=>{
 
 }
 
+const generateTopCourseChart = ()=>{
+    const courses = ajaxGetRequest("/course/findall");
+    let courseNames = [];
+    let inquiryCount = [];
+
+    courses.forEach(course=>{
+        courseNames.push(course.code)
+        inquiryCount.push(ajaxGetRequest("/Inquiry/getInquiriesByDateRangeAndCourse/"+startDate+"/"+endDate+"/"+course.id).length)
+    })
+
+    generateChart(chartCourses,'',courseNames,'Inquiries', [{name: 'Inquiry Count',data: inquiryCount,color: '#eb548c'}])
+}
+
 const resetSearchBar = ()=>{
     var start = moment().startOf('month');
     var end = moment().endOf('month');
@@ -99,4 +113,5 @@ const getPerformance = ()=>{
     const [startDate,endDate] = performanceSearchDateRange.value.split(' - ');
     generatePerformanceChart(startDate,endDate);
     generateCommission(startDate,endDate);
+    generateTopCourseChart(startDate,endDate);
 }
