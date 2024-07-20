@@ -70,7 +70,7 @@ const generatePerformanceChart = (startDate,endDate)=>{
 
 }
 
-const generateTopCourseChart = ()=>{
+const generateTopCourseChart = (startDate,endDate)=>{
     const courses = ajaxGetRequest("/course/findall");
     let courseNames = [];
     let inquiryCount = [];
