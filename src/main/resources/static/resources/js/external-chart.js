@@ -70,14 +70,16 @@ const generateMonochromePieChart = (elementID, title,axisName, series) => {
                 },
                 colors: (function () {
                     var colors = [],
-                        base = Highcharts.getOptions().colors[0],
+                        base = Highcharts.getOptions().colors[0], // You can choose a different index if the first color is too light
                         i;
 
                     for (i = 0; i < 10; i += 1) {
-                        colors.push(Highcharts.color(base).brighten((i - 3) / 7).get());
+                        // Adjust the brighten value to avoid very light colors
+                        colors.push(Highcharts.color(base).brighten((i - 5) / 10).get());
                     }
                     return colors;
                 }())
+
             }
         },
         series: [{
