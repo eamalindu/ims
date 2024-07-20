@@ -12,13 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Base64;
 
 @RestController
-@RequestMapping("/Reports")
 public class ReportController {
 
     @Autowired
     private UserDAO userDAO;
 
-    @GetMapping("/All")
+    @GetMapping("/Reports-All")
     public ModelAndView allReports() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView reportsAllView = new ModelAndView();
