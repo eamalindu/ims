@@ -77,7 +77,7 @@ const generateTopCourseChart = (startDate,endDate)=>{
 
     courses.forEach(course=>{
         courseNames.push(course.code)
-        inquiryCount.push(ajaxGetRequest("/Inquiry/getInquiriesByDateRangeAndCourse/"+startDate+"/"+endDate+"/"+course.id).length)
+        inquiryCount.push(ajaxGetRequest("/Inquiry/getInquiriesByDateRangeAndCourseForLoggedInUser/"+startDate+"/"+endDate+"/"+course.id).length)
     })
 
     generateChart(chartCourses,'',courseNames,'Inquiries', [{name: 'Inquiry Count',data: inquiryCount,color: '#eb548c'}])

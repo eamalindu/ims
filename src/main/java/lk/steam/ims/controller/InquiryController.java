@@ -101,6 +101,12 @@ public class InquiryController {
         return inquiryDAO.getInquiriesByDateRangeAndCourse(startDate,endDate,courseId);
     }
 
+    @GetMapping(value = "/getInquiriesByDateRangeAndCourseForLoggedInUser/{startDate}/{endDate}/{courseId}",produces = "application/json")
+    public List<Inquiry> getInquiriesByDateRangeAndCourseForLoggedInUser(@PathVariable String startDate,@PathVariable String endDate,@PathVariable Integer courseId){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return inquiryDAO.getInquiriesByDateRangeAndCourseForLoggedInUser(startDate,endDate,courseId,auth.getName());
+    }
+
     @GetMapping(value = "/getInquiriesByDateRangeAndSource/{startDate}/{endDate}/{sourceID}",produces = "application/json")
     public List<Inquiry> getInquiriesByDateRangeAndSource(@PathVariable String startDate,@PathVariable String endDate,@PathVariable Integer sourceID){
         return inquiryDAO.getInquiriesByDateRangeAndSource(startDate,endDate,sourceID);
