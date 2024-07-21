@@ -74,6 +74,12 @@ public class PrivilegeController {
     @PostMapping
     public String saveNewPrivilege(@RequestBody Privilege privilege) {
         try {
+
+            Privilege existPrivilege = privilegeDAO.getPrivilegeByRoleAndModule(privilege.getRoleID().getId(),privilege.getModuleID().getId());
+            if(existPrivilege != null){
+                return "<br>Privilege Already Exists";
+            }
+
             privilegeDAO.save(privilege);
             return "OK";
         } catch (Exception ex) {
