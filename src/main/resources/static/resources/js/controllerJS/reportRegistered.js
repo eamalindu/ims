@@ -73,7 +73,7 @@ const getReport = ()=>{
 }
 
 const exportData = ()=>{
-    showCustomConfirm('You are about to export <span class="text-purple">All Inquires</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
+    showCustomConfirm('You are about to export <span class="text-purple">Registered Inquires</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
 
         }
