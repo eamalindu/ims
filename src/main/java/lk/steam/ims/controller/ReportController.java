@@ -22,7 +22,7 @@ public class ReportController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView reportsAllView = new ModelAndView();
         reportsAllView.addObject("username",auth.getName());
-        reportsAllView.addObject("title","Reports All | STEAM IMS");
+        reportsAllView.addObject("title","Report All | STEAM IMS");
         reportsAllView.setViewName("Reports-All.html");
         reportsAllView.addObject("activeNavItem","reports");
         reportsAllView.addObject("activeReport","all");
@@ -43,7 +43,7 @@ public class ReportController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView reportsRegisteredView = new ModelAndView();
         reportsRegisteredView.addObject("username",auth.getName());
-        reportsRegisteredView.addObject("title","Reports All | STEAM IMS");
+        reportsRegisteredView.addObject("title","Report Registered | STEAM IMS");
         reportsRegisteredView.setViewName("Reports-Registered.html");
         reportsRegisteredView.addObject("activeNavItem","reports");
         reportsRegisteredView.addObject("activeReport","registered");
