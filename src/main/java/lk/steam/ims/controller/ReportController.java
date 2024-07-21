@@ -37,4 +37,25 @@ public class ReportController {
 
         return reportsAllView;
     }
+
+    @GetMapping()
+    public ModelAndView registeredReport(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        ModelAndView reportsRegisteredView = new ModelAndView();
+        reportsRegisteredView.addObject("username",auth.getName());
+        reportsRegisteredView.addObject("title","Reports All | STEAM IMS");
+        reportsRegisteredView.setViewName("Reports-All.html");
+        reportsRegisteredView.addObject("activeNavItem","reports");
+        reportsRegisteredView.addObject("activeReport","registered");
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+        String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+        String imageSrc = "data:image/png;base64," + base64Image;
+        reportsRegisteredView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        reportsRegisteredView.addObject("loggedInDesignationName",loggedInDesignationName);
+        reportsRegisteredView.addObject("loggedInImage",imageSrc);
+
+        return reportsRegisteredView;
+    }
 }
