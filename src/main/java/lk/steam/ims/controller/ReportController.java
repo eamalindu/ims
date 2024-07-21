@@ -38,13 +38,13 @@ public class ReportController {
         return reportsAllView;
     }
 
-    @GetMapping()
+    @GetMapping("/Reports-Registered")
     public ModelAndView registeredReport(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView reportsRegisteredView = new ModelAndView();
         reportsRegisteredView.addObject("username",auth.getName());
         reportsRegisteredView.addObject("title","Reports All | STEAM IMS");
-        reportsRegisteredView.setViewName("Reports-All.html");
+        reportsRegisteredView.setViewName("Reports-Registered.html");
         reportsRegisteredView.addObject("activeNavItem","reports");
         reportsRegisteredView.addObject("activeReport","registered");
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
