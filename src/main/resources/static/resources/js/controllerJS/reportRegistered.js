@@ -69,7 +69,7 @@ const resetReportSearchBar = ()=>{
 
 const getReport = ()=>{
     const [startDate,endDate] = registeredInquirySearchDateRange.value.split(' - ');
-    refreshReportAllTable(startDate,endDate);
+    refreshReportRegisteredTable(startDate,endDate);
 }
 
 const exportData = ()=>{
