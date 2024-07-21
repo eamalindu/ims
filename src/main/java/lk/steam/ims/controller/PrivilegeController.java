@@ -90,6 +90,8 @@ public class PrivilegeController {
     @PutMapping
     public String updatePrivilege(@RequestBody Privilege privilege) {
 
+        //check authentication needs to be added here
+
         //check existing
         Privilege existPrivilege = privilegeDAO.getReferenceById(privilege.getId());
 
