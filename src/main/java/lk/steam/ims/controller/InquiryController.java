@@ -122,6 +122,11 @@ public class InquiryController {
     public List<Inquiry> getAllInquiriesByDateRange(@PathVariable String startDate,@PathVariable String endDate){
         return inquiryDAO.getAllInquiriesByDateRange(startDate,endDate);
     }
+
+    @GetMapping(value = "/getAllInquiriesByDateRangeAndStatus/{startDate}/{endDate}/{status}",produces = "application/json")
+    public List<Inquiry> getAllInquiriesByDateRangeAndStatus(@PathVariable String startDate,@PathVariable String endDate, @PathVariable String status){
+        return inquiryDAO.getAllInquiriesByDateRangeAndStatus(startDate,endDate,status);
+    }
     
     @PostMapping
     public String saveNewInquiry(@RequestBody Inquiry inquiry){
