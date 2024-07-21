@@ -1,0 +1,312 @@
+<head th:replace="~{fragments/head :: headFragment}"></head>
+
+<body>
+<!--Loader-->
+<div th:replace="~{fragments/loader :: loader}"></div>
+<!-- Nav Bar Start -->
+<nav th:replace="~{ fragments/navbar :: navbarFragment}"></nav>
+<!-- Nav Bar End -->
+
+<!-- Display Current Page /breadcrumbs -->
+<div class="container-fluid bg-custom-white custom-banner">
+    <h5>Report - Completed Inquiries</h5>
+</div>
+
+<div class="container-fluid pt-2">
+    <div class="card rounded-0 ">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-lg-3">
+                    <label class="text-uppercase text-muted small m-0 p-0" for="registeredInquirySearchDateRange">Date Range</label>
+                    <div class="input-group">
+                        <span class="input-group-text text-black bg-custom-white rounded-0"><i class="fa-solid fa-calendar-week"></i></span>
+                        <input class="form-control rounded-0" style="width: 235px;" id="registeredInquirySearchDateRange" placeholder="Date Range">
+                        <button class="btn bg-purple rounded-0 text-white ms-2" id="" type="submit" onclick="getReport()"><i class="fa-solid fa-magnifying-glass small"></i></button>
+                    </div>
+                </div>
+                <div class="col-lg-5"></div>
+                <div class="col-lg-4 col-12 text-end">
+                    <p class="text-uppercase small m-0 text-muted ms-1">Export To</p>
+                    <button class="btn bg-success text-white rounded-0" onclick="exportData()" id="btnToExcel"><i class="fa-solid fa-file-excel"></i> Excel</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer pt-4 pb-4 overflow-auto">
+            <table class="custom-table" id="tblReportsRegistered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>ID</th>
+                    <th>Source</th>
+                    <th>Course</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Added By</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- OffCanvas for Inquiry Sheet Start -->
+<div aria-labelledby="offcanvasRightLabel" class="offcanvas offcanvas-end w-50" data-bs-backdrop="static"
+     id="offCanvasInquirySheet" tabindex="-1">
+    <div class="offcanvas-header bg-light">
+        <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" id="offCanvasInquirySheetCloseButton" data-bs-dismiss="offcanvas"
+                type="button"><i class="fas fa-times"></i></button>
+        <div class="container d-flex gap-3" style="width: 65%">
+            <button aria-controls="collapseFollowUp" aria-expanded="false"
+                    class="btn btn-sm bg-purple rounded-0 text-white" data-bs-target="#collapseFollowUp"
+                    data-bs-toggle="collapse"><i
+                    class="fas fa-plus"></i> Follow-Up
+            </button>
+            <div class="dropdown">
+                <button aria-expanded="false" class="btn btn-sm bg-purple rounded-0 text-white dropdown-toggle"
+                        data-bs-toggle="dropdown" type="button">
+                    Mark As
+                </button>
+                <ul class="dropdown-menu rounded-0">
+                    <li><a class="dropdown-item text-success" data-bs-target="#modalRegistered" data-bs-toggle="modal"
+                           onclick="success()"><i class="fa-solid fa-thumbs-up"></i> Registered</a></li>
+                    <li><a class="dropdown-item text-danger mt-2" data-bs-target="#modalDropped" data-bs-toggle="modal"><i
+                            class="fa-solid fa-thumbs-down"></i> Dropped</a></li>
+                </ul>
+            </div>
+            <button class="btn btn-sm bg-info rounded-0 text-white" onclick="inquiryEdit()"><i
+                    class="fa-regular fa-pen-to-square"></i> Edit
+                Info
+            </button>
+            <button class="btn btn-sm bg-warning rounded-0 text-white" id="btnInquirySheetUpdate" onclick="inquiryUpdate()"><i
+                    class="fa-solid fa-arrows-rotate"></i> Update
+            </button>
+        </div>
+        <h3 class="align-items-center"
+            style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Inquiry
+            Sheet #<span id="inquirySheetId">40002</span></h3>
+    </div>
+    <!-- Collapse for Follow-up Start -->
+    <div class="collapse container mt-2" id="collapseFollowUp">
+        <div class="card rounded-0">
+            <div class="card-header pb-0 bg-purple opacity-75 rounded-0">
+                <h3 class="text-white"
+                    style="text-transform: uppercase;font-size: medium;font-weight: bold;font-family: Arial, serif;">Add
+                    Follow Up</h3>
+            </div>
+            <div class="card-body bg-light rounded-0">
+                <form onsubmit="return false">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <div class="form-label">
+                                    <label class="fw-bold required small" for="inquiryFollowUpType">Type</label>
+                                </div>
+                                <div class="input-group">
+                                    <select class="form-select rounded-0 chosen-inquiry"
+                                            data-placeholder="Please Select a Type " id="inquiryFollowUpType"
+                                            onchange="selectStaticValueValidator(this,'','newFollowUp','type')"
+                                            required>
+                                        <option value=""></option>
+                                        <option>Generic Update</option>
+                                        <option>Phone Call</option>
+                                        <option>WhatsApp</option>
+                                        <option>Email</option>
+                                        <option>Text</option>
+                                    </select>
+                                </div>
+                                <div class="text-muted small"><small>How did you follow up the inquiry?</small></div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-label">
+                                    <label class="fw-bold required small" for="inquiryFollowUpContent">Content</label>
+                                </div>
+                                <textarea class="rounded-0 form-control" cols="80" id="inquiryFollowUpContent"
+                                          onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{3,}$','newFollowUp','content')"
+                                          required
+                                          rows="4"></textarea>
+                                <div class="text-muted small"><small>Summary of the Customer Feedback.</small></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-2">
+                                <div class="form-label">
+                                    <label class="fw-bold required small">Feeling</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" id="inquiryFollowUpFeelingPositive" onchange="newFollowUp.feeling=this.value;"
+                                           name="inquiryFollowUpFeeling" type="radio" value="Positive">
+                                    <label class="form-check-label small"
+                                           for="inquiryFollowUpFeelingPositive">Positive</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" id="inquiryFollowUpFeelingNeutral" onchange="newFollowUp.feeling=this.value;"
+                                           name="inquiryFollowUpFeeling" type="radio" value="Neutral">
+                                    <label class="form-check-label small"
+                                           for="inquiryFollowUpFeelingNeutral">Neutral</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" id="inquiryFollowUpFeelingNegative" onchange="newFollowUp.feeling=this.value;"
+                                           name="inquiryFollowUpFeeling" type="radio" value="Negative">
+                                    <label class="form-check-label small"
+                                           for="inquiryFollowUpFeelingNegative">Negative</label>
+                                </div>
+                                <div class="text-muted small"><small>How did you feel regarding converting this lead to
+                                    a successful registration?</small></div>
+                            </div>
+                            <div class="mb-2">
+                                <div class="form-label">
+                                    <label class="fw-bold required small" for="inquiryFollowUpConfirm">Did the customer
+                                        confirmed to register?</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" id="inquiryFollowUpConfirmYes" onchange="newFollowUp.confirmed=this.value;"
+                                           name="inquiryFollowUpConfirm" type="radio" value="Yes">
+                                    <label class="form-check-label" for="inquiryFollowUpConfirmYes">Yes</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" id="inquiryFollowUpConfirmNo" onchange="newFollowUp.confirmed=this.value;"
+                                           name="inquiryFollowUpConfirm" type="radio" value="No">
+                                    <label class="form-check-label" for="inquiryFollowUpConfirmNo">No</label>
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <div class="form-label">
+                                    <label class="fw-bold required small" for="inquiryFollowUpTime">Convenient Time To
+                                        Contact</label>
+                                </div>
+                                <input class="form-control rounded-0" id="inquiryFollowUpTime"
+                                       onchange="inputDateTimeValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}[ ][0-9]{2}[:][0-9]{2}$','newFollowUp','nextFollowup')"
+                                       required>
+                                <div class="text-muted small"><small>When do you want to contact this customer
+                                    again?</small></div>
+                            </div>
+                        </div>
+                        <div class="w-100 ">
+                            <button class="btn bg-purple text-white rounded-0 btn-block w-100"
+                                    id="inquiryFollowUpConfirm" onclick="newFollowUpSubmit()" type="submit">Add
+                                Follow-Up
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Collapse for Follow-up End -->
+    <div class="offcanvas-body">
+
+        <table class="table table-bordered table-responsive mb-2">
+            <tbody class="small align-middle">
+            <tr>
+                <td class="fw-bold w-25">Course</td>
+                <td class="w-25">
+                    <select class="form-select rounded-0 small form-select-sm inquirySheetInputs" disabled id="inquirySheetCourse" onchange="selectDynamicValueValidator(this,'','editedInquiry','courseId')" required>
+                        <option value=""></option>
+                        <option>Diploma in IT</option>
+                        <option>Diploma in Tamil</option>
+                        <option>Certificate in IT</option>
+                        <option>Certificate in English</option>
+                    </select>
+                </td>
+                <td class="fw-bold w-25">Source</td>
+                <td>
+                    <select class="form-select rounded-0 small form-select-sm inquirySheetInputs" disabled id="inquirySheetSource" onchange="selectDynamicValueValidator(this,'','editedInquiry','sourceId')" required>
+                        <option value=""></option>
+                        <option value="Cold Calling">Cold Calling</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Leaflets">Leaflets</option>
+                        <option value="Letter Campaign">Letter Campaign</option>
+                        <option value="Personal Contact">Personal Contact</option>
+                        <option value="Phone">Phone Call</option>
+                        <option value="Seminar">Seminar</option>
+                        <option value="SMS Campaign">SMS Campaign</option>
+                        <option value="Walk-In">Walk-In</option>
+                        <option value="WhatsApp">WhatsApp</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-25">First Name</td>
+                <td class="w-25">
+                    <input class="small rounded-0 form-control-sm inquirySheetInputs" id="inquirySheetFirstName" onkeyup="inputTextValidator(this,'^[A-Z][a-z]{2,19}$','editedInquiry','firstName')" disabled value="Kasun">
+                </td>
+                <td class="fw-bold w-25">Last Name</td>
+                <td>
+                    <input class="small rounded-0 form-control-sm inquirySheetInputs" id="inquirySheetLastName" onkeyup="inputTextValidator(this,'^[A-Z][a-z]{2,29}$','editedInquiry','lastName')" disabled value="Malhara">
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-25">Phone Number</td>
+                <td class="w-25">
+                    <input class="small rounded-0 form-control-sm inquirySheetInputs" id="inquirySheetPrimaryMobile" onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','editedInquiry','primaryMobileNumber')" disabled value="0781011144">
+                </td>
+                <td class="fw-bold w-25">Email</td>
+                <td>
+                    <input class="small rounded-0 form-control-sm inquirySheetInputs" id="inquirySheetEmail" onkeyup="inputTextValidator(this,'^[a-z|A-Z]{2,19}[@][a-z|A-Z]{2,8}[.][a-z|A-Z]{2,3}$','editedInquiry','email')" placeholder="Optional" disabled value="eamalindu@gmail.com">
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-25">Optional Number</td>
+                <td class="w-25">
+                    <input class="small rounded-0 form-control-sm inquirySheetInputs" id="inquirySheetSecondaryMobile" onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','editedInquiry','secondaryMobileNumber')" placeholder="Optional" disabled value="0781011144">
+                </td>
+                <td class="fw-bold w-25">
+                    <select class="form-select rounded-0 small form-select-sm fw-bold inquirySheetInputs" disabled id="inquirySheetIdType" onchange="selectStaticValueValidator(this,'','editedInquiry','idType')" required>
+                        <option value="NIC">NIC</option>
+                        <option value="POSTAL">POSTAL</option>
+                    </select>
+                </td>
+                <td>
+                    <input class="small rounded-0 form-control-sm inquirySheetInputs" id="inquirySheetIdValue" onkeyup="inputTextValidator(this,'^(?:[6-9][0-9]{8}([V]|[X]|[v]|[x]){1})|(?:[19|20][0-9]{10})$','editedInquiry','idValue')" disabled value="983151108V">
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold w-25">Convenient Time To Contact</td>
+                <td class="w-25">
+                    <input class="small rounded-0 form-control-sm border-0 inquirySheetInputs" id="inquirySheetNextFollowUp" onkeyup="inputDateTimeValidator(this,'^20[0-9]{2}[-][0-9]{2}[-][0-9]{2}[ ][0-9]{2}[:][0-9]{2}$','editedInquiry','contactTime')" disabled value="2023-10-26 at 00:00">
+                </td>
+                <td class="fw-bold w-25">Description</td>
+                <td>
+                    <textarea class="small rounded-0 form-control-sm inquirySheetInputs" id="inquirySheetDescription" onkeyup="inputTextValidator(this,'^[a-zA-Z0-9\\s/]{20,}$','editedInquiry','description')" disabled></textarea>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- Show Added-by and added time of the inquiry here -->
+        <div class="card rounded-0 mb-2">
+            <div class="card-body rounded-0 pb-0">
+                <p class="small text-muted text-center">This Inquiry was Created by <span class="fw-bold" id="inquirySheetAddedBy"></span>
+                    on <span class="fw-bold" id="inquirySheetAddedDate"></span> at
+                    <span class="fw-bold" id="inquirySheetAddedTime"></span>.</p>
+            </div>
+        </div>
+
+        <div class="btn btn-sm bg-purple text-white rounded-0 mb-2">Follow Ups</div>
+        <!-- List out follow-ups From the database-->
+        <div class="card rounded-0 mb-2">
+            <div class="card-body rounded-0">
+                <div class="row">
+                    <br/>
+                    <p class="small card-text text-purple">No Follow-Ups Found!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- OffCanvas for Inquiry Sheet End -->
+
+
+<script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>
+<script src="/resources/js/external-loader.js" type="text/javascript"></script>
+<script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
+<script src="/resources/js/external-table.js" type="text/javascript"></script>
+<script src="/resources/js/external-exportData.js" type="text/javascript"></script>
+<script src="/resources/js/controllerJS/reportRegistered.js" type="text/javascript"></script>
+<script th:replace="~{ fragments/logout :: logoutScript}"></script>
+</body>
+</html>
