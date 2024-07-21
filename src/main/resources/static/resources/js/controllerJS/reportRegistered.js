@@ -47,10 +47,10 @@ const resetReportSearchBar = ()=>{
     var end = moment().endOf('month');
 
     function cb(start, end) {
-        $('#performanceSearchDateRange span').html(start.format('YYYY-MMMM-DD') + ' - ' + end.format('YYYY-MMMM-DD'));
+        $('#registeredInquirySearchDateRange span').html(start.format('YYYY-MMMM-DD') + ' - ' + end.format('YYYY-MMMM-DD'));
     }
 
-    $('#performanceSearchDateRange').daterangepicker({
+    $('#registeredInquirySearchDateRange').daterangepicker({
         startDate: start, endDate: end, locale: {
             "format": "YYYY-MM-DD",
         }, ranges: {
@@ -68,7 +68,7 @@ const resetReportSearchBar = ()=>{
 }
 
 const getReport = ()=>{
-    const [startDate,endDate] = performanceSearchDateRange.value.split(' - ');
+    const [startDate,endDate] = registeredInquirySearchDateRange.value.split(' - ');
     refreshReportAllTable(startDate,endDate);
 }
 
