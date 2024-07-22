@@ -77,5 +77,6 @@ const getDate = (ob)=>{
 }
 
 const getInquiryID=(ob)=>{
-    const inquiryNumber = ajaxGetRequest("/Inquiry/get")
+    const inquiryNumber = ajaxGetRequest("/Inquiry/getInquiryNumberByID/"+ob.inquiryID);
+    return inquiryNumber;
 }
