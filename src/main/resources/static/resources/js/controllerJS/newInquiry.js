@@ -192,6 +192,8 @@ const resetInquiryForm = () => {
     inquiryCourse.classList.remove('is-invalid');
     inquiryIdOption.classList.remove('is-invalid');
 
+    //disable addtional mobile number
+    inquiryAdditionalMobileNumber.disabled = true;
 
     //set default option chosen
     setTimeout(function () {

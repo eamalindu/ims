@@ -285,7 +285,7 @@
                             <label class="fw-bold required" for="inquiryMobileNumber">Mobile Number</label>
                         </div>
                         <input class="form-control rounded-0 newInquiryInputs" id="inquiryMobileNumber"
-                               onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','newInquiry','primaryMobileNumber')"
+                               onkeyup="inputTextValidator(this,'^[0][7][01245678][0-9]{7}$','newInquiry','primaryMobileNumber');activeSecondaryMobileInput();"
                                required type="text">
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid mobile number</div>
@@ -296,7 +296,7 @@
                         </div>
                         <input class="form-control rounded-0 newInquiryInputs" id="inquiryAdditionalMobileNumber"
                                onkeyup="validateAdditionalPhone()"
-                               placeholder="Optional" type="text">
+                               placeholder="Optional" type="text" disabled>
                         <div class="valid-feedback">Value Accepted</div>
                         <div class="invalid-feedback">Please provide a valid mobile number</div>
 

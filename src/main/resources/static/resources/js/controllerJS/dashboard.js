@@ -482,10 +482,22 @@ const validateAdditionalPhone = () => {
                 if (secondaryMobileNumber === '') {
                     // remove invalid class
                     inquiryAdditionalMobileNumber.classList.remove('is-invalid');
+                    inquiryAdditionalMobileNumber.style.border = '1px solid #ced4da';
+                    inquiryAdditionalMobileNumber.style.background = 'white';
+                    inquiryAdditionalMobileNumber.style.color='black';
                 }
             }
         }
     }
 };
 
+const activeSecondaryMobileInput = ()=>{
+    if(newInquiry.primaryMobileNumber != null){
+        inquiryAdditionalMobileNumber.disabled = false;
+    }
+    else{
+        inquiryAdditionalMobileNumber.disabled = true;
+    }
+
+}
 
