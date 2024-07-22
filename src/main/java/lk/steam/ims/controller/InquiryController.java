@@ -127,6 +127,11 @@ public class InquiryController {
     public List<Inquiry> getAllInquiriesByDateRangeAndStatus(@PathVariable String startDate,@PathVariable String endDate, @PathVariable String status){
         return inquiryDAO.getAllInquiriesByDateRangeAndStatus(startDate,endDate,status);
     }
+
+    @GetMapping(value = "/getDroppedInquiriesWithoutFollowUpsByDateRange/{startDate}/{endDate}",produces = "application/json")
+    public List<Inquiry> getDroppedInquiriesWithoutFollowUpsByDateRange(@PathVariable String startDate,@PathVariable String endDate){
+        return inquiryDAO.getDroppedInquiriesWithoutFollowUpsByDateRange(startDate,endDate);
+    }
     
     @PostMapping
     public String saveNewInquiry(@RequestBody Inquiry inquiry){
