@@ -172,7 +172,7 @@ const rowView = (ob, Index) => {
     inquirySheetAddedBy.innerText = ob.addedBy;
 
     //set id type
-    inquirySheetIdType.value = ob.idType;
+    //inquirySheetIdType.value = ob.idType;
 
     currentInquiry = ob;
     //get all the followups for the particular inquiry
