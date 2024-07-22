@@ -26,6 +26,7 @@
                         <li><a th:attr="class=${activeReport=='completed' ? 'dropdown-item custom-active text-white':'dropdown-item'}" class="dropdown-item" href="Reports-Completed">Completed Inquiries</a></li>
                         <li><a th:attr="class=${activeReport=='dropped' ? 'dropdown-item custom-active text-white':'dropdown-item'}" class="dropdown-item" href="Reports-Dropped">Dropped Inquiries</a></li>
                         <li><a th:attr="class=${activeReport=='followup' ? 'dropdown-item custom-active text-white':'dropdown-item'}" class="dropdown-item" href="Reports-Dropped-Without-Followups">Dropped Without Followed-Up</a></li>
+                        <li><a th:attr="class=${activeReport=='commission' ? 'dropdown-item custom-active text-white':'dropdown-item'}" class="dropdown-item" href="Reports-Comssions">Commissions</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a th:attr="class=${activeNavItem=='performance' ? 'nav-link text-white custom-width-max-content custom-active' : 'nav-link text-white custom-width-max-content'}" href="Performance">Performance</a>
