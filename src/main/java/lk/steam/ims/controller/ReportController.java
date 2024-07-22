@@ -101,4 +101,25 @@ public class ReportController {
 
         return reportsDroppedView;
     }
+
+    @GetMapping("/Reports-Dropped-Without-Followups")
+    public ModelAndView droppedFollowupReport(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        ModelAndView reportsDroppedView = new ModelAndView();
+        reportsDroppedView.addObject("username",auth.getName());
+        reportsDroppedView.addObject("title","Report Dropped | STEAM IMS");
+        reportsDroppedView.setViewName("Report-Dropped.html");
+        reportsDroppedView.addObject("activeNavItem","reports");
+        reportsDroppedView.addObject("activeReport","dropped");
+        String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+        String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+        byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+        String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+        String imageSrc = "data:image/png;base64," + base64Image;
+        reportsDroppedView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        reportsDroppedView.addObject("loggedInDesignationName",loggedInDesignationName);
+        reportsDroppedView.addObject("loggedInImage",imageSrc);
+
+        return reportsDroppedView;
+    }
 }
