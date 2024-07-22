@@ -46,8 +46,7 @@ const generateCommissionReport = (startDate,endDate)=>{
         {property: getPaymentMode,dataType: 'function'},
         {property: getAmount,dataType: 'function'},
         {property: getDate,dataType: 'function'},
-        {property: 'addedBy',dataType: 'text'},
-        {property: 'inquiryID',dataType: 'text'},
+        {property: getInquiryID,dataType: 'function'},
     ];
 
     fillDataIntoTableWithOutAction(tblReportCommission,commissions,displayListForCommission);
@@ -75,4 +74,8 @@ const getAmount = (ob)=>{
 const getDate = (ob)=>{
     const [addedDate, addedTime] = ob.timestamp.split("T");
     return addedDate + '<br/><small class="text-muted">' + addedTime + '</small>';
+}
+
+const getInquiryID=(ob)=>{
+    const inquiryNumber = ajaxGetRequest("/Inquiry/get")
 }
