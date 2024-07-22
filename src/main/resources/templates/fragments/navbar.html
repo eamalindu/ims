@@ -24,7 +24,7 @@
                         <li><a th:attr="class=${activeReport=='all' ? 'dropdown-item custom-active text-white':'dropdown-item'}" class="dropdown-item" href="Reports-All">All</a></li>
                         <li><a th:attr="class=${activeReport=='registered' ? 'dropdown-item custom-active text-white':'dropdown-item'}" class="dropdown-item" href="Reports-Registered">Registered</a></li>
                         <li><a th:attr="class=${activeReport=='completed' ? 'dropdown-item custom-active text-white':'dropdown-item'}" class="dropdown-item" href="Reports-Completed">Completed</a></li>
-                        <li><a class="dropdown-item" href="#">Dropped</a></li>
+                        <li><a th:attr="class=${activeReport=='dropped' ? 'dropdown-item custom-active text-white':'dropdown-item'}" class="dropdown-item" href="Reports-Dropped">Dropped</a></li>
                         <li><a class="dropdown-item" href="#">Not Followed-Up</a></li>
                     </ul>
                 </li>
