@@ -8,9 +8,9 @@ window.addEventListener('load',()=> {
 
 const refreshReportDroppedWithOutFollowUpsTable = (startDate,endDate) =>{
 
-    const droppedInquiries = ajaxGetRequest("/Inquiry/getAllInquiriesByDateRangeAndStatus/"+startDate+"/"+endDate+"/"+4);
+    const droppedInquiriesWithOutInquiries = ajaxGetRequest("/Inquiry/getAllInquiriesByDateRangeAndStatus/"+startDate+"/"+endDate+"/"+4);
 
-    const  displayPropertyListForReportDropped = [
+    const  displayPropertyListForReportDroppedWithOutFollowUps = [
         {property: 'inquiryNumber',dataType:'text'},
         {property: getSourceName,dataType: 'function'},
         {property: getCourseName,dataType: 'function'},
@@ -20,7 +20,7 @@ const refreshReportDroppedWithOutFollowUpsTable = (startDate,endDate) =>{
         {property: getInquiryStatus,dataType: 'function'},
     ];
 
-    fillDataIntoTableWithOutAction(tblReportsDropped,droppedInquiries,displayPropertyListForReportDropped);
+    fillDataIntoTableWithOutAction(tblReportsDroppedFollowup,droppedInquiriesWithOutInquiries,displayPropertyListForReportDroppedWithOutFollowUps);
 
 }
 
