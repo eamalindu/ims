@@ -8,7 +8,7 @@ window.addEventListener('load',()=> {
 
 const refreshReportDroppedTable = (startDate,endDate) =>{
 
-    const droppedInquiries = ajaxGetRequest("/Inquiry/getAllInquiriesByDateRangeAndStatus/"+startDate+"/"+endDate+"/"+3);
+    const droppedInquiries = ajaxGetRequest("/Inquiry/getAllInquiriesByDateRangeAndStatus/"+startDate+"/"+endDate+"/"+4);
 
     const  displayPropertyListForReportDropped = [
         {property: 'inquiryNumber',dataType:'text'},
