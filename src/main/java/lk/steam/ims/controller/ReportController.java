@@ -128,7 +128,7 @@ public class ReportController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView reportsCommissionView = new ModelAndView();
         reportsCommissionView.addObject("username",auth.getName());
-        reportsCommissionView.addObject("title","Report Dropped without Followups | STEAM IMS");
+        reportsCommissionView.addObject("title","Report Commission | STEAM IMS");
         reportsCommissionView.setViewName("Report-Commission.html");
         reportsCommissionView.addObject("activeNavItem","reports");
         reportsCommissionView.addObject("activeReport","commission");
