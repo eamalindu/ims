@@ -80,3 +80,16 @@ const getInquiryID=(ob)=>{
     const inquiryNumber = ajaxGetRequest("/Inquiry/getInquiryNumberByID/"+ob.inquiryID);
     return inquiryNumber;
 }
+
+const getReport = ()=>{
+    const [startDate,endDate] = commissionSearchDateRange.value.split(' - ');
+    generateCommissionReport(startDate,endDate);
+}
+
+const exportData = ()=>{
+    showCustomConfirm('You are about to export <span class="text-purple">Commission Report</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
+        if(result){
+
+        }
+    });
+}
