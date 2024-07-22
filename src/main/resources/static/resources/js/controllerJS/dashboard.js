@@ -458,3 +458,34 @@ const searchTable = (elementID,tableID,noResultDivID)=> {
         divID.classList.add('d-none');
     }
 }
+
+const validateAdditionalPhone = () => {
+    // check the value of the mobile number
+    const mobileNumber = inquiryMobileNumber.value;
+    if (mobileNumber !== '') {
+        // check if the primary mobile number is valid
+        if (newInquiry.primaryMobileNumber != null) {
+            // check the value of the secondary mobile number
+            const secondaryMobileNumber = inquiryAdditionalMobileNumber.value;
+            // if the secondary number is not empty and different from the primary number
+            if (secondaryMobileNumber !== '' && secondaryMobileNumber !== mobileNumber) {
+                // validate the secondary mobile number format
+                inputTextValidator(inquiryAdditionalMobileNumber, '^[0][7][01245678][0-9]{7}$', 'newInquiry', 'secondaryMobileNumber');
+            } else {
+                // set secondary mobile number to null if invalid or empty
+                newInquiry.secondaryMobileNumber = null;
+                // remove valid class if present
+                inquiryAdditionalMobileNumber.classList.remove('is-valid');
+                // add invalid class to indicate error
+                inquiryAdditionalMobileNumber.classList.add('is-invalid');
+                // if the secondary mobile number is empty
+                if (secondaryMobileNumber === '') {
+                    // remove invalid class
+                    inquiryAdditionalMobileNumber.classList.remove('is-invalid');
+                }
+            }
+        }
+    }
+};
+
+
