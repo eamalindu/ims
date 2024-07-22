@@ -89,5 +89,8 @@ public interface InquiryDAO extends JpaRepository<Inquiry,Integer> {
 
     @Query(value = "select * from inquiry where date(timestamp)>=?1 and date(timestamp)<=?2 and inquirystatus_id=?3",nativeQuery = true)
     List<Inquiry> getAllInquiriesByDateRangeAndStatus(String startDate, String endDate, String status);
+
+    @Query(value = "SELECT * from inquiry where date(timestamp)>=?1 and date(timestamp)<=?2 and inquirystatus_id=4 and latestfollowupid is null ",nativeQuery = true)
+    List<Inquiry> getDroppedInquiriesWithoutFollowUpsByDateRange(String startDate, String endDate);
 }
 
