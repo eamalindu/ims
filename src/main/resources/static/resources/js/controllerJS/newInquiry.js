@@ -40,9 +40,9 @@ window.addEventListener('load', () => {
     $("#inquiryCourse").chosen().change(function () {
         $("#inquiryCourse_chosen .chosen-single").addClass('select-validated');
     });
-    $("#inquiryIdOption").chosen().change(function () {
-        $("#inquiryIdOption_chosen .chosen-single").addClass('select-validated');
-    });
+    // $("#inquiryIdOption").chosen().change(function () {
+    //     $("#inquiryIdOption_chosen .chosen-single").addClass('select-validated');
+    // });
 
     //external libraries initialization end
 });
@@ -150,8 +150,8 @@ const checkFormErrors = () => {
     }
     if (newInquiry.idType == null) {
         errors = errors + 'ID Type is Required<br>';
-        $("#inquiryIdOption_chosen .chosen-single").addClass('select-invalidated');
-        inquiryIdOption.classList.add('is-invalid');
+        // $("#inquiryIdOption_chosen .chosen-single").addClass('select-invalidated');
+        // inquiryIdOption.classList.add('is-invalid');
 
     }
     if (newInquiry.idValue == null) {
@@ -181,16 +181,16 @@ const resetInquiryForm = () => {
     //remove validated class from chosen
     $("#inquirySource_chosen .chosen-single").removeClass('select-validated');
     $("#inquiryCourse_chosen .chosen-single").removeClass('select-validated');
-    $("#inquiryIdOption_chosen .chosen-single").removeClass('select-validated');
+    //$("#inquiryIdOption_chosen .chosen-single").removeClass('select-validated');
     $("#inquirySource_chosen .chosen-single").removeClass('select-invalidated');
     $("#inquiryCourse_chosen .chosen-single").removeClass('select-invalidated');
-    $("#inquiryIdOption_chosen .chosen-single").removeClass('select-invalidated');
+    //$("#inquiryIdOption_chosen .chosen-single").removeClass('select-invalidated');
     inquirySource.classList.remove('is-valid');
     inquiryCourse.classList.remove('is-valid');
-    inquiryIdOption.classList.remove('is-valid');
+    //inquiryIdOption.classList.remove('is-valid');
     inquirySource.classList.remove('is-invalid');
     inquiryCourse.classList.remove('is-invalid');
-    inquiryIdOption.classList.remove('is-invalid');
+    //inquiryIdOption.classList.remove('is-invalid');
 
     //disable addtional mobile number
     inquiryAdditionalMobileNumber.disabled = true;
@@ -199,7 +199,7 @@ const resetInquiryForm = () => {
     setTimeout(function () {
         $('#inquirySource').val('').trigger('chosen:updated');
         $('#inquiryCourse').val('').trigger('chosen:updated');
-        $('#inquiryIdOption').val('').trigger('chosen:updated');
+        //$('#inquiryIdOption').val('').trigger('chosen:updated');
 
     }, 0);
 
@@ -218,6 +218,7 @@ const resetInquiryForm = () => {
 
     //reset the newInquiry object
     newInquiry = {};
+    newInquiry.idType = 'NIC';
 
     //refill selects
     //dynamic select for courses

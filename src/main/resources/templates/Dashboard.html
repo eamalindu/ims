@@ -314,23 +314,23 @@
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
-                            <label class="fw-semibold required small" for="inquiryIdOption">NIC / Postal ID</label>
+                            <label class="fw-semibold required small" for="inquiryID">NIC</label>
                         </div>
-                        <div class="input-group">
-                            <select class="form-select rounded-0 chosen-inquiry-ID" data-placeholder="Please Select"
-                                    id="inquiryIdOption"
-                                    onchange="selectStaticValueValidator(this,'','newInquiry','idType')"
-                                    required>
-                                <option value=""></option>
-                                <option value="NIC">NIC</option>
-                                <option value="POSTAL">Postal</option>
-                            </select>
+
+<!--                            <select class="form-select rounded-0 chosen-inquiry-ID" data-placeholder="Please Select"-->
+<!--                                    id="inquiryIdOption"-->
+<!--                                    onchange="selectStaticValueValidator(this,'','newInquiry','idType')"-->
+<!--                                    required>-->
+<!--                                <option value=""></option>-->
+<!--                                <option value="NIC">NIC</option>-->
+<!--                                <option value="POSTAL">Postal</option>-->
+<!--                            </select>-->
                             <input class="form-control rounded-0 newInquiryInputs" id="inquiryID"
                                    onkeyup="inputTextValidator(this,'^(?:[6-9][0-9]{8}([V]|[X]|[v]|[x]){1})|(?:[19|20][0-9]{10})$','newInquiry','idValue')"
                                    required>
-                            <div class="valid-feedback w-100 rounded">Value Accepted</div>
-                            <div class="invalid-feedback">Please provide a valid nic/postal</div>
-                        </div>
+                            <div class="valid-feedback">Value Accepted</div>
+                            <div class="invalid-feedback">Please provide a valid NIC</div>
+
                     </div>
                     <div class="mb-2">
                         <div class="form-label">
