@@ -39,4 +39,35 @@ const generateCommissionReport = (startDate,endDate)=>{
         commissionTotal += commission.amount;
     });
     commissionTotalText.innerText = "Rs. "+commissionTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+    const displayListForCommission = [
+        {property: getRegNumber,dataType:'function'},
+        {property: getStudent,dataType: 'function'},
+        {property: getPaymentMode,dataType: 'function'},
+        {property: getAmount,dataType: 'function'},
+        {property: 'timestamp',dataType: 'text'},
+        {property: 'addedBy',dataType: 'text'},
+        {property: 'inquiryID',dataType: 'text'},
+    ];
+
+    fillDataIntoTableWithOutAction(tblReportCommission,commissions,displayListForCommission);
+}
+
+const getRegNumber = (ob)=>{
+    return ob.registrationID.registrationNumber;
+}
+const getStudent = (ob)=>{
+    return ob.registrationID.studentID.nameWithInitials;
+}
+const getPaymentMode = (ob)=>{
+    if(ob.isFullPayment){
+        return "Full Payment";
+    }
+    else{
+        return "Part Payment"
+    }
+}
+
+const getAmount = (ob)=>{
+    return "Rs. "+ ob.amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 }
