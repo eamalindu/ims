@@ -105,21 +105,21 @@ public class ReportController {
     @GetMapping("/Reports-Dropped-Without-Followups")
     public ModelAndView droppedFollowupReport(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        ModelAndView reportsDroppedView = new ModelAndView();
-        reportsDroppedView.addObject("username",auth.getName());
-        reportsDroppedView.addObject("title","Report Dropped | STEAM IMS");
-        reportsDroppedView.setViewName("Report-Dropped.html");
-        reportsDroppedView.addObject("activeNavItem","reports");
-        reportsDroppedView.addObject("activeReport","dropped");
+        ModelAndView reportsDroppedFollowupView = new ModelAndView();
+        reportsDroppedFollowupView.addObject("username",auth.getName());
+        reportsDroppedFollowupView.addObject("title","Report Dropped without Followups | STEAM IMS");
+        reportsDroppedFollowupView.setViewName("Report-Dropped.html");
+        reportsDroppedFollowupView.addObject("activeNavItem","reports");
+        reportsDroppedFollowupView.addObject("activeReport","followup");
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
         String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
         byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
         String base64Image = Base64.getEncoder().encodeToString(photoBytes);
         String imageSrc = "data:image/png;base64," + base64Image;
-        reportsDroppedView.addObject("loggedInEmployeeName",loggedInEmployeeName);
-        reportsDroppedView.addObject("loggedInDesignationName",loggedInDesignationName);
-        reportsDroppedView.addObject("loggedInImage",imageSrc);
+        reportsDroppedFollowupView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+        reportsDroppedFollowupView.addObject("loggedInDesignationName",loggedInDesignationName);
+        reportsDroppedFollowupView.addObject("loggedInImage",imageSrc);
 
-        return reportsDroppedView;
+        return reportsDroppedFollowupView;
     }
 }
