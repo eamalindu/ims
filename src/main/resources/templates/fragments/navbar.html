@@ -20,7 +20,7 @@
                             th:attr="class=${activeNavItem=='reports' ? 'custom-width-max-content custom-active nav-link btn bg-steam-green text-white dropdown-toggle border-0' : 'nav-link btn bg-steam-green text-white dropdown-toggle custom-width-max-content border-0'}"
                             data-bs-toggle="dropdown">Reports
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end rounded-0">
+                    <ul class="dropdown-menu dropdown-menu-end rounded-0 text-end">
                         <li><a th:attr="class=${activeReport=='all' ? 'dropdown-item custom-active text-white':'dropdown-item'}" class="dropdown-item" href="Reports-All">All Inquiries</a></li>
                         <li><a th:attr="class=${activeReport=='registered' ? 'dropdown-item custom-active text-white':'dropdown-item'}" class="dropdown-item" href="Reports-Registered">Registered Inquiries</a></li>
                         <li><a th:attr="class=${activeReport=='completed' ? 'dropdown-item custom-active text-white':'dropdown-item'}" class="dropdown-item" href="Reports-Completed">Completed Inquiries</a></li>
