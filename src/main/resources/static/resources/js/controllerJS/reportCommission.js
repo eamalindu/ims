@@ -45,7 +45,7 @@ const generateCommissionReport = (startDate,endDate)=>{
         {property: getStudent,dataType: 'function'},
         {property: getPaymentMode,dataType: 'function'},
         {property: getAmount,dataType: 'function'},
-        {property: 'timestamp',dataType: 'text'},
+        {property: getDate,dataType: 'function'},
         {property: 'addedBy',dataType: 'text'},
         {property: 'inquiryID',dataType: 'text'},
     ];
@@ -70,4 +70,9 @@ const getPaymentMode = (ob)=>{
 
 const getAmount = (ob)=>{
     return "Rs. "+ ob.amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+
+const getDate = (ob)=>{
+    const [addedDate, addedTime] = ob.timestamp.split("T");
+    return addedDate + '<br/><small class="text-muted">' + addedTime + '</small>';
 }
