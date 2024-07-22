@@ -108,7 +108,7 @@ public class ReportController {
         ModelAndView reportsDroppedFollowupView = new ModelAndView();
         reportsDroppedFollowupView.addObject("username",auth.getName());
         reportsDroppedFollowupView.addObject("title","Report Dropped without Followups | STEAM IMS");
-        reportsDroppedFollowupView.setViewName("Report-Dropped.html");
+        reportsDroppedFollowupView.setViewName("Report-NotFollowups.html");
         reportsDroppedFollowupView.addObject("activeNavItem","reports");
         reportsDroppedFollowupView.addObject("activeReport","followup");
         String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
