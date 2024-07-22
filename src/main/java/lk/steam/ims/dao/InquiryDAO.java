@@ -50,7 +50,7 @@ public interface InquiryDAO extends JpaRepository<Inquiry,Integer> {
 
     //Display all the inquires with max follow-up data
     //This data will be shown in crm-> Dashboard-> schedule pool
-    @Query(value = "SELECT i from Inquiry i where date(i.nextFollowUpDateTime)=curdate() and i.inquiryStatusId.id=2")
+    @Query(value = "SELECT i from Inquiry i where date(i.nextFollowUpDateTime)<=curdate() and i.inquiryStatusId.id=2")
     List<Inquiry> getInquiriesWithFollowUpsToday();
 
     //Get the next inquiry number form the database
