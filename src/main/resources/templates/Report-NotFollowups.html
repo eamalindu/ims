@@ -1,10 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<head th:replace="~{fragments/head :: headFragment}"></head>
 
+<body>
+<!--Loader-->
+<div th:replace="~{fragments/loader :: loader}"></div>
+<!-- Nav Bar Start -->
+<nav th:replace="~{ fragments/navbar :: navbarFragment}"></nav>
+<!-- Nav Bar End -->
+
+<!-- Display Current Page /breadcrumbs -->
+<div class="container-fluid bg-custom-white custom-banner">
+    <h5>Report - Dropped Inquiries Without FollowUps</h5>
+</div>
+
+<div class="container-fluid pt-2">
+    <div class="card rounded-0 ">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-lg-3">
+                    <label class="text-uppercase text-muted small m-0 p-0" for="droppedFollowupInquirySearchDateRange">Date Range</label>
+                    <div class="input-group">
+                        <span class="input-group-text text-black bg-custom-white rounded-0"><i class="fa-solid fa-calendar-week"></i></span>
+                        <input class="form-control rounded-0" style="width: 235px;" id="droppedFollowupInquirySearchDateRange" placeholder="Date Range">
+                        <button class="btn bg-purple rounded-0 text-white ms-2" id="" type="submit" onclick="getReport()"><i class="fa-solid fa-magnifying-glass small"></i></button>
+                    </div>
+                </div>
+                <div class="col-lg-5"></div>
+                <div class="col-lg-4 col-12 text-end">
+                    <p class="text-uppercase small m-0 text-muted ms-1">Export To</p>
+                    <button class="btn bg-success text-white rounded-0" onclick="exportData()" id="btnToExcel"><i class="fa-solid fa-file-excel"></i> Excel</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer pt-4 pb-4 overflow-auto">
+
+            <table class="custom-table" id="tblReportsDroppedFollowup">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>ID</th>
+                    <th>Source</th>
+                    <th>Course</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Added By</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <!-- Ajax loader start-->
+            <div class="loading-overlay mt-2">
+                <img src="/resources/images/loader.svg" width="60px" alt="loading animation">
+            </div>
+            <!-- Ajax loader end-->
+        </div>
+    </div>
+</div>
+
+<script src="/resources/js/external-commonFunction.js" type="text/javascript"></script>
+<script src="/resources/js/external-loader.js" type="text/javascript"></script>
+<script src="/resources/js/external-modalFunction.js" type="text/javascript"></script>
+<script src="/resources/js/external-table.js" type="text/javascript"></script>
+<script src="/resources/js/external-exportData.js" type="text/javascript"></script>
+<script src="/resources/js/controllerJS/reportDropped.js" type="text/javascript"></script>
+<script th:replace="~{ fragments/logout :: logoutScript}"></script>
 </body>
-</html>
