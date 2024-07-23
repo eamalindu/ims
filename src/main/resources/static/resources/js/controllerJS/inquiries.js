@@ -458,5 +458,13 @@ const inquiryDelete = ()=>{
 }
 
 const searchInquiry  = ()=>{
+    const [startDate, endDate] = inquirySearchDateRange.value.split(' - ');
+    const sourceID = JSON.parse(inquirySearchSource.value).id;
+    const courseID = JSON.parse(inquirySearchCourse.value).id;
+    const addedBy = JSON.parse(inquirySearchCounsellor.value).callingName;
+    const input = inquirySearchID.value;
 
+    const url = `/Inquiry/searchInquiry?startDate=${startDate}&endDate=${endDate}&sourceID=${sourceID}&courseID=${courseID}&addedBy=${addedBy}&input=${input}`
+    const searchResultInquiry = ajaxGetRequest(url)
+    fillDataIntoTable(tblInquiry,searchResultInquiry,displayPropertyList,rowView,'offCanvasInquirySheet');
 }
