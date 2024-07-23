@@ -134,7 +134,7 @@ const rowView = (ob, rowIndex) => {
     } else if (ob.inquiryStatusId.name === "Processing") {
         inquirySheetCode.classList.add('text-warning');
 
-        inquirySheetCode.classList.remove('text-sucess');
+        inquirySheetCode.classList.remove('text-success');
         inquirySheetCode.classList.remove('text-purple');
         inquirySheetCode.classList.remove('text-info');
 
@@ -142,7 +142,7 @@ const rowView = (ob, rowIndex) => {
         inquirySheetCode.classList.add('text-purple');
 
         inquirySheetCode.classList.remove('text-warning');
-        inquirySheetCode.classList.remove('text-sucess');
+        inquirySheetCode.classList.remove('text-success');
         inquirySheetCode.classList.remove('text-info');
 
     //hide the update button
@@ -160,7 +160,7 @@ const rowView = (ob, rowIndex) => {
 
         inquirySheetCode.classList.remove('text-warning');
         inquirySheetCode.classList.remove('text-purple');
-        inquirySheetCode.classList.remove('text-sucess');
+        inquirySheetCode.classList.remove('text-success');
 
         //hide the update button
         btnInquirySheetUpdate.style.display = 'none';
@@ -178,7 +178,7 @@ const rowView = (ob, rowIndex) => {
         btnInquirySheetDelete.classList.add('d-none');
         btnInquirySheetEdit.classList.add('d-none');
         inquirySheetCode.classList.remove('text-warning');
-        inquirySheetCode.classList.remove('text-sucess');
+        inquirySheetCode.classList.remove('text-success');
         inquirySheetCode.classList.remove('text-purple');
         inquirySheetCode.classList.remove('text-info');
     }
