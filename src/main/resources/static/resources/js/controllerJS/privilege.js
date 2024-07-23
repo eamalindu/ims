@@ -187,7 +187,7 @@ const resetPrivilegeForm = ()=> {
     checkBoxValidator(this, leftDelete, rightDelete, 'newPrivilege', 'deletePrivilege', true, false);
 
     //dynamic select content handling
-    roles = ajaxGetRequest("/role/findall")
+    roles = ajaxGetRequest("/role/getRolesWithoutAdmin")
     fillSelectOptions(privilegeRole, 'Please Select a Role', roles, 'name');
 
 
@@ -205,7 +205,8 @@ const resetPrivilegeForm = ()=> {
 
 const loadModulesBySelectedRole = ()=>{
 
-    modules = ajaxGetRequest("/module/findall")
+    const selectedRole = newPrivilege.roleID;
+    modules = ajaxGetRequest("/module/listByRole?roleID="+selectedRole.id);
     fillSelectOptions(privilegeModule, ' ', modules, 'name');
     privilegeModule.setAttribute('data-placeholder','Please Select a Module');
     $('#privilegeModule').val('').trigger('chosen:updated');
