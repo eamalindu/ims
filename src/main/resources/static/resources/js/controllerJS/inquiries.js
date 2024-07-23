@@ -462,7 +462,9 @@ const searchInquiry = () => {
         const url = `/Inquiry/searchInquiry?startDate=${startDate}&endDate=${endDate}&sourceID=${sourceID}&courseID=${courseID}&addedBy=${addedBy}&input=${input}`
         const searchResultInquiry = ajaxGetRequest(url)
 
-        dataTableInquiry.destroy();
+        if(searchResultInquiry.length!==0){
+            dataTableInquiry.destroy();
+        }
 
         // $('#tblInquiry').dataTable();
 
