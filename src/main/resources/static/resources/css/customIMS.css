@@ -419,6 +419,10 @@ g text {
     color: rebeccapurple!important;
 }
 
+.followUp-btn:hover{
+    cursor: default;
+}
+
 
 /*Medium devices responsive*/
 @media (max-width: 870px) {
