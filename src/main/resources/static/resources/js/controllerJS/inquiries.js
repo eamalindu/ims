@@ -181,6 +181,7 @@ const rowView = (ob, rowIndex) => {
         inquirySheetCode.classList.remove('text-success');
         inquirySheetCode.classList.remove('text-purple');
         inquirySheetCode.classList.remove('text-info');
+        extraInformationForInquiry.classList.remove('d-none')
     }
 
     //reset followup form
