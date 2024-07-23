@@ -95,5 +95,7 @@ public interface InquiryDAO extends JpaRepository<Inquiry,Integer> {
 
     @Query(value = "SELECT i.inquiryNumber from Inquiry i where i.id=?1")
     Inquiry getInquiryNumberById(Integer inquiryID);
+
+    List<Inquiry> searchInquiry(String startDate, String endDate, Integer sourceID, Integer courseID, String addedBy, String input);
 }
 
