@@ -73,7 +73,7 @@ const refreshInquiriesTable = () => {
     fillDataIntoTable(tblInquiry, inquiriesWithFollowUps, displayPropertyList, rowView, 'offCanvasInquirySheet');
 
     if (inquiriesWithFollowUps.length !== 0) {
-        dataTableInquiry = new DataTable('#tblInquiry');
+       $('#tblInquiry').dataTable();
     }
 
 }
