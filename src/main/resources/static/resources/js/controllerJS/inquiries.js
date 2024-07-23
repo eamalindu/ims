@@ -462,16 +462,8 @@ const searchInquiry = () => {
         const url = `/Inquiry/searchInquiry?startDate=${startDate}&endDate=${endDate}&sourceID=${sourceID}&courseID=${courseID}&addedBy=${addedBy}&input=${input}`
         const searchResultInquiry = ajaxGetRequest(url)
 
-        if(searchResultInquiry.length!==0){
-            dataTableInquiry.destroy();
-        }
-
-        // $('#tblInquiry').dataTable();
-
         fillDataIntoTable(tblInquiry, searchResultInquiry, displayPropertyList, rowView, 'offCanvasInquirySheet');
-        if (searchResultInquiry.length !== 0) {
-            $('#tblInquiry').dataTable();
-        }
+
     }
     else{
 
