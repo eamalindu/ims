@@ -452,20 +452,26 @@ const inquiryDelete = () => {
 
 const searchInquiry = () => {
     const [startDate, endDate] = inquirySearchDateRange.value.split(' - ');
-    const sourceID = JSON.parse(inquirySearchSource.value).id;
-    const courseID = JSON.parse(inquirySearchCourse.value).id;
-    const addedBy = JSON.parse(inquirySearchCounsellor.value).callingName;
-    const input = inquirySearchID.value;
+    if(inquirySearchSource.value!=''&&inquirySearchCourse.value!=''&&inquirySearchCounsellor.value!='') {
+        const sourceID = JSON.parse(inquirySearchSource.value).id;
+        const courseID = JSON.parse(inquirySearchCourse.value).id;
+        const addedBy = JSON.parse(inquirySearchCounsellor.value).callingName;
+        const input = inquirySearchID.value;
 
-    const url = `/Inquiry/searchInquiry?startDate=${startDate}&endDate=${endDate}&sourceID=${sourceID}&courseID=${courseID}&addedBy=${addedBy}&input=${input}`
-    const searchResultInquiry = ajaxGetRequest(url)
+        const url = `/Inquiry/searchInquiry?startDate=${startDate}&endDate=${endDate}&sourceID=${sourceID}&courseID=${courseID}&addedBy=${addedBy}&input=${input}`
+        const searchResultInquiry = ajaxGetRequest(url)
 
-    dataTableInquiry.destroy();
+        dataTableInquiry.destroy();
 
-    // $('#tblInquiry').dataTable();
+        // $('#tblInquiry').dataTable();
 
-    fillDataIntoTable(tblInquiry, searchResultInquiry, displayPropertyList, rowView, 'offCanvasInquirySheet');
-    if (searchResultInquiry.length !== 0) {
-        $('#tblInquiry').dataTable();
+        fillDataIntoTable(tblInquiry, searchResultInquiry, displayPropertyList, rowView, 'offCanvasInquirySheet');
+        if (searchResultInquiry.length !== 0) {
+            $('#tblInquiry').dataTable();
+        }
+    }
+    else{
+
+        showCustomModal("Please Select All the Fields to Search", "warning");
     }
 }
