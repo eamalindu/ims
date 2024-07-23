@@ -191,9 +191,9 @@ const resetPrivilegeForm = ()=> {
     fillSelectOptions(privilegeRole, 'Please Select a Role', roles, 'name');
 
 
-    //reset prvilegeModule
+    //reset privilege Module
     privilegeModule.innerHTML = '';
-    //set placeholder for chosen select batchPaymentPlan
+    //set placeholder for chosen select privilegeModule
     privilegeModule.setAttribute('data-placeholder','Please Select a Role First');
 
     //initialize the 3rd party libraries (chosen)
