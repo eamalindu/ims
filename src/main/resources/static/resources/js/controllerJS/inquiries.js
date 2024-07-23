@@ -36,6 +36,7 @@ window.addEventListener('load', () => {
         setTimeout(function () {
             $('.chosen-inquiry-search').val('').trigger('chosen:updated');
         }, 0);
+        refreshInquiriesTable();
     });
 
     $("#inquirySearchSource").chosen().change(function () {
