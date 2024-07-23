@@ -8,13 +8,13 @@ window.addEventListener('load', () => {
 
     //dynamic select start
     courses = ajaxGetRequest("/course/findall");
-    fillSelectOptions(inquirySearchCourse,' ',courses,'name');
+    fillSelectOptions(inquirySearchCourse, ' ', courses, 'name');
 
     sources = ajaxGetRequest("/source/findall")
-    fillSelectOptions(inquirySearchSource,' ',sources,'name')
+    fillSelectOptions(inquirySearchSource, ' ', sources, 'name')
 
     counsellors = ajaxGetRequest("/Employee/getActiveCounsellors")
-    fillSelectOptions(inquirySearchCounsellor,' ',counsellors,'fullName')
+    fillSelectOptions(inquirySearchCounsellor, ' ', counsellors, 'fullName')
 
     //need to add counsellors also (db not implemented yet)
     //dynamic select end
@@ -24,8 +24,7 @@ window.addEventListener('load', () => {
     $(".chosen-inquiry-search").chosen({width: '190px'});
     $('#inquirySearchDateRange').daterangepicker({
         "locale": {
-            "format": "YYYY-MM-DD",
-            //"separator": " to "
+            "format": "YYYY-MM-DD", //"separator": " to "
         }
     });
 
@@ -57,26 +56,28 @@ const refreshInquiriesTable = () => {
     //get data with ajax and database
     inquiriesWithFollowUps = ajaxGetRequest("/Inquiry/findall");
 
-    displayPropertyList = [
-        {property: getInquiryId,dataType: 'function'},
-        {property: getSource,dataType: 'function'},
-        {property: getCourse,dataType: 'function'},
-        {property: 'firstName',dataType: 'text'},
-        {property: 'primaryMobileNumber',dataType: 'text'},
-        {property: 'addedBy',dataType: 'text'},
-        {property: getInquiryStatus,dataType: 'function'}
+    displayPropertyList = [{property: getInquiryId, dataType: 'function'}, {
+        property: getSource,
+        dataType: 'function'
+    }, {property: getCourse, dataType: 'function'}, {
+        property: 'firstName',
+        dataType: 'text'
+    }, {property: 'primaryMobileNumber', dataType: 'text'}, {
+        property: 'addedBy',
+        dataType: 'text'
+    }, {property: getInquiryStatus, dataType: 'function'}
 
     ];
 
-    fillDataIntoTable(tblInquiry,inquiriesWithFollowUps,displayPropertyList,rowView,'offCanvasInquirySheet');
+    fillDataIntoTable(tblInquiry, inquiriesWithFollowUps, displayPropertyList, rowView, 'offCanvasInquirySheet');
 
-    if(inquiriesWithFollowUps.length!==0) {
-        $('#tblInquiry').dataTable();
+    if (inquiriesWithFollowUps.length !== 0) {
+        dataTableInquiry = new DataTable('#tblInquiry');
     }
 
 }
 
-const getInquiryId = (ob) =>{
+const getInquiryId = (ob) => {
     return ob.inquiryNumber;
 
 }
@@ -84,11 +85,11 @@ const getSource = (ob) => {
     return ob.sourceId.name;
 };
 
-const getCourse = (ob) =>{
+const getCourse = (ob) => {
     return ob.courseId.code;
 }
 
-const getInquiryStatus =(ob) => {
+const getInquiryStatus = (ob) => {
 
     if (ob.inquiryStatusId.name === "New Inquiry") {
         return '<span class="badge rounded-0" style="background: #3FB618">New Inquiry</span>';
@@ -96,11 +97,9 @@ const getInquiryStatus =(ob) => {
         return '<span class="badge rounded-0" style="background: #ea8a1e">Processing</span>';
     } else if (ob.inquiryStatusId.name === "Registered") {
         return '<span class="badge rounded-0" style="background: #a81dd6">Registered</span>';
-    }
-    else if (ob.inquiryStatusId.name === "Completed"){
+    } else if (ob.inquiryStatusId.name === "Completed") {
         return '<span class="badge rounded-0" style="background: #1eadea">Completed</span>';
-    }
-    else {
+    } else {
         return '<span class="badge rounded-0" style="background: #000">Dropped</span>';
     }
 
@@ -145,7 +144,7 @@ const rowView = (ob, rowIndex) => {
         inquirySheetCode.classList.remove('text-success');
         inquirySheetCode.classList.remove('text-info');
 
-    //hide the update button
+        //hide the update button
         btnInquirySheetUpdate.style.display = 'none';
         btnInquirySheetDelete.style.display = 'none';
         //show follow and drop button
@@ -154,8 +153,7 @@ const rowView = (ob, rowIndex) => {
         btnInquirySheetEdit.classList.add('d-none');
 
         extraInformationForInquiry.classList.remove('d-none')
-    }
-    else if (ob.inquiryStatusId.name === "Completed"){
+    } else if (ob.inquiryStatusId.name === "Completed") {
         inquirySheetCode.classList.add('text-info');
 
         inquirySheetCode.classList.remove('text-warning');
@@ -172,8 +170,7 @@ const rowView = (ob, rowIndex) => {
         extraInformationForInquiry.classList.remove('d-none')
 
 
-    }
-    else {
+    } else {
         collapseFollowUpButton.classList.add('d-none');
         btnInquirySheetDelete.classList.add('d-none');
         btnInquirySheetEdit.classList.add('d-none');
@@ -205,8 +202,8 @@ const rowView = (ob, rowIndex) => {
 
     const courses = ajaxGetRequest("/course/findall");
     const sources = ajaxGetRequest("/source/findall");
-    fillSelectOptions(inquirySheetSource,'Please Select a Source',sources,'name',ob.sourceId.name);
-    fillSelectOptions(inquirySheetCourse,'Please Select a Course',courses,'name',ob.courseId.name);
+    fillSelectOptions(inquirySheetSource, 'Please Select a Source', sources, 'name', ob.sourceId.name);
+    fillSelectOptions(inquirySheetCourse, 'Please Select a Course', courses, 'name', ob.courseId.name);
 
 
     //inquirySheetIdType.value = ob.idType;
@@ -217,22 +214,20 @@ const rowView = (ob, rowIndex) => {
     //email is an optional value therefore it might contain null as the value
     //instead of displaying nothing, we can use if condition to set a value
 
-    if(ob.email!==null){
+    if (ob.email !== null) {
         inquirySheetEmail.value = ob.email;
         inquirySheetEmail.classList.remove('text-muted');
 
-    }
-    else
-    {
+    } else {
         inquirySheetEmail.value = '-- Not Provided --';
         inquirySheetEmail.classList.add('text-muted');
     }
 
-    if(ob.secondaryMobileNumber !== null){
-        inquirySheetSecondaryMobile.value =ob.secondaryMobileNumber ;
+    if (ob.secondaryMobileNumber !== null) {
+        inquirySheetSecondaryMobile.value = ob.secondaryMobileNumber;
         inquirySheetSecondaryMobile.classList.remove('text-muted');
 
-    }else{
+    } else {
         inquirySheetSecondaryMobile.value = '-- Not Provided --';
         inquirySheetSecondaryMobile.classList.add('text-muted');
     }
@@ -251,8 +246,8 @@ const rowView = (ob, rowIndex) => {
     currentInquiry = ob;
 
     //get all the followups for the particular inquiry
-    followups = ajaxGetRequest("/followup/getById/"+ob.id);
-    showFollowupCard(followups,followupsList);
+    followups = ajaxGetRequest("/followup/getById/" + ob.id);
+    showFollowupCard(followups, followupsList);
 
     //catch old inquiry and new inquiry
     oldInquiry = JSON.parse(JSON.stringify(currentInquiry));
@@ -261,7 +256,7 @@ const rowView = (ob, rowIndex) => {
     console.log("old inquiry 👇")
     console.log(oldInquiry)
     console.log("edited inquiry 👇")
-    console.log(editedInquiry)  
+    console.log(editedInquiry)
 
 }
 const inquiryEdit = () => {
@@ -290,7 +285,6 @@ const inquiryEdit = () => {
     btnInquirySheetUpdate.style.display = 'block';
 
 
-
 }
 const inquiryUpdate = () => {
 
@@ -303,9 +297,9 @@ const inquiryUpdate = () => {
         if (updates === "") {
             showCustomModal("No changes Detected!", "info")
         } else {
-            showCustomConfirm("You are About to Update this Inquiry<br><br>Following Changes Detected!<br/><br/><small>" + updates+"</small><br>Are You Sure?", function (result){
+            showCustomConfirm("You are About to Update this Inquiry<br><br>Following Changes Detected!<br/><br/><small>" + updates + "</small><br>Are You Sure?", function (result) {
 
-                if(result){
+                if (result) {
                     let postServerResponse;
                     $.ajax("/Inquiry", {
                         type: "PUT",
@@ -323,9 +317,9 @@ const inquiryUpdate = () => {
                     });
                     //if data passed successfully
                     //show a success alert
-                    if(postServerResponse === "OK"){
+                    if (postServerResponse === "OK") {
 
-                        showCustomModal("Inquiry Successfully Updated!","success")
+                        showCustomModal("Inquiry Successfully Updated!", "success")
                         //close the offCanvas and refresh the table
                         offCanvasInquirySheetCloseButton.click();
                         refreshInquiriesTable();
@@ -334,13 +328,11 @@ const inquiryUpdate = () => {
 
                         //if data passed unsuccessfully
                     //show an error alert
-                    else
-                    {
-                        showCustomModal("Operation Failed! <br> Inquiry Record Not Updated! "+postServerResponse,"error")
+                    else {
+                        showCustomModal("Operation Failed! <br> Inquiry Record Not Updated! " + postServerResponse, "error")
                     }
 
-                }
-                else{
+                } else {
                     showCustomModal("Operation Cancelled!", "info")
                 }
 
@@ -381,7 +373,8 @@ const checkForInquiryUpdates = () => {
         updates = updates + "Description was changed to <span class='text-purple'>" + editedInquiry.description + "</span><br>";
     }
     if (editedInquiry.contactTime !== oldInquiry.contactTime) {
-        updates = updates + "Contact Time was changed to <span class='text-purple'>" + editedInquiry.contactTime.replace('T', ' ').slice(0, -8); + "</span><br>";
+        updates = updates + "Contact Time was changed to <span class='text-purple'>" + editedInquiry.contactTime.replace('T', ' ').slice(0, -8);
+        +"</span><br>";
     }
     if (editedInquiry.courseId.name !== oldInquiry.courseId.name) {
         updates = updates + "Course was changed to <span class='text-purple'>" + editedInquiry.courseId.name + "</span><br>";
@@ -431,7 +424,7 @@ const checkInquiryUpdateErrors = () => {
     return errors;
 }
 
-const inquiryDelete = ()=>{
+const inquiryDelete = () => {
 //get user confirmation
     showCustomConfirm("You are About to <b>Delete</b> this Inquiry<br><br>Inquiry Code: <span class='text-purple'>" + oldInquiry.inquiryNumber + "</span><br><br>Are You Sure?", function (result) {
         if (result) {
@@ -457,7 +450,7 @@ const inquiryDelete = ()=>{
     });
 }
 
-const searchInquiry  = ()=>{
+const searchInquiry = () => {
     const [startDate, endDate] = inquirySearchDateRange.value.split(' - ');
     const sourceID = JSON.parse(inquirySearchSource.value).id;
     const courseID = JSON.parse(inquirySearchCourse.value).id;
@@ -466,5 +459,13 @@ const searchInquiry  = ()=>{
 
     const url = `/Inquiry/searchInquiry?startDate=${startDate}&endDate=${endDate}&sourceID=${sourceID}&courseID=${courseID}&addedBy=${addedBy}&input=${input}`
     const searchResultInquiry = ajaxGetRequest(url)
-    fillDataIntoTable(tblInquiry,searchResultInquiry,displayPropertyList,rowView,'offCanvasInquirySheet');
+
+    dataTableInquiry.destroy();
+
+    // $('#tblInquiry').dataTable();
+
+    fillDataIntoTable(tblInquiry, searchResultInquiry, displayPropertyList, rowView, 'offCanvasInquirySheet');
+    if (searchResultInquiry.length !== 0) {
+        $('#tblInquiry').dataTable();
+    }
 }
