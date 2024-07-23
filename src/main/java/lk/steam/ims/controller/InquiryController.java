@@ -138,6 +138,7 @@ public class InquiryController {
         return inquiryDAO.getInquiryNumberById(id);
     }
 
+    //request url searchInquiry?startDate=2021-01-01&endDate=2021-01-31&sourceID=1&courseID=1&addedBy=lufna&input=0705368016
     @GetMapping(value = "/searchInquiry",params = {"startDate","endDate","sourceID","courseID","addedBy","input"},produces = "application/json")
     public List<Inquiry> searchInquiry(@RequestParam String startDate,@RequestParam String endDate,@RequestParam Integer sourceID,@RequestParam Integer courseID,@RequestParam String addedBy,@RequestParam String input){
         return inquiryDAO.searchInquiry(startDate,endDate,sourceID,courseID,addedBy,input);
