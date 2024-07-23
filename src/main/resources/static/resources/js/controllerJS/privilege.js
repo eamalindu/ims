@@ -189,12 +189,26 @@ const resetPrivilegeForm = ()=> {
     //dynamic select content handling
     roles = ajaxGetRequest("/role/findall")
     fillSelectOptions(privilegeRole, 'Please Select a Role', roles, 'name');
-    modules = ajaxGetRequest("/module/findall")
-    fillSelectOptions(privilegeModule, 'Please Select a Module', modules, 'name');
+
+
+    //reset prvilegeModule
+    privilegeModule.innerHTML = '';
+    //set placeholder for chosen select batchPaymentPlan
+    privilegeModule.setAttribute('data-placeholder','Please Select a Role First');
 
     //initialize the 3rd party libraries (chosen)
     $('#privilegeRole').chosen({width: '100%'});
     $('#privilegeModule').chosen({width: '100%'});
+
+
+}
+
+const loadModulesBySelectedRole = ()=>{
+
+    modules = ajaxGetRequest("/module/findall")
+    fillSelectOptions(privilegeModule, ' ', modules, 'name');
+    privilegeModule.setAttribute('data-placeholder','Please Select a Module');
+    $('#privilegeModule').val('').trigger('chosen:updated');
 }
 
 //creating a function to edit the privilege form when ever needed
