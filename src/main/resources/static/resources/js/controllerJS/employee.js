@@ -437,10 +437,18 @@ const resetEmployeeForm = ()=>{
     $("#employeeDesignation_chosen .chosen-single").removeClass('select-validated');
     $("#employeeHighestEducation_chosen .chosen-single").removeClass('select-validated');
     $("#employeeCallingName_chosen .chosen-single").removeClass('select-validated');
+    $("#employeeCivilStatus_chosen .chosen-single").removeClass('select-invalidated');
+    $("#employeeDesignation_chosen .chosen-single").removeClass('select-invalidated');
+    $("#employeeHighestEducation_chosen .chosen-single").removeClass('select-invalidated');
+    $("#employeeCallingName_chosen .chosen-single").removeClass('select-invalidated');
     employeeCivilStatus.classList.remove('is-valid');
     employeeDesignation.classList.remove('is-valid');
     employeeHighestEducation.classList.remove('is-valid');
     employeeCallingName.classList.remove('is-valid');
+    employeeCivilStatus.classList.remove('is-invalid');
+    employeeDesignation.classList.remove('is-invalid');
+    employeeHighestEducation.classList.remove('is-invalid');
+    employeeCallingName.classList.remove('is-invalid');
 
     //set default option chosen
     setTimeout(function () {
