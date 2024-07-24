@@ -263,18 +263,29 @@ const checkUserFormErrors = (userObject,passwordID,confirmPasswordID)=> {
 
     if(userObject.employeeID==null){
         errors = errors +'Employee is Required<br>';
+        $("#userEmployee_chosen .chosen-single").addClass('select-invalidated');
+        userEmployee.classList.add('is-invalid');
     }
     if(userObject.username==null){
         errors = errors +'Username is Required<br>';
+        userUsername.style.borderColor = 'red';
+        userUsername.classList.add('is-invalid');
     }
     if(userObject.email==null){
         errors = errors +'Email is Required<br>';
+        userEmail.style.borderColor = 'red';
+        userEmail.classList.add('is-invalid');
     }
     if(userObject.password==null){
         errors = errors +'Password is Required<br>';
+        userPassword.style.borderColor = 'red';
+        userPassword.classList.add('is-invalid');
     }
     if(userObject.roles.length===0){
         errors = errors +'Role(s) is Required<br>';
+        $("#userRole_chosen .chosen-choices").addClass('select-invalidated');
+        $("#userRole_chosen .search-choice").addClass('select-invalidated');
+        userRole.classList.remove('is-invalid');
     }
     if(userObject.status==null){
         errors = errors +'Status is Required<br>';
