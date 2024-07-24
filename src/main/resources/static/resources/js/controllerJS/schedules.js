@@ -3,7 +3,10 @@ window.addEventListener("load",()=>{
     const courses = ajaxGetRequest("/course/findall");
     fillSelectOptions(schedulesCourse,' ',courses,'name');
     $("#schedulesCourse").chosen({width: '25%'});
-    $("#schedulesCourse_chosen .chosen-single").addClass('bg-light');
+    $("#schedulesCourse").chosen().change(function () {
+        $("#schedulesCourse_chosen .chosen-single").addClass('bg-light');
+    });
+
     refreshSchedulesTable();
 
 });
