@@ -4,10 +4,7 @@ import lk.steam.ims.dao.EmployeeDAO;
 import lk.steam.ims.dao.EmployeeStatusDAO;
 import lk.steam.ims.dao.RoleDAO;
 import lk.steam.ims.dao.UserDAO;
-import lk.steam.ims.entity.Employee;
-import lk.steam.ims.entity.EmployeeStatus;
-import lk.steam.ims.entity.Role;
-import lk.steam.ims.entity.User;
+import lk.steam.ims.entity.*;
 import lk.steam.ims.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -37,6 +34,8 @@ public class EmployeeController {
     private RoleDAO roleDAO;
     @Autowired
     private MailService mailService;
+    @Autowired
+    private PrivilegeController privilegeController;
 
     @GetMapping
     public ModelAndView employeeUI() {
@@ -87,6 +86,12 @@ public class EmployeeController {
     }
     @PostMapping
     public String saveNewEmployee(@RequestBody Employee employee){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"EMPLOYEE");
+
+        if(!loggedUserPrivilege.getInsertPrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
         try{
             //check unique values exist or not
             String errors = "";
