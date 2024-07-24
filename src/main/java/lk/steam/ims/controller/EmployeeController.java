@@ -73,6 +73,12 @@ public class EmployeeController {
 
     @PutMapping
     public String updateEmployee(@RequestBody Employee employee){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"EMPLOYEE");
+
+        if(!loggedUserPrivilege.getUpdatePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
         try {
             //no need to check anything, because there are no any unique values
             employeeDAO.save(employee);
@@ -146,6 +152,13 @@ public class EmployeeController {
     }
     @DeleteMapping
     public String deleteEmployee(@RequestBody Employee employee) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"EMPLOYEE");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
 
         try {
             //soft delete
