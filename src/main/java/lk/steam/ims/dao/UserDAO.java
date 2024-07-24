@@ -11,4 +11,7 @@ public interface UserDAO extends JpaRepository<User,Integer> {
 
     @Query(value = "SELECT u from User u where u.username=?1")
     User getUserByUsername(String username);
+
+    @Query(value = "SELECT u from User u where u.employeeID.id=?1")
+    User getUserByEmployeeID(Integer employeeID);
 }
