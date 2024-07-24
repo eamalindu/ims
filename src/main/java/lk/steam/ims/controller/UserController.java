@@ -94,6 +94,21 @@ public class UserController {
         if(currentUser==null){
             return "No Such User Account";
         }
+        //check duplicate
+        String errors = "";
+
+        User existingUserUserName = userDAO.getUserByUsername(user.getUsername());
+        if(existingUserUserName!=null){
+            errors += "<br>This Username Already Exists";
+        }
+        User existingUserEmail = userDAO.getUserByEmail(user.getEmail());
+        if(existingUserEmail!=null){
+            errors += "<br>This Email Already Exists";
+        }
+        if(!errors.isEmpty()){
+            return errors;
+        }
+
         try{
             userDAO.save(user);
             return "OK";
