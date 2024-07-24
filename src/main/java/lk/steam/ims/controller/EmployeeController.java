@@ -167,6 +167,12 @@ public class EmployeeController {
             employee.setEmployeeStatusID(deleteStatus);
             //update the employee record
             employeeDAO.save(employee);
+            //get the user account and delete it
+            User user = userDAO.getUserByEmployeeID(employee.getId());
+            if(user!=null){
+                user.setStatus(false);
+                userDAO.save(user);
+            }
 
             return "OK";
         } catch (Exception ex) {
