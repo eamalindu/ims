@@ -126,13 +126,19 @@ const resetUserForm = ()=>{
     $("#userEmployee_chosen .chosen-single").removeClass('select-validated');
     $("#userRole_chosen .chosen-choices").removeClass('select-validated');
     $("#userRole_chosen .search-choice").removeClass('select-validated');
+    $("#userEmployee_chosen .chosen-single").removeClass('select-invalidated');
+    $("#userRole_chosen .chosen-choices").removeClass('select-invalidated');
+    $("#userRole_chosen .search-choice").removeClass('select-invalidated');
     userEmployee.classList.remove('is-valid');
     userRole.classList.remove('is-valid');
+    userEmployee.classList.remove('is-invalid');
+    userRole.classList.remove('is-invalid');
 
 
     //set default option chosen
     setTimeout(function () {
-        $('select').val('').trigger('chosen:updated');
+        $('#userRole').val('').trigger('chosen:updated');
+        $('#userEmployee').val('').trigger('chosen:updated');
     }, 0);
 
     //reset form
