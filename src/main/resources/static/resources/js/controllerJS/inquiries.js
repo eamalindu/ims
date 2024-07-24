@@ -470,3 +470,44 @@ const searchInquiry = () => {
         showCustomModal("Please Select All the Fields to Search", "warning");
     }
 }
+
+const filterInquiries = () => {
+    let sourceSelected = false;
+    let courseSelected = false;
+    let counsellorSelected = false;
+
+    if (inquirySearchSource.value !== '') {
+        sourceSelected = true;
+    }
+    if (inquirySearchCourse.value !== '') {
+        courseSelected = true;
+    }
+    if (inquirySearchCounsellor.value !== '') {
+        counsellorSelected = true;
+    }
+
+    const filteredInquiries = inquiriesWithFollowUps.filter(inquiry => {
+        let sourceMatch = true;
+        let courseMatch = true;
+        let counsellorMatch = true;
+
+        if (sourceSelected) {
+            const sourceID = JSON.parse(inquirySearchSource.value).id;
+            sourceMatch = inquiry.sourceId.id === sourceID;
+        }
+        if (courseSelected) {
+            const courseID = JSON.parse(inquirySearchCourse.value).id;
+            courseMatch = inquiry.courseId.id === courseID;
+        }
+        if (counsellorSelected) {
+            const counsellorName = JSON.parse(inquirySearchCounsellor.value).callingName
+            counsellorMatch = inquiry.addedBy === counsellorName;
+        }
+
+        return sourceMatch && courseMatch && counsellorMatch;
+    });
+
+
+    console.log(filteredInquiries);
+    fillDataIntoTable(tblInquiry, filteredInquiries, displayPropertyList, rowView, 'offCanvasInquirySheet');
+};

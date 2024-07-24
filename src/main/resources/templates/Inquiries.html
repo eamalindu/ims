@@ -31,11 +31,11 @@
                         <label class="text-uppercase text-muted small m-0 p-0" for="inquirySearchSource">Filters</label>
                         <div class="input-group">
                             <span class="input-group-text bg-custom-white rounded-0"><i class="fa-solid fa-filter"></i></span>
-                            <select class="form-select rounded-0 chosen-inquiry-search" data-placeholder="Sort by a Source" id="inquirySearchSource">
+                            <select class="form-select rounded-0 chosen-inquiry-search" data-placeholder="Sort by a Source" id="inquirySearchSource" onchange="filterInquiries()">
                             </select>
-                            <select class="form-select rounded-0 chosen-inquiry-search" data-placeholder="Sort by a Course" id="inquirySearchCourse">
+                            <select class="form-select rounded-0 chosen-inquiry-search" data-placeholder="Sort by a Course" id="inquirySearchCourse" onchange="filterInquiries()">
                             </select>
-                            <select class="form-select rounded-0 chosen-inquiry-search" data-placeholder="Sort by a Counsellor" id="inquirySearchCounsellor">
+                            <select class="form-select rounded-0 chosen-inquiry-search" data-placeholder="Sort by a Counsellor" id="inquirySearchCounsellor" onchange="filterInquiries()">
                                 <option value=""></option>
                             </select>
                         </div>
