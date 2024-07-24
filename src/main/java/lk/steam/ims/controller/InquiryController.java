@@ -198,7 +198,11 @@ public class InquiryController {
             return "<br>User does not have sufficient privilege.";
         }
         try {
-            //no need to check anything, because there are no any unique values
+            //check if the active inquiry is present with nic and mobile number
+            Inquiry existInquiry = inquiryDAO.getInquiryByCourseAndNiC(inquiry.getCourseId().getId(),inquiry.getIdValue());
+            if(existInquiry!=null && existInquiry.getId()!=inquiry.getId()){
+                return "<br>Updated Failed!<br>Inquiry With Same Course and NIC already exist in the system";
+            }
             inquiryDAO.save(inquiry);
             return "OK";
 
