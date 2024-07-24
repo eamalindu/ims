@@ -452,6 +452,10 @@ const inquiryDelete = () => {
 }
 
 const searchInquiry = () => {
+    //change this code so it has  three flows
+    //1 using only date range
+    //2 using only input
+    //3 using both date range and input
     const [startDate, endDate] = inquirySearchDateRange.value.split(' - ');
     if(inquirySearchSource.value!=''&&inquirySearchCourse.value!=''&&inquirySearchCounsellor.value!='') {
         const sourceID = JSON.parse(inquirySearchSource.value).id;
