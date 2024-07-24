@@ -311,11 +311,11 @@
                 <td class="fw-bold w-25">Gender</td>
                 <td class="w-25">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input employeeSheetInputs" name="employeeGender" id="employeeSheetGenderMale" type="radio" value="Male"  disabled >
+                        <input class="form-check-input employeeSheetInputs" name="employeeGender" id="employeeSheetGenderMale" type="radio" value="Male"  disabled  onclick="editedEmployee.gender = 'Male'">
                         <label class="form-check-label opacity-100" for="employeeSheetGenderMale">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input employeeSheetInputs"  name="employeeGender" id="employeeSheetGenderFemale" type="radio" value="Female" checked disabled>
+                        <input class="form-check-input employeeSheetInputs"  name="employeeGender" id="employeeSheetGenderFemale" type="radio" value="Female" checked disabled onclick="editedEmployee.gender = 'Female'">
                         <label class="form-check-label opacity-100" for="employeeSheetGenderFemale">Female</label>
                     </div>
                 </td>
