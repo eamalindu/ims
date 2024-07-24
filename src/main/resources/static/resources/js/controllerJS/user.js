@@ -135,6 +135,7 @@ const resetUserForm = ()=>{
     userRole.classList.remove('is-invalid');
 
 
+
     //set default option chosen
     setTimeout(function () {
         $('#userRole').val('').trigger('chosen:updated');
