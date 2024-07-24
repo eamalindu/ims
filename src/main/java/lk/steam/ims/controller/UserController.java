@@ -83,6 +83,13 @@ public class UserController {
 
     @PutMapping
     public String updateUser(@RequestBody User user){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"USER");
+
+        if(!loggedUserPrivilege.getUpdatePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
+
         User currentUser = userDAO.getReferenceById(user.getId());
         if(currentUser==null){
             return "No Such User Account";
@@ -101,6 +108,12 @@ public class UserController {
     public String deleteUser(@RequestBody User user){
 
         //authentication and authorization should be done first
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"USER");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
         //check existing
         User currentUser = userDAO.getReferenceById(user.getId());
         if(currentUser==null){
