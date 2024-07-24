@@ -178,7 +178,8 @@ const resetPrivilegeForm = ()=> {
 
     //set default option chosen
     setTimeout(function () {
-        $('select').val('').trigger('chosen:updated');
+        $('#privilegeRole').val('').trigger('chosen:updated');
+        $('#privilegeModule').val('').trigger('chosen:updated');
     }, 0);
 
     //reset form
