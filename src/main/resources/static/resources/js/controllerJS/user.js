@@ -34,6 +34,11 @@ const refreshUserTable = ()=>{
     ];
     //calling external common function to fill the data into the table
     fillDataIntoTable(tblUser,users,displayPropertyListForUser,rowView,'offcanvasUserSheet')
+
+    //initialize dataTable if data is available
+    if(users.length!==0){
+        $('#tblUser').dataTable();
+    }
 }
 
 //since we cant access the employee ID from the users directly. creating a function to return the employeeID from the user object
