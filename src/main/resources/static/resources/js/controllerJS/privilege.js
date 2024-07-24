@@ -299,9 +299,13 @@ const checkPrivilegeFormErrors = (privilegeObject)=>{
 
     if(privilegeObject.roleID==null){
         errors = errors +'Role is Required<br>';
+        $("#privilegeRole_chosen .chosen-single").addClass('select-invalidated');
+        privilegeRole.classList.add('is-invalid');
     }
     if(privilegeObject.moduleID==null){
         errors = errors +'Module is Required<br>';
+        $("#privilegeModule_chosen .chosen-single").addClass('select-invalidated');
+        privilegeModule.classList.add('is-invalid');
     }
 
     return errors;
