@@ -73,6 +73,12 @@ public class PrivilegeController {
 
     @PostMapping
     public String saveNewPrivilege(@RequestBody Privilege privilege) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = getPrivilegeByUserAndModule(auth.getName(),"PRIVILEGE");
+
+        if(!loggedUserPrivilege.getInsertPrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
         try {
 
             Privilege existPrivilege = privilegeDAO.getPrivilegeByRoleAndModule(privilege.getRoleID().getId(),privilege.getModuleID().getId());
@@ -91,6 +97,12 @@ public class PrivilegeController {
     public String updatePrivilege(@RequestBody Privilege privilege) {
 
         //check authentication needs to be added here
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = getPrivilegeByUserAndModule(auth.getName(),"PRIVILEGE");
+
+        if(!loggedUserPrivilege.getUpdatePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
 
         //check existing
         Privilege existPrivilege = privilegeDAO.getReferenceById(privilege.getId());
@@ -99,6 +111,11 @@ public class PrivilegeController {
             return "No Such Privilege Record";
         }
         try {
+            Privilege existPrivileges = privilegeDAO.getPrivilegeByRoleAndModule(privilege.getRoleID().getId(),privilege.getModuleID().getId());
+            if(existPrivileges != null){
+                return "<br>Privilege Already Exists";
+            }
+
             privilegeDAO.save(privilege);
             return "OK";
         } catch (Exception ex) {
@@ -108,6 +125,12 @@ public class PrivilegeController {
 
     @DeleteMapping
     public String deletePrivilege(@RequestBody Privilege privilege) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = getPrivilegeByUserAndModule(auth.getName(),"PRIVILEGE");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
         try {
 
             privilegeDAO.delete(privilege);
