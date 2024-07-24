@@ -31,6 +31,11 @@ const refreshPrivilegeTable = ()=>{
     //calling external common function to fill the data into the table
     fillDataIntoTable(tblPrivilege,privileges,displayPropertyListForPrivilege,rowView,'offcanvasPrivilegeSheet')
 
+    //initialize dataTable if data is available
+    if(privileges.length!==0){
+        $('#tblPrivilege').dataTable();
+    }
+
 }
 //since we cant access the Role Name from the privileges directly. creating a function to return the roleID from the privileges object
 const getRoleName=(ob)=>{
