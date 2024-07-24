@@ -220,6 +220,10 @@ public class InquiryController {
         if(!loggedUserPrivilege.getDeletePrivilege()){
             return "<br>User does not have sufficient privilege.";
         }
+        Inquiry existInquiry = inquiryDAO.getInquiryNumberById(inquiry.getId());
+        if (existInquiry == null) {
+            return "No Such Inquiry Record";
+        }
         try {
             //no need to check anything, because there are no any unique values
             inquiry.setInquiryStatusId(inquiryStatusDAO.getReferenceById(4));
