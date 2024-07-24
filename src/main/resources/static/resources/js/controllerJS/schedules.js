@@ -3,7 +3,7 @@ window.addEventListener("load",()=>{
     const courses = ajaxGetRequest("/course/findall");
     fillSelectOptions(schedulesCourse,' ',courses,'name');
     $("#schedulesCourse").chosen({width: '25%'});
-
+    $("#schedulesCourse_chosen .chosen-single").addClass('bg-light');
     refreshSchedulesTable();
 
 });
@@ -79,6 +79,7 @@ const scheduleSearch = ()=>{
 const scheduleSearchReset = ()=>{
     //set default option chosen
     setTimeout(function () {
+        $("#schedulesCourse_chosen .chosen-single").removeClass('bg-light');
         $('#schedulesCourse').val('').trigger('chosen:updated');
     }, 0);
     refreshSchedulesTable();
