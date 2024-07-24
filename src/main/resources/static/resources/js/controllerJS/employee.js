@@ -396,6 +396,9 @@ const checkForEmployeeUpdate = ()=>{
     if (editedEmployee.nic !== oldEmployee.nic) {
         updates = updates + "NIC was changed to <span class='text-purple'>" + editedEmployee.nic + "</span><br>";
     }
+    if (editedEmployee.gender !== oldEmployee.gender) {
+        updates = updates + "Gender was changed to <span class='text-purple'>" + editedEmployee.gender + "</span><br>";
+    }
     if (editedEmployee.dob !== oldEmployee.dob) {
         updates = updates + "DOB was changed to <span class='text-purple'>" + editedEmployee.dob + "</span><br>";
     }
