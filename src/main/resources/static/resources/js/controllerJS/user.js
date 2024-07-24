@@ -93,6 +93,7 @@ const rowView = (ob,rowIndex)=>{
     $("#userSheetRole_chosen .search-choice").removeClass('select-editable');
     $("#userSheetRole_chosen .chosen-choices").removeClass('select-validated');
     $("#userSheetRole_chosen .search-choice").removeClass('select-validated');
+    userSheetRole.classList.remove('is-valid');
 
     //setting object values in to the inputs
     userSheetEmail.value = ob.email;
