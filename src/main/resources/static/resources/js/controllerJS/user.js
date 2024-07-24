@@ -91,6 +91,8 @@ const rowView = (ob,rowIndex)=>{
     //remove the class 'select-editable' from chosen select (multi select in this case)
     $("#userSheetRole_chosen .chosen-choices").removeClass('select-editable');
     $("#userSheetRole_chosen .search-choice").removeClass('select-editable');
+    $("#userSheetRole_chosen .chosen-choices").removeClass('select-validated');
+    $("#userSheetRole_chosen .search-choice").removeClass('select-validated');
 
     //setting object values in to the inputs
     userSheetEmail.value = ob.email;
