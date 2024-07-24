@@ -1,6 +1,7 @@
 package lk.steam.ims.controller;
 
 import lk.steam.ims.dao.UserDAO;
+import lk.steam.ims.entity.Privilege;
 import lk.steam.ims.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -21,6 +22,8 @@ public class UserController {
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private PrivilegeController privilegeController;
 
     @GetMapping
     public ModelAndView userUI(){
@@ -45,6 +48,27 @@ public class UserController {
 
     @PostMapping
     public String saveNewUser(@RequestBody User user){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"USER");
+
+        if(!loggedUserPrivilege.getInsertPrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
+        //check duplicate
+        String errors = "";
+
+        User existingUserUserName = userDAO.getUserByUsername(user.getUsername());
+        if(existingUserUserName!=null){
+            errors += "<br>This Username Already Exists";
+        }
+        User existingUserEmail = userDAO.getUserByEmail(user.getEmail());
+        if(existingUserEmail!=null){
+            errors += "<br>This Email Already Exists";
+        }
+        if(!errors.isEmpty()){
+            return errors;
+        }
+
         try{
             user.setAddedTime(LocalDateTime.now());
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
