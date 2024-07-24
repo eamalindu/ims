@@ -285,7 +285,7 @@ const checkUserFormErrors = (userObject,passwordID,confirmPasswordID)=> {
         errors = errors +'Role(s) is Required<br>';
         $("#userRole_chosen .chosen-choices").addClass('select-invalidated');
         $("#userRole_chosen .search-choice").addClass('select-invalidated');
-        userRole.classList.remove('is-invalid');
+        userRole.classList.add('is-invalid');
     }
     if(userObject.status==null){
         errors = errors +'Status is Required<br>';
