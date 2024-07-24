@@ -324,39 +324,63 @@ const checkEmployeeFormErrors = (employeeObject)=>{
 
     if(employeeObject.fullName==null){
         errors = errors +'Full Name is Required<br>';
+        employeeFullName.style.borderColor = 'red';
+        employeeFullName.classList.add('is-invalid');
     }
     if(employeeObject.nic==null){
         errors = errors +'NIC is Required<br>';
+        employeeNIC.style.borderColor = 'red';
+        employeeNIC.classList.add('is-invalid');
     }
     if(employeeObject.dob==null){
         errors = errors +'Date of Birth is Required<br>';
+        employeeDOB.style.borderColor = 'red';
+        employeeDOB.classList.add('is-invalid');
     }
     if(employeeObject.email==null){
         errors = errors +'Email is Required<br>';
+        employeeEmail.style.borderColor = 'red';
+        employeeEmail.classList.add('is-invalid');
     }
     if(employeeObject.mobileNumber==null){
         errors = errors +'Mobile Number is Required<br>';
+        employeeMobile.style.borderColor = 'red';
+        employeeMobile.classList.add('is-invalid');
     }
     if(employeeObject.address==null){
         errors = errors +'Address is Required<br>';
+        employeeAddress.style.borderColor = 'red';
+        employeeAddress.classList.add('is-invalid');
     }
     if(employeeObject.civilStatus==null){
         errors = errors +'Civil Status is Required<br>';
+        $("#employeeCivilStatus_chosen .chosen-single").addClass('select-invalidated');
+        employeeCivilStatus.classList.add('is-invalid');
+
     }
     if(employeeObject.designationID==null){
         errors = errors +'Designation is Required<br>';
+        $("#employeeDesignation_chosen .chosen-single").addClass('select-invalidated');
+        employeeDesignation.classList.add('is-invalid');
     }
     if(employeeObject.gender==null){
         errors = errors +'Gender is Required<br>';
     }
     if(employeeObject.callingName==null){
         errors = errors +'Calling Name is Required<br>';
+        $("#employeeCallingName_chosen .chosen-single").addClass('select-invalidated');
+        employeeCallingName.classList.add('is-invalid');
     }
     if(employeeObject.photoPath==null){
         errors = errors +'Profile Photo is Required<br>';
+        employeeProfile.style.borderColor = 'red';
+        employeeProfile.classList.add('is-invalid');
+
     }
     if(employeeObject.highestEducationalQualification==null){
         errors = errors +'Highest Educational Qualification is Required<br>';
+        $("#employeeHighestEducation_chosen .chosen-single").addClass('select-invalidated');
+        employeeHighestEducation.classList.add('is-invalid');
     }
 
     return errors;
