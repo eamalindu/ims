@@ -463,23 +463,36 @@ const searchInquiry = () => {
     //1 using only date range
     //2 using only input
     //3 using both date range and input
-    const [startDate, endDate] = inquirySearchDateRange.value.split(' - ');
-    if(inquirySearchSource.value!=''&&inquirySearchCourse.value!=''&&inquirySearchCounsellor.value!='') {
-        const sourceID = JSON.parse(inquirySearchSource.value).id;
-        const courseID = JSON.parse(inquirySearchCourse.value).id;
-        const addedBy = JSON.parse(inquirySearchCounsellor.value).callingName;
-        const input = inquirySearchID.value;
+    // const [startDate, endDate] = inquirySearchDateRange.value.split(' - ');
 
-        const url = `/Inquiry/searchInquiry?startDate=${startDate}&endDate=${endDate}&sourceID=${sourceID}&courseID=${courseID}&addedBy=${addedBy}&input=${input}`
-        const searchResultInquiry = ajaxGetRequest(url)
+    let dateRangeSelected = false;
+    let inputAdded = false;
 
-        fillDataIntoTable(tblInquiry, searchResultInquiry, displayPropertyList, rowView, 'offCanvasInquirySheet');
+    if(inquirySearchDateRange.value!==''){
+        dateRangeSelected = true;
+    }
+    if(inquirySearchID.value!==''){
+        inputAdded = true;
 
     }
-    else{
 
-        showCustomModal("Please Select All the Fields to Search", "warning");
-    }
+
+    // if(inquirySearchSource.value!=''&&inquirySearchCourse.value!=''&&inquirySearchCounsellor.value!='') {
+    //     const sourceID = JSON.parse(inquirySearchSource.value).id;
+    //     const courseID = JSON.parse(inquirySearchCourse.value).id;
+    //     const addedBy = JSON.parse(inquirySearchCounsellor.value).callingName;
+    //     const input = inquirySearchID.value;
+    //
+    //     const url = `/Inquiry/searchInquiry?startDate=${startDate}&endDate=${endDate}&sourceID=${sourceID}&courseID=${courseID}&addedBy=${addedBy}&input=${input}`
+    //     const searchResultInquiry = ajaxGetRequest(url)
+    //
+    //     fillDataIntoTable(tblInquiry, searchResultInquiry, displayPropertyList, rowView, 'offCanvasInquirySheet');
+    //
+    // }
+    // else{
+    //
+    //     showCustomModal("Please Select All the Fields to Search", "warning");
+    // }
 }
 
 const filterInquiries = () => {
