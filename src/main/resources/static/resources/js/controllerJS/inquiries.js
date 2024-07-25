@@ -459,23 +459,37 @@ const inquiryDelete = () => {
 }
 
 const searchInquiry = () => {
-    //change this code so it has  three flows
-    //1 using only date range
-    //2 using only input
-    //3 using both date range and input
-    // const [startDate, endDate] = inquirySearchDateRange.value.split(' - ');
-
     let dateRangeSelected = false;
     let inputAdded = false;
 
-    if(inquirySearchDateRange.value!==''){
+    if(inquirySearchDateRange.value !== ''){
         dateRangeSelected = true;
     }
-    if(inquirySearchID.value!==''){
+    if(inquirySearchID.value !== ''){
         inputAdded = true;
-
     }
 
+    if(dateRangeSelected && !inputAdded){
+        // Flow 1: Only date range is selected
+        console.log('Date range selected');
+        // Add your logic for handling only date range
+    } else if(!dateRangeSelected && inputAdded){
+        // Flow 2: Only input is added
+        console.log('Input added');
+        // Add your logic for handling only input
+    } else if(dateRangeSelected && inputAdded){
+        // Flow 3: Both date range and input are selected
+        console.log('Both date range and input selected');
+        // Add your logic for handling both date range and input
+    } else {
+        // Optional: Handle case where neither is selected
+        console.log('Neither date range nor input selected');
+        // Add your logic for handling neither date range nor input
+    }
+
+
+
+    // const [startDate, endDate] = inquirySearchDateRange.value.split(' - ');
 
     // if(inquirySearchSource.value!=''&&inquirySearchCourse.value!=''&&inquirySearchCounsellor.value!='') {
     //     const sourceID = JSON.parse(inquirySearchSource.value).id;
