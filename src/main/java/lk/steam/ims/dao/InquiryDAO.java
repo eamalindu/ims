@@ -102,7 +102,7 @@ public interface InquiryDAO extends JpaRepository<Inquiry,Integer> {
     @Query(value = "SELECT * from inquiry where (inquirynumber =?1 or primarymobilenumber=?1 or idvalue=?1)",nativeQuery = true)
     List<Inquiry> searchInquiryByInput(String input);
 
-    @Query(value = "select * from inquiry where date(timestamp)>=?1 and date(timestamp)<=?2 and (inquirynumber =?1 or primarymobilenumber=?1 or idvalue=?1)",nativeQuery = true)
+    @Query(value = "select * from inquiry where date(timestamp)>=?1 and date(timestamp)<=?2 and (inquirynumber =?3 or primarymobilenumber=?3 or idvalue=?3)",nativeQuery = true)
     List<Inquiry> searchInquiryByDateRangeAndInput(String startDate, String endDate,String input);
 }
 
