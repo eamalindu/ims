@@ -482,7 +482,10 @@ const searchInquiry = () => {
         fillDataIntoTable(tblInquiry, results, displayPropertyList, rowView, 'offCanvasInquirySheet');
     } else if(dateRangeSelected && inputAdded){
         //Both dateRange and input
-
+        const [startDate, endDate] = inquirySearchDateRange.value.split(' - ');
+        const inputText = inquirySearchID.value;
+        const results =  ajaxGetRequest("/Inquiry/searchInquiryByDateRangeAndInput/"+startDate+"/"+endDate+"/"+inputText);
+        fillDataIntoTable(tblInquiry, results, displayPropertyList, rowView, 'offCanvasInquirySheet');
 
     } else {
         showCustomModal("Date range or input is needed for search", "warning");
