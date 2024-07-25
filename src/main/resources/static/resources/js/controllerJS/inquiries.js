@@ -23,10 +23,17 @@ window.addEventListener('load', () => {
     //external libraries initialization
     $(".chosen-inquiry-search").chosen({width: '190px'});
     $('#inquirySearchDateRange').daterangepicker({
+        "autoUpdateInput": false,
         "locale": {
             "format": "YYYY-MM-DD", //"separator": " to "
+
         }
     });
+
+    $('#inquirySearchDateRange').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
+    });
+
 
     //reset chosen select using jquery
     $('#btn-reset').on('click', function () {
