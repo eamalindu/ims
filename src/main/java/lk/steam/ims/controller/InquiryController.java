@@ -129,7 +129,7 @@ public class InquiryController {
     }
 
     @GetMapping(value = "/getDroppedInquiriesWithoutFollowUpsByDateRange/{startDate}/{endDate}",produces = "application/json")
-    public List<Inquiry> getDroppedInquiriesWithoutFollowUpsByDateRange(@PathVariable String startDate,@PathVariable String endDate){
+        public List<Inquiry> getDroppedInquiriesWithoutFollowUpsByDateRange(@PathVariable String startDate,@PathVariable String endDate){
         return inquiryDAO.getDroppedInquiriesWithoutFollowUpsByDateRange(startDate,endDate);
     }
 
@@ -147,6 +147,10 @@ public class InquiryController {
     @GetMapping(value = "/searchInquiryByInput/{input}",produces = "application/json")
     public List<Inquiry> searchInquiryByInput(@PathVariable String input){
         return inquiryDAO.searchInquiryByInput(input);
+    }
+    @GetMapping(value = "/searchInquiryByDateRangeAndInput/{startDate}/{endDate}/{input}",produces = "application/json")
+    public List<Inquiry> searchInquiryByDateRangeAndInput(@PathVariable String startDate,@PathVariable String endDate,@PathVariable String input){
+        return inquiryDAO.searchInquiryByDateRangeAndInput(startDate,endDate,input);
     }
 
     
