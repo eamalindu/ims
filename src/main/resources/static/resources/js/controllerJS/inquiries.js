@@ -482,9 +482,7 @@ const searchInquiry = () => {
         console.log('Both date range and input selected');
         // Add your logic for handling both date range and input
     } else {
-        // Optional: Handle case where neither is selected
-        console.log('Neither date range nor input selected');
-        // Add your logic for handling neither date range nor input
+        showCustomModal("Date range or input is needed for search", "warning");
     }
 
 
