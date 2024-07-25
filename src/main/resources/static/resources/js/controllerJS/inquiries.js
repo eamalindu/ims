@@ -470,9 +470,10 @@ const searchInquiry = () => {
     }
 
     if(dateRangeSelected && !inputAdded){
-        // Flow 1: Only date range is selected
-        console.log('Date range selected');
-        // Add your logic for handling only date range
+        const [startDate, endDate] = inquirySearchDateRange.value.split(' - ');
+        const results = ajaxGetRequest("/Inquiry/getAllInquiriesByDateRange/"+startDate+"/"+endDate);
+        fillDataIntoTable(tblInquiry, results, displayPropertyList, rowView, 'offCanvasInquirySheet');
+
     } else if(!dateRangeSelected && inputAdded){
         // Flow 2: Only input is added
         console.log('Input added');
