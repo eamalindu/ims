@@ -470,17 +470,20 @@ const searchInquiry = () => {
     }
 
     if(dateRangeSelected && !inputAdded){
+        //dateRange only
         const [startDate, endDate] = inquirySearchDateRange.value.split(' - ');
         const results = ajaxGetRequest("/Inquiry/getAllInquiriesByDateRange/"+startDate+"/"+endDate);
         fillDataIntoTable(tblInquiry, results, displayPropertyList, rowView, 'offCanvasInquirySheet');
 
     } else if(!dateRangeSelected && inputAdded){
+        //input only
         const inputText = inquirySearchID.value;
-        const result =  ajaxGetRequest("/Inquiry/")
+        const results =  ajaxGetRequest("/Inquiry/searchInquiryByInput/"+inputText);
+        fillDataIntoTable(tblInquiry, results, displayPropertyList, rowView, 'offCanvasInquirySheet');
     } else if(dateRangeSelected && inputAdded){
-        // Flow 3: Both date range and input are selected
-        console.log('Both date range and input selected');
-        // Add your logic for handling both date range and input
+        //Both dateRange and input
+
+
     } else {
         showCustomModal("Date range or input is needed for search", "warning");
     }
