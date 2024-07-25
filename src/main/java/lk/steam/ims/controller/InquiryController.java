@@ -144,6 +144,11 @@ public class InquiryController {
         return inquiryDAO.searchInquiry(startDate,endDate,sourceID,courseID,addedBy,input);
     }
 
+    @GetMapping(value = "/searchInquiryByInput/{input}",produces = "application/json")
+    public List<Inquiry> searchInquiryByInput(@PathVariable String input){
+        return inquiryDAO.searchInquiryByInput(input);
+    }
+
     
     @PostMapping
     public String saveNewInquiry(@RequestBody Inquiry inquiry){

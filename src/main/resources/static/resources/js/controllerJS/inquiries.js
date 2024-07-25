@@ -475,9 +475,8 @@ const searchInquiry = () => {
         fillDataIntoTable(tblInquiry, results, displayPropertyList, rowView, 'offCanvasInquirySheet');
 
     } else if(!dateRangeSelected && inputAdded){
-        // Flow 2: Only input is added
-        console.log('Input added');
-        // Add your logic for handling only input
+        const inputText = inquirySearchID.value;
+        const result =  ajaxGetRequest("/Inquiry/")
     } else if(dateRangeSelected && inputAdded){
         // Flow 3: Both date range and input are selected
         console.log('Both date range and input selected');
