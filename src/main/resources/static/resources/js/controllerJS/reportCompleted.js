@@ -3,12 +3,23 @@ window.addEventListener('load',()=> {
     const startDate = moment().startOf('month').format('YYYY-MM-DD');
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
     refreshReportCompletedTable(startDate,endDate);
+    reportColumnFormat = [
+        {name: 'Inquiry Number', data: 'inquiryNumber'},
+        {name: 'Source', data: 'sourceId.name'},
+        {name: 'Course', data: 'courseId.code'},
+        {name: 'First Name', data: 'firstName'},
+        {name: 'Last Name', data: 'lastName'},
+        {name: 'Phone Number', data: 'primaryMobileNumber'},
+        {name: 'Added By', data: 'addedBy'},
+        {name: 'Status', data: 'inquiryStatusId.name'},
+
+    ]
 
 });
 
 const refreshReportCompletedTable = (startDate,endDate) =>{
 
-    const registeredInquiries = ajaxGetRequest("/Inquiry/getAllInquiriesByDateRangeAndStatus/"+startDate+"/"+endDate+"/"+5);
+    completedInquiries = ajaxGetRequest("/Inquiry/getAllInquiriesByDateRangeAndStatus/"+startDate+"/"+endDate+"/"+5);
 
     const  displayPropertyListForReportRegistered = [
         {property: 'inquiryNumber',dataType:'text'},
@@ -20,7 +31,7 @@ const refreshReportCompletedTable = (startDate,endDate) =>{
         {property: getInquiryStatus,dataType: 'function'},
     ];
 
-    fillDataIntoTableWithOutAction(tblReportsRegistered,registeredInquiries,displayPropertyListForReportRegistered);
+    fillDataIntoTableWithOutAction(tblReportsRegistered,completedInquiries,displayPropertyListForReportRegistered);
 
 }
 
@@ -75,6 +86,7 @@ const getReport = ()=>{
 const exportData = ()=>{
     showCustomConfirm('You are about to export <span class="text-purple">Completed Inquires</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
+            exportToExcel(completedInquiries,'Completed Inquiries Report',reportColumnFormat);
 
         }
     });
