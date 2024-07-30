@@ -244,3 +244,19 @@ const commissionRateUpdate =()=>{
         showCustomModal(errors, 'warning');
     }
 }
+
+const checkForCommissionRateUpdates =()=>{
+    let updates = '';
+
+    if (editedCommissionRate.courseID.name !== oldCommissionRate.courseID.name) {
+        updates = updates + "Course was changed to <span class='text-purple'>" + editedCommissionRate.courseID.name + "</span><br>";
+    }
+    if (editedCommissionRate.fullPaymentRate !== oldCommissionRate.fullPaymentRate) {
+        updates = updates + "Full Payment Rate was changed to <span class='text-purple'>" + editedCommissionRate.fullPaymentRateW + "</span><br>";
+    }
+    if (editedCommissionRate.partPaymentRate !== oldCommissionRate.partPaymentRate) {
+        updates = updates + "Part Payment Rate to <span class='text-purple'>" + editedCommissionRate.partPaymentRate + "</span><br>";
+    }
+
+    return updates;
+}
