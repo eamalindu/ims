@@ -134,7 +134,7 @@ public class InquiryController {
     }
 
     @GetMapping(value="/getInquiryNumberByID/{id}",produces = "application/json")
-    public Inquiry getInquiryNumberById(@PathVariable Integer id){
+    public String getInquiryNumberById(@PathVariable Integer id){
         return inquiryDAO.getInquiryNumberById(id);
     }
 
@@ -229,7 +229,7 @@ public class InquiryController {
         if(!loggedUserPrivilege.getDeletePrivilege()){
             return "<br>User does not have sufficient privilege.";
         }
-        Inquiry existInquiry = inquiryDAO.getInquiryNumberById(inquiry.getId());
+        Inquiry existInquiry = inquiryDAO.getReferenceById(inquiry.getId());
         if (existInquiry == null) {
             return "No Such Inquiry Record";
         }

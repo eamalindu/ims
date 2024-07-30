@@ -94,7 +94,7 @@ public interface InquiryDAO extends JpaRepository<Inquiry,Integer> {
     List<Inquiry> getDroppedInquiriesWithoutFollowUpsByDateRange(String startDate, String endDate);
 
     @Query(value = "SELECT i.inquiryNumber from Inquiry i where i.id=?1")
-    Inquiry getInquiryNumberById(Integer inquiryID);
+    String getInquiryNumberById(Integer inquiryID);
 
     @Query(value = "select * from inquiry where date(timestamp)>=?1 and date(timestamp)<=?2 and source_id=?3 and course_id=?4 and addedby=?5 and (inquirynumber =?6 or primarymobilenumber=?6 or idvalue=?6)",nativeQuery = true)
     List<Inquiry> searchInquiry(String startDate, String endDate, Integer sourceID, Integer courseID, String addedBy, String input);
