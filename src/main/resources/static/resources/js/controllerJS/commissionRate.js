@@ -199,3 +199,48 @@ const commissionRateEdit = ()=>{
     //display the update button once the edit button is clicked
     btnCommissionSheetUpdate.style.display = 'block';
 }
+
+const commissionRateUpdate =()=>{
+    const errors = checkCommissionRateFormErrors(editedCommissionRate);
+
+    if (errors === '') {
+
+        let updates = checkForCommissionRateUpdates();
+
+        if (updates === "") {
+            showCustomModal("No changes Detected!", "info")
+        } else {
+            showCustomConfirm("You are About to Update this Commission Rate<br><br>Following Changes Detected!<br/><br/><small>" + updates+"</small><br>Are You Sure?", function (result){
+
+                if(result){
+                    const ServerResponse = ajaxHttpRequest("/CommissionRate","PUT",editedCommissionRate)
+                    //if data passed successfully
+                    //show a success alert
+                    if(ServerResponse === "OK"){
+
+                        showCustomModal("Commission Rate Successfully Updated!","success")
+                        //close the offCanvas and refresh the table
+                        offCanvasInquirySheetCloseButton.click();
+                        refreshCommissionRateTable();
+
+                    }
+
+                        //if data passed unsuccessfully
+                    //show an error alert
+                    else
+                    {
+                        showCustomModal("Operation Failed! <br> Commission Rate Record Not Updated! "+postServerResponse,"error")
+                    }
+
+                }
+                else{
+                    showCustomModal("Operation Cancelled!", "info")
+                }
+
+            });
+        }
+
+    } else {
+        showCustomModal(errors, 'warning');
+    }
+}
