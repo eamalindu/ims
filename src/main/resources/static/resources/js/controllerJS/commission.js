@@ -83,6 +83,10 @@ const refreshCommissionTable=(startDate,endDate)=>{
     ];
 
     fillDataIntoTableWithOutAction(tblCommission,commissions,displayListForCommission);
+
+    if(commissions.length!==0){
+        $('#tblCommission').dataTable();
+    }
 }
 
 const getRegNumber = (ob)=>{
