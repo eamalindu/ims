@@ -56,5 +56,22 @@ public class CommissionRateController {
         return "OK";
 
     }
+    @PutMapping
+    public String updateCommissionRate(@RequestBody CommissionRate commissionRate){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"COMMISSION");
+
+        if(!loggedUserPrivilege.getUpdatePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
+        //check unique properties (They cant be already exist on the table)
+        CommissionRate existCommissionRate = commissionRateDAO.getCommissionRateByCourseID(commissionRate.getCourseID().getId());
+        if(existCommissionRate !=null){
+            return "<br>Commission Rate already exist";
+        }
+        commissionRateDAO.save(commissionRate);
+        return "OK";
+
+    }
 
 }
