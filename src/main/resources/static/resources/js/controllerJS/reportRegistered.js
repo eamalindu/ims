@@ -4,11 +4,23 @@ window.addEventListener('load',()=> {
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
     refreshReportRegisteredTable(startDate,endDate);
 
+    reportColumnFormat = [
+        {name: 'Inquiry Number', data: 'inquiryNumber'},
+        {name: 'Source', data: 'sourceId.name'},
+        {name: 'Course', data: 'courseId.code'},
+        {name: 'First Name', data: 'firstName'},
+        {name: 'Last Name', data: 'lastName'},
+        {name: 'Phone Number', data: 'primaryMobileNumber'},
+        {name: 'Added By', data: 'addedBy'},
+        {name: 'Status', data: 'inquiryStatusId.name'},
+
+    ]
+
 });
 
 const refreshReportRegisteredTable = (startDate,endDate) =>{
 
-    const registeredInquiries = ajaxGetRequest("/Inquiry/getAllInquiriesByDateRangeAndStatus/"+startDate+"/"+endDate+"/"+3);
+     registeredInquiries = ajaxGetRequest("/Inquiry/getAllInquiriesByDateRangeAndStatus/"+startDate+"/"+endDate+"/"+3);
 
   const  displayPropertyListForReportRegistered = [
         {property: 'inquiryNumber',dataType:'text'},
@@ -75,7 +87,7 @@ const getReport = ()=>{
 const exportData = ()=>{
     showCustomConfirm('You are about to export <span class="text-purple">Registered Inquires</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
-
+            exportToExcel(registeredInquiries,'Registered Inquiries Report',reportColumnFormat);
         }
     });
 }
