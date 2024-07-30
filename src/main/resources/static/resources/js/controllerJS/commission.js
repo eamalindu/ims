@@ -3,7 +3,7 @@ window.addEventListener('load', () => {
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
     resetAdminSearchBar(startDate,endDate);
     generateAdminChart(startDate,endDate);
-    refreshCommissionTable()
+    refreshCommissionTable(startDate,endDate)
 
 })
 
@@ -67,8 +67,8 @@ const getCommission = ()=>{
     generateAdminChart(startDate,endDate);
 }
 
-const refreshCommissionTable=()=>{
-    const commissions = ajaxGetRequest("/Commission/getCommissionByDateRangeAndPaidTo/"+startDate+"/"+endDate);
+const refreshCommissionTable=(startDate,endDate)=>{
+    const commissions = ajaxGetRequest("/Commission/getCommissionByDateRange/"+startDate+"/"+endDate);
 
     const displayListForCommission = [
         {property: getRegNumber,dataType:'function'},
@@ -81,4 +81,36 @@ const refreshCommissionTable=()=>{
     ];
 
     fillDataIntoTableWithOutAction(tblCommission,commissions,displayListForCommission);
+}
+
+const getRegNumber = (ob)=>{
+    return ob.registrationID.registrationNumber;
+}
+
+const getCourse = (ob)=>{
+    return ob.registrationID.courseID.name;
+}
+const getStudent = (ob)=>{
+    return ob.registrationID.studentID.nameWithInitials;
+}
+const getPaymentMode = (ob)=>{
+    if(ob.isFullPayment){
+        return "Full Payment";
+    }
+    else{
+        return "Part Payment"
+    }
+}
+
+const getAmount = (ob)=>{
+    return "Rs. "+ ob.amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+
+const getDate = (ob)=>{
+    const [addedDate, addedTime] = ob.timestamp.split("T");
+    return addedDate + '<br/><small class="text-muted">' + addedTime + '</small>';
+}
+
+const getInquiryID=(ob)=>{
+    return ajaxGetRequest("/Inquiry/getInquiryNumberByID/" + ob.inquiryID).inquiryNumber;
 }
