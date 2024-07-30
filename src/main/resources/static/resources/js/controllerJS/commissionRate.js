@@ -220,7 +220,7 @@ const commissionRateUpdate =()=>{
 
                         showCustomModal("Commission Rate Successfully Updated!","success")
                         //close the offCanvas and refresh the table
-                        offCanvasInquirySheetCloseButton.click();
+                        offCanvasCommissionRateSheetCloseButton.click();
                         refreshCommissionRateTable();
 
                     }
