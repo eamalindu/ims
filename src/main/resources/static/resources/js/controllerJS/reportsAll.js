@@ -4,6 +4,18 @@ window.addEventListener('load',()=> {
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
     refreshReportAllTable(startDate,endDate);
 
+    reportColumnFormat = [
+        {name: 'Inquiry Number', data: 'inquiryNumber'},
+        {name: 'Source', data: 'sourceId.name'},
+        {name: 'Course', data: 'courseId.code'},
+        {name: 'First Name', data: 'firstName'},
+        {name: 'Last Name', data: 'lastName'},
+        {name: 'Phone Number', data: 'primaryMobileNumber'},
+        {name: 'Added By', data: 'addedBy'},
+        {name: 'Status', data: 'inquiryStatusId.name'},
+
+    ]
+
 });
 
 const refreshReportAllTable = (startDate,endDate) =>{
@@ -75,6 +87,7 @@ const getReport = ()=>{
 const exportData = ()=>{
     showCustomConfirm('You are about to export <span class="text-purple">All Inquires</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
+            exportToExcel(allInquiries,'All Inquiries Report',reportColumnFormat);
 
         }
     });
