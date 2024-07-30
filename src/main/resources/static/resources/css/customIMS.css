@@ -349,7 +349,7 @@ g text {
 
 
 /*inquirySheetInputs class*/
-.inquirySheetInputs,.employeeSheetInputs,.userSheetInputs,.privilegeSheetInputs{
+.inquirySheetInputs,.employeeSheetInputs,.userSheetInputs,.privilegeSheetInputs,.commissionSheetInputs{
     border:1px solid transparent;
     background: white;
     color: black;
