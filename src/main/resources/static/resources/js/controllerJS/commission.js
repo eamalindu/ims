@@ -1,7 +1,7 @@
 window.addEventListener('load', () => {
     const startDate = moment().startOf('month').format('YYYY-MM-DD');
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
-    resetAdminSearchBar();
+    resetAdminSearchBar(startDate,endDate);
     generateAdminChart(startDate,endDate);
 
 })
@@ -36,9 +36,26 @@ const resetAdminSearchBar = () => {
 const generateAdminChart = (startDate ,endDate)=>{
     const counsellors = ajaxGetRequest("/Inquiry/getCounsellors/" + startDate + "/" + endDate);
     let commissions = [];
-
+    let commissionTotal = 0;
+    let chartData = [];
     counsellors.forEach(counsellor => {
-        let commission = ajaxGetRequest("/Commission/getCommissionByDateRangeAndCounsellor/"+startDate+"/"+endDate+"/"+counsellor);
-        commissions.push(commission);
+        let commissions = ajaxGetRequest("/Commission/getCommissionByDateRangeAndCounsellor/"+startDate+"/"+endDate+"/"+counsellor);
+        commissions.forEach(commission => {
+            commissionTotal += commission.amount;
+        });
+        chartData.push({name: counsellor, amount: commissionTotal});
     });
+
+    generateChart(chartCommission,'',counsellors,'Amount (Rs.)',[{name:'Counsellors',data:chartData,color: {
+            linearGradient: {
+                x1: 0,
+                x2: 0,
+                y1: 0,
+                y2: 1
+            },
+            stops: [
+                [0, '#f1c9ec'],
+                [1, '#ab84cb']
+            ]
+        }}]);
 }
