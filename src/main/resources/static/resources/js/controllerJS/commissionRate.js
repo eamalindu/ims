@@ -28,6 +28,23 @@ const  refreshCommissionRateTable = ()=>{
 }
 
 const resetCommissionRateForm = ()=>{
+
+    //remove validated class from chosen
+    $("#commissionRateCourse_chosen .chosen-single").removeClass('select-validated');
+    $("#commissionRateCourse_chosen .chosen-single").removeClass('select-invalidated');
+
+    document.getElementById('frmNewCommissionRate').reset();
+
+    //reset all the inputs validation using their common class name (newInquiryInputs)
+    inputs = document.querySelectorAll('.newCommissionRateInputs');
+    inputs.forEach(function (input) {
+        // Remove inline styles
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
+
     newCommissionRate={};
 
 
@@ -65,7 +82,7 @@ const newCommissionRateSubmit = ()=>{
     //if it's empty that means all the required inputs are filled
     if (errors === '') {
         //get a user confirmation using external customConfirm js
-        showCustomConfirm("You are about to add a New Batch<br>Are You Sure?", function (result) {
+        showCustomConfirm("You are about to add a New Commission Rate<br>Are You Sure?", function (result) {
             if (result) {
                 //if the user confirmation is "yes" call the ajaxHttpRequest to pass the data to backend via ajax
                 //catch the return value from the backend and save it in the serviceResponse variable
