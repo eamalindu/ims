@@ -3,7 +3,9 @@ window.addEventListener('load', () => {
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
     resetAdminSearchBar(startDate,endDate);
     generateAdminChart(startDate,endDate);
-    refreshCommissionTable(startDate,endDate)
+    refreshCommissionTable(startDate,endDate);
+    performanceTitle.innerHTML ='The following charts are based on Commission data collected from '+startDate+' to '+endDate;
+
 
 })
 
@@ -35,6 +37,9 @@ const resetAdminSearchBar = () => {
 }
 
 const generateAdminChart = (startDate ,endDate)=>{
+
+    performanceTitle.innerHTML ='The following charts are based on Commission data collected from '+startDate+' to '+endDate;
+
     const counsellors = ajaxGetRequest("/Inquiry/getCounsellors/" + startDate + "/" + endDate);
     let commissions = [];
     let chartData = [];
