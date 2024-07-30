@@ -109,7 +109,18 @@
                                onkeyup="inputTextValidator(this,'^[1-9][0-9]{1,3}$','newCommissionRate','fullPaymentRate')" required
                                type="text">
                         <div class="valid-feedback">Value Accepted</div>
-                        <div class="invalid-feedback">Please provide a valid last name</div>
+                        <div class="invalid-feedback">Please provide a valid Full Payment rate</div>
+                        <div class="text-muted small"><small> Please Enter an amount without RS</small></div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label small">
+                            <label class="fw-bold required" for="commissionRatePartPayment">Part Payment Rate</label>
+                        </div>
+                        <input class="form-control rounded-0 newCommissionRateInputs" id="commissionRatePartPayment"
+                               onkeyup="inputTextValidator(this,'^[1-9][0-9]{1,3}$','newCommissionRate','partPaymentRate')" required
+                               type="text">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid Part Payment rate</div>
                         <div class="text-muted small"><small> Please Enter an amount without RS</small></div>
                     </div>
                 </form>
