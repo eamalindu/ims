@@ -367,6 +367,9 @@ g text {
 .newFollowupInputs{
     font-size: 13px;
 }
+.newCommissionRateInputs{
+    font-size: 13px;
+}
 /*overriding default*/
 .form-select:disabled {
     background-color: white;

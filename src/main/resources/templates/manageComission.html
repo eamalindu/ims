@@ -88,9 +88,30 @@
         <p class="m-0 fw-bold text-end"><label class="required"></label><span class="text-danger"><sup> Mandatory Fields </sup></span></p>
         <div class="card border-0">
             <div class="card-body border-0">
-
                 <form onsubmit="return false">
+                    <div class="mb-2">
+                        <div class="form-label">
+                            <label class="fw-bold required small" for="commissionRateCourse">Course</label>
+                        </div>
+                        <div class="input-group">
+                            <select class="form-select rounded-0" data-placeholder="Please Select a Source" id="commissionRateCourse" onchange="selectDynamicValueValidator(this,'','newCommissionRate','courseID')" required>
 
+                            </select>
+                            <div class="valid-feedback">Value Accepted</div>
+                            <div class="invalid-feedback">Please provide a valid Course</div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label small">
+                            <label class="fw-bold required" for="commissionRateFullPayment">Full Payment Rate</label>
+                        </div>
+                        <input class="form-control rounded-0 newCommissionRateInputs" id="commissionRateFullPayment"
+                               onkeyup="inputTextValidator(this,'^[1-9][0-9]{1,3}$','newCommissionRate','fullPaymentRate')" required
+                               type="text">
+                        <div class="valid-feedback">Value Accepted</div>
+                        <div class="invalid-feedback">Please provide a valid last name</div>
+                        <div class="text-muted small"><small> Please Enter an amount without RS</small></div>
+                    </div>
                 </form>
             </div>
         </div>

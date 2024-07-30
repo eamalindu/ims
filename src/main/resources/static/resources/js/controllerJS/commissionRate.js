@@ -2,6 +2,11 @@ window.addEventListener('load',()=>{
     refreshCommissionRateTable();
     resetCommissionRateForm();
 
+    //validation for commission rate
+    $("#commissionRateCourse").chosen().change(function () {
+        $("#commissionRateCourse_chosen .chosen-single").addClass('select-validated');
+    });
+
 });
 
 const  refreshCommissionRateTable = ()=>{
@@ -23,7 +28,14 @@ const  refreshCommissionRateTable = ()=>{
 }
 
 const resetCommissionRateForm = ()=>{
+    newCommissionRate={};
 
+
+    courses = ajaxGetRequest("/course/findall");
+    fillSelectOptions(commissionRateCourse,' ',courses,'name')
+
+    //initialize chosen select
+    $('#commissionRateCourse').chosen({width: '100%'});
 }
 
 const getCourseName = (ob)=>{
