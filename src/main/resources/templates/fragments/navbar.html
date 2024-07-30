@@ -86,10 +86,10 @@
                 <div class="modal-body pb-0">
                     <div class="container-fluid text-end mb-2 px-0 d-flex align-items-center">
                         <div class="text-center w-75 me-5">
-                            <span class="align-items-center display-3" id="loggedInUsernameText" style="text-transform: uppercase;font-weight: bold;font-family: Arial, serif;">Kasun</span>
+                            <span class="align-items-center display-3" id="loggedInUsernameText" style="text-transform: uppercase;font-weight: bold;font-family: Arial, serif;" th:text="${username}">Kasun</span>
                             <p class="text-muted small lh-sm">User Account was Created On <span id="loggedInUserTimestamp">2023-11-10</span></p>
                         </div>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" width="150px" id="" class="placeholder-image img-thumbnail rounded-0 employeeSheetInputs">
+                        <img th:src="${loggedInImage}" width="150px" id="" class="placeholder-image img-thumbnail rounded-0">
                     </div>
                     <table class="table table-bordered table-responsive mb-4">
                         <tbody class="small align-middle">
