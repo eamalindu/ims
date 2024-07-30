@@ -134,7 +134,7 @@ public class InquiryController {
     }
 
     @GetMapping(value="/getInquiryNumberByID/{id}",produces = "application/json")
-    public String getInquiryNumberById(@PathVariable Integer id){
+    public Inquiry getInquiryNumberById(@PathVariable Integer id){
         return inquiryDAO.getInquiryNumberById(id);
     }
 

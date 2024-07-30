@@ -42,6 +42,7 @@ const generateCommissionReport = (startDate,endDate)=>{
 
     const displayListForCommission = [
         {property: getRegNumber,dataType:'function'},
+        {property: getCourse,dataType:'function'},
         {property: getStudent,dataType: 'function'},
         {property: getPaymentMode,dataType: 'function'},
         {property: getAmount,dataType: 'function'},
@@ -54,6 +55,10 @@ const generateCommissionReport = (startDate,endDate)=>{
 
 const getRegNumber = (ob)=>{
     return ob.registrationID.registrationNumber;
+}
+
+const getCourse = (ob)=>{
+    return ob.registrationID.courseID.name;
 }
 const getStudent = (ob)=>{
     return ob.registrationID.studentID.nameWithInitials;
@@ -77,8 +82,7 @@ const getDate = (ob)=>{
 }
 
 const getInquiryID=(ob)=>{
-    const inquiryNumber = ajaxGetRequest("/Inquiry/getInquiryNumberByID/"+ob.inquiryID);
-    return inquiryNumber;
+    return ajaxGetRequest("/Inquiry/getInquiryNumberByID/" + ob.inquiryID).inquiryNumber;
 }
 
 const getReport = ()=>{
