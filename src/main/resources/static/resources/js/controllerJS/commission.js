@@ -2,7 +2,7 @@ window.addEventListener('load', () => {
     const startDate = moment().startOf('month').format('YYYY-MM-DD');
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
     resetAdminSearchBar();
-
+    generateAdminChart(startDate,endDate);
 
 })
 
@@ -31,4 +31,14 @@ const resetAdminSearchBar = () => {
     }, cb);
 
     cb(start, end);
+}
+
+const generateAdminChart = (startDate ,endDate)=>{
+    const counsellors = ajaxGetRequest("/Inquiry/getCounsellors/" + startDate + "/" + endDate);
+    let commissions = [];
+
+    counsellors.forEach(counsellor => {
+        let commission = ajaxGetRequest("/Commission/getCommissionByDateRangeAndCounsellor/"+startDate+"/"+endDate+"/"+counsellor);
+        commissions.push(commission);
+    });
 }

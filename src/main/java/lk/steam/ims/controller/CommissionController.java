@@ -35,6 +35,11 @@ public class CommissionController {
         return commissionDAO.getCommissionByDateRangeAndPaidTo(startDate, endDate, authentication.getName());
     }
 
+    @GetMapping("/getCommissionByDateRangeAndCounsellor/{startDate}/{endDate}/{counsellor}")
+    public List<Commission> getCommissionByDateRangeAndPaidTo(@PathVariable String startDate, @PathVariable String endDate, @PathVariable String counsellor) {
+        return commissionDAO.getCommissionByDateRangeAndPaidTo(startDate, endDate, counsellor);
+    }
+
     @GetMapping()
     public ModelAndView commissionUI(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
