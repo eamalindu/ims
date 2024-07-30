@@ -60,3 +60,8 @@ const generateAdminChart = (startDate ,endDate)=>{
             ]
         }}]);
 }
+
+const getCommission = ()=>{
+    const [startDate,endDate] = commissionAdminSearchDateRange.value.split(' - ');
+    generateAdminChart(startDate,endDate);
+}
