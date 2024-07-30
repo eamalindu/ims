@@ -93,12 +93,16 @@ const rowView = (ob)=>{
         input.classList.remove('is-invalid');
     });
 
+    //refill the select
     fillSelectOptions(commissionRateSheetCourse,'Please Select a Source',courses,'name',ob.courseID.name)
+    //setting data
     commissionRateSheetAddedBy.value = ob.addedBy;
     commissionRateSheetFull.value = ob.fullPaymentRate;
     commissionRateSheetPart.value = ob.partPaymentRate;
-    commissionRateSheetDate.value = ob.timeStamp;
-
+    commissionRateSheetDate.value = ob.timestamp;
+    //catch old commissionRate and new commissionRate
+    oldCommissionRate = JSON.parse(JSON.stringify(ob));
+    editedCommissionRate = JSON.parse(JSON.stringify(ob));
 
 }
 
