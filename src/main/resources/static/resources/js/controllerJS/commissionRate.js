@@ -80,6 +80,24 @@ const getPartPaymentRate = (ob)=>{
 }
 
 const rowView = (ob)=>{
+    //hide the update button
+    btnCommissionSheetUpdate.style.display = 'none';
+
+    //make all the inputs readonly and remove inline styles
+    inputs = document.querySelectorAll('.commissionSheetInputs');
+    inputs.forEach(function (input) {
+        input.setAttribute('disabled', 'true');
+        input.style = '';
+        //remove bootstrap validation classes
+        input.classList.remove('is-valid');
+        input.classList.remove('is-invalid');
+    });
+
+    fillSelectOptions(commissionRateSheetCourse,'Please Select a Source',courses,'name',ob.courseID.name)
+    commissionRateSheetAddedBy.value = ob.addedBy;
+    commissionRateSheetFull.value = ob.fullPaymentRate;
+    commissionRateSheetPart.value = ob.partPaymentRate;
+
 
 }
 
