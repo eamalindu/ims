@@ -4,11 +4,23 @@ window.addEventListener('load',()=> {
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
     refreshReportDroppedTable(startDate,endDate);
 
+    reportColumnFormat = [
+        {name: 'Inquiry Number', data: 'inquiryNumber'},
+        {name: 'Source', data: 'sourceId.name'},
+        {name: 'Course', data: 'courseId.code'},
+        {name: 'First Name', data: 'firstName'},
+        {name: 'Last Name', data: 'lastName'},
+        {name: 'Phone Number', data: 'primaryMobileNumber'},
+        {name: 'Added By', data: 'addedBy'},
+        {name: 'Status', data: 'inquiryStatusId.name'},
+
+    ]
+
 });
 
 const refreshReportDroppedTable = (startDate,endDate) =>{
 
-    const droppedInquiries = ajaxGetRequest("/Inquiry/getAllInquiriesByDateRangeAndStatus/"+startDate+"/"+endDate+"/"+4);
+    droppedInquiries = ajaxGetRequest("/Inquiry/getAllInquiriesByDateRangeAndStatus/"+startDate+"/"+endDate+"/"+4);
 
     const  displayPropertyListForReportDropped = [
         {property: 'inquiryNumber',dataType:'text'},
@@ -75,6 +87,7 @@ const getReport = ()=>{
 const exportData = ()=>{
     showCustomConfirm('You are about to export <span class="text-purple">Dropped Inquires</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
+            exportToExcel(droppedInquiries,'Dropped Inquiries Report',reportColumnFormat);
 
         }
     });
