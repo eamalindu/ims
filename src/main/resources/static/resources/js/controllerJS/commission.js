@@ -3,6 +3,7 @@ window.addEventListener('load', () => {
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
     resetAdminSearchBar(startDate,endDate);
     generateAdminChart(startDate,endDate);
+    refreshCommissionTable()
 
 })
 
@@ -64,4 +65,20 @@ const generateAdminChart = (startDate ,endDate)=>{
 const getCommission = ()=>{
     const [startDate,endDate] = commissionAdminSearchDateRange.value.split(' - ');
     generateAdminChart(startDate,endDate);
+}
+
+const refreshCommissionTable=()=>{
+    const commissions = ajaxGetRequest("/Commission/getCommissionByDateRangeAndPaidTo/"+startDate+"/"+endDate);
+
+    const displayListForCommission = [
+        {property: getRegNumber,dataType:'function'},
+        {property: getCourse,dataType:'function'},
+        {property: getStudent,dataType: 'function'},
+        {property: getPaymentMode,dataType: 'function'},
+        {property: getAmount,dataType: 'function'},
+        {property: getDate,dataType: 'function'},
+        {property: getInquiryID,dataType: 'function'},
+    ];
+
+    fillDataIntoTableWithOutAction(tblCommission,commissions,displayListForCommission);
 }

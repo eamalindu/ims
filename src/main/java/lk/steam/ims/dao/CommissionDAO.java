@@ -13,4 +13,7 @@ public interface CommissionDAO extends JpaRepository<Commission, Integer> {
 
     @Query(value = "select * from commission where date(timestamp)>=?1 and date(timestamp)<=?2 and paidto=?3",nativeQuery = true)
     List<Commission> getCommissionByDateRangeAndPaidTo(String startDate, String endDate, String paidTo);
+
+    @Query(value = "select * from commission where date(timestamp)>=?1 and date(timestamp)<=?2",nativeQuery = true)
+    List<Commission> getCommissionByDateRange(String startDate, String endDate);
 }
