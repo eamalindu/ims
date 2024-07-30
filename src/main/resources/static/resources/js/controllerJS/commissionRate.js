@@ -97,6 +97,7 @@ const rowView = (ob)=>{
     commissionRateSheetAddedBy.value = ob.addedBy;
     commissionRateSheetFull.value = ob.fullPaymentRate;
     commissionRateSheetPart.value = ob.partPaymentRate;
+    commissionRateSheetDate.value = ob.timeStamp;
 
 
 }
