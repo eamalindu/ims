@@ -32,8 +32,14 @@ const resetCommissionRateForm = ()=>{
     //remove validated class from chosen
     $("#commissionRateCourse_chosen .chosen-single").removeClass('select-validated');
     $("#commissionRateCourse_chosen .chosen-single").removeClass('select-invalidated');
-    inquirySource.classList.remove('is-valid');
-    inquiryCourse.classList.remove('is-invalid');
+    commissionRateCourse.classList.remove('is-valid');
+    commissionRateCourse.classList.remove('is-invalid');
+
+    //set default option chosen
+    setTimeout(function () {
+        $('#commissionRateCourse').val('').trigger('chosen:updated');
+
+    }, 0);
 
     document.getElementById('frmNewCommissionRate').reset();
 
