@@ -260,3 +260,29 @@ const checkForCommissionRateUpdates =()=>{
 
     return updates;
 }
+
+const commissionRateDelete = ()=>{
+//get user confirmation
+    showCustomConfirm("You are About to <b>Delete</b> this Commission Rate<br><br>Course Code: <span class='text-purple'>" + oldCommissionRate.courseID.code + "</span><br><br>Are You Sure?", function (result) {
+        if (result) {
+            //pass the record to backend
+            //receive the server response
+            let serviceResponse = ajaxHttpRequest("/CommissionRate", "DELETE", oldCommissionRate);
+            if (serviceResponse === "OK") {
+                //show user the response
+                showCustomModal("Commission Rate Successfully Deleted!", "success");
+                //close the offCanvas sheet
+                offCanvasCommissionRateSheetCloseButton.click();
+                refreshCommissionRateTable();
+
+            } else {
+                showCustomModal("Operation Failed!" + serviceResponse, "error");
+            }
+
+
+        } else {
+            showCustomModal("Operation Cancelled!", "info");
+        }
+
+    });
+}
