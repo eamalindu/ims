@@ -3,6 +3,17 @@ window.addEventListener('load',()=> {
     const startDate = moment().startOf('month').format('YYYY-MM-DD');
     const endDate = moment().endOf('month').format('YYYY-MM-DD');
     generateCommissionReport(startDate,endDate);
+    reportColumnFormat = [
+        {name: 'Registration', data: 'registrationID.registrationNumber'},
+        {name: 'Course', data: 'registrationID.courseID.name'},
+        {name: 'Student', data: 'registrationID.studentID.nameWithInitials'},
+        {name: 'Full Payment', data: 'registrationID.isFullPayment'},
+        {name: 'Commission Amount', data: 'amount'},
+        {name: 'Time Stamp', data: 'timestamp'},
+        {name: 'Inquiry', data: 'inquiryID'},
+
+    ]
+
 
 });
 
@@ -34,7 +45,7 @@ const resetReportSearchBar = ()=>{
 
 const generateCommissionReport = (startDate,endDate)=>{
     let commissionTotal = 0;
-    const commissions = ajaxGetRequest("/Commission/getCommissionByDateRangeAndPaidTo/"+startDate+"/"+endDate);
+     commissions = ajaxGetRequest("/Commission/getCommissionByDateRangeAndPaidTo/"+startDate+"/"+endDate);
     commissions.forEach(commission => {
         commissionTotal += commission.amount;
     });
@@ -86,14 +97,14 @@ const getInquiryID=(ob)=>{
 }
 
 const getReport = ()=>{
-    const [startDate,endDate] = commissionSearchDateRange.value.split(' - ');
+    [startDate,endDate] = commissionSearchDateRange.value.split(' - ');
     generateCommissionReport(startDate,endDate);
 }
 
-const exportData = ()=>{
+const exportCommissionDataToXlsx = ()=>{
     showCustomConfirm('You are about to export <span class="text-purple">Commission Report</span> data to an Excel spreadsheet<br><br>Are You Sure?',function (result){
         if(result){
-
+            exportToExcel(commissions,'Commission Report',reportColumnFormat);
         }
     });
 }
