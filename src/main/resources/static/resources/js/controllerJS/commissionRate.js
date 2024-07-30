@@ -19,7 +19,7 @@ const  refreshCommissionRateTable = ()=>{
         {property:getTimeStamp,dataType:'function'},
         {property:'addedBy',dataType:'text'},
     ];
-    fillDataIntoTable(tblCommissionRate,commissionRates,displayPropertyListForCommissionRate,rowView,'offCanvasCommissionRate');
+    fillDataIntoTable(tblCommissionRate,commissionRates,displayPropertyListForCommissionRate,rowView,'offCanvasCommissionRateSheet');
 
     if(commissionRates.length!==0){
         $('#tblCommissionRate').DataTable();
