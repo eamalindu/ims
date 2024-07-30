@@ -22,6 +22,7 @@ public class WebConfig {
 
         httpSecurity.authorizeHttpRequests(auth -> {
             auth
+                    .requestMatchers("/Reset-Password/**").permitAll()
                     .requestMatchers("/login").permitAll()
                     .requestMatchers("/CreateAdmin").permitAll()
                     .requestMatchers("/Employee").hasAnyAuthority("Admin","Manager")
