@@ -65,6 +65,7 @@ const generateAdminChart = (startDate ,endDate)=>{
 const getCommission = ()=>{
     const [startDate,endDate] = commissionAdminSearchDateRange.value.split(' - ');
     generateAdminChart(startDate,endDate);
+    refreshCommissionTable(startDate,endDate)
 }
 
 const refreshCommissionTable=(startDate,endDate)=>{
