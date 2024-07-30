@@ -32,6 +32,8 @@ const resetCommissionRateForm = ()=>{
     //remove validated class from chosen
     $("#commissionRateCourse_chosen .chosen-single").removeClass('select-validated');
     $("#commissionRateCourse_chosen .chosen-single").removeClass('select-invalidated');
+    inquirySource.classList.remove('is-valid');
+    inquiryCourse.classList.remove('is-invalid');
 
     document.getElementById('frmNewCommissionRate').reset();
 
