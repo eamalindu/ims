@@ -105,17 +105,21 @@ public class ImsApplication {
 	public ModelAndView commissionRateUI(){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-		ModelAndView employeeView = new ModelAndView();
-		employeeView.setViewName("manageComission.html");
+		ModelAndView commissionView = new ModelAndView();
+		commissionView.setViewName("manageComission.html");
 
-		employeeView.addObject("username",auth.getName());
-		employeeView.addObject("title","Manage Commission Rate | STEAM IMS");
-		employeeView.addObject("activeNavItem","manageCommission");
+		commissionView.addObject("username",auth.getName());
+		commissionView.addObject("title","Manage Commission Rate | STEAM IMS");
+		commissionView.addObject("activeNavItem","manageCommission");
 		String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
 		String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
-		employeeView.addObject("loggedInEmployeeName",loggedInEmployeeName);
-		employeeView.addObject("loggedInDesignationName",loggedInDesignationName);
-		return employeeView;
+		byte[] photoBytes = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getPhotoPath();
+		String base64Image = Base64.getEncoder().encodeToString(photoBytes);
+		String imageSrc = "data:image/png;base64," + base64Image;
+		commissionView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+		commissionView.addObject("loggedInDesignationName",loggedInDesignationName);
+		commissionView.addObject("loggedInImage",imageSrc);;
+		return commissionView;
 	}
 
 }
