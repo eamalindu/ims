@@ -77,6 +77,7 @@ const refreshCommissionTable=(startDate,endDate)=>{
         {property: getStudent,dataType: 'function'},
         {property: getPaymentMode,dataType: 'function'},
         {property: getAmount,dataType: 'function'},
+        {property: 'paidTo',dataType: 'text'},
         {property: getDate,dataType: 'function'},
         {property: getInquiryID,dataType: 'function'},
     ];
