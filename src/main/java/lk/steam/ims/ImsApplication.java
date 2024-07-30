@@ -101,4 +101,21 @@ public class ImsApplication {
 		return "<script>window.location.replace('http://localhost:8888/login');</script>";
 	}
 
+	@GetMapping(value = "/Commission-Rate")
+	public ModelAndView commissionRateUI(){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		ModelAndView employeeView = new ModelAndView();
+		employeeView.setViewName("manageComission.html");
+
+		employeeView.addObject("username",auth.getName());
+		employeeView.addObject("title","Manage Commission Rate | STEAM IMS");
+		employeeView.addObject("activeNavItem","manageCommission");
+		String loggedInEmployeeName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getFullName();
+		String loggedInDesignationName = userDAO.getUserByUsername(auth.getName()).getEmployeeID().getDesignationID().getDesignation();
+		employeeView.addObject("loggedInEmployeeName",loggedInEmployeeName);
+		employeeView.addObject("loggedInDesignationName",loggedInDesignationName);
+		return employeeView;
+	}
+
 }
