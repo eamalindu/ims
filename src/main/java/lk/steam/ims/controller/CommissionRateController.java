@@ -68,5 +68,16 @@ public class CommissionRateController {
         return "OK";
 
     }
+    @DeleteMapping
+    public String deleteCommissionRate(@RequestBody CommissionRate commissionRate){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"COMMISSION");
+
+        if(!loggedUserPrivilege.getDeletePrivilege()){
+            return "<br>User does not have sufficient privilege.";
+        }
+        commissionRateDAO.delete(commissionRate);
+        return "OK";
+    }
 
 }
