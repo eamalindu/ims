@@ -68,7 +68,7 @@ const getCourseName = (ob)=>{
 }
 
 const getTimeStamp = (ob)=>{
-    return ob.timestamp.replace("T"," ");
+    return ob.timestamp.replace("T"," ").slice(0, -3);
 }
 
 const getFullPaymentRate = (ob)=>{
@@ -99,7 +99,7 @@ const rowView = (ob)=>{
     commissionRateSheetAddedBy.value = ob.addedBy;
     commissionRateSheetFull.value = ob.fullPaymentRate;
     commissionRateSheetPart.value = ob.partPaymentRate;
-    commissionRateSheetDate.value = ob.timestamp;
+    commissionRateSheetDate.value = ob.timestamp.replace("T"," ").slice(0, -3);
     //catch old commissionRate and new commissionRate
     oldCommissionRate = JSON.parse(JSON.stringify(ob));
     editedCommissionRate = JSON.parse(JSON.stringify(ob));
