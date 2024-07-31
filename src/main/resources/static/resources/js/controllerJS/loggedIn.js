@@ -22,4 +22,21 @@ const getLoggedInUser=()=>{
 const editLoggedInUser=()=>{
     //show the update button
     loggedInUserUpdateBtn.classList.remove('d-none');
+
+    //getting the toast from its ID
+    var myToastEl = document.getElementById('myToast');
+    var myToast = new bootstrap.Toast(myToastEl);
+    //Displaying toast
+    myToast.show();
+    //hide the toast after 5s
+    setTimeout(function () {
+        myToast.hide();
+    }, 5000);
+
+    //enable editing
+    loggedInUsername.removeAttribute('disabled');
+    loggedInUsername.setAttribute('style', 'border:1px solid #0DCAF0!important;background-color:rgba(13,202,240,0.2);');
+    loggedInPassword.removeAttribute('disabled');
+    loggedInPassword.setAttribute('style', 'border:1px solid #0DCAF0!important;background-color:rgba(13,202,240,0.2);');
+    loggedInPassword.value = '';
 }
