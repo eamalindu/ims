@@ -51,6 +51,12 @@ public class UserController {
         return userDAO.getUserByUsername(username);
     }
 
+    @GetMapping(value = "/loggedInUser")
+    public User getLoggedInUser(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return userDAO.getUserByUsername(auth.getName());
+    }
+
     @PostMapping
     public String saveNewUser(@RequestBody User user){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

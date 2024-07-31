@@ -6,8 +6,7 @@ const getLoggedInUser=()=>{
     //hide the update button
     loggedInUserUpdateBtn.classList.add('d-none');
 
-    const loggedInUserName = loggedInUsernameText.innerText;
-    loggedInUser = ajaxGetRequest("/User/getByUsername/"+loggedInUserName);
+    loggedInUser = ajaxGetRequest("/User/loggedInUser");
 
     //setting data
     loggedInUsername.value = loggedInUser.username;
@@ -25,6 +24,10 @@ const getLoggedInUser=()=>{
     loggedInPassword.style = '';
     loggedInPassword.classList.remove('is-valid');
     loggedInPassword.value = '*******';
+
+    //catch old inquiry and new inquiry
+    oldLoggedInUser = JSON.parse(JSON.stringify(loggedInUser));
+    editedLoggedInUser = JSON.parse(JSON.stringify(loggedInUser));
 }
 
 

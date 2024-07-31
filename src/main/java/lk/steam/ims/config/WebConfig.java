@@ -25,6 +25,7 @@ public class WebConfig {
                     .requestMatchers("/Reset-Password/**").permitAll()
                     .requestMatchers("/login").permitAll()
                     .requestMatchers("/CreateAdmin").permitAll()
+                    .requestMatchers("/User/loggedInUser").hasAnyAuthority("Admin","Manager","Counsellor")
                     .requestMatchers("/Employee").hasAnyAuthority("Admin","Manager")
                     .requestMatchers("/User/**").hasAnyAuthority("Admin","Manager")
                     .requestMatchers("/Administrations/**").hasAnyAuthority("Admin","Manager")
