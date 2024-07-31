@@ -6,8 +6,8 @@ const getLoggedInUser=()=>{
     //hide the update button
     loggedInUserUpdateBtn.classList.add('d-none');
 
-    const loggedInUsername = loggedInUsernameText.innerText;
-    loggedInUser = ajaxGetRequest("/User/getByUsername/"+loggedInUsername);
+    const loggedInUserName = loggedInUsernameText.innerText;
+    loggedInUser = ajaxGetRequest("/User/getByUsername/"+loggedInUserName);
 
     //setting data
     loggedInUsername.value = loggedInUser.username;
@@ -16,7 +16,6 @@ const getLoggedInUser=()=>{
     loggedInUser.roles.forEach((role)=>{
         loggedInRoles.value += role.name+" ";
     })
-    loggedInUsername.value = loggedInUser.username;
 }
 
 
