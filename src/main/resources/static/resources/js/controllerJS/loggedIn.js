@@ -1,5 +1,5 @@
 window.addEventListener('load', () => {
-    getLoggedInUser();
+
 })
 
 const getLoggedInUser=()=>{
