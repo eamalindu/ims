@@ -16,6 +16,15 @@ const getLoggedInUser=()=>{
     loggedInUser.roles.forEach((role)=>{
         loggedInRoles.value += role.name+" ";
     })
+
+    //remove editable attributes set
+    loggedInUsername.setAttribute('disabled', 'true');
+    loggedInUsername.style = '';
+    loggedInUsername.classList.remove('is-valid');
+    loggedInPassword.setAttribute('disabled', 'true');
+    loggedInPassword.style = '';
+    loggedInPassword.classList.remove('is-valid');
+    loggedInPassword.value = '*******';
 }
 
 
