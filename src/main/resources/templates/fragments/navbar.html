@@ -73,7 +73,7 @@
                 <div class="modal-header bg-custom-white">
                     <button aria-label="Close" class="btn btn-sm btn-danger btn-close-red rounded-0" data-bs-dismiss="modal" type="button"><i class="fas fa-times"></i></button>
                     <div class="container d-flex gap-3 ms-1" style="width: 55%">
-                        <button class="btn btn-sm bg-info rounded-0 text-white" onclick=""><i
+                        <button class="btn btn-sm bg-info rounded-0 text-white" onclick="editLoggedInUser()"><i
                                 class="fa-regular fa-pen-to-square"></i> Edit Info
                         </button>
                         <button class="btn btn-sm bg-warning rounded-0 text-white" id="loggedInUserUpdateBtn" onclick=""><i
@@ -117,8 +117,7 @@
                         <tr>
                             <td class="fw-bold w-25">Role</td>
                             <td colspan="3">
-                                <p class="small mb-0" id="loggedinRoles" disabled ></p>
-
+                                <input class="small rounded-0 form-control-sm loggedInUserInputs w-100" disabled  id="loggedInRoles">
                             </td>
                         </tr>
                         </tbody>

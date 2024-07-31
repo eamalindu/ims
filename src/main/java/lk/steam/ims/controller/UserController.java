@@ -46,6 +46,11 @@ public class UserController {
         return userDAO.findAll();
     }
 
+    @GetMapping(value = "/getByUsername/{username}")
+    public User getUserByUsername(@PathVariable String username){
+        return userDAO.getUserByUsername(username);
+    }
+
     @PostMapping
     public String saveNewUser(@RequestBody User user){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
