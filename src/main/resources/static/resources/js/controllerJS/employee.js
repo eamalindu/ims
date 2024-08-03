@@ -111,7 +111,7 @@ const rowView=(ob,index) =>{
     employeeSheetNIC.value =ob.nic;
     employeeSheetDOB.value =ob.dob;
 
-    employeeSheetImage.src = 'data:image/png;base64,'+ob.photoPath;
+    employeeSheetImage.src = atob(ob.photoPath);
 
     //setting gender
     if(ob.gender=="Male"){
@@ -383,6 +383,7 @@ const checkEmployeeFormErrors = (employeeObject)=>{
         employeeHighestEducation.classList.add('is-invalid');
     }
 
+
     return errors;
 }
 
@@ -428,6 +429,10 @@ const checkForEmployeeUpdate = ()=>{
     }
     if (editedEmployee.note !== oldEmployee.note) {
         updates = updates + "Note was changed to <span class='text-purple'>" + editedEmployee.note + "</span><br>";
+    }
+    if(editedEmployee.photoPath!==oldEmployee.photoPath){
+        updates += "Employee Image was changed<br>";
+
     }
 
     return updates;
@@ -541,4 +546,31 @@ const generateCallingName = ()=>{
     })
     $('#employeeCallingName').val('').trigger('chosen:updated');
     console.log(nameParts)
+}
+
+const loadNewImage = ()=>{
+    // Get the input element and the image element
+    const imageInput = document.getElementById('employeeSheetImageInput');
+    const courseSheetLogo = document.getElementById('employeeSheetImage');
+
+    // Open file dialog when image is clicked
+    courseSheetLogo.addEventListener('click', () => {
+        imageInput.click();
+    });
+
+    // Handle the file selection
+    imageInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+
+            // Read the file and set the image source
+            reader.onload = () => {
+                courseSheetLogo.src = reader.result;
+                editedEmployee.photoPath = btoa(reader.result)
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
 }
