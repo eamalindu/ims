@@ -169,3 +169,47 @@ const showFollowupCard = (cardData, container) => {
         </div>`
     }
 }
+
+
+const getDOB = ()=>{
+    let nicValue = nic.value;
+    let isOldType = true;
+    let year ;
+    let dayOfYear;
+    let gender;
+    //check nic length
+    if(nicValue.length===12){
+        isOldType = false
+    }
+    if(isOldType){
+        year = 1900+parseInt(nicValue.substring(0,2))
+        dayOfYear = parseInt(nicValue.substring(2,5))
+    }
+    else{
+        year = parseInt(nicValue.substring(0,4))
+        dayOfYear = parseInt(nicValue.substring(4,7))
+    }
+    //check gender
+    if(dayOfYear<500){
+        gender = "Male";
+    }
+    else{
+        gender = 'Female'
+        dayOfYear -= 500;
+    }
+
+    //check for leap years
+    if(year%4!==0){
+        dayOfYear -= 1;
+    }
+
+    let dob = moment().year(year).dayOfYear(dayOfYear).format('YYYY-MM-DD');
+    let age = moment().diff(dob, 'years');
+    console.log(year);
+    console.log(dayOfYear);
+    console.log(gender);
+    console.log(dob);
+    console.log(age);
+
+
+}
