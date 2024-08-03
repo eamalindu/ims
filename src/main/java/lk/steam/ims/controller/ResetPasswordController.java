@@ -126,6 +126,7 @@ public class ResetPasswordController {
 
     }
 
+    //generate a secure OTP
     public static String generateSecureOTP() {
         SecureRandom secureRandom = new SecureRandom();
         int otp = 100000 + secureRandom.nextInt(900000);

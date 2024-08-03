@@ -24,26 +24,31 @@ public class CommissionController {
     @Autowired
     private UserDAO userDAO;
 
+    //get commission by registration id
     @GetMapping("/getCommissionByRegistrationID/{registrationID}")
     public Commission getCommissionByRegistrationID(@PathVariable Integer registrationID) {
         return commissionDAO.getCommissionByRegistrationID(registrationID);
     }
 
+    //get commission by date range and paid to
     @GetMapping("/getCommissionByDateRangeAndPaidTo/{startDate}/{endDate}")
     public List<Commission> getCommissionByDateRangeAndPaidTo(@PathVariable String startDate, @PathVariable String endDate) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return commissionDAO.getCommissionByDateRangeAndPaidTo(startDate, endDate, authentication.getName());
     }
 
+    //get commission by date range and paid to and counsellor
     @GetMapping("/getCommissionByDateRangeAndCounsellor/{startDate}/{endDate}/{counsellor}")
     public List<Commission> getCommissionByDateRangeAndPaidTo(@PathVariable String startDate, @PathVariable String endDate, @PathVariable String counsellor) {
         return commissionDAO.getCommissionByDateRangeAndPaidTo(startDate, endDate, counsellor);
     }
 
+    //get commission by date range
     @GetMapping("/getCommissionByDateRange/{startDate}/{endDate}")
     public List<Commission> getCommissionByDateRange(@PathVariable String startDate, @PathVariable String endDate) {
         return commissionDAO.getCommissionByDateRange(startDate, endDate);
     }
+
 
     @GetMapping()
     public ModelAndView commissionUI(){
