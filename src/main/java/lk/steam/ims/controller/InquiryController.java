@@ -30,7 +30,7 @@ public class InquiryController {
     //it can be either JSON,Text and XML
 
     //value = 'employee/findall' (<= how the browser will display it)
-    // employee is added from the class level mapping
+    // Inquiry is added from the class level mapping
     @GetMapping(value = "/findall",produces = "application/json")
     public List<Inquiry> findAll(){
         return inquiryDAO.findAll();
