@@ -29,7 +29,7 @@ public class InquiryController {
     //data returnType => 'produces ="application/JSON"'
     //it can be either JSON,Text and XML
 
-    //value = 'employee/findall' (<= how the browser will display it)
+    //value = 'Inquiry/findall' (<= how the browser will display it)
     // Inquiry is added from the class level mapping
     @GetMapping(value = "/findall",produces = "application/json")
     public List<Inquiry> findAll(){
@@ -250,7 +250,9 @@ public class InquiryController {
     //delete inquiry
     @DeleteMapping
     public String deleteInquiry(@RequestBody Inquiry inquiry){
+        //get loggedin user auth
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        //get privilege for the user
         Privilege loggedUserPrivilege = privilegeController.getPrivilegeByUserAndModule(auth.getName(),"INQUIRY");
 
         if(!loggedUserPrivilege.getDeletePrivilege()){
